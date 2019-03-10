@@ -1,0 +1,42 @@
+
+canvas{
+    background: url(Ranking.png);
+    background-size: cover;
+    width: 750px;
+    height: 600px;
+    position: relative;
+    top: 20%;
+}
+
+header{
+    height: 80px;
+    width: auto;
+    background-color:cornflowerblue;  
+}
+
+/*************************************************************/
+.left{
+    width: 340px;
+    height: 100%;
+    background-color:cornflowerblue;
+    position: absolute;
+}
+
+.right{
+    width: 340px;
+    height: 100%;
+    background-color:cornflowerblue;  
+    position: absolute;
+    right: 0;
+    top:0;
+}
+
+
+
+footer{
+    height: 8px;
+    width: auto;
+    background-color:cornflowerblue;
+    position: absolute;
+    
+}
