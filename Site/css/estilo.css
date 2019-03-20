@@ -6,10 +6,10 @@ canvas{
     top: 20%;
 }
 
-header{
-    height: 80px;
-    width: auto;
-    background-color:cornflowerblue;  
+#menu
+{
+    height: 20%;
+    width: 100%;
 }
 
 /*************************************************************/
@@ -37,4 +37,22 @@ footer{
     background-color:cornflowerblue;
     position: absolute;
     
+}
+
+#btnRelatorios
+{
+    background-color: white;
+    color           : black;
+    position: absolute;
+    right: 0%;
+    top: 5%;
+}
+
+#btnBastidores
+{
+    background-color: white;
+    color           : black;
+    position: absolute;
+    right: 10%;
+    top: 5%;
 }
