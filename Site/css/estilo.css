@@ -4,11 +4,12 @@ canvas{
     height: 600px;
     position: relative;
     top: 20%;
+    border: 1px solid black;
 }
 
 #menu
 {
-    height: 20%;
+    height: 15%;
     width: 100%;
 }
 
