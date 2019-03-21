@@ -50,7 +50,7 @@ footer{
     color           : black;
     position: absolute;
     right: 0%;
-    top: 5%;
+    top: 3%;
 }
 
 #btnBastidores
@@ -59,7 +59,7 @@ footer{
     color           : black;
     position: absolute;
     right: 10%;
-    top: 5%;
+    top: 3%;
 }
 
 #imagemLogo
