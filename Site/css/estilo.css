@@ -1,47 +1,28 @@
 
-canvas
-    {
-    width: 750px;
-    height: 600px;
-    position: relative;
-    top: 20%;
-    border: 1px solid black;
-}
-
-    }
 #menu
 {
-    height: 15%;
+    height: 10%;
     width: 100%;
 }
 
 
 
-.left{
-    width: 340px;
-    height: 100%;
+#left{
+    width: 5%;
+    height: 90%;
     background-color:cornflowerblue;
     position: absolute;
+    top: 10%;
 }
 
 
-.right{
-    width: 340px;
-    height: 100%;
+#right{
+    width: 5%;
+    height: 90%;
     background-color:cornflowerblue;  
     position: absolute;
-    right: 0;
-    top:0;
-}
-
-
-
-footer{
-    height: 8px;
-    width: auto;
-    background-color:cornflowerblue;
-    position: absolute;
-    
+    right: 0%;
+    top: 10%;
 }
 
 #btnRelatorios
@@ -69,3 +50,4 @@ footer{
     position: relative;
     top: 20%;
 }
+
