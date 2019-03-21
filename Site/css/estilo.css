@@ -1,24 +1,25 @@
 
-canvas{
+canvas
+    {
     width: 750px;
     height: 600px;
     position: relative;
-    top: 20%;
-}
-
+    }
 #menu
 {
-    height: 20%;
+    height: 15%;
     width: 100%;
 }
 
-/*************************************************************/
+
+
 .left{
     width: 340px;
     height: 100%;
     background-color:cornflowerblue;
     position: absolute;
 }
+
 
 .right{
     width: 340px;
@@ -55,4 +56,12 @@ footer{
     position: absolute;
     right: 10%;
     top: 5%;
+}
+
+#imagemLogo
+{
+    width: 750px;
+    height: 600px;
+    position: relative;
+    top: 20%;
 }
