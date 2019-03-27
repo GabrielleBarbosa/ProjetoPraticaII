@@ -50,3 +50,10 @@
     top: 20%;
 }
 
+#btnJornada
+{
+     position:center;
+     background-color: white;
+     color: black;
+}
+
