@@ -13,13 +13,14 @@ create table Jogador
  constraint fkEmprego foreign key(codEmprego) references Emprego(codEmprego)
 )
 
+
 create table Ranking
 (
 nickName varchar(25),
 constraint fkJogador foreign key(nickName) references Jogador(nickName),
 pontos int
-
 )
+
 create table Escolha
 (
 codEscolha int primary key,
@@ -64,7 +65,7 @@ create table AcontecimentoAleatorio
 codAcontecimentoAleatorio int primary key, 
 acontecimento ntext,
 codEscolha int,
-constraint fkEscolha foreign key(codEscolha) references Escolha(codEscolha)
+constraint fkEscolha2 foreign key(codEscolha) references Escolha(codEscolha)
 )
 
 create table Mercado
@@ -77,6 +78,5 @@ preco money
 create table MercadoJogador
 (
 codJogador varchar(25),
-constraint fkJogador foreign key(codJogador) references Jogador(nickName)
- 
+constraint fkJogador2 foreign key(codJogador) references Jogador(nickName)
 )
