@@ -44,19 +44,72 @@
 
 #imagemLogo
 {
-    width: 750px;
-    height: 600px;
+    width: 70%;
+    height: 60%px;
     position: relative;
     top: 20%;
 }
 
+#separacaoCimaTela
+{
+    position: relative;
+    top: 10%;
+    width: 90%;
+    height: 0.3%;
+    background-color: black;
+}
+
+
+/*design das barras de pontos do personagem*/
+
+#CanvaSaude
+{
+    position: relative;
+    width: 200px;
+    height: 25px;
+    left: 10%;
+    background-color: green;
+}
+
+#canvaInt
+{
+    position: relative;
+    width: 200px;
+    height: 25px;
+    left: 20%;
+    background-color: blue;
+}
+
+#canvaRelac
+{
+    position: relative;
+    width: 200px;
+    height: 25px;
+    left: 30%;
+    background-color: orange;
+    top: 10%;
+}
+
+#canvaFelic
+{
+    position: relative;
+    width: 200px;
+    height: 25px;
+    left: 40%;
+    background-color: yellow;
+}
+
+
+
+/*---------------------------------------------------------------------------*/
+/*BASTIDORES.HTML*/
 #btnJornada
 {
     color: red;
     background-color: white;
     left: 25%;
     top: 25%;
-    position: absolute;
+    position: relative;
 }
 
 #btnDesenvolvimento
@@ -65,7 +118,7 @@
     background-color: white;
     left: 50%;
     top: 25%;
-    position: absolute;
+    position: relative;
 }
 
 #footerBastidores
@@ -73,4 +126,5 @@
     position:relative;
     top: 70%;
 }
+/*-----------------------------------------------------------------------------*/
 
