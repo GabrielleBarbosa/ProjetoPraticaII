@@ -182,7 +182,6 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\RankingController.cs" />
-    <Compile Include="DAO\JogadorDAO.cs" />
     <Compile Include="DAO\RankingContext.cs" />
     <Compile Include="DAO\RankingDAO.cs" />
     <Compile Include="Global.asax.cs">

@@ -12,7 +12,7 @@ namespace YourLife.DAO
         public DbSet<Ranking> Ranking { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=regulus;Initial Catalog=BD18200;User ID=BD18200;Password=f3l1p3l3o");
+            optionsBuilder.UseSqlServer("Data Source=regulus;Initial Catalog=PR118200;User ID=PR118200;Password=PR118200");
         }
     }
 }

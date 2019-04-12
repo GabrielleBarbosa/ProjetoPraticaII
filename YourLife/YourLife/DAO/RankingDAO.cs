@@ -17,7 +17,7 @@ namespace YourLife.DAO
                 context.SaveChanges();
             }
         }
-        public IList<Ranking> Lista()
+        public IList<Ranking> ListarRanking()
         {
             using (var contexto = new RankingContext())
             {
