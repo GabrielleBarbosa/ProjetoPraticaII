@@ -91,3 +91,5 @@ insert into Jogador values('Janies',0,'F',0,0,0,0,0,'S',1)
 insert into Ranking values('Vinschers',120111)
 insert into Ranking values('Gabs123', 9929)
 insert into Ranking values('Janies', 543322)
+
+select * from Ranking
