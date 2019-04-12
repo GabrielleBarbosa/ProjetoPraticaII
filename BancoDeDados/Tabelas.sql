@@ -95,4 +95,4 @@ insert into Ranking values('Janies', 543322)
 select * from Ranking
 
 
-alter table Ranking add id identity(1,1) primary key  
+alter table Ranking add id int identity(1,1) primary key 

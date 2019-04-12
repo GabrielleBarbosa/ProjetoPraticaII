@@ -187,7 +187,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AcontecimentoAleatorio.cs" />
+    <Compile Include="Models\AcontecimentoFixo.cs" />
+    <Compile Include="Models\Consequencia.cs" />
+    <Compile Include="Models\Emprego.cs" />
+    <Compile Include="Models\Escolha.cs" />
     <Compile Include="Models\Jogador.cs" />
+    <Compile Include="Models\Jogo.cs" />
+    <Compile Include="Models\Mercado.cs" />
+    <Compile Include="Models\MercadoJogador.cs" />
     <Compile Include="Models\Ranking.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
