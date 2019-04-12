@@ -7,7 +7,7 @@
 #left{
     width: 5%;
     height: 90%;
-    background-color:cornflowerblue;
+    background-color: cornflowerblue;
     position: absolute;
     top: 10%;
 }
@@ -15,7 +15,7 @@
 #right{
     width: 5%;
     height: 90%;
-    background-color:cornflowerblue;  
+    background-color: cornflowerblue;  
     position: absolute;
     right: 0%;
     top: 10%;
@@ -24,7 +24,7 @@
 #btnRelatorios
 {
     background-color: white;
-    color           : black;
+    color: black;
     position: absolute;
     right: 5%;
     top: 3%;
@@ -33,7 +33,7 @@
 #btnBastidores
 {
     background-color: white;
-    color           : black;
+    color: black;
     position: absolute;
     right: 15%;
     top: 3%;
@@ -42,9 +42,8 @@
 #Jogo
 {
     width: 1000px;
-    height: 585px;
+    height: 710px;
     position: relative;
-    top: 59px;
 }
 
 #separacaoCimaTela

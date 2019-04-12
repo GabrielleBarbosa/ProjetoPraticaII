@@ -35,16 +35,23 @@
         <article></article>
     </div>
 
-        <canvas id="canvaSaude"></canvas>
+        <!--<canvas id="canvaSaude"></canvas>
         <canvas id="canvaInt"></canvas>
         <canvas id="canvaRelac"></canvas>
         <canvas id="canvaFelic"></canvas>
     
 
-    <hr id="separacaoCimaTela">
+    <hr id="separacaoCimaTela">-->
 
     <center>
-        <canvas style="background: url(Imagens/LogoSemPlanoDeFundo.png);background-size:100%;" id="Jogo">
+        <canvas style="background: url(Imagens/LogoSemPlanoDeFundo.png) no-repeat;background-size:100%;" id="Jogo">
+            <script>
+                function mudarBackground() {
+                        document.getElementById('Jogo').style.backgroundImage = 'url(Imagens/sala_de_escola.jpg)';
+                        }
+
+                    setTimeout(mudarBackground, 3000);
+            </script>
         </canvas>
     </center>
 
