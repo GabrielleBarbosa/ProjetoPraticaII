@@ -203,8 +203,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="DAO\RankingContext.cs" />
     <Compile Include="DAO\RankingDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -230,6 +232,8 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Jogo\Jogo.cshtml" />
+    <Content Include="Views\Bastidores\Bastidores.cshtml" />
+    <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
