@@ -14,5 +14,7 @@ namespace YourLife.DAO
         {
             optionsBuilder.UseSqlServer("Data Source=regulus;Initial Catalog=PR118200;User ID=PR118200;Password=PR118200");
         }
+
+
     }
 }
