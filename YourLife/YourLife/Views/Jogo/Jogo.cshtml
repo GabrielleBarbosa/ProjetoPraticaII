@@ -9,8 +9,8 @@
     <meta charset=utf-8>
     <title></title>
 
-    <link rel=stylesheet href="css/estilo.css">
-    <script src="js/principal.js"></script>
+    <link rel=stylesheet href="~/html/css/estilo.css">
+    <script src="~/html/js/principal.js"></script>
 
 
 
@@ -49,15 +49,14 @@
     <hr id="separacaoCimaTela">-->
 
     <center>
-        <canvas style="background: url(Imagens/LogoSemPlanoDeFundo.png) no-repeat;background-size:100%;" id="Jogo">
-            <script>
-                function mudarBackground() {
-                        document.getElementById('Jogo').style.backgroundImage = 'url(Imagens/sala_de_escola.jpg)';
-                        }
+        <canvas style="background: url('../../html/Imagens/LogoSemPlanoDeFundo.png') no-repeat;background-size:100%;" id="Jogo"></canvas>
+        <script>
+            function mudarBackground() {
+                document.getElementById('Jogo').style.backgroundImage = 'url(../../html/Imagens/sala_de_escola.png)';
+            }
 
-                    setTimeout(mudarBackground, 3000);
-            </script>
-        </canvas>
+            setTimeout(mudarBackground, 3000);
+        </script>
     </center>
 
     <div id="right" class="red darken-2">
