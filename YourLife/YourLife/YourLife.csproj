@@ -189,8 +189,6 @@
     <Content Include="html\Imagens\velhinhos.png" />
     <Content Include="html\Imagens\velho.png" />
     <Content Include="html\Imagens\Your life.png" />
-    <None Include="html\Inicio.cshtml" />
-    <Content Include="html\jogo.html" />
     <Content Include="html\js\principal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
