@@ -21,10 +21,14 @@
     top: 10%;
 }
 
-#btnRelatorios
+.botao
 {
     background-color: white;
     color: black;
+}
+
+#btnRelatorios
+{
     position: absolute;
     right: 5%;
     top: 3%;
@@ -32,8 +36,6 @@
 
 #btnBastidores
 {
-    background-color: white;
-    color: black;
     position: absolute;
     right: 15%;
     top: 3%;
