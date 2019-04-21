@@ -7,9 +7,9 @@ using YourLife.Models;
 
 namespace YourLife.DAO
 {
-    public class RankingContext:DbContext
+    public class JogadorContext:DbContext
     {
-        public DbSet<Ranking> Ranking { get; set; }
+        public DbSet<Jogador> Jogador { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Data Source=regulus;Initial Catalog=PR118200;User ID=PR118200;Password=PR118200");
