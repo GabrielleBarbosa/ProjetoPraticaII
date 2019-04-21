@@ -232,7 +232,7 @@
     <Content Include="Views\Jogo\Jogo.cshtml" />
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
-    <Content Include="Views\Jogo\Inicio.cshtml" />
+    <Content Include="Views\Jogo\Telas\Inicio.html" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
