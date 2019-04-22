@@ -239,6 +239,7 @@
     <Content Include="Views\Jogo\Jogo.cshtml" />
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
+    <Content Include="Views\Jogo\teste.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -249,6 +250,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Jogador\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

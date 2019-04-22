@@ -30,26 +30,19 @@
 
     <nav class="red darken-2" id="menu">
 
-        <button class="waves-effect waves-light btn botao" onclick="abrir('C:\Users\u18183\Documents\GitHub\ProjetoPraticaII\YourLife\YourLife\Views\Ranking\Ranking.cshtml')" id="btnBastidores">Bastidores</button>
-        <button class="waves-effect waves-light btn botao" onclick="abrir('C:\Users\u18183\Documents\GitHub\ProjetoPraticaII\YourLife\YourLife\Views\Relatorio\Relatorio.cshtml')" id="btnRelatorios">Relatórios</button>
+        <button class="botao waves-effect waves-light btn" onclick="abrir('C:\Users\u18183\Documents\GitHub\ProjetoPraticaII\YourLife\YourLife\Views\Ranking\Ranking.cshtml')" id="btnBastidores">Bastidores</button>
+        <button class="botao waves-effect waves-light btn" onclick="abrir('C:\Users\u18183\Documents\GitHub\ProjetoPraticaII\YourLife\YourLife\Views\Relatorio\Relatorio.cshtml')" id="btnRelatorios">Relatórios</button>
 
     </nav>
-    <center>
-        <canvas style="background: url('../../html/Imagens/LogoSemPlanoDeFundo.png') no-repeat;background-size:100%;" id="Jogo"></canvas>
-    </center>
+    @*<canvas style="background: url('../../html/Imagens/LogoSemPlanoDeFundo.png') no-repeat;background-size:100%;" id="Jogo"></canvas>*@
+    <div style="position: relative; left: 5%;">
+        @RenderBody();
+    </div>
 
+    <div id="left" class="red darken-2">
+    </div>
     <div id="right" class="red darken-2">
     </div>
-    
-    
-    
-    
-    
-    <html id="telas">
-    
-    <!--colocar aqui todas as telas com Ajax-->
-    
-    </html>
 
 </body>
 
