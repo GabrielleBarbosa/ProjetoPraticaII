@@ -1,18 +1,57 @@
-﻿
+﻿<head>
+    <meta charset=utf-8>
+    <title>Your Life</title>
+
+    <link rel=stylesheet href="~/html/css/estilo.css">
+    <script src="~/html/js/principal.js"></script>
+
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+</head>
+
 <body style="background:url('../../html/Imagens/Your life.png') -moz-element(#id) no-repeat">
 
     <script>
 
         function SalvarPersonagem(sexo) {
+            var nome = $("#nome").val();
+            var senha = $("#senha").val();
+            var confirmaSenha = $("#confirmaSenha").val();
 
-            @
+            alert(nome);
+            alert(senha);
+            alert(confirmaSenha);
+            alert(sexo);
         }
 
     </script>
+    <form class="col s12">
+        <div class="row">
+            <label for="nome">Digite o seu nome:</label><br />
 
-    <h1 style="color:orangered; font-family:'Courier New';">Selecione o sexo do personagem:</h1>
+            <input type="text" value="" id="nome" name="nome" /><br /><br />
+        </div>
+        <label for="senha">Senha:</label><br />
 
-    <img src="~/html/Imagens/menino.png" onclick="SalvarPersonagem('M')"/>
-    <img src="~/html/Imagens/menina.png" onclick="SalvarPersonagem('F')"/> 
+        <input type="password" value="" id="senha" name="senha" /><br /><br />
+
+        <label for="confirmaSenha">Confirmar senha:</label><br />
+
+        <input type="password" value="" id="confirmaSenha" name="confirmaSenha"/><br /><br />
+    </form>
+    <h2 style="color:orangered; font-family:'Courier New';">Selecione o sexo do personagem:</h2>
+
+    <img src="~/html/Imagens/menino.png" onclick="SalvarPersonagem('M')" />
+    <img src="~/html/Imagens/menina.png" onclick="SalvarPersonagem('F')" />
 
 </body>
