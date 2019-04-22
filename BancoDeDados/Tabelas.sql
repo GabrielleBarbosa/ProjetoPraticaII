@@ -14,6 +14,7 @@ create table Jogador
 )
 
 
+
 create table Ranking
 (
 nickName varchar(25),

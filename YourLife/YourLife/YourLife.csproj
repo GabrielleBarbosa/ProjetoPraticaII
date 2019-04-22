@@ -199,14 +199,13 @@
     <None Include="Views\Jogo\Casa.cshtml" />
     <None Include="Views\Jogo\Escola.cshtml" />
     <None Include="Views\Jogo\Inicio.cshtml" />
-    <Content Include="Views\Jogo\Mercado.html" />
+    <None Include="Views\Jogo\Mercado.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Ranking\Ranking.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BastidoresController.cs" />
-    <Compile Include="Controllers\JogadorController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />

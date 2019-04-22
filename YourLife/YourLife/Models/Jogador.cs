@@ -17,10 +17,21 @@ namespace YourLife.Models
         private double dinheiro;
         private char parceiro;
         private int codEmprego;
+        private string senha;
 
-        public Jogador()
+        public Jogador(string nk, string senha, char sexo)
         {
-
+            Nickname = nk;
+            Senha = senha;
+            Sexo = sexo;
+            Idade = 0;
+            PontosSaude = 1000;
+            Random rm = new Random();
+            PontosInteligencia = rm.Next(0, 450);
+            PontosFelicidade = 500;
+            PontosRelacionamento = 0;
+            Dinheiro = 0;
+            Parceiro = 'S';
         }
 
         public string Nickname { get => nickname; set => nickname = value; }
@@ -33,5 +44,6 @@ namespace YourLife.Models
         public double Dinheiro { get => dinheiro; set => dinheiro = value; }
         public char Parceiro { get => parceiro; set => parceiro = value; }
         public int CodEmprego { get => codEmprego; set => codEmprego = value; }
+        public string Senha { get => senha; set => senha = value; }
     }
 }
