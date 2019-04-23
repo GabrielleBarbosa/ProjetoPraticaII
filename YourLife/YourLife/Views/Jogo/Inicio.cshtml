@@ -29,19 +29,20 @@
 
         function SalvarPersonagem(sexo)
         {
-
+            @
             var nome = $("#nome").val();
             var senha = $("#senha").val();
             var confirmaSenha = $("#confirmaSenha").val();
-
-            @{ var nome = ""; var senha = ""; var sexo = ""; }  
-            @nome  = nome;
+            
+            
+            @{ var nome = "nome"; var senha = ""; var sexo = "sexo";var confirmaSenha = ""; }  
+            @nome  = Paulo;
             @senha = senha;
             @sexo = sexo;
-            if (nome != "")
-            {
-                if (senha !="" && senha == confirmaSenha)
-                {
+            @confirmaSenha = confirmaSenha;
+
+            if (@nome != "") {
+                if (@senha != "" && @senha == @confirmaSenha) {
                     @{ 
                         if (!ViewBag.ExisteJogador(nome))
                         {
@@ -49,17 +50,7 @@
                         }
                                 }   
                 }
-                else
-                {
-                    alert("AS SENHAS DEVEM SER IGUAIS");
-                }
             }
-            else
-            {
-                alert("DIGITE UM NOME VÁLIDO");
-            }
-
-
         }
 
     </script>
