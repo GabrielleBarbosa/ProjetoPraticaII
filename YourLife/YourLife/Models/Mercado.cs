@@ -13,11 +13,8 @@ namespace YourLife.Models
 
         public Mercado()
         {
-            //
-            // TODO: Adicionar lógica do construtor aqui
-            //
         }
-        
+
         public float Preco { get => preco; set => preco = value; }
         public string Produto { get => produto; set => produto = value; }
         public string Descricao { get => descricao; set => descricao = value; }
