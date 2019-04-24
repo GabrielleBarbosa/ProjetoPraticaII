@@ -8,7 +8,7 @@ namespace YourLife.Models
 {
     public class Ranking
     {
-        private string nickame;
+        private string nickname;
         private int id;
         private int pontos;
         public Ranking()
@@ -18,7 +18,7 @@ namespace YourLife.Models
             //
         }
 
-        public string Nickname { get => nickame; set => nickame = value; }
+        public string Nickname { get => nickname; set => nickname = value; }
         public int Pontos { get => pontos; set => pontos = value; }
         public int Id { get => id; set => id = value; }
     }

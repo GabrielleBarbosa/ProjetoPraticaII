@@ -16,13 +16,13 @@ namespace YourLife.Controllers
             return View();
         }
 
-        public ActionResult Mercado()
+        /*public ActionResult Mercado()
         {
             MercadoDAO dao = new MercadoDAO();
             IList<Mercado> mc = dao.ListarMercado();
             ViewBag.Ranking = mc;
             return View();
-        }
+        }*/
 
         //Métodos da tela início
 
@@ -36,15 +36,15 @@ namespace YourLife.Controllers
             JogadorDAO jg = new JogadorDAO();
             Jogador jogador = jg.getJogador(nome);
             if(jogador != null)
-                return Json(1);
-            else
-                return Json(0);
+                return Json(true);
+            
+                return Json(false);
         }
 
         public void AdicionarJogador(string nome, string senha, char sexo)
         {
             JogadorDAO jg = new JogadorDAO();
-            jg.Adiciona(nome, senha, sexo);
+            //jg.Adiciona(nome, senha, sexo);
         }
     }
 }

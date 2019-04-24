@@ -7,6 +7,7 @@ namespace YourLife.Models
 {
     public class Jogador
     {
+        private int id;
         private string nickname;
         private int idade;
         private char sexo;
@@ -19,9 +20,9 @@ namespace YourLife.Models
         private int codEmprego;
         private string senha;
 
-        public Jogador(string nk, string senha, char sexo)
+        public Jogador(string nickname, string senha, char sexo, int idade, int pontosSaude, int PontosInteligencia, int pontosFelicidade, int PontosRelacionamento, double dinheiro, char parceiro)
         {
-            Nickname = nk;
+            Nickname = nickname;
             Senha = senha;
             Sexo = sexo;
             Idade = 0;
@@ -34,6 +35,8 @@ namespace YourLife.Models
             Parceiro = 'S';
         }
 
+        public Jogador() { }
+
         public string Nickname { get => nickname; set => nickname = value; }
         public int Idade { get => idade; set => idade = value; }
         public char Sexo { get => sexo; set => sexo = value; }
@@ -45,5 +48,6 @@ namespace YourLife.Models
         public char Parceiro { get => parceiro; set => parceiro = value; }
         public int CodEmprego { get => codEmprego; set => codEmprego = value; }
         public string Senha { get => senha; set => senha = value; }
+        public int Id { get => id; set => id = value; }
     }
 }

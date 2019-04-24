@@ -1,19 +1,6 @@
-﻿function ChecarNick() {
-    var url = $("#nome").data('request-url');
-    $.post(url, {
-        nome = $("#nome").val()
-    },
-        function (data) {
-            if (data != 0) {
-                return false;
-            }
-            else
-                return true;
-        });
-}
-
+﻿
 function SalvarPersonagem(sexo) {
-    
+
     var nome = $("#nome").val();
     var senha = $("#senha").val();
     var confirmaSenha = $("#confirmaSenha").val();
@@ -28,4 +15,18 @@ function SalvarPersonagem(sexo) {
                 alert("aaaaaaaa");
         }
     }
+}
+
+function ChecarNick() {
+    var url = $("#nome").data('request-url');
+    $.post(url, {
+        nome: $("#nome").val()
+    },
+        function (data) {
+            if (data) {
+                return false;
+            }
+            else
+                return true;
+        });
 }

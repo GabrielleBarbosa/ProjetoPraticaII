@@ -9,7 +9,7 @@ namespace YourLife.DAO
     public class JogadorDAO
     {
 
-        public void Adiciona(string nome, string senha, char sexo)
+        /*public void Adiciona(string nome, string senha, char sexo)
         {
             Jogador jg = new Jogador(nome, senha, sexo);
 
@@ -18,7 +18,7 @@ namespace YourLife.DAO
                 context.Jogador.Add(jg);
                 context.SaveChanges();
             }
-        }
+        }*/
         public IList<Jogador> ListarJogador()
         {
             using (var contexto = new JogadorContext())
@@ -45,6 +45,6 @@ namespace YourLife.DAO
             return jogadorExistente;
         }
 
-        }
+    }
 
 }
