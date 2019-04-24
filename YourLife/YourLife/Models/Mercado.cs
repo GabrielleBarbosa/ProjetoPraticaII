@@ -8,7 +8,8 @@ namespace YourLife.Models
     public class Mercado
     {
         private int codProduto;
-        private string compra;
+        private string produto;
+        private string descricao;
         private double preco;
 
         public Mercado()
@@ -19,7 +20,8 @@ namespace YourLife.Models
         }
 
         public int CodProduto { get => codProduto; set => codProduto = value; }
-        public string Compra { get => compra; set => compra = value; }
         public double Preco { get => preco; set => preco = value; }
+        public string Produto { get => produto; set => produto = value; }
+        public string Descricao { get => descricao; set => descricao = value; }
     }
 }

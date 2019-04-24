@@ -201,7 +201,6 @@
     <None Include="Views\Jogo\Casa.cshtml" />
     <None Include="Views\Jogo\Escola.cshtml" />
     <None Include="Views\Jogo\Inicio.cshtml" />
-    <None Include="Views\Jogo\Mercado.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Views\Ranking\Ranking.cshtml" />
   </ItemGroup>
@@ -241,6 +240,7 @@
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <Content Include="Views\Jogo\teste.cshtml" />
+    <Content Include="Views\Jogo\Mercado.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

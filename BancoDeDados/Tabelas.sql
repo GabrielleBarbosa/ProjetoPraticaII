@@ -72,9 +72,11 @@ constraint fkEscolha2 foreign key(codEscolha) references Escolha(codEscolha)
 create table Mercado
 (
 codProduto int primary key,
-compra ntext,
+produto ntext,
+descricao ntext,
 preco money
 )
+
 
 create table MercadoJogador
 (

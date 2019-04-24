@@ -16,9 +16,13 @@ namespace YourLife.Controllers
             return View();
         }
 
-
-
-
+        public ActionResult Mercado()
+        {
+            MercadoDAO dao = new MercadoDAO();
+            IList<Mercado> mc = dao.ListarMercado();
+            ViewBag.Ranking = mc;
+            return View();
+        }
 
         //Métodos da tela início
 
