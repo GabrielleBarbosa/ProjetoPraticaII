@@ -1,5 +1,5 @@
 ﻿@{ 
-    Layout = "~/Views/Jogo/Jogo.cshtml";
+    Layout = "~/Views/Jogo/Layout.cshtml";
 }
 
 @*<head>
@@ -23,46 +23,26 @@
 
 </head>*@
 
-<body style="background:url('../../html/Imagens/Your life.png') -moz-element(#id) no-repeat">
+<body style="background:url('~/Imagens/Your life.png') -moz-element(#id) no-repeat">
 
     <script>
 
-        function SalvarPersonagem(sexo)
-        {
-            @
-            var nome = $("#nome").val();
-            var senha = $("#senha").val();
-            var confirmaSenha = $("#confirmaSenha").val();
-            
-            
-            @{ var nome = "nome"; var senha = ""; var sexo = "sexo";var confirmaSenha = ""; }  
-            @nome  = Paulo;
-            @senha = senha;
-            @sexo = sexo;
-            @confirmaSenha = confirmaSenha;
-
-            if (@nome != "") {
-                if (@senha != "" && @senha == @confirmaSenha) {
-                    @{ 
-                        if (!ViewBag.ExisteJogador(nome))
-                        {
-                            ViewBag.Adiciona(nome, senha, sexo);
-                        }
-                                }   
-                }
-            }
-        }
+        
 
     </script>
     <form class="col s12">
         <div class="row">
-            <label for="nome">Digite o seu nome:</label><br />
+            <div class="col s12">
+                <label for="nome">Digite o seu nome:</label><br />
 
-            <input type="text" value="" id="nome" name="nome" /><br /><br />
+                <input type="text" value="" id="nome" name="nome" /><br /><br />
+            </div>
         </div>
-        <label for="senha">Senha:</label><br />
+        <div class="row">
+            <label for="senha">Senha:</label><br />
 
-        <input type="password" value="" id="senha" name="senha" /><br /><br />
+            <input type="password" value="" id="senha" name="senha" /><br /><br />
+        </div>
 
         <label for="confirmaSenha">Confirmar senha:</label><br />
 
@@ -70,7 +50,7 @@
     </form>
     <h2 style="color:orangered; font-family:'Courier New';">Selecione o seu personagem:</h2>
 
-    <img src="~/html/Imagens/menino.png" onclick="SalvarPersonagem('M')" />
-    <img src="~/html/Imagens/menina.png" onclick="SalvarPersonagem('F')" />
+    <img src="~/Imagens/menino.png" onclick="SalvarPersonagem('M')" />
+    <img src="~/Imagens/menina.png" onclick="SalvarPersonagem('F')" />
 
 </body>
