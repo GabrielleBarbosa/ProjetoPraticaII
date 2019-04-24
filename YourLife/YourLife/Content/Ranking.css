@@ -1,0 +1,13 @@
+﻿body {
+    height: 100%;
+}
+
+h1 {
+    color: #f06292;
+}
+
+hr {
+    height: 2px;
+    background-color: #f06292;
+    width: 240px;
+}
