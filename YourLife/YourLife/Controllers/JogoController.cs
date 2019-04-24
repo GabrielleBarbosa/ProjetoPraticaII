@@ -31,18 +31,14 @@ namespace YourLife.Controllers
             return View();
         }
 
-        public bool ExisteJogador(string nome)
+        public JsonResult ExisteJogador(string nome)
         {
             JogadorDAO jg = new JogadorDAO();
             Jogador jogador = jg.getJogador(nome);
             if(jogador != null)
-            {
-                return true;
-            }
+                return Json(1);
             else
-            {
-                return false;
-            }
+                return Json(0);
         }
 
         public void AdicionarJogador(string nome, string senha, char sexo)
