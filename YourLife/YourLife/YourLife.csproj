@@ -169,7 +169,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Ranking.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\layout.css" />
+    <Content Include="Content\estilo.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Imagens\cupido.jpg" />
@@ -190,8 +190,7 @@
     <Content Include="Imagens\velhinhos.png" />
     <Content Include="Imagens\velho.png" />
     <Content Include="Imagens\Your life.png" />
-    <Content Include="Scripts\inicio.js" />
-    <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\principal.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -212,6 +211,8 @@
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="DAO\JogadorContext.cs" />
     <Compile Include="DAO\JogadorDAO.cs" />
+    <Compile Include="DAO\MercadoDAO.cs" />
+    <Compile Include="DAO\MercadoContext.cs" />
     <Compile Include="DAO\RankingContext.cs" />
     <Compile Include="DAO\RankingDAO.cs" />
     <Compile Include="Global.asax.cs">
@@ -236,7 +237,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <Content Include="Views\Jogo\Layout.cshtml" />
+    <Content Include="Views\Jogo\Jogo.cshtml" />
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <Content Include="Views\Jogo\teste.cshtml" />

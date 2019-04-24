@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using YourLife.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace YourLife.DAO
 {
