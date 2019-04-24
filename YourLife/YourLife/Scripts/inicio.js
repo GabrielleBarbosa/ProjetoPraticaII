@@ -1,8 +1,19 @@
-﻿$(document).ready(() => {
-    $("#")
-})
+﻿function ChecarNick() {
+    var url = $("#nome").data('request-url');
+    $.post(url, {
+        nome = $("#nome").val()
+    },
+        function (data) {
+            if (data != 0) {
+                return false;
+            }
+            else
+                return true;
+        });
+}
 
 function SalvarPersonagem(sexo) {
+    
     var nome = $("#nome").val();
     var senha = $("#senha").val();
     var confirmaSenha = $("#confirmaSenha").val();
@@ -10,9 +21,11 @@ function SalvarPersonagem(sexo) {
     if (nome != "") {
         if (senha != "" && senha == confirmaSenha) {
 
-            if (!ViewBag.ExisteJogador(nome)) {
-                ViewBag.Adiciona(nome, senha, sexo);
+            if (ChecarNick()) {
+                alert("sjuhegdjuhf");
             }
+            else
+                alert("aaaaaaaa");
         }
     }
 }
