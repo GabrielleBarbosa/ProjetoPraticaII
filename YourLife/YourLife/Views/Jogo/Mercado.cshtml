@@ -1,10 +1,70 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Mercado";
+}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+<meta name="viewport" content="width=device-width" />
+<html>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Moradias</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{ int cont = 1;}
+            <tr>
+                <td>Casa</td>
+                <td>2 quartos, 1 banheiro, sala de estar,quintal com jardim</td>
+                <td>$50000</td>
+            </tr>
+            <tr>
+                <td>AAAAAA</td>
+                <td>BBBBBB</td>
+                <td>$3.76</td>
+            </tr>
+            <tr>
+                <td>AAAAA</td>
+                <td>BBBBBB</td>
+                <td>$7.00</td>
+            </tr>
+
+            @foreach (var mc in ViewBag.Mercado)
+             {
+                <tr>
+                    <td>@cont</td>
+                    <td>@mc.</td>
+                    <td>@rk.Pontos</td>
+                </tr>
+
+                cont = cont + 1;
+
+             }
+        </tbody>
+    </table>
 </body>
 </html>
+
+
+@*<tbody>
+        @{int cont = 1; }
+
+        @foreach (var rk in ViewBag.Ranking)
+        {
+            <tr>
+                <td>@cont</td>
+                <td>@rk.Nickname</td>
+                <td>@rk.Pontos</td>
+            </tr>
+
+            cont = cont + 1;
+
+        }
+    </tbody>*@
