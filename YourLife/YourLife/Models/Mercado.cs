@@ -10,7 +10,7 @@ namespace YourLife.Models
         private int codProduto;
         private string produto;
         private string descricao;
-        private double preco;
+        private float preco;
 
         public Mercado()
         {
@@ -20,7 +20,7 @@ namespace YourLife.Models
         }
 
         public int CodProduto { get => codProduto; set => codProduto = value; }
-        public double Preco { get => preco; set => preco = value; }
+        public float Preco { get => preco; set => preco = value; }
         public string Produto { get => produto; set => produto = value; }
         public string Descricao { get => descricao; set => descricao = value; }
     }

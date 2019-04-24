@@ -1,12 +1,10 @@
 ﻿@{
-    Layout = null;
     ViewBag.Title = "Mercado";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-<meta name="viewport" content="width=device-width" />
 <html>
 <body>
     <table>
@@ -39,6 +37,7 @@
             @foreach (var mc in ViewBag.Mercado)
              {
                 <tr>
+                    <td>@mc.CodProduto</td>
                     <td>@mc.Produto</td>
                     <td>@mc.Descricao</td>
                     <td>@mc.Preco</td>
@@ -53,18 +52,3 @@
 </html>
 
 
-@*<tbody>
-        @{int cont = 1; }
-
-        @foreach (var rk in ViewBag.Ranking)
-        {
-            <tr>
-                <td>@cont</td>
-                <td>@rk.Nickname</td>
-                <td>@rk.Pontos</td>
-            </tr>
-
-            cont = cont + 1;
-
-        }
-    </tbody>*@
