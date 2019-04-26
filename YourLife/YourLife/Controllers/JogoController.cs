@@ -20,7 +20,7 @@ namespace YourLife.Controllers
         {
             MercadoDAO dao = new MercadoDAO();
             IList<Mercado> mc = dao.ListarMercado();
-            ViewBag.Ranking = mc;
+            ViewBag.Mercado = mc;
             return View();
         }
 
