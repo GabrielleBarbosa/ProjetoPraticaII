@@ -7,16 +7,10 @@ namespace YourLife.Models
 {
     public class Mercado
     {
-        private string produto;
-        private string descricao;
-        private float preco;
-
-        public Mercado()
-        {
-        }
-
-        public float Preco { get => preco; set => preco = value; }
-        public string Produto { get => produto; set => produto = value; }
-        public string Descricao { get => descricao; set => descricao = value; }
+        
+        public string produto { get; set; }
+        public string descricao { get; set; }
+        public int id { get; set; }
+        public double preco { get; set; }
     }
 }

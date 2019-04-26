@@ -71,7 +71,7 @@ constraint fkEscolha2 foreign key(codEscolha) references Escolha(codEscolha)
 
 create table Mercado
 (
-id int identity(1,1) primary key, 
+id int primary key, 
 produto varchar(200),
 descricao varchar(200),
 preco float
@@ -102,3 +102,8 @@ select * from Ranking
 
 
 alter table Ranking add id int identity(1,1) primary key 
+
+
+insert into Mercado values (124, 'Casa', 'minha casa', 50000)
+insert into Mercado values (111, 'Ap', 'apzao', 120000)
+insert into Mercado values (222, 'Cachiorroi', 'dog', 12)

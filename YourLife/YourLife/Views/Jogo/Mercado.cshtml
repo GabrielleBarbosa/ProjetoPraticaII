@@ -17,7 +17,6 @@
         </thead>
 
         <tbody>
-            @{ int cont = 1;}
             <tr>
                 <td>Casa</td>
                 <td>2 quartos, 1 banheiro, sala de estar,quintal com jardim</td>
@@ -33,18 +32,20 @@
                 <td>BBBBBB</td>
                 <td>$7.00</td>
             </tr>
+            @{ int cont = 1;}
 
             @foreach (var mc in ViewBag.Mercado)
-            {
-                <tr>
-                    <td>@mc.Produto</td>
-                    <td>@mc.Descricao</td>
-                    <td>@mc.Preco</td>
-                </tr>
+    {
+        <tr>
+            <td>@mc.Id</td>
+            <td>@mc.Produto</td>
+            <td>@mc.Descricao</td>
+            <td>@mc.Preco</td>
+        </tr>
 
-                cont = cont + 1;
+cont = cont + 1;
 
-            }
+}
         </tbody>
     </table>
 </body>
