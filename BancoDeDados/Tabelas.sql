@@ -12,8 +12,8 @@ create table Jogador
  codEmprego int,
  constraint fkEmprego foreign key(codEmprego) references Emprego(codEmprego)
 )
-
-
+alter table Jogador alter column nickName varchar(25)
+drop table Jogador
 
 create table Ranking
 (
@@ -21,6 +21,8 @@ nickName varchar(25),
 constraint fkJogador foreign key(nickName) references Jogador(nickName),
 pontos int
 )
+
+alter table Ranking alter column nickName no check constraint
 
 create table Escolha
 (
@@ -84,10 +86,11 @@ drop table Mercado
 create table MercadoJogador
 (
 codJogador varchar(25),
-constraint fkJogador2 foreign key(codJogador) references Jogador(nickName)
+constraint fkJogador2 foreign key(codJogador) references Jogador(id)
 )
+drop table MercadoJogador
 
-
+select * from MercadoJogador
 
 insert into Jogador values('Vinschers',0,'M',0,0,0,0,0,'S',1)
 insert into Jogador values('Gabs123',0,'F',0,0,0,0,0,'S',1)
