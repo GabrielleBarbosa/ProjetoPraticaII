@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using YourLife.Models;
 using Microsoft.EntityFrameworkCore;
-
 namespace YourLife.DAO
 {
     public class MercadoDAO
     {
         public void Adiciona(Mercado mc)
         {
-            using (var context = new MercadoContext())
+            using (var context = new JogoContext())
             {
                 context.Mercado.Add(mc);
                 context.SaveChanges();
@@ -19,7 +18,7 @@ namespace YourLife.DAO
         }
         public IList<Mercado> ListarMercado()
         {
-            using (var contexto = new MercadoContext())
+            using (var contexto = new JogoContext())
             {
                 return contexto.Mercado.ToList();
             }

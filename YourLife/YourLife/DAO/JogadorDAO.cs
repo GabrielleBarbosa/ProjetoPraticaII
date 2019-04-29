@@ -21,7 +21,7 @@ namespace YourLife.DAO
         }*/
         public IList<Jogador> ListarJogador()
         {
-            using (var contexto = new JogadorContext())
+            using (var contexto = new JogoContext())
             {
                 return contexto.Jogador.ToList();
             }
@@ -30,7 +30,7 @@ namespace YourLife.DAO
         public Jogador getJogador(string nome)
         {
             Jogador jogadorExistente = null;
-            using (var repo = new JogadorContext())
+            using (var repo = new JogoContext())
             {
                 IList<Jogador> jg = repo.Jogador.ToList();
                 foreach(var player in jg)

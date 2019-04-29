@@ -11,6 +11,7 @@ namespace YourLife.Models
         public string produto { get; set; }
         public string descricao { get; set; }
         public int id { get; set; }
-        public double preco { get; set; }
+        public float preco { get; set; }
+        public string tipoProduto { get; set; }
     }
 }
