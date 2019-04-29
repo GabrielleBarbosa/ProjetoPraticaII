@@ -46,5 +46,10 @@ namespace YourLife.Controllers
             JogadorDAO jg = new JogadorDAO();
             //jg.Adiciona(nome, senha, sexo);
         }
+
+        public ActionResult Base()
+        {
+            return View();
+        }
     }
 }
