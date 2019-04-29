@@ -1,6 +1,8 @@
 create table Jogador
 (
- nickName varchar(25) primary key,
+ id int identity(1,1) primary key,
+ senha varchar(20), 
+ nickName varchar(25),
  idade int not null,
  sexo char not null,
  pontosSaude int not null,
@@ -137,14 +139,16 @@ insert into Mercado values (2, 'Automovel', 'Carro para 4 pessoas, popular', 466
 insert into Mercado values (3, 'Moradia', 'Apartamento médio, 2 quartos, 2 banheiros, 1 Cozinha, 1 Lavanderia,1 sala', 100000,'Apartamento')
 insert into Mercado values (4, 'Automovel', 'Carro para 4 pessoas, popular', 54450,'Zolksvagem Golo ')
 insert into Mercado values (5, 'Moradia', 'Casa grande, 4 banheiros, 3 quartos, 1 sala, 1 escritório, 1 cozinha, 1 Lavanderia, Quintal com jardim, estacionamento para 2 carros', 1100000,'Casa')
-insert into Mercado values (4, 'Automovel', 'Carro para 4 pessoas, esportivo', 84490,'Revault Sombrero ')
+insert into Mercado values (6, 'Automovel', 'Carro para 4 pessoas, esportivo', 84490,'Revault Sombrero ')
 ------------------------------------------------------------------------------------------------------------------------
 
 
 create table MercadoJogador
 (
-codJogador varchar(25),
-constraint fkJogador2 foreign key(codJogador) references Jogador(id)
+codJogador int,
+constraint fkJogador foreign key(codJogador) references Jogador(id),
+codMercado int,
+constraint fkMercado foreign key (codMercado) references Mercado(id)
 )
 drop table MercadoJogador
 

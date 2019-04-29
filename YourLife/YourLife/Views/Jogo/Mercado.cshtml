@@ -1,5 +1,5 @@
 ﻿@{
-    ViewBag.Title = "Mercado";
+    Layout = "~/Views/Jogo/Layout.cshmtl";
 }
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -23,6 +23,7 @@
             @foreach (var mc in ViewBag.Mercado)
             {
                 <tr>
+                    <td>@mc.tipoProduto</td>
                     <td>@mc.produto</td>
                     <td>@mc.descricao</td>
                     <td>$@mc.preco</td>

@@ -11,7 +11,7 @@ namespace YourLife.DAO
     {
         public void Adiciona(Ranking rk)
         {
-            using (var context = new RankingContext())
+            using (var context = new JogoContext())
             {
                 context.Ranking.Add(rk);
                 context.SaveChanges();
@@ -19,7 +19,7 @@ namespace YourLife.DAO
         }
         public IList<Ranking> ListarRanking()
         {
-            using (var contexto = new RankingContext())
+            using (var contexto = new JogoContext())
             {
                 return contexto.Ranking.ToList();
             }
