@@ -1,0 +1,3 @@
+-SQL - tá complicado fazer de forma eficiente a comunicação usando ASP.
+-DESIGN - o layout não tá muito legal("feio")
+-CONSTRUCAO - como vamos fazer tudo funcionar junto? 
