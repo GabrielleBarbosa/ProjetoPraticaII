@@ -28,15 +28,12 @@ insert into Jogador values('Janies',0,'F',0,0,0,0,0,'S',1)
 
 create table Ranking
 (
+id int identity(1,1) primary key,
 nickName varchar(25),
-constraint fkJogador foreign key(nickName) references Jogador(nickName),
 pontos int
 )
 
-
-alter table Ranking alter column nickName no check constraint
-
-
+select * from Ranking
 insert into Ranking values('Vinschers',120111)
 insert into Ranking values('Gabs123', 9929)
 insert into Ranking values('Janies', 543322)
