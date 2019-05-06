@@ -1,0 +1,34 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+
+<html>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Emprego</th>
+                <th>Salário</th>
+                <th>Experiência Necessária</th>
+            </tr>
+        </thead>
+
+
+        <tbody>
+
+            @foreach (var emp in ViewBag.Emprego)
+            {
+                <tr>
+                    <td>@emp.trabalho</td>
+                    <td>@emp.salario</td>
+                    <td>@emp.anosExperiencia</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
