@@ -7,10 +7,7 @@ namespace YourLife.Models
 {
     public class Emprego
     {
-        int codEmprego;
-        int pontosNecessarios;
-        string trabalho;
-        double salario;
+        
 
         public Emprego()
         {
@@ -19,9 +16,11 @@ namespace YourLife.Models
             //
         }
 
-        public int CodEmprego { get => codEmprego; set => codEmprego = value; }
-        public int PontosNecessarios { get => pontosNecessarios; set => pontosNecessarios = value; }
-        public string Trabalho { get => trabalho; set => trabalho = value; }
-        public double Salario { get => salario; set => salario = value; }
+        public int codEmprego { get => codEmprego; set => codEmprego = value; }
+        public int pontosNecessarios { get => pontosNecessarios; set => pontosNecessarios = value; }
+        public string trabalho { get => trabalho; set => trabalho = value; }
+        public double salario { get => salario; set => salario = value; }
+        public int restricao { get => restricao; set => restricao = value; }
+        public int anosExperiencia { get => anosExperiencia; set => anosExperiencia = value; }
     }
 }
