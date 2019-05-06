@@ -70,5 +70,10 @@ namespace YourLife.Controllers
         {
             return View();
         }
+
+        public ActionResult Relatorio()
+        {
+            return View();
+        }
     }
 }

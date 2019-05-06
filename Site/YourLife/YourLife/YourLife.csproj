@@ -169,6 +169,7 @@
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\Ranking.css" />
     <Content Include="Content\CSS\Site.css" />
+    <Content Include="Content\JS\Base.js" />
     <Content Include="Content\JS\Inicio.js" />
     <Content Include="Content\JS\Layout.js" />
     <Content Include="Global.asax" />
