@@ -9,7 +9,8 @@
     height: 90%;
     background-color: cornflowerblue;
     position: absolute;
-    top: 10%;
+    top: 70px;
+    left: 0px;
 }
 
 #right{
@@ -17,8 +18,8 @@
     height: 90%;
     background-color: cornflowerblue;  
     position: absolute;
-    right: 0%;
-    top: 10%;
+    right: 0px;
+    top: 70px;
 }
 
 .botao

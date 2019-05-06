@@ -7,11 +7,11 @@ namespace YourLife.Models
 {
     public class Mercado
     {
-        
-        public string produto { get; set; }
-        public string descricao { get; set; }
-        public int id { get; set; }
-        public float preco { get; set; }
-        public string tipoProduto { get; set; }
+
+        public int Id { get; set; }
+        public string TipoProduto { get; set; }
+        public string Descricao { get; set; }
+        public decimal Preco { get; set; }
+        public string Produto { get; set; }
     }
 }

@@ -1,40 +1,35 @@
 ﻿@{
-    Layout = "~/Views/Shared/Layout.cshmtl";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-
-<html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
 <body>
-    <table>
-        <thead>
-            <tr>
-                <th>Moradias</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-            </tr>
-        </thead>
-        
-
-        <tbody>
-            @{ int cont = 1;}
-
-            @foreach (var mc in ViewBag.Mercado)
-            {
+        <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
+top:3em; left: 55%; margin-left:-25em;">
+            <thead>
                 <tr>
-                    <td>@mc.tipoProduto</td>
-                    <td>@mc.produto</td>
-                    <td>@mc.descricao</td>
-                    <td>$@mc.preco</td>
+                    <th>Tipo</th>
+                    <th>Produto</th>
+                    <th>Descrição</th>
+                    <th>Preço</th>
                 </tr>
+            </thead>
 
-                cont = cont + 1;
 
-            }
-        </tbody>
-    </table>
+            <tbody>
+
+                @foreach (var mc in ViewBag.Mercado)
+                {
+                    <tr>
+                        <td>@mc.TipoProduto</td>
+                        <td>@mc.Produto</td>
+                        <td>@mc.Descricao</td>
+                        <td>@mc.Preco</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
 </body>
-</html>
-
-
