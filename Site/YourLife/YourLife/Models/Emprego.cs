@@ -16,11 +16,11 @@ namespace YourLife.Models
             //
         }
 
-        public int codEmprego { get => codEmprego; set => codEmprego = value; }
-        public int pontosNecessarios { get => pontosNecessarios; set => pontosNecessarios = value; }
-        public string trabalho { get => trabalho; set => trabalho = value; }
-        public double salario { get => salario; set => salario = value; }
-        public int restricao { get => restricao; set => restricao = value; }
-        public int anosExperiencia { get => anosExperiencia; set => anosExperiencia = value; }
+        public int codEmprego { get; set; }
+        public int pontosNecessarios { get; set; }
+        public string trabalho { get; set; }
+        public decimal salario { get; set; }
+        public int restricao { get; set; }
+        public int anosExperiencia { get; set; }
     }
 }
