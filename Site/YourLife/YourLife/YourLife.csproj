@@ -191,6 +191,24 @@
     <Content Include="Imagens\velhinhos.png" />
     <Content Include="Imagens\velho.png" />
     <Content Include="Imagens\Your life.png" />
+    <Content Include="Views\Jogo\Imagens\cupido.jpg" />
+    <Content Include="Views\Jogo\Imagens\cupido.png" />
+    <Content Include="Views\Jogo\Imagens\homem_adulto.png" />
+    <Content Include="Views\Jogo\Imagens\Jornada1.png" />
+    <Content Include="Views\Jogo\Imagens\LogoSemPlanoDeFundo.png" />
+    <Content Include="Views\Jogo\Imagens\menina.png" />
+    <Content Include="Views\Jogo\Imagens\menina_adolescente.png" />
+    <Content Include="Views\Jogo\Imagens\menino.png" />
+    <Content Include="Views\Jogo\Imagens\mulher_adulta.png" />
+    <Content Include="Views\Jogo\Imagens\parque.jpg" />
+    <Content Include="Views\Jogo\Imagens\sala_de_adolescente.jpg" />
+    <Content Include="Views\Jogo\Imagens\sala_de_casa.jpg" />
+    <Content Include="Views\Jogo\Imagens\sala_de_crianca.jpg" />
+    <Content Include="Views\Jogo\Imagens\sala_de_escola.jpg" />
+    <Content Include="Views\Jogo\Imagens\velha.png" />
+    <Content Include="Views\Jogo\Imagens\velhinhos.png" />
+    <Content Include="Views\Jogo\Imagens\velho.png" />
+    <Content Include="Views\Jogo\Imagens\Your life.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -231,6 +249,7 @@
     <Content Include="Views\ViewStart.cshtml" />
     <Content Include="Views\Jogo\Ranking.cshtml" />
     <Content Include="Views\Jogo\Emprego.cshtml" />
+    <Content Include="Views\Jogo\SalvarPersonagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

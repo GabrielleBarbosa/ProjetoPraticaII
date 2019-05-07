@@ -11,27 +11,27 @@
 #cvInteligencia {
     position: absolute;
     left: 10%;
-    top: 20%;
+    top: 25%;
     width: 220px;
     height: 30px;
     background-color: cornflowerblue;
     border: 1px solid blue;
 }
 
-#cvSaude {
+#cvRelacionamento {
     position: absolute;
     left: 10%;
-    top: 15%;
+    top: 35%;
     width: 220px;
     height: 30px;
     background-color: aquamarine;
     border: 1px solid darkcyan;
 }
 
-#cvSaude {
+#cvFelicidade {
     position: absolute;
     left: 10%;
-    top: 15%;
+    top: 45%;
     width: 220px;
     height: 30px;
     background-color: aquamarine;

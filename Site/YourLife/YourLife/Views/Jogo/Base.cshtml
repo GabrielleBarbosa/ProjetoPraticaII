@@ -11,7 +11,9 @@
     <br />
     <center>
         <button class="waves-effect waves-light btn">Personagem</button><br />
-        <img src="~/Imagens/menina.png" height="500" width="350" /> <br />
+        @{
+            <img src="@ViewBag.Personagem" id="personagem" height="500" width="350" /> <br />
+        }
         <button class="waves-effect waves-light btn">Envelhecer</button>
     </center>
 

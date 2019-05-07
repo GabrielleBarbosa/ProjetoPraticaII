@@ -14,7 +14,7 @@ create table Jogador
  codEmprego int,
  constraint fkEmprego foreign key(codEmprego) references Emprego(id)
 )
-
+select * from Jogador
 alter table Jogador alter column codEmprego int null
 drop table Jogador
 
