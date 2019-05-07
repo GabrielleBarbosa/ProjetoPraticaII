@@ -228,9 +228,9 @@
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Jogo\EscolhaPersonagem.cshtml" />
     <Content Include="Views\Jogo\AdicionarJogador.cshtml" />
-    <Content Include="Views\Jogo\Empregos.cshtml" />
     <Content Include="Views\ViewStart.cshtml" />
     <Content Include="Views\Jogo\Ranking.cshtml" />
+    <Content Include="Views\Jogo\Emprego.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
