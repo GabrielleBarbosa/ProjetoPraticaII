@@ -102,15 +102,15 @@ namespace YourLife.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult SalvarPersonagem(Jogador jog)
+        [Route("SalvarPersonagem/{sexo}")]
+        public ActionResult SalvarPersonagem(char sexo)
         {
-            if (jog.Sexo == 'M')
+            if (sexo == 'M')
                 ViewBag.Personagem = "~/Imagens/menino.png";
             else
                 ViewBag.Personagem = "~/Imagens/menina.png";
 
-            ViewBag.Jogador.Sexo = jog.Sexo;
+            ViewBag.Jogador.Sexo = sexo;
             return RedirectToAction("Base", "Jogo");
         }
     }
