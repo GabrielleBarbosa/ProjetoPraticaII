@@ -60,7 +60,7 @@ namespace YourLife.Controllers
                 jog.CodEmprego = 0;
                 jg.Adiciona(jog);
 
-                return RedirectToAction("Base", "Jogo");
+                return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
             else
             {
@@ -86,7 +86,7 @@ namespace YourLife.Controllers
             return View();
         }
 
-        public ActionResult EscolhePersonagem()
+        public ActionResult EscolhaPersonagem()
         {
             return View();
         }
