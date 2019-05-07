@@ -55,7 +55,8 @@ namespace YourLife.Controllers
                 jog.PontosInteligencia = 450;
                 jog.PontosRelacionamento = 0;
                 jog.PontosFelicidade = 500;
-
+                jog.Sexo = 'I';
+                jog.CodEmprego = 0;
                 jg.Adiciona(jog);
 
                 return RedirectToAction("Base", "Jogo");

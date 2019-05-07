@@ -14,10 +14,8 @@ create table Jogador
  codEmprego int,
  constraint fkEmprego foreign key(codEmprego) references Emprego(codEmprego)
 )
-alter table Jogador alter column nickName varchar(25)
+alter table Jogador alter column codEmprego int null
 drop table Jogador
-
-
 
 insert into Jogador values('Vinschers',0,'M',0,0,0,0,0,'S',1)
 insert into Jogador values('Gabs123',0,'F',0,0,0,0,0,'S',1)
@@ -72,7 +70,9 @@ create table Emprego
 codEmprego int primary key,
 pontosNecessarios int,
 trabalho varchar(30),
-salario money
+salario money,
+restricao int, 
+anosExperiencia int
 )
 drop table Emprego
 alter table Emprego alter column trabalho varchar(100)
@@ -80,12 +80,9 @@ select * from Emprego
 
 --essa coluna restrição é pra definir o que a pessoa precisa ter de formação acadêmica para ter acesso a esse emprego. Exemplo:
 -- Se a pessoa for formada como um professor, ela vai possuir acesso a todos os empregos relacionados a essa área, no caso '111', o código do emprego
-
-
-alter table Emprego alter column restricao int
 --quantos anos trabalhando que o jogador precisa ter pra ter acesso a esse emprego?
-alter table Emprego add anosExperiencia int
 
+insert into emprego values (0, 0, 'Sem Emprego', 0, 0, 0)
 insert into Emprego values (1, 60,'Atendente de Mercado',1143.50,888,0)
 insert into Emprego values (2, 200,'Vendedor de Loja',1870.89,888,0 )
 insert into Emprego values (3, 30,'Lixeiro',998.50,888,0)
