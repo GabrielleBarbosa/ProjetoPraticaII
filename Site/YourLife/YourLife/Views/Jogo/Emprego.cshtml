@@ -7,7 +7,12 @@
 <!DOCTYPE html>
 
 <html>
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
 <body>
+
     <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
     top:3em; left: 55%; margin-left:-25em; max-height:900px;">
         <thead>
@@ -19,18 +24,43 @@
         </thead>
 
 
-        <tbody >
+        <tbody>
             @foreach (var emp in ViewBag.Emprego)
             {
+                var sal = Convert.ToDouble(emp.salario);
                 <tr>
-                    <td>@emp.trabalho</td>
-                    <td>@emp.salario</td>
-                    <td>@emp.anosExperiencia</td>
+                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@emp.trabalho</td>
+                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@sal</td>
+                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@emp.anosExperiencia</td>
                 </tr>
             }
         </tbody>
     </table>
+
+
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+
 </body>
 </html>
 
+<script>
+
+    function SelecionarEmprego(sal, trab ) {
+        alert('aaaa');
+        var instance = M.Modal.getInstance(elem)
+        instance.open();
+        $(document).ready(function () {
+            $('.modal').modal();
+        });
+    }
+</script>
 
