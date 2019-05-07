@@ -76,16 +76,25 @@ namespace YourLife.Controllers
         {
             return View();
         }
-        //public ActionResult Emprego()
-        //{
-        //    EmpregoDAO dao = new EmpregoDAO();
-        //    IList<Emprego> emp = dao.ListarEmprego();
-        //    ViewBag.Emprego = emp;
-        //    return View();
-        //}
+
+        public ActionResult Emprego()
+        {
+            EmpregoDAO dao = new EmpregoDAO();
+            IList<Emprego> emp = dao.ListarEmprego();
+            ViewBag.Emprego = emp;
+            return View();
+        }
 
         public ActionResult EscolhePersonagem()
         {
+            return View();
+        }
+
+        public ActionResult Ranking()
+        {
+            RankingDAO dao = new RankingDAO();
+            IList<Ranking> rk = dao.ListarRanking();
+            ViewBag.Ranking = rk;
             return View();
         }
     }

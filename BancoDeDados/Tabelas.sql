@@ -12,12 +12,13 @@ create table Jogador
  dinheiro money,
  parceiro char not null,
  codEmprego int,
- constraint fkEmprego foreign key(codEmprego) references Emprego(codEmprego)
+ constraint fkEmprego foreign key(codEmprego) references Emprego(id)
 )
+
 alter table Jogador alter column codEmprego int null
 drop table Jogador
 
-insert into Jogador values('Vinschers',0,'M',0,0,0,0,0,'S',1)
+insert into Jogador values('123','Vinchers',0,'M',0,0,0,0,0,'S',0)
 insert into Jogador values('Gabs123',0,'F',0,0,0,0,0,'S',1)
 insert into Jogador values('Janies',0,'F',0,0,0,0,0,'S',1)
 
@@ -67,7 +68,7 @@ drop table Consequencia
 ------------------------------------------------------------------------------------------------------------------------
 create table Emprego
 (
-codEmprego int primary key,
+id int primary key,
 pontosNecessarios int,
 trabalho varchar(30),
 salario money,
@@ -87,7 +88,7 @@ insert into Emprego values (1, 60,'Atendente de Mercado',1143.50,888,0)
 insert into Emprego values (2, 200,'Vendedor de Loja',1870.89,888,0 )
 insert into Emprego values (3, 30,'Lixeiro',998.50,888,0)
 insert into Emprego values (4, 200,'Pedreiro',1000,888,0)
-insert into Emprego values (5, 400,'Policial',4500.47,0)
+insert into Emprego values (5, 400,'Policial',4500.47,444,0)
 insert into Emprego values (6, 750,'Programador Iniciante',3345.43,222,0)
 insert into Emprego values (7, 250,'Garçom',2200.56,888,0)
 insert into Emprego values (8, 600,'Engenheiro',5000,555,0)
@@ -95,9 +96,7 @@ insert into Emprego values (9, 500,'Professor',3896.78,111,0)
 insert into Emprego values (10, 900,'Piloto',8235.90,999,0)
 insert into Emprego values (11, 860,'Gestor de Qualidade',11235.90,222,20)
 insert into Emprego values (12, 700,'Advogado',10000.67,666,0)
-insert into Emprego values (13, 750,'Juiz', 30.000,666,30000,30)
-
-
+insert into Emprego values (13, 750,'Juiz', 30.000,666,30)
 
 ------------------------------------------------------------------------------------------------------------------------
 

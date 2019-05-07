@@ -197,7 +197,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
-    <Compile Include="Controllers\RankingController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
     <Compile Include="DAO\JogadorDAO.cs" />
@@ -225,13 +224,13 @@
     <Content Include="Views\Jogo\Inicio.cshtml" />
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Jogo\Mercado.cshtml" />
-    <Content Include="Views\Ranking\Ranking.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Jogo\EscolhaPersonagem.cshtml" />
     <Content Include="Views\Jogo\AdicionarJogador.cshtml" />
     <Content Include="Views\Jogo\Empregos.cshtml" />
     <Content Include="Views\ViewStart.cshtml" />
+    <Content Include="Views\Jogo\Ranking.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
