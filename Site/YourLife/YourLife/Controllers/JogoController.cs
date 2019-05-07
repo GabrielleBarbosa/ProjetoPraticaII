@@ -49,7 +49,7 @@ namespace YourLife.Controllers
                 JogadorDAO jg = new JogadorDAO();
 
                 jog.Dinheiro = 0;
-                jog.Idade = 0;
+                jog.Idade = 5;
                 jog.Parceiro = 'N';
                 jog.PontosSaude = 1000;
                 Random rm = new Random();
@@ -59,6 +59,8 @@ namespace YourLife.Controllers
                 jog.Sexo = 'I';
                 jog.CodEmprego = 0;
                 jg.Adiciona(jog);
+
+                ViewBag.Jogador = jog;
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
@@ -70,6 +72,7 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
+            ViewBag.Personagem = "~/Imagens/menino.png";
             return View();
         }
 
@@ -97,6 +100,18 @@ namespace YourLife.Controllers
             IList<Ranking> rk = dao.ListarRanking();
             ViewBag.Ranking = rk;
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult SalvarPersonagem(Jogador jog)
+        {
+            if (jog.Sexo == 'M')
+                ViewBag.Personagem = "~/Imagens/menino.png";
+            else
+                ViewBag.Personagem = "~/Imagens/menina.png";
+
+            ViewBag.Jogador.Sexo = jog.Sexo;
+            return RedirectToAction("Base", "Jogo");
         }
     }
 }
