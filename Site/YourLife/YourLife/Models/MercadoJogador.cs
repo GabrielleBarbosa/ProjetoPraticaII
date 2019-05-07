@@ -7,15 +7,7 @@ namespace YourLife.Models
 {
     public class MercadoJogador
     {
-        string codJogador;
-
-        public MercadoJogador()
-        {
-            //
-            // TODO: Adicionar lógica do construtor aqui
-            //
-        }
-
-        public string CodJogador { get => codJogador; set => codJogador = value; }
+        public int CodJogador { get; set; }
+        public int CodMercado { get; set; }
     }
 }

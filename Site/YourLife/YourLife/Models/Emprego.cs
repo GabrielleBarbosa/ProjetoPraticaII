@@ -7,16 +7,7 @@ namespace YourLife.Models
 {
     public class Emprego
     {
-        
-
-        public Emprego()
-        {
-            //
-            // TODO: Adicionar lógica do construtor aqui
-            //
-        }
-
-        public int codEmprego { get; set; }
+        public int id { get; set; }
         public int pontosNecessarios { get; set; }
         public string trabalho { get; set; }
         public decimal salario { get; set; }

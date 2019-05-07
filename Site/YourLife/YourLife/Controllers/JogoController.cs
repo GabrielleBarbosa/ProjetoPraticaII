@@ -76,11 +76,16 @@ namespace YourLife.Controllers
         {
             return View();
         }
-        public ActionResult Emprego()
+        //public ActionResult Emprego()
+        //{
+        //    EmpregoDAO dao = new EmpregoDAO();
+        //    IList<Emprego> emp = dao.ListarEmprego();
+        //    ViewBag.Emprego = emp;
+        //    return View();
+        //}
+
+        public ActionResult EscolhePersonagem()
         {
-            EmpregoDAO dao = new EmpregoDAO();
-            IList<Emprego> emp = dao.ListarEmprego();
-            ViewBag.Emprego = emp;
             return View();
         }
     }
