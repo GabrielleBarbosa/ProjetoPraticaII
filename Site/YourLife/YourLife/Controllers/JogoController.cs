@@ -52,7 +52,8 @@ namespace YourLife.Controllers
                 jog.Idade = 0;
                 jog.Parceiro = 'N';
                 jog.PontosSaude = 1000;
-                jog.PontosInteligencia = 450;
+                Random rm = new Random();
+                jog.PontosInteligencia = rm.Next(0,450);
                 jog.PontosRelacionamento = 0;
                 jog.PontosFelicidade = 500;
                 jog.Sexo = 'I';
