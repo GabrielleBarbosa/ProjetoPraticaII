@@ -11,17 +11,19 @@ namespace YourLife.DAO
     {
         public void Adiciona(Ranking rk)
         {
-            using (var context = new JogoContext())
+            using (var contexto = new JogoContext())
             {
-                context.Ranking.Add(rk);
-                context.SaveChanges();
+                contexto.Ranking.Add(rk);
+                contexto.SaveChanges();
             }
         }
-        public IList<Ranking> ListarRanking()
+        public IEnumerable<Ranking> ListarRanking()
         {
             using (var contexto = new JogoContext())
             {
-                return contexto.Ranking.ToList();
+                var vet = contexto.Ranking.ToList();
+                
+                return vet.OrderByDescending(Ranking => Ranking.Pontos);
             }
         }
     }

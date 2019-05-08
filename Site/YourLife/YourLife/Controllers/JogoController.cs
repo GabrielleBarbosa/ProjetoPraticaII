@@ -97,7 +97,7 @@ namespace YourLife.Controllers
         public ActionResult Ranking()
         {
             RankingDAO dao = new RankingDAO();
-            IList<Ranking> rk = dao.ListarRanking();
+            IEnumerable<Ranking> rk = dao.ListarRanking();
             ViewBag.Ranking = rk;
             return View();
         }
