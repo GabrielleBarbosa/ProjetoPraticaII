@@ -72,7 +72,7 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
-            ViewBag.Personagem = "~/Imagens/menino.png";
+            ViewBag.Personagem = "/Imagens/menino.png";
             return View();
         }
 
@@ -106,9 +106,9 @@ namespace YourLife.Controllers
         public ActionResult SalvarPersonagem(char sexo)
         {
             if (sexo == 'M')
-                ViewBag.Personagem = "~/Imagens/menino.png";
+                ViewBag.Personagem = "/Imagens/menino.png";
             else
-                ViewBag.Personagem = "~/Imagens/menina.png";
+                ViewBag.Personagem = "/Imagens/menina.png";
 
             ViewBag.Jogador.Sexo = sexo;
             return RedirectToAction("Base", "Jogo");
