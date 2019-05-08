@@ -2,33 +2,26 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-        <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
-top:3em; left: 55%; margin-left:-25em;">
-            <thead>
+    <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            @foreach (var mc in ViewBag.Mercado)
+            {
                 <tr>
-                    <th>Tipo</th>
-                    <th>Produto</th>
-                    <th>Descrição</th>
-                    <th>Preço</th>
+                    <td>@mc.TipoProduto</td>
+                    <td>@mc.Produto</td>
+                    <td>@mc.Descricao</td>
+                    <td>@mc.Preco</td>
                 </tr>
-            </thead>
-
-            <tbody>
-
-                @foreach (var mc in ViewBag.Mercado)
-                {
-                    <tr>
-                        <td>@mc.TipoProduto</td>
-                        <td>@mc.Produto</td>
-                        <td>@mc.Descricao</td>
-                        <td>@mc.Preco</td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-</body>
+            }
+        </tbody>
+    </table>
