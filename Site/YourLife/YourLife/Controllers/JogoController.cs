@@ -59,8 +59,8 @@ namespace YourLife.Controllers
                 jog.Sexo = 'I';
                 jog.CodEmprego = 0;
                 jg.Adiciona(jog);
-
-                ViewBag.Jogador = jog;
+                
+                Session["usuario"] = jog;
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
@@ -72,7 +72,7 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
-            ViewBag.Personagem = "/Imagens/menino.png";
+            ViewBag.Personagem = Session["personagem"];
             return View();
         }
 
@@ -81,11 +81,20 @@ namespace YourLife.Controllers
             return View();
         }
 
+        [Route("MudarPagina/{pagina}/{lugar}")]
+        public ActionResult MudarPagina(int pagina, string lugar)
+        {
+            Session["paginaAtual"] = pagina;
+            return RedirectToAction(lugar, "Jogo");
+        }
+
         public ActionResult Emprego()
         {
             EmpregoDAO dao = new EmpregoDAO();
             IList<Emprego> emp = dao.ListarEmprego();
+            ViewBag.Pagina = Session["paginaAtual"];
             ViewBag.Emprego = emp;
+
             return View();
         }
 
@@ -105,12 +114,16 @@ namespace YourLife.Controllers
         [Route("SalvarPersonagem/{sexo}")]
         public ActionResult SalvarPersonagem(char sexo)
         {
-            if (sexo == 'M')
-                ViewBag.Personagem = "/Imagens/menino.png";
-            else
-                ViewBag.Personagem = "/Imagens/menina.png";
+            //ViewBag.Jogador = Session["usuario"];
+            //ViewBag.Jogador.Sexo = sexo;
+            //Session["usuario"] = ViewBag.Jogador;
 
-            ViewBag.Jogador.Sexo = sexo;
+            if (sexo == 'M')
+                Session["personagem"] = "/Imagens/menino.png";
+            else
+                Session["personagem"] = "/Imagens/menina.png";
+
+
             return RedirectToAction("Base", "Jogo");
         }
     }

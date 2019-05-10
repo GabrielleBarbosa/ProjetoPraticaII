@@ -12,31 +12,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
-
-    <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
-    top:3em; left: 55%; margin-left:-25em; max-height:900px;">
-        <thead>
-            <tr>
-                <th>Emprego</th>
-                <th>Salário</th>
-                <th>Experiência Necessária</th>
-            </tr>
-        </thead>
-
-
-        <tbody>
-            @foreach (var emp in ViewBag.Emprego)
-            {
-                var sal = Convert.ToDouble(emp.salario);
+    <div style="width:800px; height:800px;overflow:auto;">
+        <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
+    top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
+            <thead>
                 <tr>
-                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@emp.trabalho</td>
-                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@sal</td>
-                    <td onclick="SelecionarEmprego(@emp.salario, @emp.trabalho)">@emp.anosExperiencia</td>
+                    <th>Emprego</th>
+                    <th>Salário</th>
+                    <th>Experiência Necessária</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
 
+
+            <tbody>
+                @for (int i = ViewBag.Pagina * 9; i < (ViewBag.Pagina * 9) + 9; i++)
+            {
+                if (i < ViewBag.Emprego.Count)
+                {
+                    var sal = Convert.ToDouble(ViewBag.Emprego[i].salario);
+                    var trabalho = ViewBag.Emprego[i].trabalho;
+                    <tr>
+                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@trabalho</td>
+                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@sal</td>
+                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@ViewBag.Emprego[i].anosExperiencia</td>
+                    </tr>
+            }
+        }
+            </tbody>
+        </table>
+    </div>
+        @{int paginaAnterior = ViewBag.Pagina - 1;
+            int proximaPagina = ViewBag.Pagina + 1;  }
+
+        @if (ViewBag.Pagina > 0)
+        {
+            <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+         }
+        @if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
+         {
+            <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+         }
 
     <div id="modal1" class="modal">
         <div class="modal-content">
@@ -54,7 +69,7 @@
 
 <script>
 
-    function SelecionarEmprego(sal, trab ) {
+    function SelecionarEmprego(sal, trab) {
         alert('aaaa');
         var instance = M.Modal.getInstance(elem)
         instance.open();
