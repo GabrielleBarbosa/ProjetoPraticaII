@@ -165,6 +165,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\Acontecimento.css" />
     <Content Include="Content\CSS\Base.css" />
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\PaginaInicial.css" />
@@ -218,6 +219,7 @@
     <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="DAO\CursoDAO.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
     <Compile Include="DAO\JogadorDAO.cs" />
     <Compile Include="DAO\JogoContext.cs" />
@@ -230,6 +232,7 @@
     <Compile Include="Models\AcontecimentoAleatorio.cs" />
     <Compile Include="Models\AcontecimentoFixo.cs" />
     <Compile Include="Models\Consequencia.cs" />
+    <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\Emprego.cs" />
     <Compile Include="Models\Escolha.cs" />
     <Compile Include="Models\Jogador.cs" />
