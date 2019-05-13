@@ -108,7 +108,13 @@ codEscolha int,
 constraint fkEscolha foreign key(codEscolha) references Escolha(codEscolha)
 
 )
+select * from AcontecimentoFixo
 drop table AcontecimentoFixo
+
+
+-- 1 a 15
+
+insert into AcontecimentoFixo values ()
 ------------------------------------------------------------------------------------------------------------------------
 
 create table AcontecimentoAleatorio
@@ -118,6 +124,7 @@ acontecimento ntext,
 codEscolha int,
 constraint fkEscolha2 foreign key(codEscolha) references Escolha(codEscolha)
 )
+select * from AcontecimentoAleatorio
 drop table AcontecimentoAleatorio
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -143,6 +150,8 @@ insert into Mercado values (3, 'Moradia', 'Apartamento médio, 2 quartos, 2 banhe
 insert into Mercado values (4, 'Automovel', 'Carro para 4 pessoas, popular', 54450,'Zolksvagem Golo ')
 insert into Mercado values (5, 'Moradia', 'Casa grande, 4 banheiros, 3 quartos, 1 sala, 1 escritório, 1 cozinha, 1 Lavanderia, Quintal com jardim, estacionamento para 2 carros', 1100000,'Casa')
 insert into Mercado values (6, 'Automovel', 'Carro para 4 pessoas, esportivo', 84490,'Revault Sombrero ')
+
+select * from Mercado
 ------------------------------------------------------------------------------------------------------------------------
 
 
