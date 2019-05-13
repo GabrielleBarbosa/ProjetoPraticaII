@@ -4,22 +4,29 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
 <body>
 
     <script src="~/Scripts/base.js"></script>
     <link rel="stylesheet" href="~/Content/CSS/Base.css" />
     <br />
-    <center>
-        @{
-            <img src="@ViewBag.Personagem" id="personagem" height="500" width="350" /> <br />
-        }
-        <button class="waves-effect waves-light btn" id="btnPersonagem">Personagem</button>
-        <button class="waves-effect waves-light btn" id="btnEnvelhecer">Envelhecer</button>
-    </center>
+    <br />
+    <br />
+    <div id="composicao">
+        <center>
+            @{
+                <img src="@ViewBag.Personagem" id="personagem" height="500" width="350" /> <br />
+            }
+            <button class="waves-effect waves-light btn green darken-4" id="btnPersonagem">Personagem</button>
+            <button class="waves-effect waves-light btn green darken-4" id="btnEnvelhecer">Envelhecer! <i class="large material-icons">access_time</i></button>
+        </center>
 
-    <canvas id="cvSaude"></canvas>
-    <canvas id="cvInteligencia"></canvas>
-    <canvas id="cvRelacionamento"></canvas>
-    <canvas id="cvFelicidade"></canvas>
+        <canvas id="cvSaude"></canvas>
+        <canvas id="cvInteligencia"></canvas>
+        <canvas id="cvRelacionamento"></canvas>
+        <canvas id="cvFelicidade"></canvas>
+    </div>
 </body>
 
