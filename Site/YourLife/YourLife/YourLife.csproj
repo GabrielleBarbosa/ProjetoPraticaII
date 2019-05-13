@@ -252,6 +252,7 @@
     <Content Include="Views\Jogo\Ranking.cshtml" />
     <Content Include="Views\Jogo\Emprego.cshtml" />
     <Content Include="Views\Jogo\PaginaInicial.cshtml" />
+    <Content Include="Views\Jogo\Acontecimento.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-    <h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro</h1>
+    <h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro.ToString().Substring(0, ViewBag.Jogador.Dinheiro.ToString().Length - 2)</h1>
 
     <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
         <thead>
@@ -10,6 +10,7 @@
                 <th>Produto</th>
                 <th>Descrição</th>
                 <th>Preço</th>
+                <th></th>
             </tr>
         </thead>
 

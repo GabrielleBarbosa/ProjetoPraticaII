@@ -1,4 +1,5 @@
 ﻿
+
 @{
     ViewBag.Title = "Emprego";
     Layout = "~/Views/Shared/Layout.cshtml";
@@ -20,38 +21,39 @@
                     <th>Emprego</th>
                     <th>Salário</th>
                     <th>Experiência Necessária</th>
+                    <th></th>
                 </tr>
             </thead>
-
-
             <tbody>
-                @for (int i = ViewBag.Pagina * 9; i < (ViewBag.Pagina * 9) + 9; i++)
-            {
-                if (i < ViewBag.Emprego.Count)
+                @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
                 {
-                    var sal = Convert.ToDouble(ViewBag.Emprego[i].salario);
-                    var trabalho = ViewBag.Emprego[i].trabalho;
-                    <tr>
-                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@trabalho</td>
-                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@sal</td>
-                        <td onclick="SelecionarEmprego(@sal, @trabalho)">@ViewBag.Emprego[i].anosExperiencia</td>
-                    </tr>
-            }
-        }
+                    string enabled = "";
+                    if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
+                        enabled = "disabled";
+                    if (i < ViewBag.Emprego.Count)
+                    {
+                        <tr>
+                            <td>@ViewBag.Emprego[i].trabalho</td>
+                            <td>@ViewBag.Emprego[i].salario</td>
+                            <td>@ViewBag.Emprego[i].anosExperiencia</td>
+                            <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
+                        </tr>
+                    }
+                }
             </tbody>
         </table>
     </div>
-        @{int paginaAnterior = ViewBag.Pagina - 1;
-            int proximaPagina = ViewBag.Pagina + 1;  }
+    @{int paginaAnterior = ViewBag.Pagina - 1;
+        int proximaPagina = ViewBag.Pagina + 1; }
 
-        @if (ViewBag.Pagina > 0)
-        {
-            <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
-         }
-        @if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
-         {
-            <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
-         }
+    @if (ViewBag.Pagina > 0)
+    {
+        <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+    }
+    @if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
+    {
+        <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+    }
 
     <div id="modal1" class="modal">
         <div class="modal-content">

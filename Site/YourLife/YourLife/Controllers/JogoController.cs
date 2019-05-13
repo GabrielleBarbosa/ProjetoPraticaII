@@ -15,6 +15,77 @@ namespace YourLife.Controllers
         {
             return View();
         }
+        
+        public ActionResult PaginaInicial()
+        {
+            return View();
+        }
+
+        public ActionResult Ranking()
+        {
+            RankingDAO dao = new RankingDAO();
+            IEnumerable<Ranking> rk = dao.ListarRanking();
+            ViewBag.Ranking = rk;
+            return View();
+        }
+
+        public ActionResult Inicio()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AdicionarJogador(Jogador jog)
+        {
+            JogadorDAO jg = new JogadorDAO();
+            if (ModelState.IsValid && jg.getJogador(jog.Nickname) == null)
+            {
+                jog.Dinheiro = 0;
+                jog.Idade = 5;
+                jog.Parceiro = 'N';
+                jog.PontosSaude = 1000;
+                Random rm = new Random();
+                jog.PontosInteligencia = rm.Next(0, 450);
+                jog.PontosRelacionamento = 0;
+                jog.PontosFelicidade = 500;
+                jog.Sexo = 'I';
+                jog.CodEmprego = 0;
+                jg.Adiciona(jog);
+
+                Session["jogador"] = jg.getJogador(jog.Nickname);
+
+                return RedirectToAction("EscolhaPersonagem", "Jogo");
+            }
+            else
+            {
+                return View("Inicio");
+            }
+        }
+
+        public ActionResult EscolhaPersonagem()
+        {
+            return View();
+        }
+
+        [Route("SalvarPersonagem/{sexo}")]
+        public ActionResult SalvarPersonagem(char sexo)
+        {
+            ((Jogador)Session["jogador"]).Sexo = sexo;
+
+            if (sexo == 'M')
+                Session["personagem"] = "/Imagens/menino.png";
+            else
+                Session["personagem"] = "/Imagens/menina.png";
+
+
+            return RedirectToAction("Base", "Jogo");
+        }
+
+        public ActionResult Base()
+        {
+            ViewBag.Personagem = Session["personagem"];
+            return View();
+        }
 
         public ActionResult Mercado()
         {
@@ -43,57 +114,30 @@ namespace YourLife.Controllers
             return RedirectToAction("Mercado", "Jogo");
         }
 
-        //Métodos da tela início
-
-        public ActionResult Inicio()
+        public ActionResult Emprego()
         {
+            EmpregoDAO dao = new EmpregoDAO();
+            IList<Emprego> emp = dao.ListarEmprego();
+            ViewBag.Pagina = Session["paginaAtual"];
+            ViewBag.Emprego = emp;
+
             return View();
         }
 
-        public JsonResult ExisteJogador(string nome)
+        [Route("EntrevistaEmprego/{id}")]
+        public ActionResult EntrevistaEmprego(int id)
         {
-            JogadorDAO jg = new JogadorDAO();
-            Jogador jogador = jg.getJogador(nome);
-            if(jogador != null)
-                return Json(true);
-            
-            return Json(false);
-        }
-
-        [HttpPost]
-        public ActionResult AdicionarJogador(Jogador jog)
-        {
-            JogadorDAO jg = new JogadorDAO();
-            if (ModelState.IsValid && jg.getJogador(jog.Nickname) == null)
+            Random rd = new Random();
+            if (rd.Next(0, 1) == 1)
             {
-                jog.Dinheiro = 0;
-                jog.Idade = 5;
-                jog.Parceiro = 'N';
-                jog.PontosSaude = 1000;
-                Random rm = new Random();
-                jog.PontosInteligencia = rm.Next(0,450);
-                jog.PontosRelacionamento = 0;
-                jog.PontosFelicidade = 500;
-                jog.Sexo = 'I';
-                jog.CodEmprego = 0;
-                jg.Adiciona(jog);
-                
-                Session["jogador"] = jg.getJogador(jog.Nickname);
-
-                return RedirectToAction("EscolhaPersonagem", "Jogo");
+                Session["emprego"] = "S";
+                ((Jogador)Session["jogador"]).CodEmprego = id;
             }
             else
-            {
-                return View("Inicio");
-            }
+                Session["emprego"] = "N";
+            return RedirectToAction("Emprego", "Jogo");
         }
-
-        public ActionResult Base()
-        {
-            ViewBag.Personagem = Session["personagem"];
-            return View();
-        }
-
+        
         public ActionResult Relatorio()
         {
             return View();
@@ -106,47 +150,63 @@ namespace YourLife.Controllers
             return RedirectToAction(lugar, "Jogo");
         }
 
-        public ActionResult Emprego()
+        public ActionResult Envelhecer()
         {
-            EmpregoDAO dao = new EmpregoDAO();
-            IList<Emprego> emp = dao.ListarEmprego();
-            ViewBag.Pagina = Session["paginaAtual"];
-            ViewBag.Emprego = emp;
+            Jogador jog = (Jogador)Session["jogador"];
 
-            return View();
-        }
+            jog.Idade++;
+            decimal salario = 0;
+            if (jog.CodEmprego != 0)
+                salario = ((Emprego)Session["emprego"]).salario;
+            jog.Dinheiro += salario;
 
-        public ActionResult EscolhaPersonagem()
-        {
-            return View();
-        }
-
-        public ActionResult Ranking()
-        {
-            RankingDAO dao = new RankingDAO();
-            IEnumerable<Ranking> rk = dao.ListarRanking();
-            ViewBag.Ranking = rk;
-            return View();
-        }
-
-        [Route("SalvarPersonagem/{sexo}")]
-        public ActionResult SalvarPersonagem(char sexo)
-        {
-            //ViewBag.Jogador = Session["jogador"];
-            //ViewBag.Jogador.Sexo = sexo;
-            //Session["usuario"] = ViewBag.Jogador;
-
-            if (sexo == 'M')
-                Session["personagem"] = "/Imagens/menino.png";
+            if (jog.Sexo == 'M')
+            {
+                if (jog.Idade >= 14 && jog.Idade <= 20)
+                    Session["personagem"] = "menino_adolescente.png";
+                else if (jog.Idade >= 21 && jog.Idade <= 40)
+                    Session["personagem"] = "homem_adulto.png";
+                else if (jog.Idade >= 41)
+                    Session["personagem"] = "velho.png";
+            }
             else
-                Session["personagem"] = "/Imagens/menina.png";
+            {
+                if (jog.Idade >= 14 && jog.Idade <= 20)
+                    Session["personagem"] = "menina_adolescente.png";
+                else if (jog.Idade >= 21 && jog.Idade <= 40)
+                    Session["personagem"] = "mulher_adulta.png";
+                else if (jog.Idade >= 41)
+                    Session["personagem"] = "velha.png";
+            }
 
+            Session["jogador"] = jog;
 
-            return RedirectToAction("Base", "Jogo");
+            return RedirectToAction("Acontecimento", "Jogo");
         }
 
-        public ActionResult PaginaInicial()
+        public ActionResult Acontecimento()
         {
+            //Jogador jog = (Jogador)Session["jogador"];
+
+            //if(jog.Idade%2 == 0) //é idade par
+            //{
+            //    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+            //    AcontecimentoFixo af = dao.Busca();
+
+            //    ViewBag.Acontecimento = af;
+            //    ViewBag.Opcao1 = new Escolha();
+            //    ViewBag.Opcao2 = new Escolha();
+            //}
+            //else
+            //{
+            //    AcontecimentoAleatorioDAO dao = new AcontecimentoAleatorioDAO();
+            //    AcontecimentoFixo aa = dao.Busca();
+
+            //    ViewBag.Acontecimento = aa;
+            //    ViewBag.Opcao1 = new Escolha();
+            //    ViewBag.Opcao2 = new Escolha();
+            //}
+
             return View();
         }
     }
