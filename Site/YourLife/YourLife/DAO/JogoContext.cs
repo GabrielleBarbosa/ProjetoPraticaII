@@ -16,7 +16,7 @@ namespace YourLife.DAO
         public DbSet<Emprego> Emprego { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=regulus;Initial Catalog=PR118200;User ID=PR118200;Password=PR118200");
+            optionsBuilder.UseSqlServer("Data Source=regulus.cotuca.unicamp.br;Initial Catalog=PR118200;User ID=PR118200;Password=PR118200");
         }
     }
 }
