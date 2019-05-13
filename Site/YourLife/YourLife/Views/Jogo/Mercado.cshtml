@@ -1,7 +1,8 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-    <h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro.ToString().Substring(0, ViewBag.Jogador.Dinheiro.ToString().Length - 2)</h1>
+    @*<h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro.ToString().Substring(0, ViewBag.Jogador.Dinheiro.ToString().Length - 2)</h1>*@
+    <a href="/MudarPagina/0/Emprego"></a>
 
     <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
         <thead>
@@ -18,12 +19,17 @@
 
             @foreach (var mc in ViewBag.Mercado)
             {
+                string enabled = "";
+                if (ViewBag.Jogador.Dinheiro < mc.Preco)
+                {
+                    enabled = "disabled";
+                }
                 <tr>
                     <td>@mc.TipoProduto</td>
                     <td>@mc.Produto</td>
                     <td>@mc.Descricao</td>
                     <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
-                    <td><a href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
+                    <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
                 </tr>
             }
         </tbody>
