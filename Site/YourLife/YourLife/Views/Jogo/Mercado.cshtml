@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
+    <h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro</h1>
 
     <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
         <thead>
@@ -20,7 +21,8 @@
                     <td>@mc.TipoProduto</td>
                     <td>@mc.Produto</td>
                     <td>@mc.Descricao</td>
-                    <td>@mc.Preco</td>
+                    <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
+                    <td><a href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
                 </tr>
             }
         </tbody>

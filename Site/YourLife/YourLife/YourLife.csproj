@@ -167,6 +167,7 @@
   <ItemGroup>
     <Content Include="Content\CSS\Base.css" />
     <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\JS\Base.js" />
@@ -220,6 +221,7 @@
     <Compile Include="DAO\JogadorDAO.cs" />
     <Compile Include="DAO\JogoContext.cs" />
     <Compile Include="DAO\MercadoDAO.cs" />
+    <Compile Include="DAO\MercadoJogadorDAO.cs" />
     <Compile Include="DAO\RankingDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -250,6 +252,7 @@
     <Content Include="Views\Jogo\Ranking.cshtml" />
     <Content Include="Views\Jogo\Emprego.cshtml" />
     <Content Include="Views\Jogo\SalvarPersonagem.cshtml" />
+    <Content Include="Views\Jogo\PaginaInicial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -38,7 +38,6 @@ namespace YourLife.DAO
                         return jogadorExistente = player;
                     }
                 }
-
             }
             return jogadorExistente;
         }

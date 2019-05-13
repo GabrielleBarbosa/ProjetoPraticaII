@@ -18,10 +18,29 @@ namespace YourLife.Controllers
 
         public ActionResult Mercado()
         {
+            //ViewBag.Jogador = Session["jogador"];
+            ViewBag.Jogador = new Jogador();
+            ViewBag.Jogador.Dinheiro = 0;
+
             MercadoDAO dao = new MercadoDAO();
             IList<Mercado> mc = dao.ListarMercado();
             ViewBag.Mercado = mc;
             return View();
+        }
+
+        [Route("Comprar/{preco}/{id}")]
+        public ActionResult Comprar(decimal preco, int id)
+        {
+            ViewBag.Jogador = Session["jogador"];
+            if (ViewBag.Jogador.Dinheiro >= preco)
+            {
+                MercadoJogadorDAO mj = new MercadoJogadorDAO();
+                mj.Adiciona(ViewBag.Jogador.Id, id);
+
+                ViewBag.Jogador.Dinheiro -= preco;
+                return RedirectToAction("Mercado", "Jogo");
+            }
+            return RedirectToAction("Mercado", "Jogo");
         }
 
         //Métodos da tela início
@@ -44,10 +63,9 @@ namespace YourLife.Controllers
         [HttpPost]
         public ActionResult AdicionarJogador(Jogador jog)
         {
-            if (ModelState.IsValid)
+            JogadorDAO jg = new JogadorDAO();
+            if (ModelState.IsValid && jg.getJogador(jog.Nickname) == null)
             {
-                JogadorDAO jg = new JogadorDAO();
-
                 jog.Dinheiro = 0;
                 jog.Idade = 5;
                 jog.Parceiro = 'N';
@@ -60,7 +78,7 @@ namespace YourLife.Controllers
                 jog.CodEmprego = 0;
                 jg.Adiciona(jog);
                 
-                Session["usuario"] = jog;
+                Session["jogador"] = jg.getJogador(jog.Nickname);
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
@@ -114,7 +132,7 @@ namespace YourLife.Controllers
         [Route("SalvarPersonagem/{sexo}")]
         public ActionResult SalvarPersonagem(char sexo)
         {
-            //ViewBag.Jogador = Session["usuario"];
+            //ViewBag.Jogador = Session["jogador"];
             //ViewBag.Jogador.Sexo = sexo;
             //Session["usuario"] = ViewBag.Jogador;
 
@@ -125,6 +143,11 @@ namespace YourLife.Controllers
 
 
             return RedirectToAction("Base", "Jogo");
+        }
+
+        public ActionResult PaginaInicial()
+        {
+            return View();
         }
     }
 }

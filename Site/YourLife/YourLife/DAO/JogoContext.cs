@@ -12,6 +12,7 @@ namespace YourLife.DAO
         public DbSet<Jogador> Jogador { get; set; }
         public DbSet<Ranking> Ranking { get; set; }
         public DbSet<Mercado> Mercado { get; set; }
+        public DbSet<MercadoJogador> MercadoJogador { get; set; }
         public DbSet<Emprego> Emprego { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
