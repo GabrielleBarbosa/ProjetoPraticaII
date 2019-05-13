@@ -10,8 +10,8 @@
 
 #cvInteligencia {
     position: absolute;
-    left: 10%;
-    top: 25%;
+    left: 20%;
+    top: 15%;
     width: 220px;
     height: 30px;
     background-color: cornflowerblue;
@@ -20,8 +20,8 @@
 
 #cvRelacionamento {
     position: absolute;
-    left: 10%;
-    top: 35%;
+    left: 30%;
+    top: 15%;
     width: 220px;
     height: 30px;
     background-color: aquamarine;
@@ -30,10 +30,18 @@
 
 #cvFelicidade {
     position: absolute;
-    left: 10%;
-    top: 45%;
+    left: 40%;
+    top: 15%;
     width: 220px;
     height: 30px;
     background-color: aquamarine;
     border: 1px solid darkcyan;
+}
+
+#btnPersonagem{
+
+}
+
+#btnEnvelhecer{
+
 }
