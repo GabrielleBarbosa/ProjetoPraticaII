@@ -167,6 +167,7 @@
   <ItemGroup>
     <Content Include="Content\CSS\Acontecimento.css" />
     <Content Include="Content\CSS\Base.css" />
+    <Content Include="Content\CSS\EscolhaPersonagem.css" />
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
@@ -260,6 +261,7 @@
     <Content Include="Views\Jogo\Emprego.cshtml" />
     <Content Include="Views\Jogo\PaginaInicial.cshtml" />
     <Content Include="Views\Jogo\Acontecimento.cshtml" />
+    <Content Include="Views\Jogo\Curso.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

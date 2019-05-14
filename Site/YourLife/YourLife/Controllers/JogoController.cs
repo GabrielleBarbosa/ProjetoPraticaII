@@ -188,7 +188,11 @@ namespace YourLife.Controllers
         {
             //Jogador jog = (Jogador)Session["jogador"];
 
-            //if(jog.Idade%2 == 0) //é idade par
+            //if(jog.Idade == 16) //idade para dirigir
+            //{
+            //    
+            //}
+            //if(jog.Idade == 18) //maioridade 
             //{
             //    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
             //    AcontecimentoFixo af = dao.Busca();
@@ -207,6 +211,15 @@ namespace YourLife.Controllers
             //    ViewBag.Opcao2 = new Escolha();
             //}
 
+            return View();
+        }
+
+        public ActionResult Curso()
+        {
+            CursoDAO dao = new CursoDAO();
+            IList<Curso> cursos = dao.ListarCursos();
+            ViewBag.Cursos = cursos;
+            ViewBag.Pagina = Session["paginaAtual"];
             return View();
         }
     }

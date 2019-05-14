@@ -1,0 +1,48 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
+    top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
+    <thead>
+        <tr>
+            <th>Emprego</th>
+            <th>Salário</th>
+            <th>Experiência Necessária</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = ViewBag.Pagina * 9; i < (ViewBag.Pagina * 9) + 9; i++)
+        {
+            string enabled = "";
+            //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
+            //{
+            //    enabled = "disabled";
+            //}
+            if (i < ViewBag.Emprego.Count)
+            {
+                <tr>
+                    <td>@ViewBag.Emprego[i].trabalho</td>
+                    <td>@ViewBag.Emprego[i].salario</td>
+                    <td>@ViewBag.Emprego[i].anosExperiencia</td>
+                    <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+@{int paginaAnterior = ViewBag.Pagina - 1;
+    int proximaPagina = ViewBag.Pagina + 1; }
+
+@if (ViewBag.Pagina > 0)
+{
+    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+}
+@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
+{
+    <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+}
+

@@ -1,0 +1,13 @@
+﻿.caixa {
+    top: 5vh;
+    position: relative;
+    width: 90vh;
+    height: 80vh;
+    border-radius: 95px;
+    box-shadow: 1px 1px 15px 1px #888888;
+}
+
+.conteudo {
+    top: 5vh;
+    position: relative;
+}

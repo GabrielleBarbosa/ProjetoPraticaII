@@ -2,7 +2,7 @@ create table Jogador
 (
  id int identity(1,1) primary key,
  senha varchar(20), 
- nickName varchar(25),
+ nickname varchar(25),
  idade int not null,
  sexo char not null,
  pontosSaude int not null,
@@ -44,20 +44,19 @@ drop table Ranking
 
 create table Escolha
 (
-codEscolha int primary key,
+id int primary key,
 opcao1 varchar(50),
 opcao2 varchar(50),
 consequencia1 int,
-constraint fkConsequencia1 foreign key(consequencia1) references Consequencia(codConsequencia),
+constraint fkConsequencia1 foreign key(consequencia1) references Consequencia(id),
 consequencia2 int,
-constraint fkConsequencia2 foreign key(consequencia2) references Consequencia(codConsequencia)
-
+constraint fkConsequencia2 foreign key(consequencia2) references Consequencia(id)
 )
 drop table Escolha
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
-codConsequencia int primary key,
+id int primary key,
 cenario varchar(20),
 pontosGanhos int,
 tipoDoPontoGanho varchar(20),
@@ -99,14 +98,26 @@ insert into Emprego values (12, 700,'Advogado',10000.67,666,0)
 insert into Emprego values (13, 750,'Juiz', 30.000,666,30)
 
 ------------------------------------------------------------------------------------------------------------------------
-
+create table Curso(
+id int primary key,
+nome varchar(20),
+descricao ntext
+)
+------------------------------------------------------------------------------------------------------------------------
+create table CursoJogador(
+id int identity(1,1) primary key,
+codCurso int, 
+constraint fkCurso foreign key(codCurso) references Curso(id),
+codJogador int
+constraint fkJogador1 foreign key(codJogador) references Jogador(id)
+)
+------------------------------------------------------------------------------------------------------------------------
 create table AcontecimentoFixo
 (
-codAcontecimentoFixo int primary key, 
+id int primary key, 
 acontecimento ntext,
 codEscolha int,
-constraint fkEscolha foreign key(codEscolha) references Escolha(codEscolha)
-
+constraint fkEscolha foreign key(codEscolha) references Escolha(id)
 )
 select * from AcontecimentoFixo
 drop table AcontecimentoFixo
@@ -119,10 +130,10 @@ insert into AcontecimentoFixo values ()
 
 create table AcontecimentoAleatorio
 (
-codAcontecimentoAleatorio int primary key, 
+id int primary key, 
 acontecimento ntext,
 codEscolha int,
-constraint fkEscolha2 foreign key(codEscolha) references Escolha(codEscolha)
+constraint fkEscolha2 foreign key(codEscolha) references Escolha(id)
 )
 select * from AcontecimentoAleatorio
 drop table AcontecimentoAleatorio
