@@ -25,7 +25,7 @@ namespace YourLife.DAO
             }
         }
 
-        public Jogador getJogador(string nome)
+        public Jogador BuscaPorNick(string nome)
         {
             Jogador jogadorExistente = null;
             using (var repo = new JogoContext())

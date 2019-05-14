@@ -219,8 +219,12 @@
     <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="DAO\AcontecimentoAleatorioDAO.cs" />
+    <Compile Include="DAO\AcontecimentoFixoDAO.cs" />
+    <Compile Include="DAO\ConsequenciaDAO.cs" />
     <Compile Include="DAO\CursoDAO.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
+    <Compile Include="DAO\EscolhaDAO.cs" />
     <Compile Include="DAO\JogadorDAO.cs" />
     <Compile Include="DAO\JogoContext.cs" />
     <Compile Include="DAO\MercadoDAO.cs" />

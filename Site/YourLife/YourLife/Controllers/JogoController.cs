@@ -38,7 +38,7 @@ namespace YourLife.Controllers
         public ActionResult AdicionarJogador(Jogador jog)
         {
             JogadorDAO jg = new JogadorDAO();
-            if (ModelState.IsValid && jg.getJogador(jog.Nickname) == null)
+            if (ModelState.IsValid && jg.BuscaPorNick(jog.Nickname) == null)
             {
                 jog.Dinheiro = 0;
                 jog.Idade = 5;
@@ -52,7 +52,7 @@ namespace YourLife.Controllers
                 jog.CodEmprego = 0;
                 jg.Adiciona(jog);
 
-                Session["jogador"] = jg.getJogador(jog.Nickname);
+                Session["jogador"] = jg.BuscaPorNick(jog.Nickname);
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
