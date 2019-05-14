@@ -7,28 +7,32 @@
     top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
     <thead>
         <tr>
-            <th>Emprego</th>
-            <th>Salário</th>
+            <th>Curso</th>
+            <th>Descrição</th>
             <th>Experiência Necessária</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @for (int i = ViewBag.Pagina * 9; i < (ViewBag.Pagina * 9) + 9; i++)
+        @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
         {
             string enabled = "";
-            //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
+            //if (ViewBag.Cursos[i].CodCursoNecessario != 0)
             //{
             //    enabled = "disabled";
             //}
-            if (i < ViewBag.Emprego.Count)
+            if (i < ViewBag.Cursos.Count)
             {
                 <tr>
-                    <td>@ViewBag.Emprego[i].trabalho</td>
-                    <td>@ViewBag.Emprego[i].salario</td>
-                    <td>@ViewBag.Emprego[i].anosExperiencia</td>
-                    <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
+                    <td>@ViewBag.Cursos[i].Nome</td>
+                    <td>@ViewBag.Cursos[i].Descricao</td>
+                    <td>@ViewBag.Cursos[ViewBag.Cursos[i].CodCursoNecessario].Nome</td>
+                    <td><a class="waves-effect waves-light btn-small @enabled" href="/FazerCurso/@ViewBag.Cursos[i].id">Fazer curso</a></td>
                 </tr>
+            }
+            else
+            {
+                break;
             }
         }
     </tbody>
@@ -39,10 +43,9 @@
 
 @if (ViewBag.Pagina > 0)
 {
-    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar aos cursos anteriores</a>
 }
-@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
+@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Cursos.Count)
 {
-    <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+    <a href="/MudarPagina/@proximaPagina/Emprego">Ver mais cursos</a>
 }
-

@@ -216,6 +216,7 @@ namespace YourLife.Controllers
 
         public ActionResult Curso()
         {
+            Session["paginaAtual"] = 0;
             CursoDAO dao = new CursoDAO();
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;

@@ -7,7 +7,9 @@ namespace YourLife.Models
 {
     public class Curso
     {
-        public int Id { get; set; }
+        public int id { get; set; }
         public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public int CodCursoNecessario { get; set; }
     }
 }
