@@ -1,36 +1,42 @@
 ﻿@{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-    @*<h1>Seu Dinheiro: @ViewBag.Jogador.Dinheiro.ToString().Substring(0, ViewBag.Jogador.Dinheiro.ToString().Length - 2)</h1>*@
-    <a href="/MudarPagina/0/Emprego"></a>
 
-    <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
-        <thead>
-            <tr>
-                <th>Tipo</th>
-                <th>Produto</th>
-                <th>Descrição</th>
-                <th>Preço</th>
-                <th></th>
-            </tr>
-        </thead>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
 
-        <tbody>
+<center>
+    <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Mercado</h1>
+</center>
 
-            @foreach (var mc in ViewBag.Mercado)
+@*<p>Seu Dinheiro: @ViewBag.Jogador.Dinheiro.ToString().Substring(0, ViewBag.Jogador.Dinheiro.ToString().Length - 2)</p>*@
+
+<table class="highlight centered" style=" border: 1px solid #e0e0e0;">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Produto</th>
+            <th>Descrição</th>
+            <th>Preço</th>
+            <th></th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+        @foreach (var mc in ViewBag.Mercado)
+        {
+            string enabled = "";
+            if (ViewBag.Jogador.Dinheiro < mc.Preco)
             {
-                string enabled = "";
-                if (ViewBag.Jogador.Dinheiro < mc.Preco)
-                {
-                    enabled = "disabled";
-                }
-                <tr>
-                    <td>@mc.TipoProduto</td>
-                    <td>@mc.Produto</td>
-                    <td>@mc.Descricao</td>
-                    <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
-                    <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
-                </tr>
+                enabled = "disabled";
             }
-        </tbody>
-    </table>
+            <tr>
+                <td>@mc.TipoProduto</td>
+                <td>@mc.Produto</td>
+                <td>@mc.Descricao</td>
+                <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
+                <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

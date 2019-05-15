@@ -262,6 +262,7 @@
     <Content Include="Views\Jogo\PaginaInicial.cshtml" />
     <Content Include="Views\Jogo\Acontecimento.cshtml" />
     <Content Include="Views\Jogo\Curso.cshtml" />
+    <Content Include="Views\Jogo\Personagem.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

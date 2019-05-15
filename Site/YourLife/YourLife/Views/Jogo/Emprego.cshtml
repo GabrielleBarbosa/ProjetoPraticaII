@@ -3,69 +3,67 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-</head>
-<body>
-        <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
+
+<center>
+    <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Mercado</h1>
+</center>
+
+<table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
     top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
-            <thead>
+    <thead>
+        <tr>
+            <th>Emprego</th>
+            <th>Salário</th>
+            <th>Experiência Necessária</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
+        {
+            string enabled = "";
+            //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
+            //{
+            //    enabled = "disabled";
+            //}
+            if (i < ViewBag.Emprego.Count)
+            {
                 <tr>
-                    <th>Emprego</th>
-                    <th>Salário</th>
-                    <th>Experiência Necessária</th>
-                    <th></th>
+                    <td>@ViewBag.Emprego[i].trabalho</td>
+                    <td>@ViewBag.Emprego[i].salario</td>
+                    <td>@ViewBag.Emprego[i].anosExperiencia</td>
+                    <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
                 </tr>
-            </thead>
-            <tbody>
-                @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
-                {
-                    string enabled = "";
-                    //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
-                    //{
-                    //    enabled = "disabled";
-                    //}
-                    if (i < ViewBag.Emprego.Count)
-                    {
-                        <tr>
-                            <td>@ViewBag.Emprego[i].trabalho</td>
-                            <td>@ViewBag.Emprego[i].salario</td>
-                            <td>@ViewBag.Emprego[i].anosExperiencia</td>
-                            <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
-                        </tr>
-                    }
-                }
-            </tbody>
-        </table>
-    @{int paginaAnterior = ViewBag.Pagina - 1;
-        int proximaPagina = ViewBag.Pagina + 1; }
+            }
+        }
+    </tbody>
+</table>
+@{int paginaAnterior = ViewBag.Pagina - 1;
+    int proximaPagina = ViewBag.Pagina + 1; }
 
-    @if (ViewBag.Pagina > 0)
-    {
-        <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
-    }
-    @if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
-    {
-        <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
-    }
+@if (ViewBag.Pagina > 0)
+{
+    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+}
+@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
+{
+    <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+}
 
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+<div id="modal1" class="modal">
+    <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
     </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+</div>
 
-
-</body>
-</html>
 
 <script>
 

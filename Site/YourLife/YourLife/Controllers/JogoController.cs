@@ -186,30 +186,79 @@ namespace YourLife.Controllers
 
         public ActionResult Acontecimento()
         {
-            //Jogador jog = (Jogador)Session["jogador"];
+            Jogador jog = (Jogador)Session["jogador"];
 
-            //if(jog.Idade == 16) //idade para dirigir
-            //{
-            //    
-            //}
-            //if(jog.Idade == 18) //maioridade 
-            //{
-            //    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-            //    AcontecimentoFixo af = dao.Busca();
+            Random random = new Random();
 
-            //    ViewBag.Acontecimento = af;
-            //    ViewBag.Opcao1 = new Escolha();
-            //    ViewBag.Opcao2 = new Escolha();
-            //}
-            //else
-            //{
-            //    AcontecimentoAleatorioDAO dao = new AcontecimentoAleatorioDAO();
-            //    AcontecimentoFixo aa = dao.Busca();
+            if (jog.Idade == 16) //idade para dirigir
+            {
+                AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+                AcontecimentoFixo af = dao.BuscarPorId(1);
 
-            //    ViewBag.Acontecimento = aa;
-            //    ViewBag.Opcao1 = new Escolha();
-            //    ViewBag.Opcao2 = new Escolha();
-            //}
+                ViewBag.Acontecimento = Session["acontecimento"] = af;
+
+                EscolhaDAO daoEsc = new EscolhaDAO();
+                Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
+                ViewBag.Escolha = Session["escolha"] = esc;
+
+                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+            }
+            if (jog.Idade == 18) //maioridade 
+            {
+                AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+                AcontecimentoFixo af = dao.BuscarPorId(2);
+
+                ViewBag.Acontecimento = Session["acontecimento"] = af;
+
+                EscolhaDAO daoEsc = new EscolhaDAO();
+                Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
+                ViewBag.Escolha = Session["escolha"] = esc;
+
+                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+            }
+            else
+            {
+                int id = 0;
+                if (jog.Idade <= 14)
+                {
+                    id = random.Next(1, 20);
+                }
+                else if (jog.Idade <= 30)
+                {
+                    id = random.Next(21, 40);
+                }
+                else if(jog.Idade <= 60)
+                {
+                    id = random.Next(41, 60);
+                }
+                else
+                {
+                    id = random.Next(61, 80);
+                }
+
+                AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
+                AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
+
+                ViewBag.Acontecimento = Session["acontecimento"] = aa;
+
+                EscolhaDAO daoEsc = new EscolhaDAO();
+                Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
+                ViewBag.Escolha = Session["escolha"] = esc;
+
+                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+            }
 
             return View();
         }
@@ -221,6 +270,12 @@ namespace YourLife.Controllers
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
             ViewBag.Pagina = Session["paginaAtual"];
+            return View();
+        }
+
+        public ActionResult Personagem()
+        {
+            ViewBag.Jogador = Session["jogador"];
             return View();
         }
     }

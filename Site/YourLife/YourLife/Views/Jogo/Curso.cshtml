@@ -3,49 +3,63 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
 <table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
     top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
-    <thead>
-        <tr>
-            <th>Curso</th>
-            <th>Descrição</th>
-            <th>Experiência Necessária</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
+
+    <center>
+        <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Cursos</h1>
+        @if (ViewBag.Cursando != null)
         {
-            string enabled = "";
-            //if (ViewBag.Cursos[i].CodCursoNecessario != 0)
-            //{
-            //    enabled = "disabled";
-            //}
-            if (i < ViewBag.Cursos.Count)
-            {
-                <tr>
-                    <td>@ViewBag.Cursos[i].Nome</td>
-                    <td>@ViewBag.Cursos[i].Descricao</td>
-                    <td>@ViewBag.Cursos[ViewBag.Cursos[i].CodCursoNecessario].Nome</td>
-                    <td><a class="waves-effect waves-light btn-small @enabled" href="/FazerCurso/@ViewBag.Cursos[i].id">Fazer curso</a></td>
-                </tr>
-            }
-            else
-            {
-                break;
-            }
+            <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:6vh;">Cursando: @ViewBag.Cursando.Nome</p>
         }
-    </tbody>
+        else
+        {
+            <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:6vh;">Você não está cursando nada no momento!</p>
+        }
+        <thead>
+            <tr>
+                <th>Curso</th>
+                <th>Descrição</th>
+                <th>Experiência Necessária</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
+            {
+                string enabled = "";
+                //if (ViewBag.Cursos[i].CodCursoNecessario != 0 && )
+                //{
+                //    enabled = "disabled";
+                //}
+                if (i < ViewBag.Cursos.Count)
+                {
+                    <tr>
+                        <td>@ViewBag.Cursos[i].Nome</td>
+                        <td>@ViewBag.Cursos[i].Descricao</td>
+                        <td>@ViewBag.Cursos[ViewBag.Cursos[i].CodCursoNecessario].Nome</td>
+                        <td><a class="waves-effect waves-light btn-small @enabled" href="/FazerCurso/@ViewBag.Cursos[i].id">Fazer curso</a></td>
+                    </tr>
+                }
+                else
+                {
+                    break;
+                }
+            }
+        </tbody>
 </table>
 
-@{int paginaAnterior = ViewBag.Pagina - 1;
-    int proximaPagina = ViewBag.Pagina + 1; }
+    @{int paginaAnterior = ViewBag.Pagina - 1;
+        int proximaPagina = ViewBag.Pagina + 1; }
 
-@if (ViewBag.Pagina > 0)
-{
-    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar aos cursos anteriores</a>
-}
-@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Cursos.Count)
-{
-    <a href="/MudarPagina/@proximaPagina/Emprego">Ver mais cursos</a>
-}
+    @if (ViewBag.Pagina > 0)
+    {
+        <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar aos cursos anteriores</a>
+    }
+    @if ((ViewBag.Pagina + 1) * 9 < ViewBag.Cursos.Count)
+    {
+        <a href="/MudarPagina/@proximaPagina/Emprego">Ver mais cursos</a>
+    }
+
+</center>
