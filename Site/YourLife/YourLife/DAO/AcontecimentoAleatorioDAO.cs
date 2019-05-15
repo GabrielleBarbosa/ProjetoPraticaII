@@ -25,6 +25,5 @@ namespace YourLife.DAO
                 return acontecimento;
             }
         }
-
     }
 }
