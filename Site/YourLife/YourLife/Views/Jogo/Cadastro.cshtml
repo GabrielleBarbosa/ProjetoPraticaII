@@ -1,0 +1,37 @@
+﻿@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<script src="~/Content/JS/Inicio.js"></script>
+<link rel="stylesheet" href="~/Content/CSS/Inicio.css" />
+
+<center>
+    <div class="caixa">
+        <div class="container botoes">
+            <center>
+                <form action="/Jogo/AdicionarJogador" method="post" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="usu.nickname">Digite o seu nome:</label>
+                            <input type="text" id="usu.nickname" name="usu.nickname" maxlength="15" />
+                            @Html.ValidationMessage("usu.nickname")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="usu.senha">Senha:</label>
+                            <input type="password" id="usu.senha" name="usu.senha" />
+                            @Html.ValidationMessage("usu.senha")
+                        </div>
+                    </div>
+                    <center>
+                        <button type="submit" class="waves-effect waves-light btn" style="font-family: 'Open Sans', sans-serif;">Cadastrar</button>
+                    </center>
+                </form>
+            </center>
+        </div>
+    </div>
+</center>
+
+
+</div>

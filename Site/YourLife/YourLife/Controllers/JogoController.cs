@@ -29,31 +29,20 @@ namespace YourLife.Controllers
             return View();
         }
 
-        public ActionResult Inicio()
+        public ActionResult Cadastro()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult AdicionarJogador(Personagem jog)
+        public ActionResult AdicionarJogador(Usuario usu)
         {
-            JogadorDAO jg = new JogadorDAO();
-            if (ModelState.IsValid && jg.BuscaPorNick(jog.Nickname) == null)
+            UsuarioDAO dao = new UsuarioDAO();
+            if (ModelState.IsValid && dao.BuscaPorNick(usu.nickname) == null)
             {
-                jog.Dinheiro = 0;
-                jog.Idade = 5;
-                jog.Parceiro = 'N';
-                jog.PontosSaude = 1000;
-                Random rm = new Random();
-                jog.PontosInteligencia = rm.Next(0, 450);
-                jog.PontosRelacionamento = 0;
-                jog.PontosFelicidade = 500;
-                jog.Sexo = 'I';
-                jog.CodEmprego = 0;
-                jg.Adiciona(jog);
 
-                Session["jogador"] = jg.BuscaPorNick(jog.Nickname);
-
+                Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
+                
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
             else
@@ -61,6 +50,31 @@ namespace YourLife.Controllers
                 return View("Inicio");
             }
         }
+
+        public ActionResult Inicio()
+        {
+            return View();
+        }
+
+        public ActionResult SalvarPersonagem()
+        {
+            PersonagemDAO dao = new PersonagemDAO();
+            Personagem p = new Personagem();
+            p.Dinheiro = 0;
+            p.Idade = 5;
+            p.Parceiro = 'N';
+            p.PontosSaude = 1000;
+            Random rm = new Random();
+            p.PontosInteligencia = rm.Next(0, 450);
+            p.PontosRelacionamento = 0;
+            p.PontosFelicidade = 500;
+            p.Sexo = 'I';
+            p.CodEmprego = 0;
+            dao.Adiciona(p);
+
+            return RedirectToAction("EscolhaPersonagem", "Jogo");
+        }
+        
 
         public ActionResult EscolhaPersonagem()
         {
@@ -70,12 +84,12 @@ namespace YourLife.Controllers
         [Route("SalvarPersonagem/{sexo}")]
         public ActionResult SalvarPersonagem(char sexo)
         {
-            ((Personagem)Session["jogador"]).Sexo = sexo;
+            ((Personagem)Session["Personagem"]).Sexo = sexo;
 
             if (sexo == 'M')
-                Session["personagem"] = "/Imagens/menino.png";
+                Session["imagem"] = "/Imagens/menino.png";
             else
-                Session["personagem"] = "/Imagens/menina.png";
+                Session["imagem"] = "/Imagens/menina.png";
 
 
             return RedirectToAction("Base", "Jogo");
@@ -83,15 +97,15 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
-            ViewBag.Personagem = Session["personagem"];
+            ViewBag.Imagem = Session["imagem"];
             return View();
         }
 
         public ActionResult Mercado()
         {
-            //ViewBag.Jogador = Session["jogador"];
-            ViewBag.Jogador = new Personagem();
-            ViewBag.Jogador.Dinheiro = 0;
+            //ViewBag.Personagem = Session["Personagem"];
+            ViewBag.Personagem = new Personagem();
+            ViewBag.Personagem.Dinheiro = 0;
 
             MercadoDAO dao = new MercadoDAO();
             IList<Mercado> mc = dao.ListarMercado();
@@ -102,13 +116,13 @@ namespace YourLife.Controllers
         [Route("Comprar/{preco}/{id}")]
         public ActionResult Comprar(decimal preco, int id)
         {
-            ViewBag.Jogador = Session["jogador"];
-            if (ViewBag.Jogador.Dinheiro >= preco)
+            ViewBag.Personagem = Session["Personagem"];
+            if (ViewBag.Personagem.Dinheiro >= preco)
             {
                 MercadoJogadorDAO mj = new MercadoJogadorDAO();
-                mj.Adiciona(ViewBag.Jogador.Id, id);
+                mj.Adiciona(ViewBag.Personagem.Id, id);
 
-                ViewBag.Jogador.Dinheiro -= preco;
+                ViewBag.Personagem.Dinheiro -= preco;
                 return RedirectToAction("Mercado", "Jogo");
             }
             return RedirectToAction("Mercado", "Jogo");
@@ -128,7 +142,7 @@ namespace YourLife.Controllers
         [Route("EntrevistaEmprego/{id}")]
         public ActionResult EntrevistaEmprego(int id)
         {
-            Session["jogador"] = new Jogador();
+            Session["Personagem"] = new Personagem();
             Random rd = new Random();
             if (rd.Next(0, 2) == 1)
             {
@@ -136,7 +150,7 @@ namespace YourLife.Controllers
 
                 Session["teste"] = dao.BuscarPorId(id);
                 Session["emprego"] = "S";
-                ((Personagem)Session["jogador"]).CodEmprego = id;
+                ((Personagem)Session["Personagem"]).CodEmprego = id;
             }
             else
                 Session["emprego"] = "N";
@@ -158,7 +172,7 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
-            Personagem jog = (Personagem)Session["jogador"];
+            Personagem jog = (Personagem)Session["Personagem"];
 
             jog.Idade++;
             decimal salario = 0;
@@ -169,30 +183,30 @@ namespace YourLife.Controllers
             if (jog.Sexo == 'M')
             {
                 if (jog.Idade >= 14 && jog.Idade <= 20)
-                    Session["personagem"] = "menino_adolescente.png";
+                    Session["imagem"] = "menino_adolescente.png";
                 else if (jog.Idade >= 21 && jog.Idade <= 40)
-                    Session["personagem"] = "homem_adulto.png";
+                    Session["imagem"] = "homem_adulto.png";
                 else if (jog.Idade >= 41)
-                    Session["personagem"] = "velho.png";
+                    Session["imagem"] = "velho.png";
             }
             else
             {
                 if (jog.Idade >= 14 && jog.Idade <= 20)
-                    Session["personagem"] = "menina_adolescente.png";
+                    Session["imagem"] = "menina_adolescente.png";
                 else if (jog.Idade >= 21 && jog.Idade <= 40)
-                    Session["personagem"] = "mulher_adulta.png";
+                    Session["imagem"] = "mulher_adulta.png";
                 else if (jog.Idade >= 41)
-                    Session["personagem"] = "velha.png";
+                    Session["imagem"] = "velha.png";
             }
 
-            Session["jogador"] = jog;
+            Session["Personagem"] = jog;
 
             return RedirectToAction("Acontecimento", "Jogo");
         }
 
         public ActionResult Acontecimento()
         {
-            Personagem jog = (Personagem)Session["jogador"];
+            Personagem jog = (Personagem)Session["Personagem"];
 
             Random random = new Random();
 
@@ -281,7 +295,7 @@ namespace YourLife.Controllers
 
         public ActionResult Personagem()
         {
-            ViewBag.Jogador = Session["jogador"];
+            ViewBag.Personagem = Session["Personagem"];
             return View();
         }
     }

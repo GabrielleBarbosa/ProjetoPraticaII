@@ -9,9 +9,9 @@ namespace YourLife.Models
     public class Usuario
     {
         public int id { get; set; }
-        [Required, StringLength(30)]
-        public int nickname { get; set; }
-        [Required, StringLength(20)]
-        public int senha { get; set; }
+        [Required, StringLength(25)]
+        public string nickname { get; set; }
+        [Required, StringLength(25)]
+        public string senha { get; set; }
     }
 }

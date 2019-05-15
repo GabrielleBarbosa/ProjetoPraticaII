@@ -75,11 +75,10 @@ drop table Consequencia
 create table Emprego
 (
 id int primary key,
-pontosNecessarios int,
 trabalho varchar(30),
 salario money,
-restricao int, 
-anosExperiencia int
+cursoNecessario int,
+constraint fkCurso2 foreign key (cursoNecessario) references Curso(id)
 )
 drop table Emprego
 alter table Emprego alter column trabalho varchar(100)
