@@ -24,5 +24,16 @@ namespace YourLife.DAO
                 return contexto.Emprego.ToList();
             }
         }
+        public Emprego BuscarPorId(int id)
+        {
+            using (var contexto = new JogoContext())
+            {
+                IList<Emprego> empregos = contexto.Emprego.ToList();
+                foreach (var emp in empregos)
+                    if (emp.id == id)
+                        return emp;
+            }
+            return null;
+        }
     }
 }

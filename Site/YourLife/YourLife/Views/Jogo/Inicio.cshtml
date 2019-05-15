@@ -2,29 +2,36 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<head>
     <script src="~/Content/JS/Inicio.js"></script>
-</head>
+<link rel="stylesheet" href="~/Content/CSS/Inicio.css" />
 
-<div class="container" style="position:relative; top: 25vh;">
+<center>
+    <div class="caixa">
+        <div class="container botoes">
+            <center>
+                <form action="/Jogo/AdicionarJogador" method="post" class="col s12">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="jog.Nickname">Digite o seu nome:</label>
+                            <input type="text" id="jog.Nickname" name="jog.Nickname" maxlength="15" />
+                            @Html.ValidationMessage("jog.Nickname")
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="jog.Senha">Senha:</label>
+                            <input type="password" id="jog.Senha" name="jog.Senha" />
+                            @Html.ValidationMessage("jog.Senha")
+                        </div>
+                    </div>
+                    <center>
+                        <button type="submit" class="waves-effect waves-light btn" style="font-family: 'Open Sans', sans-serif;">Cadastrar</button>
+                    </center>
+                </form>
+            </center>
+        </div>
+    </div>
+</center>
 
-    <form action="/Jogo/AdicionarJogador" method="post" class="col s12">
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="jog.Nickname">Digite o seu nome:</label>
-                <input type="text" id="jog.Nickname" name="jog.Nickname" maxlength="15" />
-                @Html.ValidationMessage("jog.Nickname")
-            </div>
-        </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <label for="jog.Senha">Senha:</label>
-                <input type="password" id="jog.Senha" name="jog.Senha" />
-                @Html.ValidationMessage("jog.Senha")
-            </div>
-        </div>
-        <center>
-            <button type="submit" class="waves-effect waves-light btn" style="font-family: 'Open Sans', sans-serif;">Cadastrar</button>
-        </center>
-    </form>
+    
 </div>

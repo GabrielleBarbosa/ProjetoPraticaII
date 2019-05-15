@@ -17,10 +17,10 @@
     <div id="composicao">
         <center>
             @{
-                <img src="@ViewBag.Personagem" id="personagem" height="500" width="350" /> <br />
+                <img class="materialboxed" src="@ViewBag.Personagem" id="personagem" height="500" width="350" /> <br />
             }
-            <a class="waves-effect waves-light btn green darken-4" id="btnPersonagem" href="~/Jogo/Personagem">Personagem</a>
-            <button class="waves-effect waves-light btn green darken-4" id="btnEnvelhecer">Envelhecer! <i class="large material-icons">access_time</i></button>
+            <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Personagem">Personagem</a>
+            <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Envelhecer">Envelhecer!<i class="material-icons">access_time</i></a>
         </center>
 
         <progress max="100" value="80" id="pbSaude">
@@ -33,6 +33,11 @@
         <progress max="100" value="80" id="pbInteligencia"></progress>
         <progress max="100" value="80" id="pbRelacionamento"></progress>
         <progress max="100" value="80" id="pbFelicidade"></progress>
+
+        <a class="waves-effect waves-light btn green darken-4 botoes" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
+        <a class="waves-effect waves-light btn green darken-4 botoes" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
+        <a class="waves-effect waves-light btn green darken-4 botoes" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
+        <a class="waves-effect waves-light btn green darken-4 botoes" id="outros" href="">Outros</a>
     </div>
 </body>
 
