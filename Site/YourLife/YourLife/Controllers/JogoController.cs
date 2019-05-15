@@ -116,7 +116,6 @@ namespace YourLife.Controllers
 
         public ActionResult Emprego()
         {
-            ViewBag.EmpregoAtual = Session["teste"];
             EmpregoDAO dao = new EmpregoDAO();
             IList<Emprego> emp = dao.ListarEmprego();
             ViewBag.Pagina = Session["paginaAtual"];
@@ -128,19 +127,14 @@ namespace YourLife.Controllers
         [Route("EntrevistaEmprego/{id}")]
         public ActionResult EntrevistaEmprego(int id)
         {
-            Session["jogador"] = new Jogador();
             Random rd = new Random();
-            if (rd.Next(0, 2) == 1)
+            if (rd.Next(0, 1) == 1)
             {
-                EmpregoDAO dao = new EmpregoDAO();
-
-                Session["teste"] = dao.BuscarPorId(id);
                 Session["emprego"] = "S";
                 ((Jogador)Session["jogador"]).CodEmprego = id;
             }
             else
                 Session["emprego"] = "N";
-
             return RedirectToAction("Emprego", "Jogo");
         }
         

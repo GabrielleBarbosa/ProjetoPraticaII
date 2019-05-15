@@ -1,16 +1,8 @@
-create table Usuario
-(
-	id int identity primary key,
-	nickname varchar(15) not null,
-	senha varchar(15) not null
-)
-
-create table Personagem
+create table Jogador
 (
  id int identity(1,1) primary key,
- codUsuario int not null,
- constraint fkUsuario foreign key(codUsuario) references Usuario(id),
- nome varchar(25),
+ senha varchar(20), 
+ nickname varchar(25),
  idade int not null,
  sexo char not null,
  pontosSaude int not null,
@@ -19,15 +11,16 @@ create table Personagem
  pontosFelicidade int not null, 
  dinheiro money,
  parceiro char not null,
- codEmprego int not null,
+ codEmprego int,
  constraint fkEmprego foreign key(codEmprego) references Emprego(id)
 )
-select * from Personagem
-drop table Personagem
+select * from Jogador
+alter table Jogador alter column codEmprego int null
+drop table Jogador
 
-insert into Personagem values('123','Vinchers',0,'M',0,0,0,0,0,'S',0)
-insert into Personagem values('Gabs123',0,'F',0,0,0,0,0,'S',1)
-insert into Personagem values('Janies',0,'F',0,0,0,0,0,'S',1)
+insert into Jogador values('123','Vinchers',0,'M',0,0,0,0,0,'S',0)
+insert into Jogador values('Gabs123',0,'F',0,0,0,0,0,'S',1)
+insert into Jogador values('Janies',0,'F',0,0,0,0,0,'S',1)
 
 ------------------------------------------------------------------------------------------------------------------------
 
