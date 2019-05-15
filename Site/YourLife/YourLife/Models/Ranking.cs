@@ -12,9 +12,5 @@ namespace YourLife.Models
         public int Pontos { get; set; }
         public int Id { get; set; }
         
-        public Ranking()
-        {
-
-        }
     }
 }

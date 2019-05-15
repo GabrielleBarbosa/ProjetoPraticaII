@@ -50,6 +50,15 @@ namespace YourLife.Controllers
             }
         }
 
+
+        public ActionResult LogarUsuario()
+        {
+            UsuarioDAO dao = new UsuarioDAO();
+            PersonagemDAO = new PersonagemDAO();
+
+        }
+
+
         public ActionResult Inicio()
         {
             return View();
