@@ -9,7 +9,7 @@ namespace YourLife.DAO
     public class JogadorDAO
     {
 
-        public void Adiciona(Jogador jog)
+        public void Adiciona(Personagem jog)
         {
             using (var context = new JogoContext())
             {
@@ -17,7 +17,7 @@ namespace YourLife.DAO
                 context.SaveChanges();
             }
         }
-        public IList<Jogador> ListarJogador()
+        public IList<Personagem> ListarJogador()
         {
             using (var contexto = new JogoContext())
             {
@@ -25,12 +25,12 @@ namespace YourLife.DAO
             }
         }
 
-        public Jogador BuscaPorNick(string nome)
+        public Personagem BuscaPorNick(string nome)
         {
-            Jogador jogadorExistente = null;
+            Personagem jogadorExistente = null;
             using (var repo = new JogoContext())
             {
-                IList<Jogador> jg = repo.Jogador.ToList();
+                IList<Personagem> jg = repo.Jogador.ToList();
                 foreach(var player in jg)
                 {
                     if(nome == player.Nickname)

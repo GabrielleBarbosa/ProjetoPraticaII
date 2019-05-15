@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace YourLife.Models
 {
-    public class Jogador
+    public class Personagem
     {
         public int Id { get; set; }
         [Required, StringLength(20)]
         public string Senha { get; set; }
         [Required, StringLength(30)]
-        public string Nickname { get; set; }
+        public string nome { get; set; }
         public int Idade { get; set; }
         public char Sexo { get; set; }
         public int PontosSaude { get; set; }

@@ -35,7 +35,7 @@ namespace YourLife.Controllers
         }
 
         [HttpPost]
-        public ActionResult AdicionarJogador(Jogador jog)
+        public ActionResult AdicionarJogador(Personagem jog)
         {
             JogadorDAO jg = new JogadorDAO();
             if (ModelState.IsValid && jg.BuscaPorNick(jog.Nickname) == null)
@@ -70,7 +70,7 @@ namespace YourLife.Controllers
         [Route("SalvarPersonagem/{sexo}")]
         public ActionResult SalvarPersonagem(char sexo)
         {
-            ((Jogador)Session["jogador"]).Sexo = sexo;
+            ((Personagem)Session["jogador"]).Sexo = sexo;
 
             if (sexo == 'M')
                 Session["personagem"] = "/Imagens/menino.png";
@@ -90,7 +90,7 @@ namespace YourLife.Controllers
         public ActionResult Mercado()
         {
             //ViewBag.Jogador = Session["jogador"];
-            ViewBag.Jogador = new Jogador();
+            ViewBag.Jogador = new Personagem();
             ViewBag.Jogador.Dinheiro = 0;
 
             MercadoDAO dao = new MercadoDAO();
@@ -131,7 +131,7 @@ namespace YourLife.Controllers
             if (rd.Next(0, 1) == 1)
             {
                 Session["emprego"] = "S";
-                ((Jogador)Session["jogador"]).CodEmprego = id;
+                ((Personagem)Session["jogador"]).CodEmprego = id;
             }
             else
                 Session["emprego"] = "N";
@@ -152,7 +152,7 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
-            Jogador jog = (Jogador)Session["jogador"];
+            Personagem jog = (Personagem)Session["jogador"];
 
             jog.Idade++;
             decimal salario = 0;
@@ -186,7 +186,7 @@ namespace YourLife.Controllers
 
         public ActionResult Acontecimento()
         {
-            Jogador jog = (Jogador)Session["jogador"];
+            Personagem jog = (Personagem)Session["jogador"];
 
             Random random = new Random();
 

@@ -9,7 +9,7 @@ namespace YourLife.DAO
 {
     public class JogoContext:DbContext
     {
-        public DbSet<Jogador> Jogador { get; set; }
+        public DbSet<Personagem> Jogador { get; set; }
         public DbSet<Ranking> Ranking { get; set; }
         public DbSet<Mercado> Mercado { get; set; }
         public DbSet<MercadoJogador> MercadoJogador { get; set; }
