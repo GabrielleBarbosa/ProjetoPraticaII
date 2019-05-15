@@ -15,5 +15,17 @@ namespace YourLife.DAO
                 return repo.Curso.ToList();
             }
         }
+
+        public Curso BuscarPorId(int id)
+        {
+            using (var repo = new JogoContext())
+            {
+                IList<Curso> cursos = repo.Curso.ToList();
+                foreach (var cur in cursos)
+                    if (cur.id == id)
+                        return cur;
+            }
+            return null;
+        }
     }
 }

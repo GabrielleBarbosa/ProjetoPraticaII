@@ -26,15 +26,20 @@
             </tr>
         </thead>
         <tbody>
-            @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
+            @for (int i = ViewBag.Pagina * 4 + 1; i < (ViewBag.Pagina * 4) + 5; i++)
             {
-                string enabled = "";
-                //if (ViewBag.Cursos[i].CodCursoNecessario != 0 && )
-                //{
-                //    enabled = "disabled";
-                //}
+
                 if (i < ViewBag.Cursos.Count)
                 {
+                    string enabled = "";
+                    if (ViewBag.Cursos[i].CodCursoNecessario != 0 )
+                    {
+                        enabled = "disabled";
+                    }
+                    else if(ViewBag.Cursos[i].id == ViewBag.Cursando.id)
+                    {
+                        enabled = "disabled";
+                    }
                     <tr>
                         <td>@ViewBag.Cursos[i].Nome</td>
                         <td>@ViewBag.Cursos[i].Descricao</td>

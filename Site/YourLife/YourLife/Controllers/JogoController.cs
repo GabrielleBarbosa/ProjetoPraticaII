@@ -10,7 +10,6 @@ namespace YourLife.Controllers
 {
     public class JogoController : Controller
     {
-        // GET: Jogo
         public ActionResult Jogo()
         {
             return View();
@@ -43,7 +42,7 @@ namespace YourLife.Controllers
 
                 Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
                 
-                return RedirectToAction("EscolhaPersonagem", "Jogo");
+                return RedirectToAction("EscolhaPersonagem", "po");
             }
             else
             {
@@ -72,7 +71,7 @@ namespace YourLife.Controllers
             p.CodEmprego = 0;
             dao.Adiciona(p);
 
-            return RedirectToAction("EscolhaPersonagem", "Jogo");
+            return RedirectToAction("EscolhaPersonagem", "po");
         }
         
 
@@ -92,7 +91,7 @@ namespace YourLife.Controllers
                 Session["imagem"] = "/Imagens/menina.png";
 
 
-            return RedirectToAction("Base", "Jogo");
+            return RedirectToAction("Base", "po");
         }
 
         public ActionResult Base()
@@ -123,9 +122,9 @@ namespace YourLife.Controllers
                 mj.Adiciona(ViewBag.Personagem.Id, id);
 
                 ViewBag.Personagem.Dinheiro -= preco;
-                return RedirectToAction("Mercado", "Jogo");
+                return RedirectToAction("Mercado", "po");
             }
-            return RedirectToAction("Mercado", "Jogo");
+            return RedirectToAction("Mercado", "po");
         }
 
         public ActionResult Emprego()
@@ -172,45 +171,45 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
-            Personagem jog = (Personagem)Session["Personagem"];
+            Personagem p = (Personagem)Session["Personagem"];
 
-            jog.Idade++;
+            p.Idade++;
             decimal salario = 0;
-            if (jog.CodEmprego != 0)
+            if (p.CodEmprego != 0)
                 salario = ((Emprego)Session["emprego"]).salario;
-            jog.Dinheiro += salario;
+            p.Dinheiro += salario;
 
-            if (jog.Sexo == 'M')
+            if (p.Sexo == 'M')
             {
-                if (jog.Idade >= 14 && jog.Idade <= 20)
+                if (p.Idade >= 14 && p.Idade <= 20)
                     Session["imagem"] = "menino_adolescente.png";
-                else if (jog.Idade >= 21 && jog.Idade <= 40)
+                else if (p.Idade >= 21 && p.Idade <= 40)
                     Session["imagem"] = "homem_adulto.png";
-                else if (jog.Idade >= 41)
+                else if (p.Idade >= 41)
                     Session["imagem"] = "velho.png";
             }
             else
             {
-                if (jog.Idade >= 14 && jog.Idade <= 20)
+                if (p.Idade >= 14 && p.Idade <= 20)
                     Session["imagem"] = "menina_adolescente.png";
-                else if (jog.Idade >= 21 && jog.Idade <= 40)
+                else if (p.Idade >= 21 && p.Idade <= 40)
                     Session["imagem"] = "mulher_adulta.png";
-                else if (jog.Idade >= 41)
+                else if (p.Idade >= 41)
                     Session["imagem"] = "velha.png";
             }
 
-            Session["Personagem"] = jog;
+            Session["Personagem"] = p;
 
             return RedirectToAction("Acontecimento", "Jogo");
         }
 
         public ActionResult Acontecimento()
         {
-            Personagem jog = (Personagem)Session["Personagem"];
+            Personagem p = (Personagem)Session["Personagem"];
 
             Random random = new Random();
 
-            if (jog.Idade == 16) //idade para dirigir
+            if (p.Idade == 16) //idade para dirigir
             {
                 AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
                 AcontecimentoFixo af = dao.BuscarPorId(1);
@@ -227,7 +226,7 @@ namespace YourLife.Controllers
                 ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
                 ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
             }
-            if (jog.Idade == 18) //maioridade 
+            if (p.Idade == 18) //maioridade 
             {
                 AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
                 AcontecimentoFixo af = dao.BuscarPorId(2);
@@ -247,15 +246,15 @@ namespace YourLife.Controllers
             else
             {
                 int id = 0;
-                if (jog.Idade <= 14)
+                if (p.Idade <= 14)
                 {
                     id = random.Next(1, 20);
                 }
-                else if (jog.Idade <= 30)
+                else if (p.Idade <= 30)
                 {
                     id = random.Next(21, 40);
                 }
-                else if(jog.Idade <= 60)
+                else if(p.Idade <= 60)
                 {
                     id = random.Next(41, 60);
                 }
@@ -285,12 +284,23 @@ namespace YourLife.Controllers
 
         public ActionResult Curso()
         {
+            ViewBag.Cursando = Session["cursando"];
             Session["paginaAtual"] = 0;
             CursoDAO dao = new CursoDAO();
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
             ViewBag.Pagina = Session["paginaAtual"];
             return View();
+        }
+
+        [Route("FazerCurso/{id}")]
+        public ActionResult FazerCurso(int id)
+        {
+            CursoDAO dao = new CursoDAO();
+            if (Session["cursando"] == null)
+                Session["cursando"] = dao.BuscarPorId(id);
+
+            return RedirectToAction("Curso", "Jogo");
         }
 
         public ActionResult Personagem()
