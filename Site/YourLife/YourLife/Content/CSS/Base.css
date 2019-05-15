@@ -38,20 +38,39 @@
     border: 4px solid palevioletred;
 }
 
-#btnPersonagem {
+.botoes {
     font-size: 15px;
     border-radius: 10px;
 }
 
-#btnEnvelhecer {
-    font-size: 15px;
-    border-radius: 10px;
+#empregos{
+    position: absolute;
+    left: 20%;
+    top: 30%;
+}
+
+#mercado {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+}
+
+#cursos {
+    position: absolute;
+    right: 20%;
+    top: 30%;
+}
+
+#outros {
+    position: absolute;
+    right: 20%;
+    top: 40%;
 }
 
 #composicao {
-    background-color: #ECC690;
-    height:82%;    
-    width:100%;
+    background-color: #fffde7;
+    height: 82%;
+    width: 100%;
 }
 
 progress[value]::-webkit-progress-value::after {

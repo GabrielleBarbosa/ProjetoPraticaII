@@ -10,10 +10,19 @@
 
 <center>
     <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Empregos</h1>
+
+    @if (ViewBag.EmpregoAtual != null)
+    {
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Emprego atual: @ViewBag.EmpregoAtual.trabalho</p>
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Salário: @ViewBag.EmpregoAtual.salario.ToString().Substring(0, ViewBag.EmpregoAtual.salario.ToString().Length - 2) </p>
+    }
+    else
+    {
+        <p class="flow-text" style="color: deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Você não está trabalhando no momento!</p>
+    }
 </center>
 
-<table class="highlight centered" style="width: 50em; border: 1px solid #e0e0e0; position:relative;
-    top:3em; left: 55%; margin-left:-25em; max-height:900px; ">
+<table class="highlight centered" style=" border: 1px solid #e0e0e0; position:relative;">
     <thead>
         <tr>
             <th>Emprego</th>
@@ -23,7 +32,7 @@
         </tr>
     </thead>
     <tbody>
-        @for (int i = ViewBag.Pagina * 9 + 1; i < (ViewBag.Pagina * 9) + 10; i++)
+        @for (int i = ViewBag.Pagina * 4 + 1; i < (ViewBag.Pagina * 4) + 5; i++)
         {
             string enabled = "";
             //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
@@ -42,17 +51,20 @@
         }
     </tbody>
 </table>
-@{int paginaAnterior = ViewBag.Pagina - 1;
-    int proximaPagina = ViewBag.Pagina + 1; }
+<br />
+<center>
+    @{int paginaAnterior = ViewBag.Pagina - 1;
+        int proximaPagina = ViewBag.Pagina + 1; }
 
-@if (ViewBag.Pagina > 0)
-{
-    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
-}
-@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Emprego.Count)
-{
-    <a href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
-}
+    @if (ViewBag.Pagina > 0)
+    {
+        <a style="position: relative; bottom:0; margin-right:4vh;" href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+    }
+    @if ((ViewBag.Pagina + 1) * 4 < ViewBag.Emprego.Count)
+    {
+        <a style="position: relative; bottom:0;" href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+    }
+</center>
 
 <div id="modal1" class="modal">
     <div class="modal-content">
