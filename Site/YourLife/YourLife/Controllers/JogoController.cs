@@ -59,7 +59,8 @@ namespace YourLife.Controllers
         public ActionResult LogarUsuario(Usuario usu)
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
-            if (ModelState.IsValid && usuDAO.BuscaPorNick(usu.nickname) != null)
+            Usuario usuarioExistente = new Usuario();
+            if (ModelState.IsValid && usuarioExistente != null)
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
