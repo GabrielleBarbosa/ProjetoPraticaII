@@ -46,3 +46,5 @@ insert into Parceiro values('Robert Baratheon',0,'M')
 insert into Parceiro values('Eduardo Bolsonaro',0,'M')
 insert into Parceiro values('Jon Snow',0,'M')
 insert into Parceiro values('Renly Baratheon',0,'M')
+
+select * from Parceiro
