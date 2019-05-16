@@ -39,7 +39,7 @@ namespace YourLife.Controllers
             UsuarioDAO dao = new UsuarioDAO();
             if (ModelState.IsValid && dao.BuscaPorNick(usu.nickname) == null)
             {
-
+                dao.Adiciona(usu);
                 Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
                 
                 return RedirectToAction("Inicio", "Jogo");
@@ -105,29 +105,32 @@ namespace YourLife.Controllers
             return View();
         }
 
-        [Route("SalvarNome/{nome}")]
-        public ActionResult SalvarNome(string nome)
+        //[Route("SalvarNome/{nome}")]
+        public ActionResult SalvarNome(Personagem p)
         {
-            Usuario usu = (Usuario)Session["Usuario"];
-            PersonagemDAO dao = new PersonagemDAO();
-            Personagem p = new Personagem();
-            p.Dinheiro = 0;
-            p.Idade = 5;
-            p.Parceiro = 'N';
-            p.PontosSaude = 1000;
-            Random rm = new Random();
-            p.PontosInteligencia = rm.Next(0, 450);
-            p.PontosRelacionamento = 0;
-            p.PontosFelicidade = 500;
-            p.Sexo = 'I';
-            p.CodEmprego = 0;
-            p.CodUsuario = usu.id;
-            p.Nome = "teste";
-            dao.Adiciona(p);
+            if (ModelState.IsValid)
+            {
+                Usuario usu = (Usuario)Session["Usuario"];
+                PersonagemDAO dao = new PersonagemDAO();
+                p.Dinheiro = 0;
+                p.Idade = 5;
+                p.Parceiro = 'N';
+                p.PontosSaude = 1000;
+                Random rm = new Random();
+                p.PontosInteligencia = rm.Next(0, 450);
+                p.PontosRelacionamento = 0;
+                p.PontosFelicidade = 500;
+                p.Sexo = 'I';
+                p.CodEmprego = 0;
+                p.CodUsuario = usu.id;
+                p.Nome = "teste";
+                dao.Adiciona(p);
 
-            Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
+                Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
 
-            return RedirectToAction("EscolhaPersonagem", "Jogo");
+                return RedirectToAction("EscolhaPersonagem", "Jogo");
+            }
+            return RedirectToAction("Inicio", "Jogo");
         }
 
 
@@ -147,7 +150,7 @@ namespace YourLife.Controllers
                 Session["imagem"] = "/Imagens/menina.png";
 
 
-            return RedirectToAction("Base", "po");
+            return RedirectToAction("Base", "Jogo");
         }
 
         public ActionResult Base()

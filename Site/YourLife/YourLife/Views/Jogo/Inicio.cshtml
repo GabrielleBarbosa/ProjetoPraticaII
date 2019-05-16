@@ -3,40 +3,52 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+<head>
+    <link rel=stylesheet href="~/Content/CSS/Inicio.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-<link rel=stylesheet href="~/Content/CSS/PaginaInicial.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
 
-<!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="~/Content/JS/Inicio.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
+</head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="~/Content/JS/Inicio.js" type="text/javascript"></script>
-
-<center>
-    <div class="caixa">
-        <div class="container botoes">
-            <center>
-                <a class="btn-large modal-trigger" href="#modal1">Jogar</a><br />
-                <a href="~/Jogo/Ranking" class="waves-effect waves-light btn-large">Ranking</a>
-            </center>
+<body>
+    <center>
+        <div class="caixa">
+            <div class="container botoes">
+                <center>
+                    <a class="btn-large modal-trigger" href="#modal1">Jogar</a><br />
+                    <a href="~/Jogo/Ranking" class="waves-effect waves-light btn-large">Ranking</a>
+                </center>
+            </div>
         </div>
+    </center>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <div class="modal-header">
+                <h4 style="font-family: 'Kodchasan', sans-serif;" class="blue-text text-darken-2">Escolha o nome de seu personagem</h4>
+        </div>
+        <div class="modal-content">
+            <form action="/Jogo/SalvarNome">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="p.Nome">Nome:</label>
+                        <input type="text" id="p.Nome" name="p.Nome" maxlength="15" />
+                    </div>
+                </div>
+                <center>
+                    <button type="submit" class="waves-effect waves-light btn-flat">Prosseguir</button>
+                </center>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+
     </div>
-</center>
-
-
-<!--modal-->
-<div id="modal1" class="modal">
-    <div class="modal-content">
-        <h4>Modal Header</h4>
-        <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
-
-<script>
-
-</script>
+</body>

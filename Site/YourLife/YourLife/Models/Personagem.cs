@@ -10,6 +10,7 @@ namespace YourLife.Models
     {
         public int Id { get; set; }
         public int CodUsuario { get; set; }
+        [Required, StringLength(15)]
         public string Nome { get; set; }
         public int Idade { get; set; }
         public char Sexo { get; set; }

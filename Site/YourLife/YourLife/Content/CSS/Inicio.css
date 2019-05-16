@@ -1,4 +1,8 @@
-﻿.caixa {
+﻿a {
+    margin-top: 13px;
+}
+
+.caixa {
     top: 5vh;
     position: relative;
     width: 90vh;
@@ -11,11 +15,17 @@
 
 .botoes {
     position: relative;
-    top: 20vh;
+    top: 30vh;
 }
 
-#modal1
-{
-    height:100px;
-    width :200px;
+.modal.modal-fixed-footer {
+    height: 60% !important;
+}
+
+.modal{
+    width: 45% !important;
+}
+
+.modal.modal-fixed-footer .modal-content {
+    height: calc(100% - 130px) !important;
 }
