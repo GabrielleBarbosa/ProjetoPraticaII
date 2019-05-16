@@ -7,7 +7,7 @@ namespace YourLife.Models
 {
     public class AcontecimentoAleatorio
     {
-        public int CodAcontecimentoAleatorio { get; set; }
+        public int Id { get; set; }
         public string Acontecimento { get; set; }
         public int CodEscolha { get; set; }
     }

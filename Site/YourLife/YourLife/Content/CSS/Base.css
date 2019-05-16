@@ -1,39 +1,119 @@
-﻿#cvSaude{
+﻿#pbSaude[value] {
     position: absolute;
-    left: 10%;
-    top: 15%;
-    width: 220px;
+    left: 20%;
+    top: 70px;
+    width: 14%;
     height: 30px;
-    background-color: aquamarine;
-    border: 1px solid darkcyan;
+    background-color: red;
+    border: 4px solid maroon;
 }
 
-#cvInteligencia {
+#pbInteligencia {
     position: absolute;
-    left: 10%;
-    top: 25%;
-    width: 220px;
+    left: 35%;
+    top: 70px;
+    width: 14%;
     height: 30px;
-    background-color: cornflowerblue;
-    border: 1px solid blue;
+    background-color: darkseagreen;
+    border: 4px solid green;
 }
 
-#cvRelacionamento {
+#pbRelacionamento {
     position: absolute;
-    left: 10%;
-    top: 35%;
-    width: 220px;
+    left: 50%;
+    top: 70px;
+    width: 14%;
     height: 30px;
-    background-color: aquamarine;
-    border: 1px solid darkcyan;
+    background-color: gold;
+    border: 4px solid darkgoldenrod;
 }
 
-#cvFelicidade {
+#pbFelicidade {
     position: absolute;
-    left: 10%;
-    top: 45%;
-    width: 220px;
+    left: 65%;
+    top: 70px;
+    width: 14%;
     height: 30px;
-    background-color: aquamarine;
-    border: 1px solid darkcyan;
+    background-color: plum;
+    border: 4px solid palevioletred;
+}
+
+.botoes {
+    font-size: 15px;
+    border-radius: 10px;
+}
+
+#empregos{
+    position: absolute;
+    left: 20%;
+    top: 30%;
+}
+
+#mercado {
+    position: absolute;
+    left: 20%;
+    top: 40%;
+}
+
+#cursos {
+    position: absolute;
+    right: 20%;
+    top: 30%;
+}
+
+#outros {
+    position: absolute;
+    right: 20%;
+    top: 40%;
+}
+
+#composicao {
+    background-color: #fffde7;
+    height: 82%;
+    width: 100%;
+}
+
+progress[value]::-webkit-progress-value::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    position: absolute;
+    border-radius: 100%;
+    right: 7px;
+    top: 7px;
+    background-color: white;
+}
+progress[value]::-webkit-progress-value::before {
+    content: '80%';
+    position: absolute;
+    right: 0;
+    top: -125%;
+}
+
+@-webkit-keyframes animate-stripes {
+    100% {
+        background-position: -100px 0px;
+    }
+}
+
+@keyframes animate-stripes {
+    100% {
+        background-position: -100px 0px;
+    }
+}
+
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #09c, #f44);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    -webkit-animation: animate-stripes 5s linear infinite; animation: animate-stripes 5s linear infinite;
 }

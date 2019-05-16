@@ -7,7 +7,7 @@ namespace YourLife.Models
 {
     public class Escolha
     {
-        public int CodEscolha { get; set; }
+        public int Id { get; set; }
         public string Opcao1 { get; set; }
         public string Opcao2 { get; set; }
         public int Consequencia1 { get; set; }

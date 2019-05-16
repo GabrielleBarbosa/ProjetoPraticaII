@@ -165,13 +165,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\CSS\Acontecimento.css" />
     <Content Include="Content\CSS\Base.css" />
+    <Content Include="Content\CSS\EscolhaPersonagem.css" />
+    <Content Include="Content\CSS\Inicio.css" />
     <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\JS\Base.js" />
     <Content Include="Content\JS\Inicio.js" />
     <Content Include="Content\JS\Layout.js" />
+    <Content Include="Content\JS\materialize.js" />
+    <Content Include="Content\JS\materialize.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Imagens\cupido.jpg" />
     <Content Include="Imagens\cupido.png" />
@@ -190,6 +196,7 @@
     <Content Include="Imagens\velha.png" />
     <Content Include="Imagens\velhinhos.png" />
     <Content Include="Imagens\velho.png" />
+    <Content Include="Imagens\Your life Pequeno.png" />
     <Content Include="Imagens\Your life.png" />
     <Content Include="Views\Jogo\Imagens\cupido.jpg" />
     <Content Include="Views\Jogo\Imagens\cupido.png" />
@@ -216,23 +223,32 @@
     <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="DAO\AcontecimentoAleatorioDAO.cs" />
+    <Compile Include="DAO\AcontecimentoFixoDAO.cs" />
+    <Compile Include="DAO\ConsequenciaDAO.cs" />
+    <Compile Include="DAO\CursoDAO.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
-    <Compile Include="DAO\JogadorDAO.cs" />
+    <Compile Include="DAO\EscolhaDAO.cs" />
+    <Compile Include="DAO\PersonagemDAO.cs" />
     <Compile Include="DAO\JogoContext.cs" />
     <Compile Include="DAO\MercadoDAO.cs" />
+    <Compile Include="DAO\MercadoJogadorDAO.cs" />
     <Compile Include="DAO\RankingDAO.cs" />
+    <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AcontecimentoAleatorio.cs" />
     <Compile Include="Models\AcontecimentoFixo.cs" />
     <Compile Include="Models\Consequencia.cs" />
+    <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\Emprego.cs" />
     <Compile Include="Models\Escolha.cs" />
-    <Compile Include="Models\Jogador.cs" />
+    <Compile Include="Models\Personagem.cs" />
     <Compile Include="Models\Mercado.cs" />
     <Compile Include="Models\MercadoJogador.cs" />
     <Compile Include="Models\Ranking.cs" />
+    <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -245,11 +261,15 @@
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
     <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Jogo\EscolhaPersonagem.cshtml" />
-    <Content Include="Views\Jogo\AdicionarJogador.cshtml" />
     <Content Include="Views\ViewStart.cshtml" />
     <Content Include="Views\Jogo\Ranking.cshtml" />
     <Content Include="Views\Jogo\Emprego.cshtml" />
-    <Content Include="Views\Jogo\SalvarPersonagem.cshtml" />
+    <Content Include="Views\Jogo\PaginaInicial.cshtml" />
+    <Content Include="Views\Jogo\Acontecimento.cshtml" />
+    <Content Include="Views\Jogo\Curso.cshtml" />
+    <Content Include="Views\Jogo\Personagem.cshtml" />
+    <Content Include="Views\Jogo\Cadastro.cshtml" />
+    <Content Include="Views\Jogo\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,32 +1,17 @@
-﻿
-function SalvarPersonagem(sexo) {
+﻿///////////////////////////////////////////////////////////////////
+var modal = document.getElementById("modal1");
+var span = document.getElementsByClassName("close")[0];
 
-    var nome = $("#nome").val();
-    var senha = $("#senha").val();
-    var confirmaSenha = $("#confirmaSenha").val();
+abrirModal = function () {
+    modal.style.display = "block";
+};
 
-    if (nome != "") {
-        if (senha != "" && senha == confirmaSenha) {
-
-            if (ChecarNick()) {
-                alert("sjuhegdjuhf");
-            }
-            else
-                alert("aaaaaaaa");
-        }
+window.onclick = function (event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
-}
+};
 
-function ChecarNick() {
-    var url = $("#nome").data('request-url');
-    $.post(url, {
-        nome: $("#nome").val()
-    },
-        function (data) {
-            if (data) {
-                return false;
-            }
-            else
-                return true;
-        });
-}
+span.onclick = function () {
+    modal.style.display = "none";
+};

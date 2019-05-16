@@ -6,43 +6,39 @@ using YourLife.Models;
 
 namespace YourLife.DAO
 {
-    public class JogadorDAO
+    public class UsuarioDAO
     {
-
-        public void Adiciona(Jogador jog)
+        public void Adiciona(Usuario usu)
         {
             using (var context = new JogoContext())
             {
-                context.Jogador.Add(jog);
+                context.Usuario.Add(usu);
                 context.SaveChanges();
             }
         }
-        public IList<Jogador> ListarJogador()
+        public IList<Usuario> ListarUsuario()
         {
             using (var contexto = new JogoContext())
             {
-                return contexto.Jogador.ToList();
+                return contexto.Usuario.ToList();
             }
         }
 
-        public Jogador getJogador(string nome)
+        public Usuario BuscaPorNick(string nome)
         {
-            Jogador jogadorExistente = null;
-            using (var repo = new JogoContext())
+            Usuario jogadorExistente = null;
+            using (var contexto = new JogoContext())
             {
-                IList<Jogador> jg = repo.Jogador.ToList();
-                foreach(var player in jg)
+                IList<Usuario> usu = contexto.Usuario.ToList();
+                foreach (var player in usu)
                 {
-                    if(nome == player.Nickname)
+                    if (nome == player.nickname)
                     {
                         return jogadorExistente = player;
                     }
                 }
-
             }
             return jogadorExistente;
         }
-
     }
-
 }

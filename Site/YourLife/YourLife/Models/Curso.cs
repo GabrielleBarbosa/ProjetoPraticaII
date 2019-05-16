@@ -5,11 +5,11 @@ using System.Web;
 
 namespace YourLife.Models
 {
-    public class Emprego
+    public class Curso
     {
         public int id { get; set; }
-        public string trabalho { get; set; }
-        public decimal salario { get; set; }
-        public int cursoNecessario { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public int CodCursoNecessario { get; set; }
     }
 }
