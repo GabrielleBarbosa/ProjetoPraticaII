@@ -9,7 +9,7 @@ namespace YourLife.Models
     public class Personagem
     {
         public int Id { get; set; }
-        public string CodUsuario { get; set; }
+        public int CodUsuario { get; set; }
         public string Nome { get; set; }
         public int Idade { get; set; }
         public char Sexo { get; set; }

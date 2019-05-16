@@ -30,10 +30,22 @@ namespace YourLife.DAO
             Personagem personagemExistente = null;
             using (var contexto = new JogoContext())
             {
-                 contexto.Personagem.Select(Personagem => usu.nickname);
+                contexto.Personagem.Select(Personagem => usu.nickname);
                 return personagemExistente;
             }
 
+        }
+
+        public Personagem BuscarPorIdUsuario(int id)
+        {
+            using (var contexto = new JogoContext())
+            {
+                IList<Personagem> lista = contexto.Personagem.ToList();
+                foreach (var per in lista)
+                    if (per.CodUsuario == id)
+                        return per;
+            }
+            return null;
         }
     }
 

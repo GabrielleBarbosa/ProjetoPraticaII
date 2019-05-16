@@ -75,8 +75,10 @@ namespace YourLife.Controllers
             return View();
         }
 
-        public ActionResult SalvarPersonagem()
+        [Route("SalvarNome/{nome}")]
+        public ActionResult SalvarNome(string nome)
         {
+            Usuario usu = (Usuario)Session["Usuario"];
             PersonagemDAO dao = new PersonagemDAO();
             Personagem p = new Personagem();
             p.Dinheiro = 0;
@@ -89,11 +91,15 @@ namespace YourLife.Controllers
             p.PontosFelicidade = 500;
             p.Sexo = 'I';
             p.CodEmprego = 0;
+            p.CodUsuario = usu.id;
+            p.Nome = "teste";
             dao.Adiciona(p);
+
+            Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
 
             return RedirectToAction("EscolhaPersonagem", "Jogo");
         }
-        
+
 
         public ActionResult EscolhaPersonagem()
         {

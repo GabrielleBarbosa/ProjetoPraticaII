@@ -27,9 +27,9 @@ namespace YourLife.DAO
         public Usuario BuscaPorNick(string nome)
         {
             Usuario jogadorExistente = null;
-            using (var repo = new JogoContext())
+            using (var contexto = new JogoContext())
             {
-                IList<Usuario> usu = repo.Usuario.ToList();
+                IList<Usuario> usu = contexto.Usuario.ToList();
                 foreach (var player in usu)
                 {
                     if (nome == player.nickname)
