@@ -50,6 +50,11 @@ namespace YourLife.Controllers
             }
         }
 
+        public ActionResult Login()
+        {
+            return View();
+        }
+
 
         public ActionResult LogarUsuario(Usuario usu)
         {
@@ -58,13 +63,37 @@ namespace YourLife.Controllers
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
-                p = pg.RetornarPersonagemExistente(usu);
+                p = pg.BuscarPorIdUsuario(usu.id);
+
+                Session["Personagem"] = p;
+                if (p.Sexo == 'M')
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "menino.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "menino_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "homem_adulto.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "velho.png";
+                }
+                else
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "menina.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "menina_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "mulher_adulta.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "velha.png";
+                }
 
                 return RedirectToAction("Base");
             }
             else
             {
-                return View("Inicio");
+                return View("Login");
             }
             
         }
