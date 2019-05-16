@@ -25,6 +25,16 @@ namespace YourLife.DAO
             }
         }
 
+        public Personagem RetornarPersonagemExistente(Usuario usu)
+        {
+            Personagem personagemExistente = null;
+            using (var contexto = new JogoContext())
+            {
+                 contexto.Personagem.Select(Personagem => usu.nickname);
+                return personagemExistente;
+            }
+
+        }
     }
 
 }

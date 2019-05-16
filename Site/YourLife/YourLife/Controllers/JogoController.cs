@@ -42,7 +42,7 @@ namespace YourLife.Controllers
 
                 Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
                 
-                return RedirectToAction("EscolhaPersonagem", "po");
+                return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
             else
             {
@@ -51,11 +51,22 @@ namespace YourLife.Controllers
         }
 
 
-        public ActionResult LogarUsuario()
+        public ActionResult LogarUsuario(Usuario usu)
         {
-            UsuarioDAO dao = new UsuarioDAO();
-            PersonagemDAO = new PersonagemDAO();
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            if (ModelState.IsValid && usuDAO.BuscaPorNick(usu.nickname) != null)
+            {
+                Personagem p = new Personagem();
+                PersonagemDAO pg = new PersonagemDAO();
+                p = pg.RetornarPersonagemExistente(usu);
 
+                return RedirectToAction("Base");
+            }
+            else
+            {
+                return View("Inicio");
+            }
+            
         }
 
 
@@ -80,7 +91,7 @@ namespace YourLife.Controllers
             p.CodEmprego = 0;
             dao.Adiciona(p);
 
-            return RedirectToAction("EscolhaPersonagem", "po");
+            return RedirectToAction("EscolhaPersonagem", "Jogo");
         }
         
 
@@ -131,9 +142,9 @@ namespace YourLife.Controllers
                 mj.Adiciona(ViewBag.Personagem.Id, id);
 
                 ViewBag.Personagem.Dinheiro -= preco;
-                return RedirectToAction("Mercado", "po");
+                return RedirectToAction("Mercado", "Jogo");
             }
-            return RedirectToAction("Mercado", "po");
+            return RedirectToAction("Mercado", "Jogo");
         }
 
         public ActionResult Emprego()
