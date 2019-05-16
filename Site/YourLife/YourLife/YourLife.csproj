@@ -176,8 +176,6 @@
     <Content Include="Content\JS\Base.js" />
     <Content Include="Content\JS\Inicio.js" />
     <Content Include="Content\JS\Layout.js" />
-    <Content Include="Content\JS\materialize.js" />
-    <Content Include="Content\JS\materialize.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Imagens\cupido.jpg" />
     <Content Include="Imagens\cupido.png" />

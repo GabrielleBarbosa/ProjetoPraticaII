@@ -42,11 +42,11 @@ namespace YourLife.Controllers
 
                 Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
                 
-                return RedirectToAction("EscolhaPersonagem", "Jogo");
+                return RedirectToAction("Inicio", "Jogo");
             }
             else
             {
-                return View("Inicio");
+                return View("Cadastro");
             }
         }
 

@@ -24,10 +24,11 @@
     overflow: auto; /* Enable scroll if needed */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     border: 1px solid #888;
-    background color: white;
+    background-color: white;
 }
 
 /* Modal Content */
+
 .modal-content {
     color: #888;
     background-color: #fefefe;
@@ -89,7 +90,7 @@
     overflow: auto; /* Enable scroll if needed */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
     border: 2px solid #888;
-    background color: white;
+    background-color: white;
 }
 
 #headerModalAviso {
