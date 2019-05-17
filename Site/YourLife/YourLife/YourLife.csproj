@@ -265,6 +265,7 @@
     <Content Include="Views\Jogo\Personagem.cshtml" />
     <Content Include="Views\Jogo\Cadastro.cshtml" />
     <Content Include="Views\Jogo\Login.cshtml" />
+    <Content Include="Views\Jogo\Outros.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
