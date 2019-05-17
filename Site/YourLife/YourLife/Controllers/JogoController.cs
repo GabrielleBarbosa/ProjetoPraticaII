@@ -52,6 +52,7 @@ namespace YourLife.Controllers
 
         public ActionResult Login()
         {
+            ViewBag.FalhaLogin = Session["falhaLogin"];
             return View();
         }
 
@@ -60,14 +61,12 @@ namespace YourLife.Controllers
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
             Usuario usuarioExistente = usuDAO.BuscaPorNick(usu.nickname);
-            if (ModelState.IsValid && usuarioExistente != null)
+            if (ModelState.IsValid && usuarioExistente != null && usuarioExistente.senha == usu.senha )
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
                 p = pg.BuscarPorIdUsuario(usuarioExistente.id);
-                if (p != null)
-                {
-
+                
                     Session["Personagem"] = p;
                     if (p.Sexo == 'M')
                     {
@@ -93,16 +92,25 @@ namespace YourLife.Controllers
                     }
 
                     return RedirectToAction("Base","Jogo");
-                }
-                else
-                {
-                    return null;
-                }
+               
             }
-            else
+            else if(!ModelState.IsValid)
             {
+                Session["falhaLogin"] = "Digite todos os campos necessários";
                 return View("Login");
             }
+            else if(usuarioExistente == null)
+            {
+                Session["falhaLogin"] = "Não existe um usuário com este nickname";
+                return View("Login");
+            }
+            else if(usuarioExistente.senha == usu.senha)
+            {
+                Session["falhaLogin"] = "Senha incorreta";
+                return View("Login");
+            }
+
+            return null;
             
         }
 
@@ -111,8 +119,7 @@ namespace YourLife.Controllers
         {
             return View();
         }
-
-        //[Route("SalvarNome/{nome}")]
+        
         public ActionResult SalvarNome(Personagem p)
         {
             if (ModelState.IsValid)
