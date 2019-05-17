@@ -170,6 +170,7 @@
     <Content Include="Content\CSS\EscolhaPersonagem.css" />
     <Content Include="Content\CSS\Inicio.css" />
     <Content Include="Content\CSS\Layout.css" />
+    <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
     <Content Include="Content\CSS\Site.css" />

@@ -3,9 +3,16 @@
 }
 
 
-<link rel="stylesheet" href="~/Content/CSS/Inicio.css" />
+<link rel="stylesheet" href="~/Content/CSS/Login.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+<!-- Compiled and minified JavaScript -->
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Kodchasan" rel="stylesheet">
 
 
 <center>
@@ -28,7 +35,7 @@
                         </div>
                     </div>
                     <center>
-                        <button type="submit" class="waves-effect waves-light btn" style="font-family: 'Open Sans', sans-serif;">Logar</button>
+                        <button type="submit" class="waves-effect waves-light btn blue" style="font-family: 'Open Sans', sans-serif;">Logar</button>
                     </center>
                 </form>
             </center>
@@ -36,9 +43,11 @@
     </div>
 </center>
 
-<div id="modal" class="modal modal-fixed-footer">
+<a class="btn-large modal-trigger" id="teste" href="#modal1">Jogar</a><br />
+
+<div id="modal1" class="modal modal-fixed-footer">
     <div class="modal-content">
-        <p>Usuario ou senha incorretos</p>
+        <p>aaaaaaaa</p>
     </div>
     <div class="modal-footer">
         <button class="modal-close waves-effect waves-green btn-flat">Fechar</button>
@@ -46,7 +55,12 @@
 </div>
 
 <script>
-    var falhaLogin = @ViewBag.FalhaLogin;
-    if (falhaLogin != null)
-        $("#modal").modal();
+    var falhaLogin = @ViewBag.FalhaLogin + "";
+    if (falhaLogin != "") {
+        $("p").val() = falhaLogin;
+        $('#teste').click();
+    }
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
 </script>
