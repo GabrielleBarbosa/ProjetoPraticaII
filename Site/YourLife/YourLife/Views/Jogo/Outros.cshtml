@@ -4,15 +4,55 @@
 
 <html>
 <head>
-    <title>Outros</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="~/Content/JS/Outros.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 
-<body>
-    <h3>Outras Opções</h3>
-    <hr style="height: 1px;"/>
+<body style="font-family:'Calisto MT'">
 
-    <button>Suicídio</button>
-    
+    <h3>Outras Opções</h3>
+    <hr style="height: 1px;" />
+
+    <a class="waves-effect waves-light btn white red-text z-depth-5 modal-trigger" id="s" href="#modalGeral" onclick="suicidioTexto();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
+    <a class="waves-effect waves-light btn white red-text z-depth-5 modal-trigger"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
+    <a class="waves-effect waves-light btn white red-text z-depth-5 modal-trigger">Academia</a><br /><br />
+
+    <!-- Modal Structure -->
+    <div id="modalGeral" class="modal modal-fixed-footer">
+        
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 style="font-family: 'Kodchasan', sans-serif;" class="blue-text text-darken-2" id="cabecalho"></h4>
+            </div>
+            <div class="modal-body">
+                <form action="" id="formModal">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label id="lbl1" class="lbl1"></label>
+                            <input type="text" id="txt1" name="txt1" maxlength="300" />
+                        </div>
+                    </div>
+                    <center>
+                        <button type="submit" class="waves-effect waves-light btn" id="resposta1">Sim</button>
+                        <button type="submit" class="waves-effect waves-light btn" id="resposta2">Não</button>
+                    </center>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+        </div>
+
+    </div>
+</body>
+
 
 </body>
 
