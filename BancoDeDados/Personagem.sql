@@ -11,10 +11,13 @@ create table Personagem
  pontosRelacionamento int not null,
  pontosFelicidade int not null, 
  dinheiro money,
- parceiro char not null,
+ parceiro int,
+ constraint fkParceiro foreign key(parceiro) references Parceiro(id),
  codEmprego int not null,
  constraint fkEmprego foreign key(codEmprego) references Emprego(id)
 )
+
+
 select * from Personagem
 drop table Personagem
 

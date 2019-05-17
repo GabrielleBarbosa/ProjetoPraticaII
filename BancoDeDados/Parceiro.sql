@@ -2,7 +2,7 @@
 
 create table Parceiro(
 
-id int IDENTITY(1,1),
+id int IDENTITY(1,1) primary key,
 
 nome ntext,
 idade int,
@@ -12,7 +12,8 @@ sexo char(1)
 )
 
 drop table Parceiro
-
+select * from Parceiro
+drop table Parceiro
 
 --femininos
 insert into Parceiro values('Sophia Leans',0,'F')
