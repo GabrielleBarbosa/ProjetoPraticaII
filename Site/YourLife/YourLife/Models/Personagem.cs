@@ -19,7 +19,7 @@ namespace YourLife.Models
         public int PontosRelacionamento { get; set; }
         public int PontosFelicidade { get; set; }
         public decimal Dinheiro { get; set; }
-        public char Parceiro { get; set; }
+        public int Parceiro { get; set; }
         public int CodEmprego { get; set; }
     }
 }
