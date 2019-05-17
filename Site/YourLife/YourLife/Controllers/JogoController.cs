@@ -60,7 +60,7 @@ namespace YourLife.Controllers
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
             Usuario usuarioExistente = usuDAO.BuscaPorNick(usu.nickname);
-            if (ModelState.IsValid && usuarioExistente != null)
+            if (ModelState.IsValid && usuarioExistente != null && usuarioExistente.senha == usu.senha )
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
@@ -375,11 +375,6 @@ namespace YourLife.Controllers
         public ActionResult Personagem()
         {
             ViewBag.Personagem = Session["Personagem"];
-            return View();
-        }
-
-        public ActionResult Outros()
-        {
             return View();
         }
     }
