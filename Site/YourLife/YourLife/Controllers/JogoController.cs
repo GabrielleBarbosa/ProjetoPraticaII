@@ -59,38 +59,45 @@ namespace YourLife.Controllers
         public ActionResult LogarUsuario(Usuario usu)
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
-            Usuario usuarioExistente = new Usuario();
+            Usuario usuarioExistente = usuDAO.BuscaPorNick(usu.nickname);
             if (ModelState.IsValid && usuarioExistente != null)
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
-                p = pg.BuscarPorIdUsuario(usu.id);
-
-                Session["Personagem"] = p;
-                if (p.Sexo == 'M')
+                p = pg.BuscarPorIdUsuario(usuarioExistente.id);
+                if (p != null)
                 {
-                    if (p.Idade < 14)
-                        Session["imagem"] = "menino.png";
-                    else if (p.Idade >= 14 && p.Idade <= 20)
-                        Session["imagem"] = "menino_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
-                        Session["imagem"] = "homem_adulto.png";
-                    else if (p.Idade >= 41)
-                        Session["imagem"] = "velho.png";
+
+                    Session["Personagem"] = p;
+                    if (p.Sexo == 'M')
+                    {
+                        if (p.Idade < 14)
+                            Session["imagem"] = "/Imagens/menino.png";
+                        else if (p.Idade >= 14 && p.Idade <= 20)
+                            Session["imagem"] = "/Imagens/menino_adolescente.png";
+                        else if (p.Idade >= 21 && p.Idade <= 40)
+                            Session["imagem"] = "/Imagens/homem_adulto.png";
+                        else if (p.Idade >= 41)
+                            Session["imagem"] = "/Imagens/velho.png";
+                    }
+                    else
+                    {
+                        if (p.Idade < 14)
+                            Session["imagem"] = "/Imagens/menina.png";
+                        else if (p.Idade >= 14 && p.Idade <= 20)
+                            Session["imagem"] = "/Imagens/menina_adolescente.png";
+                        else if (p.Idade >= 21 && p.Idade <= 40)
+                            Session["imagem"] = "/Imagens/mulher_adulta.png";
+                        else if (p.Idade >= 41)
+                            Session["imagem"] = "/Imagens/velha.png";
+                    }
+
+                    return RedirectToAction("Base","Jogo");
                 }
                 else
                 {
-                    if (p.Idade < 14)
-                        Session["imagem"] = "menina.png";
-                    else if (p.Idade >= 14 && p.Idade <= 20)
-                        Session["imagem"] = "menina_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
-                        Session["imagem"] = "mulher_adulta.png";
-                    else if (p.Idade >= 41)
-                        Session["imagem"] = "velha.png";
+                    return null;
                 }
-
-                return RedirectToAction("Base");
             }
             else
             {
@@ -143,6 +150,9 @@ namespace YourLife.Controllers
         public ActionResult SalvarPersonagem(char sexo)
         {
             ((Personagem)Session["Personagem"]).Sexo = sexo;
+            PersonagemDAO dao = new PersonagemDAO();
+            Personagem p = (Personagem)Session["Personagem"];
+            dao.DefinirSexo(p);
 
             if (sexo == 'M')
                 Session["imagem"] = "/Imagens/menino.png";

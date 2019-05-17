@@ -47,6 +47,21 @@ namespace YourLife.DAO
             }
             return null;
         }
+
+        public void DefinirSexo(Personagem p)
+        {
+            using (var contexto = new JogoContext())
+            {
+                IList<Personagem> lista = contexto.Personagem.ToList();
+                foreach (var jog in lista)
+                    if (p.Id == jog.Id)
+                    {
+                        jog.Sexo = p.Sexo;
+                        contexto.Personagem.Update(jog);
+                        contexto.SaveChanges();
+                    }
+            }
+        }
     }
 
 }
