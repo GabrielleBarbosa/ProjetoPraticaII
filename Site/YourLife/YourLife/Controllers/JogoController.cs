@@ -377,5 +377,10 @@ namespace YourLife.Controllers
             ViewBag.Personagem = Session["Personagem"];
             return View();
         }
+
+        public ActionResult Outros()
+        {
+            return View();
+        }
     }
 }
