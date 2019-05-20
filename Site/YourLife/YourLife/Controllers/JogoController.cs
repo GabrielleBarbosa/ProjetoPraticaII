@@ -67,32 +67,31 @@ namespace YourLife.Controllers
                 PersonagemDAO pg = new PersonagemDAO();
                 p = pg.BuscarPorIdUsuario(usuarioExistente.id);
                 
-                    Session["Personagem"] = p;
-                    if (p.Sexo == 'M')
-                    {
-                        if (p.Idade < 14)
-                            Session["imagem"] = "/Imagens/menino.png";
-                        else if (p.Idade >= 14 && p.Idade <= 20)
-                            Session["imagem"] = "/Imagens/menino_adolescente.png";
-                        else if (p.Idade >= 21 && p.Idade <= 40)
-                            Session["imagem"] = "/Imagens/homem_adulto.png";
-                        else if (p.Idade >= 41)
-                            Session["imagem"] = "/Imagens/velho.png";
-                    }
-                    else
-                    {
-                        if (p.Idade < 14)
-                            Session["imagem"] = "/Imagens/menina.png";
-                        else if (p.Idade >= 14 && p.Idade <= 20)
-                            Session["imagem"] = "/Imagens/menina_adolescente.png";
-                        else if (p.Idade >= 21 && p.Idade <= 40)
-                            Session["imagem"] = "/Imagens/mulher_adulta.png";
-                        else if (p.Idade >= 41)
-                            Session["imagem"] = "/Imagens/velha.png";
-                    }
+                Session["Personagem"] = p;
+                if (p.Sexo == 'M')
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "/Imagens/menino.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "/Imagens/menino_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "/Imagens/homem_adulto.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "/Imagens/velho.png";
+                }
+                else
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "/Imagens/menina.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "/Imagens/menina_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "/Imagens/mulher_adulta.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "/Imagens/velha.png";
+                }
 
-                    return RedirectToAction("Base","Jogo");
-               
+                return RedirectToAction("Base","Jogo");
             }
             else if(!ModelState.IsValid)
             {
@@ -111,7 +110,6 @@ namespace YourLife.Controllers
             }
 
             return null;
-            
         }
 
 
@@ -137,7 +135,7 @@ namespace YourLife.Controllers
                 p.Sexo = 'I';
                 p.CodEmprego = 0;
                 p.CodUsuario = usu.id;
-                p.Nome = "teste";
+                p.Parceiro = 0;
                 dao.Adiciona(p);
 
                 Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);

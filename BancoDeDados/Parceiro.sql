@@ -2,15 +2,14 @@
 
 create table Parceiro(
 
-id int IDENTITY(1,1) primary key,
-
+id int primary key,
 nome ntext,
 idade int,
 sexo char(1)
 
 -- 'H' pra hetero, 'G' pra homossexual e 'B' pra bissexual 
 )
-
+drop table Personagem
 drop table Parceiro
 select * from Parceiro
 drop table Parceiro
@@ -48,4 +47,5 @@ insert into Parceiro values('Eduardo Bolsonaro',0,'M')
 insert into Parceiro values('Jon Snow',0,'M')
 insert into Parceiro values('Renly Baratheon',0,'M')
 
+insert into parceiro values (0, 'Nenhum', 0, 'I')
 select * from Parceiro

@@ -228,6 +228,7 @@
     <Compile Include="DAO\CursoDAO.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
     <Compile Include="DAO\EscolhaDAO.cs" />
+    <Compile Include="DAO\ParceiroDAO.cs" />
     <Compile Include="DAO\PersonagemDAO.cs" />
     <Compile Include="DAO\JogoContext.cs" />
     <Compile Include="DAO\MercadoDAO.cs" />
@@ -243,6 +244,7 @@
     <Compile Include="Models\Curso.cs" />
     <Compile Include="Models\Emprego.cs" />
     <Compile Include="Models\Escolha.cs" />
+    <Compile Include="Models\Parceiro.cs" />
     <Compile Include="Models\Personagem.cs" />
     <Compile Include="Models\Mercado.cs" />
     <Compile Include="Models\MercadoJogador.cs" />

@@ -20,6 +20,7 @@ namespace YourLife.DAO
         public DbSet<Consequencia> Consequencia { get; set; }
         public DbSet<AcontecimentoFixo> AcontecimentoFixo { get; set; }
         public DbSet<AcontecimentoAleatorio> AcontecimentoAleatorio { get; set; }
+        public DbSet<Parceiro> Parceiro { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
