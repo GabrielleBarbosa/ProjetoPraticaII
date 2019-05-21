@@ -48,7 +48,7 @@ namespace YourLife.DAO
             return null;
         }
 
-        public void DefinirSexo(Personagem p)
+        public void Alterar(Personagem p)
         {
             using (var contexto = new JogoContext())
             {
@@ -68,6 +68,7 @@ namespace YourLife.DAO
             using (var contexto =  new JogoContext())
             {
                 contexto.Personagem.Remove(p);
+                contexto.SaveChanges();
             }
         }
     }

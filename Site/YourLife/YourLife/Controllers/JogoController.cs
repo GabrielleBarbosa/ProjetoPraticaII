@@ -152,7 +152,7 @@ namespace YourLife.Controllers
             ((Personagem)Session["Personagem"]).Sexo = sexo;
             PersonagemDAO dao = new PersonagemDAO();
             Personagem p = (Personagem)Session["Personagem"];
-            dao.DefinirSexo(p);
+            dao.Alterar(p);
 
             if (sexo == 'M')
                 Session["imagem"] = "/Imagens/menino.png";
@@ -274,81 +274,173 @@ namespace YourLife.Controllers
 
         public ActionResult Acontecimento()
         {
-            Personagem p = (Personagem)Session["Personagem"];
-
-            Random random = new Random();
-
-            if (p.Idade == 16) //idade para dirigir
+            if (Session["acontecimento"] == null)
             {
-                AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-                AcontecimentoFixo af = dao.BuscarPorId(1);
+                Personagem p = (Personagem)Session["Personagem"];
 
-                ViewBag.Acontecimento = Session["acontecimento"] = af;
+                Random random = new Random();
 
-                EscolhaDAO daoEsc = new EscolhaDAO();
-                Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
-                ViewBag.Escolha = Session["escolha"] = esc;
-
-                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
-                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
-                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
-                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
-                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
-            }
-            if (p.Idade == 18) //maioridade 
-            {
-                AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-                AcontecimentoFixo af = dao.BuscarPorId(2);
-
-                ViewBag.Acontecimento = Session["acontecimento"] = af;
-
-                EscolhaDAO daoEsc = new EscolhaDAO();
-                Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
-                ViewBag.Escolha = Session["escolha"] = esc;
-
-                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
-                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
-                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
-                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
-                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
-            }
-            else
-            {
-                int id = 0;
-                if (p.Idade <= 14)
+                if (p.Idade == 16) //idade para dirigir
                 {
-                    id = random.Next(1, 1); //(1, 20);
+                    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+                    AcontecimentoFixo af = dao.BuscarPorId(1);
+
+                    ViewBag.Acontecimento = Session["acontecimento"] = af;
+
+                    EscolhaDAO daoEsc = new EscolhaDAO();
+                    Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
+                    ViewBag.Escolha = Session["escolha"] = esc;
+
+                    ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                    Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                    Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                    ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                    ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
-                else if (p.Idade <= 30)
+                if (p.Idade == 18) //maioridade 
                 {
-                    id = random.Next(21, 40);
-                }
-                else if (p.Idade <= 60)
-                {
-                    id = random.Next(41, 60);
+                    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+                    AcontecimentoFixo af = dao.BuscarPorId(2);
+
+                    ViewBag.Acontecimento = Session["acontecimento"] = af;
+
+                    EscolhaDAO daoEsc = new EscolhaDAO();
+                    Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
+                    ViewBag.Escolha = Session["escolha"] = esc;
+
+                    ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                    Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                    Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                    ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                    ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
                 else
                 {
-                    id = random.Next(61, 80);
+                    int id = 0;
+                    if (p.Idade <= 14)
+                    {
+                        id = random.Next(1, 1); //(1, 20);
+                    }
+                    else if (p.Idade <= 30)
+                    {
+                        id = random.Next(21, 40);
+                    }
+                    else if (p.Idade <= 60)
+                    {
+                        id = random.Next(41, 60);
+                    }
+                    else
+                    {
+                        id = random.Next(61, 80);
+                    }
+
+                    AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
+                    AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
+
+                    ViewBag.Acontecimento = Session["acontecimento"] = aa;
+
+                    EscolhaDAO daoEsc = new EscolhaDAO();
+                    Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
+                    ViewBag.Escolha = Session["escolha"] = esc;
+
+                    ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                    Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                    Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                    ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                    ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
-
-                AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
-                AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
-
-                ViewBag.Acontecimento = Session["acontecimento"] = aa;
-
-                EscolhaDAO daoEsc = new EscolhaDAO();
-                Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
-                ViewBag.Escolha = Session["escolha"] = esc;
-
-                ConsequenciaDAO daoConseq = new ConsequenciaDAO();
-                Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
-                Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
-                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
-                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+            }
+            else
+            {
+                ViewBag.Acontecimento = Session["acontecimento"];
+                ViewBag.Escolha = Session["escolha"];
+                ViewBag.Consequencia1 = Session["consequencia1"];
+                ViewBag.Consequencia2 = Session["consequencia2"];
             }
 
             return View();
+        }
+
+        [Route("Escolher/{codConsequencia}")]
+        public ActionResult Escolha(int codConsequencia)
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            Consequencia c;
+
+            if (((Consequencia)Session["consequencia1"]).Id == codConsequencia)
+            {
+                c = (Consequencia)Session["consequencia1"];
+            }
+            else
+            {
+                c = (Consequencia)Session["consequencia2"];
+            }
+
+            AjustarPontos(ref p, c);
+
+            PersonagemDAO dao = new PersonagemDAO();
+
+            dao.Alterar(p);
+
+            Session["acontecimento"] = null;
+
+            return View("Base");
+        }
+
+        public void AjustarPontos(ref Personagem p, Consequencia c)
+        {
+            switch (c.TipoDoPontoGanho)
+            {
+                case "Inteligencia":
+                    p.PontosInteligencia += c.PontosGanhos;
+                    if (p.PontosInteligencia > 1000)
+                        p.PontosInteligencia = 1000;
+                    break;
+
+                case "Saude":
+                    p.PontosSaude += c.PontosGanhos;
+                    if (p.PontosSaude > 1000)
+                        p.PontosSaude = 1000;
+                    break;
+
+                case "Relacionamento":
+                    p.PontosRelacionamento += c.PontosGanhos;
+                    if (p.PontosRelacionamento > 1000)
+                        p.PontosRelacionamento = 1000;
+                    break;
+
+                case "Felicidade":
+                    p.PontosFelicidade += c.PontosGanhos;
+                    if (p.PontosFelicidade > 1000)
+                        p.PontosFelicidade = 1000;
+                    break;
+            }
+            switch (c.TipoDoPontoPerdido)
+            {
+                case "Inteligencia":
+                    p.PontosInteligencia -= c.PontosPerdidos;
+                    if (p.PontosInteligencia < 0)
+                        p.PontosInteligencia = 0;
+                    break;
+
+                case "Saude":
+                    p.PontosSaude -= c.PontosPerdidos;
+                    if (p.PontosSaude < 0)
+                        p.PontosSaude = 0;
+                    break;
+
+                case "Relacionamento":
+                    p.PontosRelacionamento -= c.PontosPerdidos;
+                    if (p.PontosRelacionamento < 0)
+                        p.PontosRelacionamento = 0;
+                    break;
+
+                case "Felicidade":
+                    p.PontosFelicidade -= c.PontosPerdidos;
+                    if (p.PontosFelicidade < 0)
+                        p.PontosFelicidade = 0;
+                    break;
+            }
         }
 
         public ActionResult Curso()
