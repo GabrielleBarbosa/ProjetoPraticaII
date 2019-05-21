@@ -8,6 +8,9 @@ constraint fkCurso foreign key(codCursoNecessario) references Curso(id)
 
 update Curso set nome='-' where id=0
 select * from curso
+select * from Personagem
+select * from usuario
+delete from Usuario 
 alter table Curso alter column nome varchar (40)
 delete from Curso
 delete from CursoJogador

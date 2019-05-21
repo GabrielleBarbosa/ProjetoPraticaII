@@ -14,7 +14,7 @@ select * from Emprego
 -- Se a pessoa for formada como um professor, ela vai possuir acesso a todos os empregos relacionados a essa área, no caso '111', o código do emprego
 --quantos anos trabalhando que o jogador precisa ter pra ter acesso a esse emprego?
 
-insert into emprego values (0, 0, 'Sem Emprego', 0, 0, 0)
+insert into emprego values (0, 'Sem Emprego', 0, 0)
 insert into Emprego values (1, 60,'Atendente de Mercado',1143.50,888)
 insert into Emprego values (2, 200,'Vendedor de Loja',1870.89,888)
 insert into Emprego values (3, 30,'Lixeiro',998.50,888)
