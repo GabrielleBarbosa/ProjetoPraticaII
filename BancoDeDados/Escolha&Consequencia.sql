@@ -24,6 +24,6 @@ pontosPerdidos int
 )
 drop table Consequencia
 
-insert into Consequencia values(1, 'festa', 50, 'Felicidade', 50, 'Inteligencia')
-insert into Consequencia values(1, 'escola', 50, 'Inteligencia', 50, 'Felicidade')
+insert into Consequencia values(1, 'festa', 50, 'Felicidade','Inteligencia', 50)
+insert into Consequencia values(2, 'escola', 50, 'Inteligencia', 'Felicidade', 50)
 
