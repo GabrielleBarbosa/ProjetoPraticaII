@@ -4,6 +4,7 @@ $('#txt1').hide();
 $('.lbl1').html("");
 $('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
 $('.modal').modal();
+if ($('#resposta1').)
 $.post('/Jogo/Suicidio');
 Response.redirect("/Jogo/EscolhaPersonagem");
 }
