@@ -9,9 +9,9 @@ namespace YourLife.Models
     {
         public int Id { get ; set; }
         public string Cenario { get; set; }
-        public int PontosGanho { get; set; }
+        public int PontosGanhos { get; set; }
         public string TipoDoPontoGanho { get; set; }
         public string TipoDoPontoPerdido { get; set; }
-        public int PontosPerdido { get; set; }
+        public int PontosPerdidos { get; set; }
     }
 }

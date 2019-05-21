@@ -16,6 +16,7 @@ namespace YourLife.DAO
         public DbSet<MercadoJogador> MercadoJogador { get; set; }
         public DbSet<Emprego> Emprego { get; set; }
         public DbSet<Curso> Curso { get; set; }
+        public DbSet<CursoJogador> CursoJogador { get; set; }
         public DbSet<Escolha> Escolha { get; set; }
         public DbSet<Consequencia> Consequencia { get; set; }
         public DbSet<AcontecimentoFixo> AcontecimentoFixo { get; set; }

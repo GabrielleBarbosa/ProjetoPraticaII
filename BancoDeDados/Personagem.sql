@@ -26,14 +26,3 @@ insert into Personagem values('Gabs123',0,'F',0,0,0,0,0,'S',1)
 insert into Personagem values('Janies',0,'F',0,0,0,0,0,'S',1)
 
 
-create table CursoJogador(
-id int identity(1,1) primary key,
-codCurso int, 
-constraint fkCurso foreign key(codCurso) references Curso(id),
-codJogador int
-constraint fkJogador1 foreign key(codJogador) references Jogador(id)
-)
-
-drop table CursoJogador
-
-select * from Usuario

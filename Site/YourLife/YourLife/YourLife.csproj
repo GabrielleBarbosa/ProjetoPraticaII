@@ -174,9 +174,6 @@
     <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
     <Content Include="Content\CSS\Site.css" />
-    <Content Include="Content\JS\Base.js" />
-    <Content Include="Content\JS\Inicio.js" />
-    <Content Include="Content\JS\Layout.js" />
     <Content Include="Content\JS\Outros.js" />
     <Content Include="Global.asax" />
     <Content Include="Imagens\cupido.jpg" />
@@ -227,6 +224,7 @@
     <Compile Include="DAO\AcontecimentoFixoDAO.cs" />
     <Compile Include="DAO\ConsequenciaDAO.cs" />
     <Compile Include="DAO\CursoDAO.cs" />
+    <Compile Include="DAO\CursoJogadorDAO.cs" />
     <Compile Include="DAO\EmpregoDAO.cs" />
     <Compile Include="DAO\EscolhaDAO.cs" />
     <Compile Include="DAO\ParceiroDAO.cs" />
@@ -243,6 +241,7 @@
     <Compile Include="Models\AcontecimentoFixo.cs" />
     <Compile Include="Models\Consequencia.cs" />
     <Compile Include="Models\Curso.cs" />
+    <Compile Include="Models\CursoJogador.cs" />
     <Compile Include="Models\Emprego.cs" />
     <Compile Include="Models\Escolha.cs" />
     <Compile Include="Models\Parceiro.cs" />

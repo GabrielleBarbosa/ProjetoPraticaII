@@ -3,28 +3,29 @@
 }
 
 <link rel="stylesheet" href="~/Content/CSS/Login.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <center>
     <div class="caixa">
         <div class="container botoes">
             <center>
-                <form action="/Jogo/AdicionarJogador" method="post" class="col s12">
+                <form id='form' action="/Jogo/AdicionarJogador" method="post" class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="usu.nickname">Digite o seu nome de usuário:</label>
-                            <input type="text" id="usu.nickname" name="usu.nickname" maxlength="15" />
-                            @Html.ValidationMessage("usu.nickname")
+                            <input type="text" id="txtNickname" name="usu.nickname" maxlength="15" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="usu.senha">Senha:</label>
-                            <input type="password" id="usu.senha" name="usu.senha" />
-                            @Html.ValidationMessage("usu.senha")
+                            <input type="password" id="txtSenha" name="usu.senha" maxlength="15" required />
                         </div>
                     </div>
                     <center>
-                        <button type="submit" class="waves-effect waves-light btn blue" style="font-family: 'Open Sans', sans-serif;">Cadastrar</button>
+                        <button type="submit" class=" btn blue" style="font-family: 'Open Sans', sans-serif;">Cadastrar</button>
                     </center>
                 </form>
             </center>
@@ -38,7 +39,7 @@
             <h3><i>Cadastro</i></h3>
         </div>
         <div class="modal-body">
-            <p>Verifique seu login e senha!</p>
+            <p>Este nome de usuário já está sendo utilizado!!</p>
         </div>
     </div>
     <div class="modal-footer">
@@ -57,10 +58,8 @@
         document.getElementById('form').onsubmit = function (e) {
             var validado = false;
 
-
             $.ajaxSetup({ async: false });
-            $.when($.post('/Jogo/ValidarLogin', {
-                senha: $('#txtSenha').val(),
+            $.when($.post('/Jogo/ValidarCadastro', {
                 nick: $('#txtNickname').val()
             },
                 function (data) {
@@ -80,7 +79,7 @@
     }
 
     window.onclick = function (event) {
-            modal.style.display = "none";
+        modal.style.display = "none";
     };
 
 

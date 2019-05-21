@@ -33,30 +33,29 @@ namespace YourLife.Controllers
             return View();
         }
 
+        public JsonResult ValidarCadastro(string nick)
+        {
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            Usuario usuarioExistente = usuDAO.BuscaPorNick(nick);
+            if (usuarioExistente == null)
+            {
+                return Json(true);
+            }
+            return Json(false);
+        }
+
         [HttpPost]
         public ActionResult AdicionarJogador(Usuario usu)
         {
             UsuarioDAO dao = new UsuarioDAO();
-            if (ModelState.IsValid && dao.BuscaPorNick(usu.nickname) == null)
-            {
-                dao.Adiciona(usu);
-                Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
+            dao.Adiciona(usu);
+            Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
 
-                return RedirectToAction("Inicio", "Jogo");
-            }
-            else
-            {
-                return View("Cadastro");
-            }
+            return RedirectToAction("Inicio", "Jogo");
         }
 
         public ActionResult Login()
         {
-            if (Session["falhaLogin"] == null)
-                ViewBag.FalhaLogin = (bool)false;
-            else
-                ViewBag.FalhaLogin = (bool)Session["falhaLogin"];
-
             return View();
         }
 
@@ -75,43 +74,37 @@ namespace YourLife.Controllers
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
             Usuario usuarioExistente = usuDAO.BuscaPorNick(usu.nickname);
-            if (ModelState.IsValid)
+
+            Personagem p = new Personagem();
+            PersonagemDAO pg = new PersonagemDAO();
+            p = pg.BuscarPorIdUsuario(usuarioExistente.id);
+
+            Session["Personagem"] = p;
+            if (p.Sexo == 'M')
             {
-                Personagem p = new Personagem();
-                PersonagemDAO pg = new PersonagemDAO();
-                p = pg.BuscarPorIdUsuario(usuarioExistente.id);
-
-                Session["Personagem"] = p;
-                if (p.Sexo == 'M')
-                {
-                    if (p.Idade < 14)
-                        Session["imagem"] = "/Imagens/menino.png";
-                    else if (p.Idade >= 14 && p.Idade <= 20)
-                        Session["imagem"] = "/Imagens/menino_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
-                        Session["imagem"] = "/Imagens/homem_adulto.png";
-                    else if (p.Idade >= 41)
-                        Session["imagem"] = "/Imagens/velho.png";
-                }
-                else
-                {
-                    if (p.Idade < 14)
-                        Session["imagem"] = "/Imagens/menina.png";
-                    else if (p.Idade >= 14 && p.Idade <= 20)
-                        Session["imagem"] = "/Imagens/menina_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
-                        Session["imagem"] = "/Imagens/mulher_adulta.png";
-                    else if (p.Idade >= 41)
-                        Session["imagem"] = "/Imagens/velha.png";
-                }
-
-
-                return RedirectToAction("Base", "Jogo");
+                if (p.Idade < 14)
+                    Session["imagem"] = "/Imagens/menino.png";
+                else if (p.Idade >= 14 && p.Idade <= 20)
+                    Session["imagem"] = "/Imagens/menino_adolescente.png";
+                else if (p.Idade >= 21 && p.Idade <= 40)
+                    Session["imagem"] = "/Imagens/homem_adulto.png";
+                else if (p.Idade >= 41)
+                    Session["imagem"] = "/Imagens/velho.png";
             }
             else
             {
-                return View("Login", "Jogo");
+                if (p.Idade < 14)
+                    Session["imagem"] = "/Imagens/menina.png";
+                else if (p.Idade >= 14 && p.Idade <= 20)
+                    Session["imagem"] = "/Imagens/menina_adolescente.png";
+                else if (p.Idade >= 21 && p.Idade <= 40)
+                    Session["imagem"] = "/Imagens/mulher_adulta.png";
+                else if (p.Idade >= 41)
+                    Session["imagem"] = "/Imagens/velha.png";
             }
+
+
+            return RedirectToAction("Base", "Jogo");
         }
 
 
@@ -324,7 +317,7 @@ namespace YourLife.Controllers
                 int id = 0;
                 if (p.Idade <= 14)
                 {
-                    id = random.Next(1, 20);
+                    id = random.Next(1, 1); //(1, 20);
                 }
                 else if (p.Idade <= 30)
                 {
@@ -366,6 +359,9 @@ namespace YourLife.Controllers
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
             ViewBag.Pagina = Session["paginaAtual"];
+
+            CursoJogadorDAO usuDao = new CursoJogadorDAO();
+            ViewBag.CursosFeitos = usuDao.ListarCursos();
             return View();
         }
 

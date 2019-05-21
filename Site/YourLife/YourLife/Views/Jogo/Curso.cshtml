@@ -34,14 +34,26 @@ else
                 if (i < ViewBag.Cursos.Count)
                 {
                     string enabled = "";
+                    bool fezCurso = false;
                     if (ViewBag.Cursos[i].CodCursoNecessario != 0)
-                {
-                    enabled = "disabled";
-                }
-                else if (ViewBag.Cursando != null && ViewBag.Cursos[i].id == ViewBag.Cursando.id)
-                {
-                    enabled = "disabled";
-                }
+                    {
+                        foreach (var cur in ViewBag.CursosFeitos)
+                        {
+                            if(cur.CodCursoNecessario == cur.id)
+                            {
+                                fezCurso = true;
+                                break;
+                            }
+                        }
+                        if (!fezCurso)
+                        {
+                            enabled = "disabled";
+                        }
+                    }
+                    else if (ViewBag.Cursando != null && ViewBag.Cursos[i].id == ViewBag.Cursando.id)
+                    {
+                        enabled = "disabled";
+                    }
 
                 <tr>
                     <td>@ViewBag.Cursos[i].Nome</td>
