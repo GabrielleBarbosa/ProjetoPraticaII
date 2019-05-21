@@ -52,14 +52,8 @@ namespace YourLife.DAO
         {
             using (var contexto = new JogoContext())
             {
-                IList<Personagem> lista = contexto.Personagem.ToList();
-                foreach (var jog in lista)
-                    if (p.Id == jog.Id)
-                    {
-                        contexto.Personagem.Update(p);
-                        contexto.SaveChanges();
-                        break;
-                    }
+                contexto.Personagem.Update(p);
+                contexto.SaveChanges();
             }
         }
 

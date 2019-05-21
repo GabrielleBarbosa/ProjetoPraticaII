@@ -77,9 +77,9 @@ else
 
 @if (ViewBag.Pagina > 0)
 {
-    <a href="/MudarPagina/@paginaAnterior/Emprego">Voltar aos cursos anteriores</a>
+    <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
 }
-@if ((ViewBag.Pagina + 1) * 9 < ViewBag.Cursos.Count)
+@if ((ViewBag.Pagina + 1) * 4 < ViewBag.Cursos.Count)
 {
-    <a href="/MudarPagina/@proximaPagina/Emprego">Ver mais cursos</a>
+    <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
 }

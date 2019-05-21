@@ -23,20 +23,37 @@
 
     <tbody>
 
-        @foreach (var mc in ViewBag.Mercado)
+        @for (int i = ViewBag.Pagina * 4; i < (ViewBag.Pagina * 4) + 4; i++)
         {
-            string enabled = "";
-            if (ViewBag.Personagem.Dinheiro < mc.Preco)
+            if (i < ViewBag.Mercado.Count)
             {
-                enabled = "disabled";
+                var mc = ViewBag.Mercado[i];
+                string enabled = "";
+                if (ViewBag.Personagem.Dinheiro < mc.Preco)
+                {
+                    enabled = "disabled";
+                }
+                <tr>
+                    <td>@mc.TipoProduto</td>
+                    <td>@mc.Produto</td>
+                    <td>@mc.Descricao</td>
+                    <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
+                    <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",", ".")/@mc.Id">Comprar</a></td>
+                </tr>
             }
-            <tr>
-                <td>@mc.TipoProduto</td>
-                <td>@mc.Produto</td>
-                <td>@mc.Descricao</td>
-                <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
-                <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",",".")/@mc.Id">Comprar</a></td>
-            </tr>
+
         }
     </tbody>
 </table>
+
+@{int paginaAnterior = ViewBag.Pagina - 1;
+    int proximaPagina = ViewBag.Pagina + 1; }
+
+@if (ViewBag.Pagina > 0)
+{
+    <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
+}
+@if ((ViewBag.Pagina + 1) * 4 < ViewBag.Mercado.Count-1)
+{
+    <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
+}

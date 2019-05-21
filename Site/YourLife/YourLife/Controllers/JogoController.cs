@@ -449,7 +449,6 @@ namespace YourLife.Controllers
         public ActionResult Curso()
         {
             ViewBag.Cursando = Session["cursando"];
-            Session["paginaAtual"] = 0;
             CursoDAO dao = new CursoDAO();
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
