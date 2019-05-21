@@ -52,7 +52,11 @@ namespace YourLife.Controllers
 
         public ActionResult Login()
         {
-            ViewBag.FalhaLogin = Session["falhaLogin"];
+            if (Session["falhaLogin"]==null)
+                ViewBag.FalhaLogin = (bool)false;
+            else
+                ViewBag.FalhaLogin = (bool) Session["falhaLogin"];
+
             return View();
         }
 
@@ -91,22 +95,13 @@ namespace YourLife.Controllers
                         Session["imagem"] = "/Imagens/velha.png";
                 }
 
+                Session["falhaLogin"] = false;
                 return RedirectToAction("Base","Jogo");
             }
-            else if(!ModelState.IsValid)
+            else
             {
-                Session["falhaLogin"] = "Digite todos os campos necessários";
-                return View("Login");
-            }
-            else if(usuarioExistente == null)
-            {
-                Session["falhaLogin"] = "Não existe um usuário com este nickname";
-                return View("Login");
-            }
-            else if(usuarioExistente.senha == usu.senha)
-            {
-                Session["falhaLogin"] = "Senha incorreta";
-                return View("Login");
+                Session["falhaLogin"] = true;
+                return RedirectToAction("Login", "Jogo");
             }
 
             return null;

@@ -16,13 +16,14 @@ namespace YourLife.DAO
                 IList<Parceiro> lista = contexto.Parceiro.ToList();
                 foreach (var p in lista)
                 {
-                    if(p.id == id)
+                    if (p.id == id)
                     {
                         parceiro = p;
                         break;
                     }
                 }
                 return parceiro;
+            }
         }
     }
 }

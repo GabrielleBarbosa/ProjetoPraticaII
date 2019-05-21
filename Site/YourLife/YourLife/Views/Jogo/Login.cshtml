@@ -1,9 +1,13 @@
-﻿@{
+﻿
+@{
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 
 <link rel="stylesheet" href="~/Content/CSS/Login.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <center>
     <div class="caixa">
@@ -32,3 +36,47 @@
         </div>
     </div>
 </center>
+
+<div class="modal modal-fixed-footer" id="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="headerModalAviso">
+            <h3><i>Login</i></h3>
+        </div>
+        <div class="modal-body">
+            <p>Verifique seu login e senha!</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("modal");
+    var span = document.getElementsByClassName("close")[0];
+
+    abrirModal = function () {
+        modal.style.display = "block";
+    }
+    
+    var falhaLogin;
+
+    if (@ViewBag.FalhaLogin == True)
+        falhaLogin = true;
+    else
+        falhaLogin = false;
+
+    if (falhaLogin) {
+        abrirModal();
+    }
+
+    window.onclick = function (event) {
+        if (event.target!==modal)
+            modal.style.display = "none";
+    };
+
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+</script>
