@@ -484,7 +484,9 @@ namespace YourLife.Controllers
         public ActionResult Suicidio()
         {
             Personagem p = (Personagem)Session["Personagem"];
-            p.
+            PersonagemDAO pg = new PersonagemDAO();
+            pg.Morrer(p);
+            return View();
 
         }
 
