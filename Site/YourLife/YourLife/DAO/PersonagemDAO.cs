@@ -56,9 +56,9 @@ namespace YourLife.DAO
                 foreach (var jog in lista)
                     if (p.Id == jog.Id)
                     {
-                        jog.Sexo = p.Sexo;
-                        contexto.Personagem.Update(jog);
+                        contexto.Personagem.Update(p);
                         contexto.SaveChanges();
+                        break;
                     }
             }
         }

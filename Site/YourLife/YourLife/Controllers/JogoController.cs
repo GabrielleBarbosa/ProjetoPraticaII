@@ -376,7 +376,8 @@ namespace YourLife.Controllers
                 c = (Consequencia)Session["consequencia2"];
             }
 
-            AjustarPontos(ref p, c);
+            AjustarPontos(p, c);
+            p = (Personagem)Session["Personagem"];
 
             PersonagemDAO dao = new PersonagemDAO();
 
@@ -387,7 +388,7 @@ namespace YourLife.Controllers
             return View("Base");
         }
 
-        public void AjustarPontos(ref Personagem p, Consequencia c)
+        public void AjustarPontos(Personagem p, Consequencia c)
         {
             switch (c.TipoDoPontoGanho)
             {
@@ -441,6 +442,8 @@ namespace YourLife.Controllers
                         p.PontosFelicidade = 0;
                     break;
             }
+
+            Session["Personagem"] = p;
         }
 
         public ActionResult Curso()
