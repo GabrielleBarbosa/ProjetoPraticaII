@@ -174,6 +174,7 @@ namespace YourLife.Controllers
             //ViewBag.Personagem = Session["Personagem"];
             ViewBag.Personagem = new Personagem();
             ViewBag.Personagem.Dinheiro = 0;
+            ViewBag.Pagina = Session["PaginaAtual"];
 
             MercadoDAO dao = new MercadoDAO();
             IList<Mercado> mc = dao.ListarMercado();
@@ -201,7 +202,7 @@ namespace YourLife.Controllers
             ViewBag.EmpregoAtual = Session["teste"];
             EmpregoDAO dao = new EmpregoDAO();
             IList<Emprego> emp = dao.ListarEmprego();
-            ViewBag.Pagina = Session["paginaAtual"];
+            ViewBag.Pagina = Session["PaginaAtual"];
             ViewBag.Emprego = emp;
 
             return View();
@@ -234,7 +235,7 @@ namespace YourLife.Controllers
         [Route("MudarPagina/{pagina}/{lugar}")]
         public ActionResult MudarPagina(int pagina, string lugar)
         {
-            Session["paginaAtual"] = pagina;
+            Session["PaginaAtual"] = pagina;
             return RedirectToAction(lugar, "Jogo");
         }
 
@@ -452,7 +453,7 @@ namespace YourLife.Controllers
             CursoDAO dao = new CursoDAO();
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
-            ViewBag.Pagina = Session["paginaAtual"];
+            ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO usuDao = new CursoJogadorDAO();
             ViewBag.CursosFeitos = usuDao.ListarCursos();

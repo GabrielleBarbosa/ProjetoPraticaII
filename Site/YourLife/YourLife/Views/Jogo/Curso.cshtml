@@ -3,83 +3,86 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
+<a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
+<div class="container">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
 
-<center>
-    <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Cursos</h1>
-</center>
-@if (ViewBag.Cursando != null)
-{
-    <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Cursando: @ViewBag.Cursando.Nome</p>
-}
-else
-{
-    <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Você não está cursando nada no momento!</p>
-}
+    <center>
+        <p style="font-family: 'Sofia',cursive;font-size:10vh;" class="blue-text text-darken-2">Cursos</p>
+    </center>
+    @if (ViewBag.Cursando != null)
+    {
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Cursando: @ViewBag.Cursando.Nome</p>
+    }
+    else
+    {
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Você não está cursando nada no momento!</p>
+    }
 
-<center>
-    <table class="highlight centered" style="border: 1px solid #e0e0e0; position:relative;">
-        <thead>
-            <tr>
-                <th>Curso</th>
-                <th>Descrição</th>
-                <th>Experiência Necessária</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = ViewBag.Pagina * 4 + 1; i < (ViewBag.Pagina * 4) + 5; i++)
-            {
-
-                if (i < ViewBag.Cursos.Count)
+    <center>
+        <table class="highlight centered" style="border: 1px solid #e0e0e0; position:relative;">
+            <thead>
+                <tr>
+                    <th>Curso</th>
+                    <th>Descrição</th>
+                    <th>Experiência Necessária</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = ViewBag.Pagina * 4 + 1; i < (ViewBag.Pagina * 4) + 5; i++)
                 {
-                    string enabled = "";
-                    bool fezCurso = false;
-                    if (ViewBag.Cursos[i].CodCursoNecessario != 0)
+
+                    if (i < ViewBag.Cursos.Count)
                     {
-                        foreach (var cur in ViewBag.CursosFeitos)
+                        string enabled = "";
+                        bool fezCurso = false;
+                        if (ViewBag.Cursos[i].CodCursoNecessario != 0)
                         {
-                            if(cur.CodCursoNecessario == cur.id)
+                            foreach (var cur in ViewBag.CursosFeitos)
                             {
-                                fezCurso = true;
-                                break;
+                                if (cur.CodCursoNecessario == cur.id)
+                                {
+                                    fezCurso = true;
+                                    break;
+                                }
+                            }
+                            if (!fezCurso)
+                            {
+                                enabled = "disabled";
                             }
                         }
-                        if (!fezCurso)
+                        else if (ViewBag.Cursando != null && ViewBag.Cursos[i].id == ViewBag.Cursando.id)
                         {
                             enabled = "disabled";
                         }
+
+                        <tr>
+                            <td>@ViewBag.Cursos[i].Nome</td>
+                            <td>@ViewBag.Cursos[i].Descricao</td>
+                            <td>@ViewBag.Cursos[ViewBag.Cursos[i].CodCursoNecessario].Nome</td>
+                            <td><a class="waves-effect waves-light btn-small @enabled" href="/FazerCurso/@ViewBag.Cursos[i].id">Fazer curso</a></td>
+                        </tr>
                     }
-                    else if (ViewBag.Cursando != null && ViewBag.Cursos[i].id == ViewBag.Cursando.id)
+                    else
                     {
-                        enabled = "disabled";
+                        break;
                     }
-
-                <tr>
-                    <td>@ViewBag.Cursos[i].Nome</td>
-                    <td>@ViewBag.Cursos[i].Descricao</td>
-                    <td>@ViewBag.Cursos[ViewBag.Cursos[i].CodCursoNecessario].Nome</td>
-                    <td><a class="waves-effect waves-light btn-small @enabled" href="/FazerCurso/@ViewBag.Cursos[i].id">Fazer curso</a></td>
-                </tr>
                 }
-                else
-                {
-                    break;
-                }
-            }
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-</center>
+    </center>
 
-@{int paginaAnterior = ViewBag.Pagina - 1;
-    int proximaPagina = ViewBag.Pagina + 1; }
+    @{int paginaAnterior = ViewBag.Pagina - 1;
+        int proximaPagina = ViewBag.Pagina + 1; }
 
-@if (ViewBag.Pagina > 0)
-{
-    <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
-}
-@if ((ViewBag.Pagina + 1) * 4 < ViewBag.Cursos.Count)
-{
-    <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
-}
+    @if (ViewBag.Pagina > 0)
+    {
+        <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
+    }
+    @if ((ViewBag.Pagina + 1) * 4 < ViewBag.Cursos.Count)
+    {
+        <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
+    }
+</div>

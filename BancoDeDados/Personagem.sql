@@ -19,6 +19,7 @@ create table Personagem
 
 
 select * from Personagem
+select * from Usuario
 drop table Personagem
 
 insert into Personagem values('123','Vinchers',0,'M',0,0,0,0,0,'S',0)

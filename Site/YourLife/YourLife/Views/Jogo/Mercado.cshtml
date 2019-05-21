@@ -4,56 +4,59 @@
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
 
-<center>
-    <h1 style="font-family: 'Sofia',cursive;" class="blue-text text-darken-2">Mercado</h1>
-</center>
+<a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
+<div class="container">
+    <center>
+        <p style="font-family: 'Sofia',cursive;font-size:10vh;" class="blue-text text-darken-2">Mercado</p>
+    </center>
 
-<p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Seu Dinheiro: @ViewBag.Personagem.Dinheiro</p>
+    <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Seu Dinheiro: @ViewBag.Personagem.Dinheiro</p>
 
-<table class="highlight centered" style=" border: 1px solid #e0e0e0;">
-    <thead>
-        <tr>
-            <th>Tipo</th>
-            <th>Produto</th>
-            <th>Descrição</th>
-            <th>Preço</th>
-            <th></th>
-        </tr>
-    </thead>
+    <table class="highlight centered" style=" border: 1px solid #e0e0e0;">
+        <thead>
+            <tr>
+                <th>Tipo</th>
+                <th>Produto</th>
+                <th>Descrição</th>
+                <th>Preço</th>
+                <th></th>
+            </tr>
+        </thead>
 
-    <tbody>
+        <tbody>
 
-        @for (int i = ViewBag.Pagina * 4; i < (ViewBag.Pagina * 4) + 4; i++)
-        {
-            if (i < ViewBag.Mercado.Count)
+            @for (int i = ViewBag.Pagina * 4; i < (ViewBag.Pagina * 4) + 4; i++)
             {
-                var mc = ViewBag.Mercado[i];
-                string enabled = "";
-                if (ViewBag.Personagem.Dinheiro < mc.Preco)
+                if (i < ViewBag.Mercado.Count)
                 {
-                    enabled = "disabled";
+                    var mc = ViewBag.Mercado[i];
+                    string enabled = "";
+                    if (ViewBag.Personagem.Dinheiro < mc.Preco)
+                    {
+                        enabled = "disabled";
+                    }
+                    <tr>
+                        <td>@mc.TipoProduto</td>
+                        <td>@mc.Produto</td>
+                        <td>@mc.Descricao</td>
+                        <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
+                        <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",", ".")/@mc.Id">Comprar</a></td>
+                    </tr>
                 }
-                <tr>
-                    <td>@mc.TipoProduto</td>
-                    <td>@mc.Produto</td>
-                    <td>@mc.Descricao</td>
-                    <td>@mc.Preco.ToString().Substring(0, mc.Preco.ToString().Length - 2)</td>
-                    <td><a class="waves-effect waves-light btn-small @enabled" href="/Comprar/@mc.Preco.ToString().Replace(",", ".")/@mc.Id">Comprar</a></td>
-                </tr>
+
             }
+        </tbody>
+    </table>
 
-        }
-    </tbody>
-</table>
+    @{int paginaAnterior = ViewBag.Pagina - 1;
+        int proximaPagina = ViewBag.Pagina + 1; }
 
-@{int paginaAnterior = ViewBag.Pagina - 1;
-    int proximaPagina = ViewBag.Pagina + 1; }
-
-@if (ViewBag.Pagina > 0)
-{
-    <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
-}
-@if ((ViewBag.Pagina + 1) * 4 < ViewBag.Mercado.Count-1)
-{
-    <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
-}
+    @if (ViewBag.Pagina > 0)
+    {
+        <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
+    }
+    @if ((ViewBag.Pagina + 1) * 4 < ViewBag.Mercado.Count)
+    {
+        <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
+    }
+</div>
