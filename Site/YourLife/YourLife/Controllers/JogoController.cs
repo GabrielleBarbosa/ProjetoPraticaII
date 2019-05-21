@@ -14,7 +14,7 @@ namespace YourLife.Controllers
         {
             return View();
         }
-        
+
         public ActionResult PaginaInicial()
         {
             return View();
@@ -41,7 +41,7 @@ namespace YourLife.Controllers
             {
                 dao.Adiciona(usu);
                 Session["Usuario"] = dao.BuscaPorNick(usu.nickname);
-                
+
                 return RedirectToAction("Inicio", "Jogo");
             }
             else
@@ -52,25 +52,35 @@ namespace YourLife.Controllers
 
         public ActionResult Login()
         {
-            if (Session["falhaLogin"]==null)
+            if (Session["falhaLogin"] == null)
                 ViewBag.FalhaLogin = (bool)false;
             else
-                ViewBag.FalhaLogin = (bool) Session["falhaLogin"];
+                ViewBag.FalhaLogin = (bool)Session["falhaLogin"];
 
             return View();
         }
 
+        public JsonResult ValidarLogin(string senha, string nick)
+        {
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            Usuario usuarioExistente = usuDAO.BuscaPorNick(nick);
+            if (usuarioExistente != null && usuarioExistente.senha == senha)
+            {
+                return Json(true);
+            }
+            return Json(false);
+        }
 
         public ActionResult LogarUsuario(Usuario usu)
         {
             UsuarioDAO usuDAO = new UsuarioDAO();
             Usuario usuarioExistente = usuDAO.BuscaPorNick(usu.nickname);
-            if (ModelState.IsValid && usuarioExistente != null && usuarioExistente.senha == usu.senha )
+            if (ModelState.IsValid)
             {
                 Personagem p = new Personagem();
                 PersonagemDAO pg = new PersonagemDAO();
                 p = pg.BuscarPorIdUsuario(usuarioExistente.id);
-                
+
                 Session["Personagem"] = p;
                 if (p.Sexo == 'M')
                 {
@@ -95,16 +105,13 @@ namespace YourLife.Controllers
                         Session["imagem"] = "/Imagens/velha.png";
                 }
 
-                Session["falhaLogin"] = false;
-                return RedirectToAction("Base","Jogo");
+
+                return RedirectToAction("Base", "Jogo");
             }
             else
             {
-                Session["falhaLogin"] = true;
-                return RedirectToAction("Login", "Jogo");
+                return View("Login", "Jogo");
             }
-
-            return null;
         }
 
 
@@ -112,7 +119,7 @@ namespace YourLife.Controllers
         {
             return View();
         }
-        
+
         public ActionResult SalvarNome(Personagem p)
         {
             if (ModelState.IsValid)
@@ -225,7 +232,7 @@ namespace YourLife.Controllers
 
             return RedirectToAction("Emprego", "Jogo");
         }
-        
+
         public ActionResult Relatorio()
         {
             return View();
@@ -323,7 +330,7 @@ namespace YourLife.Controllers
                 {
                     id = random.Next(21, 40);
                 }
-                else if(p.Idade <= 60)
+                else if (p.Idade <= 60)
                 {
                     id = random.Next(41, 60);
                 }

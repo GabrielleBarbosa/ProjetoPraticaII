@@ -32,3 +32,56 @@
     </div>
 </center>
 
+<div class="modal modal-fixed-footer" id="modal">
+    <div class="modal-content">
+        <div class="modal-header" id="headerModalAviso">
+            <h3><i>Cadastro</i></h3>
+        </div>
+        <div class="modal-body">
+            <p>Verifique seu login e senha!</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+</div>
+
+<script>
+    var modal = document.getElementById("modal");
+
+    abrirModal = function () {
+        modal.style.display = "block";
+    }
+
+    window.onload = function () {
+        document.getElementById('form').onsubmit = function (e) {
+            var validado = false;
+
+
+            $.ajaxSetup({ async: false });
+            $.when($.post('/Jogo/ValidarLogin', {
+                senha: $('#txtSenha').val(),
+                nick: $('#txtNickname').val()
+            },
+                function (data) {
+                    if (data) {
+                        alert(data);
+                        validado = true;
+                    }
+                    else {
+                        abrirModal();
+                        validado = false;
+                    }
+                })).done(function () {
+                    if (!validado)
+                        e.preventDefault();
+                });
+        }
+    }
+
+    window.onclick = function (event) {
+            modal.style.display = "none";
+    };
+
+
+</script>
