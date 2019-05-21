@@ -385,9 +385,20 @@ namespace YourLife.Controllers
             return View();
         }
 
+
+        //------------------------------------------------------------------------------------------------------------------------------
+        //Outros
+
         public ActionResult Outros()
         {
             return View();
         }
+        public ActionResult Suicidio()
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            p.
+
+        }
+
     }
 }

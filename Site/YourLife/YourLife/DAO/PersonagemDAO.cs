@@ -62,6 +62,14 @@ namespace YourLife.DAO
                     }
             }
         }
+
+        public void Morrer(Personagem p)
+        {
+            using (var contexto =  new JogoContext())
+            {
+                contexto.Personagem.Remove(p);
+            }
+        }
     }
 
 }
