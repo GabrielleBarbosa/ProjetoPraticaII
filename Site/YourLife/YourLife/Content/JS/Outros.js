@@ -35,7 +35,7 @@ function Obituario() {
                     +"apenas sabiam que você havia decididio dar um fim a sua própria vida.Mas fazer o que, essas coisas acontecem, o que nos resta apenas é tentar novamente...";
     $('#cabecalho').html("Obituário");
     $('#paragrafo').html(descricao);
-    $('.modal').height(1900);
+    $('.modal').height('800');
     $('.modal').modal();
 
 }
