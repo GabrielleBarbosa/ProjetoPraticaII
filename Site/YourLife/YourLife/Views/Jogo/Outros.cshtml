@@ -16,45 +16,49 @@
 
 <body style="font-family:'Calisto MT'">
 
-    <p style="font-size:4vh">Outras Opções</p>
-    <hr style="height: 1px;" />
+    <a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
 
-    <a class="  btn white red-text z-depth-5 modal-trigger" id="s" href="#modalGeral" onclick="suicidioTexto();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="~/Controllers/JogoController.cs">Academia</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Passear</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="demissao();">Pedir demissão</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Visitar Parentes</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Ir ao cinema</a><br /><br />
-    <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Viajar</a><br /><br />
+    <div class="container">
+        <p style="font-size:4vh">Outras Opções</p>
+        <hr style="height: 1px;" />
 
-    <!-- Modal Structure -->
-    <div id="modalGeral" class="modal modal-fixed-footer">
+        <a class="  btn white red-text z-depth-5 modal-trigger" id="s" href="#modalGeral" onclick="suicidioTexto();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="~/Controllers/JogoController.cs">Academia</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Passear</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="demissao();">Pedir demissão</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Visitar Parentes</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Ir ao cinema</a><br /><br />
+        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral">Viajar</a><br /><br />
 
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 style="font-family: 'Kodchasan', sans-serif;" class="blue-text text-darken-2" id="cabecalho">TITULO</h4>
-            </div>
-            <div class="modal-body">
-                <form action="" id="formModal">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <label id="lbl1" class="lbl1"></label>
-                            <input type="text" id="txt1" name="txt1" maxlength="300" />
-                            <p id="paragrafo"></p>
+        <!-- Modal Structure -->
+        <div id="modalGeral" class="modal modal-fixed-footer">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 style="font-family: 'Kodchasan', sans-serif;" class="blue-text text-darken-2" id="cabecalho">TITULO</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="" id="formModal">
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <label id="lbl1" class="lbl1"></label>
+                                <input type="text" id="txt1" name="txt1" maxlength="300" />
+                                <p id="paragrafo"></p>
+                            </div>
                         </div>
-                    </div>
-                    <center>
-                        <button type="submit" class="waves-effect waves-light btn" id="resposta1">Sim</button>
-                        <button type="submit" class="waves-effect waves-light btn" id="resposta2">Não</button>
-                    </center>
-                </form>
+                        <center>
+                            <button type="submit" class="waves-effect waves-light btn" id="resposta1">Sim</button>
+                            <button type="submit" class="waves-effect waves-light btn" id="resposta2">Não</button>
+                        </center>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="modal-footer">
-            <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
-        </div>
+            <div class="modal-footer">
+                <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+            </div>
 
+        </div>
     </div>
 </body>
 </html>
