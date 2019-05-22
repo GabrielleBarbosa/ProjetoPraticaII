@@ -47,7 +47,7 @@
                     <tr>
                         <td>@ViewBag.Emprego[i].trabalho</td>
                         <td>@ViewBag.Emprego[i].salario</td>
-                        <td>@ViewBag.Emprego[i].anosExperiencia</td>
+                        <td>@ViewBag.Emprego[i].cursoNecessario</td>
                         <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
                     </tr>
                 }
@@ -61,11 +61,11 @@
 
         @if (ViewBag.Pagina > 0)
         {
-            <a style="position: relative; bottom:0; margin-right:4vh;" href="/MudarPagina/@paginaAnterior/Emprego">Voltar à página anterior</a>
+            <a style="position: relative; bottom:0; margin-right:4vh;" href="/MudarPagina/@paginaAnterior/Emprego">Voltar aos empregos anteriores</a>
         }
         @if ((ViewBag.Pagina + 1) * 4 < ViewBag.Emprego.Count)
         {
-            <a style="position: relative; bottom:0;" href="/MudarPagina/@proximaPagina/Emprego">Ir para próxima página</a>
+            <a style="position: relative; bottom:0;" href="/MudarPagina/@proximaPagina/Emprego">Ver mais empregos</a>
         }
     </center>
 
