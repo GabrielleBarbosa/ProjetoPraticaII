@@ -498,5 +498,12 @@ namespace YourLife.Controllers
 
         }
 
+        public ActionResult() TerminarRelacionamento()
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            PersonagemDAO pg = new PersonagemDAO();
+            pg.TerminarRelacionamento();
+        }
+
     }
 }
