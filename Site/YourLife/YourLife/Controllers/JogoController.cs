@@ -165,6 +165,7 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
+            Personagem p = ViewBag.Personagem = Session["Personagem"];
             ViewBag.Imagem = Session["imagem"];
             return View();
         }
@@ -386,7 +387,7 @@ namespace YourLife.Controllers
 
             Session["acontecimento"] = null;
 
-            return View("Base");
+            return RedirectToAction("Base", "Jogo");
         }
 
         public void AjustarPontos(Personagem p, Consequencia c)

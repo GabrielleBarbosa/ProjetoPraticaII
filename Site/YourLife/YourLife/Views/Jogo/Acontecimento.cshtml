@@ -3,11 +3,13 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
-<link rel=stylesheet href="~/Content/CSS/Acontecimento.css" />
+<link rel=stylesheet href="~/Content/CSS/Acontecimento.css"/>
 
-<blockquote>
-    <p class="flow-text">@ViewBag.Acontecimento.Acontecimento</p>
-</blockquote>
+<div class="container">
+    <blockquote>
+        <p class="flow-text">@ViewBag.Acontecimento.Acontecimento</p>
+    </blockquote>
 
-<a class="waves-effect waves-green btn-flat">@ViewBag.Escolha.Opcao1</a>
-<a class="waves-effect waves-green btn-flat">@ViewBag.Escolha.Opcao2</a>
+    <a class="waves-effect waves-green btn-flat" href="/Escolher/@ViewBag.Consequencia1.Id">@ViewBag.Escolha.Opcao1</a>
+    <a class="waves-effect waves-green btn-flat" href="/Escolher/@ViewBag.Consequencia2.Id">@ViewBag.Escolha.Opcao2</a>
+</div>

@@ -18,10 +18,16 @@
         </center>
     </div>
 
-    <progress max="100" value="80" id="pbSaude"></progress>
-    <progress max="100" value="80" id="pbInteligencia"></progress>
-    <progress max="100" value="80" id="pbRelacionamento"></progress>
-    <progress max="100" value="80" id="pbFelicidade"></progress>
+    @{ 
+        int pbSaude = ViewBag.Personagem.PontosSaude / 10;
+        int pbInteligencia = ViewBag.Personagem.PontosInteligencia / 10;
+        int pbRelacionamento = ViewBag.Personagem.PontosRelacionamento / 10;
+        int pbFelicidade = ViewBag.Personagem.PontosFelicidade / 10;
+    }
+    <progress max="100" value='@pbSaude' id="pbSaude"></progress>
+    <progress max="100" value='@pbInteligencia' id="pbInteligencia"></progress>
+    <progress max="100" value='@pbRelacionamento' id="pbRelacionamento"></progress>
+    <progress max="100" value='@pbFelicidade' id="pbFelicidade"></progress>
 
 
     <a class="waves-effect waves-light btn green darken-4 botoes" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
