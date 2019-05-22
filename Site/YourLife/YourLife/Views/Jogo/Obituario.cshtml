@@ -1,0 +1,31 @@
+﻿
+@{
+
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<center>
+
+    <p style="font-size:7vh;font-family:Papyrus">Obituário</p>
+
+</center>
+@{
+    var p = ViewBag.Obituario;
+}
+
+<div style="width:70%;border:double;border-color:black; left:20%;position:relative;">
+    <div id="informacoesPessoais" style="position:relative">
+        <p style="font-size:3vh;font-family:Papyrus"><b>Nome:</b> @p.Nome</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Idade:</b>@p.Idade</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Sexo:</b> @p.Sexo</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Herança:</b>@p.Dinheiro $</p>
+    </div>
+    <div id="pontuacao" style="position:relative">
+        <br /><hr style="background-color:black" />
+        <h5 style="font-family:Papyrus;">Sua pontuação foi:</h5><br />
+        <p style="font-size:3vh;font-family:Papyrus"><b>Felicidade:</b> @p.PontosFelicidade</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Saúde:</b> @p.PontosSaude</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Relacionamento:</b> @p.PontosRelacionamento</p>
+        <p style="font-size:3vh;font-family:Papyrus"><b>Inteligencia:</b> @p.PontosInteligencia</p>
+    </div>
+</div>
