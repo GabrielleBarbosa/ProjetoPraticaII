@@ -286,7 +286,7 @@ namespace YourLife.Controllers
 
                 Random random = new Random();
 
-                if (p.Idade == 16) //idade para dirigir
+                if (p.Idade == 90) //idade para dirigir
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
                     AcontecimentoFixo af = dao.BuscarPorId(1);
@@ -303,7 +303,7 @@ namespace YourLife.Controllers
                     ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
                     ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
-                if (p.Idade == 18) //maioridade 
+                if (p.Idade == 90) //maioridade 
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
                     AcontecimentoFixo af = dao.BuscarPorId(2);
@@ -329,7 +329,7 @@ namespace YourLife.Controllers
                     }
                     else if (p.Idade <= 30)
                     {
-                        id = random.Next(21, 40);
+                        id = random.Next(1, 1); //(21, 40);
                     }
                     else if (p.Idade <= 60)
                     {
