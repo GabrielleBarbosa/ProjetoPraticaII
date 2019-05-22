@@ -62,19 +62,19 @@
             $.when($.post('/Jogo/ValidarCadastro', {
                 nick: $('#txtNickname').val()
             },
-                function (data) {
-                    if (data) {
-                        alert(data);
-                        validado = true;
-                    }
-                    else {
-                        abrirModal();
-                        validado = false;
-                    }
-                })).done(function () {
-                    if (!validado)
-                        e.preventDefault();
-                });
+            function (data) {
+                if (data) {
+                    alert(data);
+                    validado = true;
+                }
+                else {
+                    abrirModal();
+                    validado = false;
+                }
+            })).done(function () {
+                if (!validado)
+                    e.preventDefault();
+            });
         }
     }
 

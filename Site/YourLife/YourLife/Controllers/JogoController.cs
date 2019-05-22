@@ -165,7 +165,11 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
-            Personagem p = ViewBag.Personagem = Session["Personagem"];
+            ViewBag.Acontecimento = Session["acontecimento"];
+            ViewBag.Escolha = Session["escolha"];
+            ViewBag.Consequencia1 = Session["consequencia1"];
+            ViewBag.Consequencia2 = Session["consequencia2"];
+            ViewBag.Personagem = Session["Personagem"];
             ViewBag.Imagem = Session["imagem"];
             return View();
         }
@@ -352,15 +356,15 @@ namespace YourLife.Controllers
                     ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
             }
-            else
-            {
-                ViewBag.Acontecimento = Session["acontecimento"];
-                ViewBag.Escolha = Session["escolha"];
-                ViewBag.Consequencia1 = Session["consequencia1"];
-                ViewBag.Consequencia2 = Session["consequencia2"];
-            }
 
-            return View();
+            return RedirectToAction("Base", "Jogo");
+        }
+        
+        public JsonResult HaMensagem()
+        {
+            if (Session["acontecimento"] == null)
+                return Json(false);
+            return Json(true);
         }
 
         [Route("Escolher/{codConsequencia}")]
