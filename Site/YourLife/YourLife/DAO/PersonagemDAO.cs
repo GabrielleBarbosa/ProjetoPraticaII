@@ -65,6 +65,16 @@ namespace YourLife.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public void TerminarRelacionamento(Personagem p)
+        {
+            using (var contexto = new JogoContext())
+            {
+                p.Parceiro = 0;
+                contexto.Personagem.Update(p);
+                contexto.SaveChanges();
+            }
+        }
     }
 
 }
