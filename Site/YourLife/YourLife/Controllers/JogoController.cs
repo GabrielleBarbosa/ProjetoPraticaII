@@ -506,6 +506,7 @@ namespace YourLife.Controllers
 
         }
 
+<<<<<<< HEAD
         public ActionResult TerminarRelacionamento()
         {
             Personagem p = (Personagem)Session["Personagem"];
@@ -513,7 +514,6 @@ namespace YourLife.Controllers
             pg.TerminarRelacionamento(p);
             return View();
         }
-        //---------------------------------------------------------------------------------------------------------
-
+=======
     }
 }
