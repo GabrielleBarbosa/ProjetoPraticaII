@@ -204,6 +204,7 @@
     <Content Include="Views\Jogo\Imagens\menina_adolescente.png" />
     <Content Include="Views\Jogo\Imagens\menino.png" />
     <Content Include="Views\Jogo\Imagens\mulher_adulta.png" />
+    <Content Include="Views\Jogo\Imagens\obituarioBackground.jpg" />
     <Content Include="Views\Jogo\Imagens\parque.jpg" />
     <Content Include="Views\Jogo\Imagens\sala_de_adolescente.jpg" />
     <Content Include="Views\Jogo\Imagens\sala_de_casa.jpg" />
