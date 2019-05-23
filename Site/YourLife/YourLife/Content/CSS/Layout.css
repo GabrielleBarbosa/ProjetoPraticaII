@@ -4,23 +4,6 @@
     z-index: 1;
 }
 
-#left{
-    width: 5%;
-    height: 100vh;
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    z-index:-1;
-}
-
-#right{
-    width: 5%;
-    height: 100vh;
-    position: absolute;
-    right: 0px;
-    top:0px;
-    z-index:-1;
-}
 
 /*BASTIDORES.HTML*/
 #btnJornada
