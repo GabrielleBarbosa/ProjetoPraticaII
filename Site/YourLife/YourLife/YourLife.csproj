@@ -185,6 +185,7 @@
     <Content Include="Imagens\menina_adolescente.png" />
     <Content Include="Imagens\menino.png" />
     <Content Include="Imagens\mulher_adulta.png" />
+    <Content Include="Imagens\obituarioBackground.jpg" />
     <Content Include="Imagens\parque.jpg" />
     <Content Include="Imagens\sala_de_adolescente.jpg" />
     <Content Include="Imagens\sala_de_casa.jpg" />
@@ -194,7 +195,6 @@
     <Content Include="Imagens\velhinhos.png" />
     <Content Include="Imagens\velho.png" />
     <Content Include="Imagens\Your life Pequeno.png" />
-    <Content Include="Imagens\Your life.png" />
     <Content Include="Views\Jogo\Imagens\cupido.jpg" />
     <Content Include="Views\Jogo\Imagens\cupido.png" />
     <Content Include="Views\Jogo\Imagens\homem_adulto.png" />
