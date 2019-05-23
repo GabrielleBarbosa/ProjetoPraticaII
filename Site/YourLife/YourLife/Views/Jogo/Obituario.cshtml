@@ -3,16 +3,17 @@
 
     Layout = "~/Views/Shared/Layout.cshtml";
 }
-
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <link href="~/Content/CSS/Obituario.css" rel="stylesheet" />
 
+<a class="waves-effect waves-light btn" href="~/Jogo/EscolhaPersonagem">Escolher novo personagem</a>
 <center>
 
     <p style="font-size:7vh;font-family:Papyrus">Obituário</p>
 
 </center>
 @{
-    var p = ViewBag.Obituario;
+    var p = ViewBag.Personagem;
 }
 
 <div style="width: 70%;
@@ -23,13 +24,14 @@
     position: relative;
     background-image: url('/Imagens/obituarioBackground.jpg');
     background-size:100%;" id="obituario">
+
     <div id="informacoesPessoais" style="position:relative">
         <p style="font-size:3vh;font-family:Papyrus"><b>Nome:</b> @p.Nome</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Idade:</b>@p.Idade</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Sexo:</b> @p.Sexo</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Herança:</b>@p.Dinheiro $</p>
     </div>
-    <div id="pontuacao" style="position:relative">
+    <div id="pontuacao" style="position:relative;">
         <br /><hr style="background-color:black" />
         <h5 style="font-family:Papyrus;">Sua pontuação foi:</h5><br />
         <p style="font-size:3vh;font-family:Papyrus"><b>Felicidade:</b> @p.PontosFelicidade</p>
