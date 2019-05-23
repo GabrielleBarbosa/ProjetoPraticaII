@@ -1,12 +1,9 @@
 ﻿
 function suicidioTexto() {
-//$('#txt1').hide();
-//$('.lbl1').html("");
-//$('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
-//s$('.modal').modal();
-Obituario();
-//$.post('/Jogo/Suicidio');
-//Response.redirect("/Jogo/EscolhaPersonagem");
+$('#txt1').hide();
+$('.lbl1').html("");
+$('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
+$('.modal').modal();
 }
 
 function terminarRel() {
@@ -24,6 +21,12 @@ function demissao(){
     $('.lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja pedir demissão? ");
     $('.modal').modal();
+}
+
+function clickDoBotaoSim() {
+    if ($('#cabecalho').html() == "Tem certeza que deseja cometer suicídio?")
+        $.post('/Jogo/Suicidio');
+        
 }
 
 
