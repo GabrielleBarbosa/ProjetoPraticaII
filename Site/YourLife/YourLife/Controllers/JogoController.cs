@@ -481,13 +481,19 @@ namespace YourLife.Controllers
             return View();
         }
 
-
-
+        
         public ActionResult Obituario()
         {
              ViewBag.Personagem = (Session["Personagem"]);
-            return View();
+            return View("obit");
         }
+
+        public ActionResult Frango()
+        {
+            ViewBag.Personagem = (Session["Personagem"]);
+            return View("Frango");
+        }
+
 
 
         //------------------------------------------------------------------------------------------------------------------------------
@@ -502,7 +508,7 @@ namespace YourLife.Controllers
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pg = new PersonagemDAO();
             pg.Morrer(p);
-            return RedirectToAction("Obituario", "Jogo");
+            return RedirectToAction("obit");
         }
         
         public ActionResult TerminarRelacionamento()
