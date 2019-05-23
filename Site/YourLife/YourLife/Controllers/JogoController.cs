@@ -257,20 +257,20 @@ namespace YourLife.Controllers
             if (p.Sexo == 'M')
             {
                 if (p.Idade >= 14 && p.Idade <= 20)
-                    Session["imagem"] = "menino_adolescente.png";
+                    Session["imagem"] = "/Imagens/menino_adolescente.png";
                 else if (p.Idade >= 21 && p.Idade <= 40)
-                    Session["imagem"] = "homem_adulto.png";
+                    Session["imagem"] = "/Imagens/homem_adulto.png";
                 else if (p.Idade >= 41)
-                    Session["imagem"] = "velho.png";
+                    Session["imagem"] = "/Imagens/velho.png";
             }
             else
             {
                 if (p.Idade >= 14 && p.Idade <= 20)
-                    Session["imagem"] = "menina_adolescente.png";
+                    Session["imagem"] = "/Imagens/menina_adolescente.png";
                 else if (p.Idade >= 21 && p.Idade <= 40)
-                    Session["imagem"] = "mulher_adulta.png";
+                    Session["imagem"] = "/Imagens/mulher_adulta.png";
                 else if (p.Idade >= 41)
-                    Session["imagem"] = "velha.png";
+                    Session["imagem"] = "/Imagens/velha.png";
             }
 
             Session["Personagem"] = p;
