@@ -80,6 +80,11 @@ namespace YourLife.Controllers
             p = pg.BuscarPorIdUsuario(usuarioExistente.id);
 
             Session["Personagem"] = p;
+
+            EmpregoDAO daoE = new EmpregoDAO();
+            Emprego e = daoE.BuscarPorId(p.CodEmprego);
+            Session["Emprego"] = e;
+
             if (p.Sexo == 'M')
             {
                 if (p.Idade < 14)
@@ -176,9 +181,7 @@ namespace YourLife.Controllers
 
         public ActionResult Mercado()
         {
-            //ViewBag.Personagem = Session["Personagem"];
-            ViewBag.Personagem = new Personagem();
-            ViewBag.Personagem.Dinheiro = 0;
+            ViewBag.Personagem = Session["Personagem"];
             ViewBag.Pagina = Session["PaginaAtual"];
 
             MercadoDAO dao = new MercadoDAO();
@@ -204,7 +207,7 @@ namespace YourLife.Controllers
 
         public ActionResult Emprego()
         {
-            ViewBag.EmpregoAtual = Session["teste"];
+            ViewBag.EmpregoAtual = Session["Emprego"];
             EmpregoDAO dao = new EmpregoDAO();
             IList<Emprego> emp = dao.ListarEmprego();
             ViewBag.Pagina = Session["PaginaAtual"];
@@ -216,20 +219,37 @@ namespace YourLife.Controllers
         [Route("EntrevistaEmprego/{id}")]
         public ActionResult EntrevistaEmprego(int id)
         {
-            Session["Personagem"] = new Personagem();
             Random rd = new Random();
             if (rd.Next(0, 2) == 1)
             {
                 EmpregoDAO dao = new EmpregoDAO();
 
-                Session["teste"] = dao.BuscarPorId(id);
-                Session["emprego"] = "S";
+                PersonagemDAO daoP = new PersonagemDAO();
                 ((Personagem)Session["Personagem"]).CodEmprego = id;
+                daoP.Alterar((Personagem)Session["Personagem"]);
+
+                Session["Emprego"] = dao.BuscarPorId(id);
+                Session["ConseguiuEmprego"] = "S";
             }
             else
-                Session["emprego"] = "N";
+            {
+                Session["ConseguiuEmprego"] = "N";
+            }
 
-            return RedirectToAction("Emprego", "Jogo");
+            return RedirectToAction("Base", "Jogo");
+        }
+        
+        public JsonResult ConseguiuEmprego()
+        {
+            if (Session["ConseguiuEmprego"] == null)
+                return Json(null);
+            if ((string)Session["ConseguiuEmprego"] == "S")
+            {
+                Session["ConseguiuEmprego"] = null;
+                return Json(true);
+            }
+            Session["ConseguiuEmprego"] = null;
+            return Json(false);
         }
 
         public ActionResult Relatorio()
@@ -251,7 +271,7 @@ namespace YourLife.Controllers
             p.Idade++;
             decimal salario = 0;
             if (p.CodEmprego != 0)
-                salario = ((Emprego)Session["emprego"]).salario;
+                salario = ((Emprego)Session["Emprego"]).salario;
             p.Dinheiro += salario;
 
             if (p.Sexo == 'M')
@@ -333,11 +353,11 @@ namespace YourLife.Controllers
                     }
                     else if (p.Idade <= 60)
                     {
-                        id = random.Next(41, 60);
+                        id = random.Next(1, 1);      //(41, 60);
                     }
                     else
                     {
-                        id = random.Next(61, 80);
+                        id = random.Next(1, 1);     //(61, 80);
                     }
 
                     AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();

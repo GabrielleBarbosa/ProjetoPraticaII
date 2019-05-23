@@ -53,10 +53,10 @@
 
     @if (ViewBag.Pagina > 0)
     {
-        <a href="/MudarPagina/@paginaAnterior/Curso">Voltar aos cursos anteriores</a>
+        <a href="/MudarPagina/@paginaAnterior/Mercado">Voltar aos produtos anteriores</a>
     }
     @if ((ViewBag.Pagina + 1) * 4 < ViewBag.Mercado.Count)
     {
-        <a href="/MudarPagina/@proximaPagina/Curso">Ver mais cursos</a>
+        <a href="/MudarPagina/@proximaPagina/Mercado">Ver mais produtos</a>
     }
 </div>

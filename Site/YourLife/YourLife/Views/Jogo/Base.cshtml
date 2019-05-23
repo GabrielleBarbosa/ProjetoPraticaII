@@ -56,7 +56,7 @@
 
 <div class="modal modal-fixed-footer" id="modal">
     <div class="modal-content">
-        <div class="modal-header" id="headerModalAviso">
+        <div class="modal-header">
             <h3><i>Acontecimento</i></h3>
         </div>
         <div class="modal-body">
@@ -71,15 +71,38 @@
     </div>
 </div>
 
+<div class="modal modal-fixed-footer" id="modal2">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i>Emprego</i></h3>
+        </div>
+        <div class="modal-body">
+            <blockquote>
+                <p id="textoModal2" class="flow-text"></p>
+            </blockquote>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="modal-close waves-effect waves-green btn-flat">OK</button>
+    </div>
+</div>
+
 <script>
     var modal = document.getElementById("modal");
+    var modal2 = document.getElementById("modal2");
 
     abrirModal = function () {
         modal.style.display = "block";
     }
 
+    abrirModal2 = function (texto) {
+        $('#textoModal2').html(texto);
+        modal2.style.display = "block";
+    }
+
     $('.modal-close').onclick = function () {
         modal.style.display = "none";
+        modal2.style.display = "none";
     }
 
     window.onload = function () {
@@ -90,6 +113,21 @@
             function (data) {
                 if (data) {
                     abrirModal();
+                }
+                else
+                {
+                    $.when($.post('/Jogo/ConseguiuEmprego', {},
+                        function (data) {
+                            if (data != null) {
+                                if (data)
+                                    abrirModal2("Parabéns, você passou na entrevista de emprego!!");
+                                else
+                                {
+                                    abrirModal2("Sinto muito, você não passou na entrevista =(");
+                                }
+                            }
+                        }
+                    ))
                 }
             }));
     }
