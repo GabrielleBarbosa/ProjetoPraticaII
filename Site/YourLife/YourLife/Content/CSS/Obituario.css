@@ -1,0 +1,11 @@
+﻿body {
+}
+
+#obituario {
+    width: 70%;
+    border: double;
+    border-color: black;
+    left: 20%;
+    position: relative;
+    background-image: url('~/Imagens/obituarioBackground.jpg');
+}

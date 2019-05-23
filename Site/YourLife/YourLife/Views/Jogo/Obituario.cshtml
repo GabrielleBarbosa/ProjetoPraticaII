@@ -4,6 +4,8 @@
     Layout = "~/Views/Shared/Layout.cshtml";
 }
 
+<link href="~/Content/CSS/Obituario.css" rel="stylesheet"/>
+
 <center>
 
     <p style="font-size:7vh;font-family:Papyrus">Obituário</p>
@@ -13,13 +15,13 @@
     var p = ViewBag.Obituario;
 }
 
-<div style="        width: 70%;
-        border: double;
-        border-color: black;
-        left: 20%;
-        position: relative; 
-        background-image: url('Imagens/obituarioBackground.jpg');
-">
+<div style="width: 70%;
+    border: double;
+    border-color: black;
+    left: 20%;
+    position: relative;
+    background-image: url('/Imagens/obituarioBackground.jpg');
+    background-size:100%;" id="obituario">
     <div id="informacoesPessoais" style="position:relative">
         <p style="font-size:3vh;font-family:Papyrus"><b>Nome:</b> @p.Nome</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Idade:</b>@p.Idade</p>
