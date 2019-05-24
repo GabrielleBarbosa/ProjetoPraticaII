@@ -138,6 +138,8 @@ namespace YourLife.Controllers
                 p.Parceiro = 0;
                 dao.Adiciona(p);
 
+                EmpregoDAO daoE = new EmpregoDAO();
+                Session["Emprego"] = daoE.BuscarPorId(0);
                 Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
