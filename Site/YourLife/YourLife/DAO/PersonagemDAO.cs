@@ -61,6 +61,12 @@ namespace YourLife.DAO
         {
             using (var contexto =  new JogoContext())
             {
+                IList<CursoJogador> cj = (IList<CursoJogador>)contexto.CursoJogador.Select(CursoJogador => p.Id);
+                IList<MercadoJogador> mj = (IList<MercadoJogador>)contexto.MercadoJogador.Select(MercadoJogador => p.Id);
+                foreach(CursoJogador cj1 in cj)
+                contexto.CursoJogador.Remove(cj1);
+                foreach(MercadoJogador mj1 in mj)
+                contexto.MercadoJogador.Remove(mj1);
                 contexto.Personagem.Remove(p);
                 contexto.SaveChanges();
             }
