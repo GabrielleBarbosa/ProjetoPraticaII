@@ -1,5 +1,6 @@
 ﻿
 function suicidioTexto() {
+$('#resposta1').attr('href', 'Suicidio');
 $('#txt1').hide();
 $('.lbl1').html("");
 $('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
@@ -22,13 +23,6 @@ function demissao(){
     $('#cabecalho').html("Tem certeza que deseja pedir demissão? ");
     $('.modal').modal();
 }
-
-function clickDoBotaoSim() {
-    if ($('#cabecalho').html() == "Tem certeza que deseja cometer suicídio?")
-        $.post('/Jogo/Suicidio');
-        
-}
-
 
 function Obituario() {
     $('#txt1').hide();

@@ -138,6 +138,8 @@ namespace YourLife.Controllers
                 p.Parceiro = 0;
                 dao.Adiciona(p);
 
+                EmpregoDAO daoE = new EmpregoDAO();
+                Session["Emprego"] = daoE.BuscarPorId(0);
                 Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
@@ -532,20 +534,14 @@ namespace YourLife.Controllers
         }
 
         
-        public ActionResult Obituario()
+        public ActionResult Obituario(string causaDeMorte)
         {
-             ViewBag.Personagem = (Session["Personagem"]);
-            return View("obit");
+            ViewBag.FormaDeMorte = 
+             ViewBag.Personagem = Session["Personagem"];
+            return View("Obituario");
         }
-
-        public ActionResult Frango()
-        {
-            ViewBag.Personagem = (Session["Personagem"]);
-            return View("Frango");
-        }
-
-
-
+        
+        
         //------------------------------------------------------------------------------------------------------------------------------
         //Outros
 
@@ -557,8 +553,9 @@ namespace YourLife.Controllers
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pg = new PersonagemDAO();
+            ViewBag.Personagem = p;
             pg.Morrer(p);
-            return RedirectToAction("obit");
+            return View("Obituario");
         }
         
         public ActionResult TerminarRelacionamento()
