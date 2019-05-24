@@ -8,4 +8,7 @@ constraint fkMercado foreign key (codMercado) references Mercado(id)
 )
 drop table MercadoJogador
 
-select * from MercadoJogador
+select * from Personagem
+update Personagem set dinheiro = 70000 where id=20
+
+select * from usuario

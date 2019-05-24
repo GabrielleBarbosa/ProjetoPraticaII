@@ -53,4 +53,5 @@ constraint fkJogador1 foreign key(codJogador) references Personagem(id)
 
 drop table CursoJogador
 
+select * from CursoJogador
 select * from Usuario
