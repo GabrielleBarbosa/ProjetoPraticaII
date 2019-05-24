@@ -12,7 +12,6 @@ function terminarRel() {
     $('.lbl1').hide();
     $('.lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja terminar o relacionamento?");
-    $.post('/Jogo/TerminarRelacionamento')
     $('.modal').modal();
 }
 
@@ -25,10 +24,11 @@ function demissao(){
 }
 
 function academia() {
-    $('#resposta1').attr('href', 'AlterarAcademia/100/20');
+    
     $('#txt1').hide();
     $('.lbl1').hide();
     $('#cabecalho').html("Irá te custar $100,00");
+    $('#resposta1').attr('href', '/AlterarAcademia/100/20');
     $('.modal').modal();
 }
 
