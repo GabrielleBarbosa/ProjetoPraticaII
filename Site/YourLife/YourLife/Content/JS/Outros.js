@@ -25,7 +25,7 @@ function demissao(){
 }
 
 function academia() {
-    $('#resposta1').attr('href', 'Alterar');
+    $('#resposta1').attr('href', 'Alterar/100');
     $('#txt1').hide();
     $('.lbl1').hide();
     $('.lbl1').html("");
@@ -33,7 +33,17 @@ function academia() {
     $('.modal').modal();
 }
 
+function visitarParentes() {
 
+}
+
+function cinema() {
+
+}
+
+function viajar() {
+    
+}
 
 
 
