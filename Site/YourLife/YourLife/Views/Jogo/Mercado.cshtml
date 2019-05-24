@@ -35,6 +35,17 @@
                     {
                         enabled = "disabled";
                     }
+                    else if(ViewBag.Bens != null)
+                    {
+                        foreach(var bem in ViewBag.Bens)
+                        {
+                            if(bem.CodMercado == ViewBag.Mercado[i].Id)
+                            {
+                                enabled = "disabled";
+                                break;
+                            }
+                        }
+                    }
                     <tr>
                         <td>@mc.TipoProduto</td>
                         <td>@mc.Produto</td>
