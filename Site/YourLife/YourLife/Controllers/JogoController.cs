@@ -279,6 +279,16 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
+            if(Session["AnosCursando"]!= null)
+            {
+                Session["AnosCursando"] = (int)Session["AnosCursando"] + 1;
+                if((int)Session["AnosCursando"] == 5)
+                {
+                    Session["AnosCursando"] = null;
+                    CursoJogadorDAO cur = new CursoJogadorDAO();
+
+                }
+            }
             Session["ConseguiuEmprego"] = null;
             Personagem p = (Personagem)Session["Personagem"];
 
@@ -502,6 +512,7 @@ namespace YourLife.Controllers
         [Route("FazerCurso/{id}")]
         public ActionResult FazerCurso(int id)
         {
+            Session["anosCursando"] = 0;
             CursoDAO dao = new CursoDAO();
             if (Session["cursando"] == null)
                 Session["cursando"] = dao.BuscarPorId(id);
