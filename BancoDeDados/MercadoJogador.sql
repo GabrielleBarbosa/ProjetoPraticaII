@@ -1,7 +1,7 @@
 create table MercadoJogador
 (
 codJogador int,
-constraint fkJogador foreign key(codJogador) references Jogador(id),
+constraint fkJogador foreign key(codJogador) references Personagem(id),
 codMercado int,
 constraint fkMercado foreign key (codMercado) references Mercado(id)
 )
