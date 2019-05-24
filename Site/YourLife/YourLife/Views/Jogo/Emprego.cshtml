@@ -15,10 +15,10 @@
     <center>
         <p style="font-family: 'Sofia',cursive;font-size:10vh;" class="blue-text text-darken-2">Empregos</p>
     </center>
-    @if (ViewBag.EmpregoAtual != null)
+    @if (ViewBag.EmpregoAtual.id != 0)
     {
         <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Emprego atual: @ViewBag.EmpregoAtual.trabalho</p>
-        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Salário: @ViewBag.EmpregoAtual.salario.ToString().Substring(0, ViewBag.EmpregoAtual.salario.ToString().Length - 2) </p>
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Salário: @String.Format("{0:0.00}",ViewBag.EmpregoAtual.salario) </p>
     }
     else
     {
@@ -37,17 +37,28 @@
         <tbody>
             @for (int i = ViewBag.Pagina * 4 + 1; i < (ViewBag.Pagina * 4) + 5; i++)
             {
-                string enabled = "";
-                //if (ViewBag.Emprego[i].anosExperiencia < ViewBag.AnosExperiencia)
-                //{
-                //    enabled = "disabled";
-                //}
                 if (i < ViewBag.Emprego.Count)
                 {
+                    string enabled = "";
+                    if (ViewBag.Emprego[i].cursoNecessario != 0)
+                    {
+                        enabled = null;
+                        foreach (var cur in ViewBag.CursosFeitos)
+                        {
+                            if (ViewBag.Emprego[i].cursoNecessario == cur.id)
+                            {
+                                enabled = "";
+                            }
+                        }
+                        if (enabled == null)
+                        {
+                            enabled = "disabled";
+                        }
+                    }
                     <tr>
                         <td>@ViewBag.Emprego[i].trabalho</td>
-                        <td>@ViewBag.Emprego[i].salario</td>
-                        <td>@ViewBag.Emprego[i].cursoNecessario</td>
+                        <td>@String.Format("{0:0.00}", ViewBag.Emprego[i].salario)</td>
+                        <td>@ViewBag.Cursos[ViewBag.Emprego[i].cursoNecessario].Nome</td>
                         <td><a class="waves-effect waves-light btn-small @enabled" href="/EntrevistaEmprego/@ViewBag.Emprego[i].id">Fazer entrevista</a></td>
                     </tr>
                 }

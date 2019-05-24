@@ -210,8 +210,17 @@ namespace YourLife.Controllers
             ViewBag.EmpregoAtual = Session["Emprego"];
             EmpregoDAO dao = new EmpregoDAO();
             IList<Emprego> emp = dao.ListarEmprego();
-            ViewBag.Pagina = Session["PaginaAtual"];
             ViewBag.Emprego = emp;
+
+            ViewBag.Pagina = Session["PaginaAtual"];
+
+            CursoJogadorDAO daoJC = new CursoJogadorDAO();
+            IList<CursoJogador> cursosFeitos = daoJC.ListarCursos();
+            ViewBag.CursosFeitos = cursosFeitos;
+
+            CursoDAO daoC = new CursoDAO();
+            IList<Curso> cursos = daoC.ListarCursos();
+            ViewBag.Cursos = cursos;
 
             return View();
         }
@@ -245,11 +254,15 @@ namespace YourLife.Controllers
                 return Json(null);
             if ((string)Session["ConseguiuEmprego"] == "S")
             {
-                Session["ConseguiuEmprego"] = null;
+                Session["ConseguiuEmprego"] = "j";
                 return Json(true);
             }
-            Session["ConseguiuEmprego"] = null;
-            return Json(false);
+            else if ((string)Session["ConseguiuEmprego"] == "N")
+            {
+                Session["ConseguiuEmprego"] = "j";
+                return Json(false);
+            }
+            return Json(null);
         }
 
         public ActionResult Relatorio()
@@ -266,6 +279,7 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
+            Session["ConseguiuEmprego"] = null;
             Personagem p = (Personagem)Session["Personagem"];
 
             p.Idade++;
