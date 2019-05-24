@@ -25,7 +25,7 @@ function demissao(){
 }
 
 function academia() {
-    $('#resposta1').attr('href', 'Suicidio');
+    $('#resposta1').attr('href', 'Alterar');
     $('#txt1').hide();
     $('.lbl1').hide();
     $('.lbl1').html("");
