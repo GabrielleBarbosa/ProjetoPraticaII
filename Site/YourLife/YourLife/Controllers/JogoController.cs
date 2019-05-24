@@ -193,13 +193,18 @@ namespace YourLife.Controllers
         [Route("Comprar/{preco}/{id}")]
         public ActionResult Comprar(decimal preco, int id)
         {
-            ViewBag.Personagem = Session["Personagem"];
-            if (ViewBag.Personagem.Dinheiro >= preco)
+            Personagem p = (Personagem)Session["Personagem"];
+            if (p.Dinheiro >= preco)
             {
                 MercadoJogadorDAO mj = new MercadoJogadorDAO();
-                mj.Adiciona(ViewBag.Personagem.Id, id);
+                mj.Adiciona(p.Id, id);
+                
+                p.Dinheiro = p.Dinheiro - preco;
 
-                ViewBag.Personagem.Dinheiro -= preco;
+                PersonagemDAO dao = new PersonagemDAO();
+                dao.Alterar(p);
+                Session["Personagem"] = p;
+                
                 return RedirectToAction("Mercado", "Jogo");
             }
             return RedirectToAction("Mercado", "Jogo");

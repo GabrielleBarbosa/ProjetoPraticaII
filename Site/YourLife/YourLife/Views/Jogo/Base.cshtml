@@ -31,13 +31,14 @@
 <progress max="100" value=@pbRelacionamento id="pbRelacionamento" class="tooltipped" data-position="bottom" data-tooltip="Relacionamento: @ViewBag.Personagem.PontosRelacionamento"></progress>
 <progress max="100" value=@pbFelicidade id="pbFelicidade" class="tooltipped" data-position="bottom" data-tooltip="Felicidade: @ViewBag.Personagem.PontosFelicidade"></progress>
 
-@{string enabled = "";}
+@{string desabilitado = "";}
+
 @if(Session["ConseguiuEmprego"] != null)
 {
-    enabled = "disabled";
+    desabilitado = "disabled";
 }
 <a class="waves-effect waves-light btn green darken-4 botoes" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
-<a class="waves-effect waves-light btn green darken-4 botoes @enabled" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
+<a class="waves-effect waves-light btn green darken-4 botoes @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
 <a class="waves-effect waves-light btn green darken-4 botoes" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
 <a class="waves-effect waves-light btn green darken-4 botoes" id="outros" href="~/Jogo/Outros">Outros</a>
 
@@ -100,7 +101,7 @@
     }
 
     abrirModal2 = function (texto) {
-        $('#textoModal2').html(texto);
+        $('#textoModal2').html(texto + "<br>Entre em empregos novamente após envelhecer!");
         modal2.style.display = "block";
     }
 
