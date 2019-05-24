@@ -25,11 +25,10 @@ function demissao(){
 }
 
 function academia() {
-    $('#resposta1').attr('href', 'Alterar/100');
+    $('#resposta1').attr('href', 'AlterarAcademia/100/20');
     $('#txt1').hide();
     $('.lbl1').hide();
-    $('.lbl1').html("");
-    $('#cabecalho').html("Irá te custar 100$");
+    $('#cabecalho').html("Irá te custar $100,00");
     $('.modal').modal();
 }
 

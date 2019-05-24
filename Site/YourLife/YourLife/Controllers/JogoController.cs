@@ -586,59 +586,62 @@ namespace YourLife.Controllers
         //--------------------------------------------------------------------------------------------------------------------
         //ALTERAÇÕES
 
+        [Route("AlterarAcademia/{d}/{s}")]
+        public ActionResult AlterarAcademia(decimal d, int s)
+        {
+            AlterarDinheiro(d);
+            AlterarSaude(s);
+            return View("Outros");
+        }
+
         [Route("AlterarDinheiro/{d}")]
-        public ActionResult AlterarDinheiro(decimal d)
+        public void AlterarDinheiro(decimal d)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
             p.Dinheiro = p.Dinheiro - d;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
-            return View();
         }
 
         [Route("AlterarFelicidade/{f}")]
-        public ActionResult AlterarFelicidade(int f)
+        public void AlterarFelicidade(int f)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
             p.PontosFelicidade = p.PontosFelicidade + f;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
-            return View();
         }
 
         [Route("AlterarInteligencia/{i}")]
-        public ActionResult AlterarInteligencia(int i)
+        public void AlterarInteligencia(int i)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
             p.PontosInteligencia = p.PontosInteligencia + i;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
-            return View();
         }
 
         [Route("AlterarSaude/{s}")]
-        public ActionResult AlterarSaude(int s)
+        public void AlterarSaude(int s)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
             p.PontosSaude = p.PontosSaude + s;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
-            return View();
         }
 
-        [Route("Alterar/{f}")]
-        public ActionResult AlterarFelicidade(int f)
+        [Route("AlterarRelacionamento/{r}")]
+        public void AlterarRelacionamento(int r)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
-            p.PontosFelicidade = p.PontosRelacionamento + f;
+            p.PontosRelacionamento = p.PontosRelacionamento + r;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
-            return View();
         }
     }
 }
