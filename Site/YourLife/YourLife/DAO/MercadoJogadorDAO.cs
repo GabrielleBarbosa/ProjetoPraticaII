@@ -19,5 +19,13 @@ namespace YourLife.DAO
                 context.SaveChanges();
             }
         }
+
+        public IList<MercadoJogador> ListarMercado()
+        {
+            using (var contexto = new JogoContext())
+            {
+                return contexto.MercadoJogador.ToList();
+            }
+        }
     }
 }
