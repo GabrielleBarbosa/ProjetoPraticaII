@@ -40,7 +40,11 @@
                 if (i < ViewBag.Emprego.Count)
                 {
                     string enabled = "";
-                    if (ViewBag.Emprego[i].cursoNecessario != 0)
+                    if(ViewBag.Emprego[i].id == ViewBag.EmpregoAtual.id)
+                    {
+                        enabled = "disabled";
+                    }
+                    else if (ViewBag.Emprego[i].cursoNecessario != 0)
                     {
                         enabled = null;
                         foreach (var cur in ViewBag.CursosFeitos)
