@@ -36,21 +36,29 @@
                     if (i < ViewBag.Cursos.Count)
                     {
                         string enabled = "";
+                        bool fezCursoNecessario = false;
                         bool fezCurso = false;
-                        if (ViewBag.Cursos[i].CodCursoNecessario != 0)
+
+                        foreach (var cur in ViewBag.CursosFeitos)
                         {
-                            foreach (var cur in ViewBag.CursosFeitos)
+                            if (ViewBag.Cursos[i].CodCursoNecessario == cur.id)
                             {
-                                if (cur.CodCursoNecessario == cur.id)
-                                {
-                                    fezCurso = true;
-                                    break;
-                                }
+                                fezCursoNecessario = true;
+                                break;
                             }
-                            if (!fezCurso)
+                            if (ViewBag.Cursos[i].id == cur.id)
                             {
-                                enabled = "disabled";
+                                fezCurso = true;
+                                break;
                             }
+                        }
+                        if (fezCurso)
+                        {
+                            enabled = "disabled";
+                        }
+                        else if(ViewBag.Cursos[i].CodCursoNecessario != 0 && !fezCursoNecessario)
+                        {
+                            enabled = "disabled";
                         }
                         else if (ViewBag.Cursando != null && ViewBag.Cursos[i].id == ViewBag.Cursando.id)
                         {

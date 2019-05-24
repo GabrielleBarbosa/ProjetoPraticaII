@@ -286,18 +286,23 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
-            if(Session["AnosCursando"]!= null)
+            Personagem p = (Personagem)Session["Personagem"];  
+
+            if (Session["AnosCursando"] != null)
             {
                 Session["AnosCursando"] = (int)Session["AnosCursando"] + 1;
                 if((int)Session["AnosCursando"] == 5)
                 {
-                    Session["AnosCursando"] = null;
-                    CursoJogadorDAO cur = new CursoJogadorDAO();
+                    Curso cur = (Curso)Session["Cursando"];
+                    CursoJogadorDAO dao = new CursoJogadorDAO();
+                    dao.Adicionar(p.Id, cur.id);
 
+                    Session["AnosCursando"] = null;
+                    Session["Cursando"] = null;
                 }
             }
+
             Session["ConseguiuEmprego"] = null;
-            Personagem p = (Personagem)Session["Personagem"];
 
             p.Idade++;
             decimal salario = 0;
@@ -505,14 +510,15 @@ namespace YourLife.Controllers
 
         public ActionResult Curso()
         {
-            ViewBag.Cursando = Session["cursando"];
+            ViewBag.Cursando = Session["Cursando"];
             CursoDAO dao = new CursoDAO();
             IList<Curso> cursos = dao.ListarCursos();
             ViewBag.Cursos = cursos;
             ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO usuDao = new CursoJogadorDAO();
-            ViewBag.CursosFeitos = usuDao.ListarCursos();
+            IList<CursoJogador> cursosFeitos = usuDao.ListarCursos();
+            ViewBag.CursosFeitos = cursosFeitos;
             return View();
         }
 
@@ -521,8 +527,8 @@ namespace YourLife.Controllers
         {
             Session["anosCursando"] = 0;
             CursoDAO dao = new CursoDAO();
-            if (Session["cursando"] == null)
-                Session["cursando"] = dao.BuscarPorId(id);
+            if (Session["Cursando"] == null)
+                Session["Cursando"] = dao.BuscarPorId(id);
 
             return RedirectToAction("Curso", "Jogo");
         }
