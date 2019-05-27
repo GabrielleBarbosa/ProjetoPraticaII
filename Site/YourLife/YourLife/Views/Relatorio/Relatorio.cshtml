@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.title = "Relatorio";
+    Layout = "~/Views/Shared/Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -30,11 +30,10 @@
                 data: [{
                     type: "column",
                     dataPoints: [
-                        { label: "Indeterminado", y: 30 },
+                        { label: "Conexão com o BD", y: 30 },
                         { label: "Erros de lógica", y: 20 },
                         { label: "Html errors", y: 19 },
-                        { label: "Conexão com o BD", y: 15 },
-                        { label: "Erros de código", y: 10 },
+                        { label: "Erros de código", y: 15 },
                         { label: "Outros", y: 10 }
                     ]
                 }]
@@ -65,7 +64,13 @@
     </script>
 </head>
 <body>
-    <div id="Pareto" style="height: 700px; width: 100%;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <div id="Pareto" style="height: 700px; width: 100%">
+
+    </div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
+
+    </script>
+
+    <h3>Como requisitado pelos professores, aqui está o nosso Gráfico de Pareto.</h3>
 </body>
 </html>
