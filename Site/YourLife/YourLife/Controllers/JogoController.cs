@@ -206,13 +206,13 @@ namespace YourLife.Controllers
             {
                 MercadoJogadorDAO mj = new MercadoJogadorDAO();
                 mj.Adiciona(p.Id, id);
-                
+
                 p.Dinheiro = p.Dinheiro - preco;
 
                 PersonagemDAO dao = new PersonagemDAO();
                 dao.Alterar(p);
                 Session["Personagem"] = p;
-                
+
                 return RedirectToAction("Mercado", "Jogo");
             }
             return RedirectToAction("Mercado", "Jogo");
@@ -260,7 +260,7 @@ namespace YourLife.Controllers
 
             return RedirectToAction("Base", "Jogo");
         }
-        
+
         public JsonResult ConseguiuEmprego()
         {
             if (Session["ConseguiuEmprego"] == null)
@@ -292,12 +292,12 @@ namespace YourLife.Controllers
 
         public ActionResult Envelhecer()
         {
-            Personagem p = (Personagem)Session["Personagem"];  
+            Personagem p = (Personagem)Session["Personagem"];
 
             if (Session["AnosCursando"] != null)
             {
                 Session["AnosCursando"] = (int)Session["AnosCursando"] + 1;
-                if((int)Session["AnosCursando"] == 5)
+                if ((int)Session["AnosCursando"] == 5)
                 {
                     Curso cur = (Curso)Session["Cursando"];
                     CursoJogadorDAO dao = new CursoJogadorDAO();
@@ -421,7 +421,7 @@ namespace YourLife.Controllers
 
             return RedirectToAction("Base", "Jogo");
         }
-        
+
         public JsonResult HaMensagem()
         {
             if (Session["acontecimento"] == null)
@@ -545,15 +545,15 @@ namespace YourLife.Controllers
             return View();
         }
 
-        
+
         public ActionResult Obituario(string causaDeMorte)
         {
-            ViewBag.FormaDeMorte = 
+            ViewBag.FormaDeMorte =
              ViewBag.Personagem = Session["Personagem"];
             return View("Obituario");
         }
-        
-        
+
+
         //------------------------------------------------------------------------------------------------------------------------------
         //Outros
 
@@ -569,7 +569,7 @@ namespace YourLife.Controllers
             pg.Morrer(p);
             return View("Obituario");
         }
-        
+
         public ActionResult TerminarRelacionamento()
         {
             Personagem p = (Personagem)Session["Personagem"];
@@ -587,12 +587,6 @@ namespace YourLife.Controllers
             return View();
         }
 
-
-
-
-        //--------------------------------------------------------------------------------------------------------------------
-        //ALTERAÇÕES
-
         [Route("AlterarAcademia/{d}/{s}")]
         public ActionResult AlterarAcademia(decimal d, int s)
         {
@@ -601,12 +595,49 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
+        [Route("IrAoCinema/{d}/{s}")]
+        public ActionResult IrAoCinema(decimal d, int s)
+        {
+            AlterarDinheiro(-d);
+            AlterarFelicidade(s);
+            return View("Outros");
+        }
+
+
+        [Route("VisitarParentes/{d}/{f}")]
+        public ActionResult VisitarParentes(decimal d , int f)
+        {
+            AlterarDinheiro(-d);
+            AlterarFelicidade(-f);
+            return View("Outros");
+        }
+
+        [Route("Viajar/{d}/{f}/{s}/{i}/{r}")]
+        public ActionResult Viajar(decimal d, int f, int s, int i, int r)
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            AlterarDinheiro(-d);
+            AlterarFelicidade(f);
+            AlterarInteligencia(-i);
+            AlterarSaude(s);
+            if (p.Parceiro != 0)
+                AlterarRelacionamento(r);
+            return View("Outros");
+
+        }
+
+
+        //--------------------------------------------------------------------------------------------------------------------
+        //ALTERAÇÕES
+
+
+
         [Route("AlterarDinheiro/{d}")]
         public void AlterarDinheiro(decimal d)
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pDAO = new PersonagemDAO();
-            p.Dinheiro = p.Dinheiro - d;
+            p.Dinheiro = p.Dinheiro + d;
             pDAO.Alterar(p);
             Session["Personagem"] = p;
         }

@@ -34,7 +34,11 @@ function academia() {
 }
 
 function visitarParentes() {
-
+    $('#txt1').show("Você decidiu ir visitar seus familiares ainda vivos");
+    $('.lbl1').hide();
+    $('#cabecalho').html("Visitar Família");
+    $('#resposta1').attr('href', '/VisitarParentes/40/20');
+    $('.modal').modal();
 }
 
 function cinema() {
@@ -46,7 +50,11 @@ function cinema() {
 }
 
 function viajar() {
-    
+    $('#txt1').hide();
+    $('.lbl1').hide();
+    $('#cabecalho').html("Viajar te custará $10000,00");
+    $('#resposta1').attr('href', '/Viajar/10000/84/47/25/67');
+    $('.modal').modal();
 }
 
 
