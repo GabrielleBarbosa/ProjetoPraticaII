@@ -578,7 +578,13 @@ namespace YourLife.Controllers
             return View();
         }
 
-
+        public ActionResult Demissao()
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            PersonagemDAO pg = new PersonagemDAO();
+            pg.Demissao(p);
+            return View();
+        }
 
 
 

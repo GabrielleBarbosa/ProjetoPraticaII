@@ -16,10 +16,11 @@ function terminarRel() {
 }
 
 function demissao(){
-    $('#txt1').hide();
+    $('#txt1').show("Pedindo demissão você não receberá nenhuma compensação");
     $('.lbl1').hide();
     $('.lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja pedir demissão? ");
+    $('#resposta1').attr('href', '/Demissao/');
     $('.modal').modal();
 }
 

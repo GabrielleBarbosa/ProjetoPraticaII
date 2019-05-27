@@ -72,14 +72,36 @@ namespace YourLife.DAO
             }
         }
 
-        public void TerminarRelacionamento(Personagem p)
+        public bool TerminarRelacionamento(Personagem p)     //método que termina relacionamento
         {
-            using (var contexto = new JogoContext())
-            {
-                p.Parceiro = 0;
-                contexto.Personagem.Update(p);
-                contexto.SaveChanges();
-            }
+            if (p.Parceiro > 0)                             // verificando com antecedência se a pessoa está em um relacionamento
+                using (var contexto = new JogoContext())
+                {
+                    p.Parceiro = 0;
+                    p.PontosFelicidade = p.PontosFelicidade - 50;
+                    p.PontosSaude = p.PontosSaude - 30;
+                    contexto.Personagem.Update(p);
+                    contexto.SaveChanges();
+                    return true;
+                }
+            else
+                return false;
+
+        }
+
+        public bool Demissao(Personagem p) // método que demite a pessoa de seu emprego
+        {
+            if (p.CodEmprego > 0)         // verificando com antecedência se a pessoa está em um emprego
+                using (var contexto = new JogoContext())
+                {
+                    p.CodEmprego = 0;
+                    p.PontosFelicidade = p.PontosFelicidade - 10;
+                    contexto.Personagem.Update(p);
+                    contexto.SaveChanges();
+                    return true;
+                }
+            else
+                return false;
         }
     }
 
