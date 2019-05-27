@@ -8,10 +8,10 @@ namespace YourLife.Models
     public class Consequencia
     {
         public int Id { get ; set; }
-        public string Cenario { get; set; }
+        public string assunto { get; set; }
         public int PontosGanhos { get; set; }
-        public string TipoDoPontoGanho { get; set; }
-        public string TipoDoPontoPerdido { get; set; }
+        public char TipoDoPontoGanho { get; set; }
+        public char TipoDoPontoPerdido { get; set; }
         public int PontosPerdidos { get; set; }
     }
 }
