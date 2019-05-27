@@ -14,7 +14,8 @@ create table Personagem
  parceiro int,
  constraint fkParceiro foreign key(parceiro) references Parceiro(id),
  codEmprego int not null,
- constraint fkEmprego foreign key(codEmprego) references Emprego(id)
+ constraint fkEmprego foreign key(codEmprego) references Emprego(id),
+ carteiraMotorista char not null 
 )
 
 
