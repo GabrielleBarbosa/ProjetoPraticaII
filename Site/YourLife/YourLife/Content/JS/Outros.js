@@ -38,7 +38,11 @@ function visitarParentes() {
 }
 
 function cinema() {
-
+    $('#txt1').hide();
+    $('.lbl1').hide();
+    $('#cabecalho').html("Ir ao cinema custará $100,00");
+    $('#resposta1').attr('href', '/IrAoCinema/100/20');
+    $('.modal').modal();
 }
 
 function viajar() {
