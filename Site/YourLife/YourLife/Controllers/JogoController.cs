@@ -136,6 +136,7 @@ namespace YourLife.Controllers
                 p.CodEmprego = 0;
                 p.CodUsuario = usu.id;
                 p.Parceiro = 0;
+                p.CarteiraMotorista = 'N';
                 dao.Adiciona(p);
 
                 EmpregoDAO daoE = new EmpregoDAO();
@@ -459,25 +460,25 @@ namespace YourLife.Controllers
         {
             switch (c.TipoDoPontoGanho)
             {
-                case "Inteligencia":
+                case 'I':
                     p.PontosInteligencia += c.PontosGanhos;
                     if (p.PontosInteligencia > 1000)
                         p.PontosInteligencia = 1000;
                     break;
 
-                case "Saude":
+                case 'S':
                     p.PontosSaude += c.PontosGanhos;
                     if (p.PontosSaude > 1000)
                         p.PontosSaude = 1000;
                     break;
 
-                case "Relacionamento":
+                case 'R':
                     p.PontosRelacionamento += c.PontosGanhos;
                     if (p.PontosRelacionamento > 1000)
                         p.PontosRelacionamento = 1000;
                     break;
 
-                case "Felicidade":
+                case 'F':
                     p.PontosFelicidade += c.PontosGanhos;
                     if (p.PontosFelicidade > 1000)
                         p.PontosFelicidade = 1000;
@@ -485,25 +486,25 @@ namespace YourLife.Controllers
             }
             switch (c.TipoDoPontoPerdido)
             {
-                case "Inteligencia":
+                case 'I':
                     p.PontosInteligencia -= c.PontosPerdidos;
                     if (p.PontosInteligencia < 0)
                         p.PontosInteligencia = 0;
                     break;
 
-                case "Saude":
+                case 'S':
                     p.PontosSaude -= c.PontosPerdidos;
                     if (p.PontosSaude < 0)
                         p.PontosSaude = 0;
                     break;
 
-                case "Relacionamento":
+                case 'R':
                     p.PontosRelacionamento -= c.PontosPerdidos;
                     if (p.PontosRelacionamento < 0)
                         p.PontosRelacionamento = 0;
                     break;
 
-                case "Felicidade":
+                case 'F':
                     p.PontosFelicidade -= c.PontosPerdidos;
                     if (p.PontosFelicidade < 0)
                         p.PontosFelicidade = 0;
