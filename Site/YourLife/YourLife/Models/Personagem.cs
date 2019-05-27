@@ -21,5 +21,6 @@ namespace YourLife.Models
         public decimal Dinheiro { get; set; }
         public int Parceiro { get; set; }
         public int CodEmprego { get; set; }
+        public char CarteiraMotorista { get; set; }
     }
 }
