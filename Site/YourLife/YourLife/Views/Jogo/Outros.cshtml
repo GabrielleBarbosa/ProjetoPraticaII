@@ -24,7 +24,7 @@
         }
         else
         {
-            if (((int)ViewBag.Personagem.PontosFelicidade) < 200)
+            if (ViewBag.Personagem.PontosFelicidade > 200)
             {
                 disabledSuicidio = "disabled";
             }
@@ -52,7 +52,7 @@
         <p style="font-size:4vh">Outras Opções</p>
         <hr style="height: 1px;" />
 
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio" id="s" href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio @ViewBag.Personagem.PontosFelicidade</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio" id="s" href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade  @disabledRel" href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledPorDinheiro" href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="passear();">Passear</a><br /><br />
