@@ -16,7 +16,7 @@
             <img src="@ViewBag.Imagem" id="personagem" height="500" width="350" /> <br />
         }
         <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Personagem">Personagem</a>
-        <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Envelhecer">Envelhecer!<i class="material-icons">access_time</i></a>
+        <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Envelhecer">Envelhecer!<i class="material-icons right">access_time</i></a>
     </center>
 </div>
 
@@ -31,11 +31,13 @@
 <progress max="100" value=@pbRelacionamento id="pbRelacionamento" class="tooltipped" data-position="bottom" data-tooltip="Relacionamento: @ViewBag.Personagem.PontosRelacionamento"></progress>
 <progress max="100" value=@pbFelicidade id="pbFelicidade" class="tooltipped" data-position="bottom" data-tooltip="Felicidade: @ViewBag.Personagem.PontosFelicidade"></progress>
 
-@{string desabilitado = "";}
+@{
+    string desabilitado = "";
 
-@if(Session["ConseguiuEmprego"] != null)
-{
-    desabilitado = "disabled";
+    if (Session["ConseguiuEmprego"] != null)
+    {
+        desabilitado = "disabled";
+    }
 }
 <a class="waves-effect waves-light btn green darken-4 botoes" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
 <a class="waves-effect waves-light btn green darken-4 botoes @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
@@ -133,11 +135,10 @@
                         }
                     ))
                 }
-            }));
+            }))
     }
 
     $(document).ready(function () {
         $('.tooltipped').tooltip();
-    });
+    })
 </script>
-

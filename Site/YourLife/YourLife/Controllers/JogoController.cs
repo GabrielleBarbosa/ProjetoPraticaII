@@ -559,6 +559,7 @@ namespace YourLife.Controllers
 
         public ActionResult Outros()
         {
+            ViewBag.Personagem = Session["Personagem"];
             return View();
         }
         public ActionResult Suicidio()
@@ -573,8 +574,12 @@ namespace YourLife.Controllers
         public ActionResult TerminarRelacionamento()
         {
             Personagem p = (Personagem)Session["Personagem"];
+            p.Parceiro = 0;
+            p.PontosSaude -= 30;
+            p.PontosFelicidade -= 50;
             PersonagemDAO pg = new PersonagemDAO();
-            pg.TerminarRelacionamento(p);
+            pg.Alterar(p);
+
             Session["Personagem"] = p;
             return View();
         }
@@ -583,7 +588,10 @@ namespace YourLife.Controllers
         {
             Personagem p = (Personagem)Session["Personagem"];
             PersonagemDAO pg = new PersonagemDAO();
-            pg.Demissao(p);
+            p.CodEmprego = 0;
+            p.PontosFelicidade -= 10;
+            pg.Alterar(p);
+            Session["Personagem"] = p;
             return View();
         }
 
@@ -604,10 +612,9 @@ namespace YourLife.Controllers
         }
 
 
-        [Route("VisitarParentes/{d}/{f}")]
-        public ActionResult VisitarParentes(decimal d , int f)
+        [Route("VisitarParentes/{f}")]
+        public ActionResult VisitarParentes(int f)
         {
-            AlterarDinheiro(-d);
             AlterarFelicidade(-f);
             return View("Outros");
         }
@@ -623,7 +630,6 @@ namespace YourLife.Controllers
             if (p.Parceiro != 0)
                 AlterarRelacionamento(r);
             return View("Outros");
-
         }
 
 

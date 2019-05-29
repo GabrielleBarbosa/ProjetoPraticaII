@@ -5,3 +5,8 @@ create table Usuario
 	senha varchar(15) not null
 )
 
+select * from Usuario
+delete from Personagem
+delete from Usuario
+delete from CursoJogador
+delete from MercadoJogador
