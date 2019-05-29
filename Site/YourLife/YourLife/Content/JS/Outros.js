@@ -19,8 +19,8 @@ function demissao(){
     $('#txt1').show("Pedindo demissão você não receberá nenhuma compensação");
     $('.lbl1').hide();
     $('.lbl1').html("");
-    $('#cabecalho').html("Tem certeza que deseja pedir demissão? ");
-    $('#resposta1').attr('href', '/Demissao/');
+    $('#cabecalho').html("Tem certeza que deseja pedir demissão?");
+    $('#resposta1').attr('href', '/Jogo/Demissao');
     $('.modal').modal();
 }
 
@@ -37,7 +37,7 @@ function visitarParentes() {
     $('#txt1').show("Você decidiu ir visitar seus familiares ainda vivos");
     $('.lbl1').hide();
     $('#cabecalho').html("Visitar Família");
-    $('#resposta1').attr('href', '/VisitarParentes/40/20');
+    $('#resposta1').attr('href', '/VisitarParentes/20');
     $('.modal').modal();
 }
 

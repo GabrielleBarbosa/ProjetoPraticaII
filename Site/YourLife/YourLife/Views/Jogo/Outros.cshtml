@@ -16,20 +16,50 @@
 
 <body style="font-family:'Calisto MT'">
 
+    @{ 
+        string disabledPorIdade="", disabledPorDinheiro="", disabledSuicidio="", disabledRel="", disabledEmprego="", disabledViajar="";
+        if(ViewBag.Personagem.Idade < 15)
+        {
+            disabledPorIdade = "disabled";
+        }
+        else
+        {
+            if (((int)ViewBag.Personagem.PontosFelicidade) < 200)
+            {
+                disabledSuicidio = "disabled";
+            }
+            if (ViewBag.Personagem.Parceiro == 0)
+            {
+                disabledRel = "disabled";
+            }
+            if(ViewBag.Personagem.CodEmprego == 0)
+            {
+                disabledEmprego = "disabled";
+            }
+            if (ViewBag.Personagem.Dinheiro < 100)
+            {
+                disabledPorDinheiro = "disabled";
+            }
+            else if (ViewBag.Personagem.Dinheiro < 10000)
+            {
+                disabledViajar = "disabled";
+            }
+        }
+    }
     <a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
 
     <div class="container">
         <p style="font-size:4vh">Outras Opções</p>
         <hr style="height: 1px;" />
 
-        <a class="  btn white red-text z-depth-5 modal-trigger" id="s" href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="academia();">Academia</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="passear();">Passear</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="demissao();">Pedir demissão</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="visitarParentes();">Visitar Parentes</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="cinema();" >Ir ao cinema</a><br /><br />
-        <a class="  btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="viajar();">Viajar</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio" id="s" href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio @ViewBag.Personagem.PontosFelicidade</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade  @disabledRel" href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledPorDinheiro" href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="passear();">Passear</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledEmprego" href="#modalGeral" onclick="demissao();"><i class="material-icons right">settings_power</i>Pedir demissão</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger" href="#modalGeral" onclick="visitarParentes();"><i class="material-icons right">home</i>Visitar Parentes</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorDinheiro" href="#modalGeral" onclick="cinema();"><i class="material-icons right">tv</i>Ir ao cinema</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorDinheiro @disabledViajar @disabledPorIdade" href="#modalGeral" onclick="viajar();"><i class="material-icons right" >flight</i>Viajar</a><br /><br />
 
         <!-- Modal Structure -->
         <div id="modalGeral" class="modal modal-fixed-footer">
