@@ -101,18 +101,18 @@
     }
 
     abrirModal2 = function (texto) {
-        $('#textoModal2').html(texto + "<br>Entre em empregos novamente após envelhecer!");
+        $('#textoModal2').html(texto);
         modal2.style.display = "block";
     }
 
     $('#OK').onclick = function () {
-        modal2.style.display = "none";
+        window.location.reload;
     }
 
     window.onload = function () {
 
         $.ajaxSetup({ async: false });
-        $.when($.post('/Jogo/HaMensagem', {
+        $.when($.post('/Jogo/HaAcontecimento', {
         },
             function (data) {
                 if (data) {
@@ -120,15 +120,10 @@
                 }
                 else
                 {
-                    $.when($.post('/Jogo/ConseguiuEmprego', {},
+                    $.when($.post('/Jogo/HaMensagem', {},
                         function (data) {
                             if (data != null) {
-                                if (data)
-                                    abrirModal2("Parabéns, você passou na entrevista de emprego!!");
-                                else
-                                {
-                                    abrirModal2("Sinto muito, você não passou na entrevista =(");
-                                }
+                                abrirModal2(data);
                             }
                         }
                     ))

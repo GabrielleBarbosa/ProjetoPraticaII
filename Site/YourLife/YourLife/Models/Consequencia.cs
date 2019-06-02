@@ -13,5 +13,6 @@ namespace YourLife.Models
         public char TipoDoPontoGanho { get; set; }
         public char TipoDoPontoPerdido { get; set; }
         public int PontosPerdidos { get; set; }
+        public string resultado { get; set; }
     }
 }

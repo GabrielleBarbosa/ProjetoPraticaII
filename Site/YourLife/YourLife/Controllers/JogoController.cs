@@ -261,20 +261,30 @@ namespace YourLife.Controllers
             return RedirectToAction("Base", "Jogo");
         }
 
-        public JsonResult ConseguiuEmprego()
+        public JsonResult HaMensagem()
         {
-            if (Session["ConseguiuEmprego"] == null)
+            if (Session["ConseguiuEmprego"] == null && Session["MensagemAcontecimento"] == null)
                 return Json(null);
-            if ((string)Session["ConseguiuEmprego"] == "S")
+            else if(Session["ConseguiuEmprego"] != null)
             {
-                Session["ConseguiuEmprego"] = "j";
-                return Json(true);
+                if ((string)Session["ConseguiuEmprego"] == "S")
+                {
+                    Session["ConseguiuEmprego"] = "j";
+                    return Json("Parabéns, você passou na entrevista de emprego!!<br>Entre em empregos novamente após envelhecer!");
+                }
+                else if ((string)Session["ConseguiuEmprego"] == "N")
+                {
+                    Session["ConseguiuEmprego"] = "j";
+                    return Json("Sinto muito, você não passou na entrevista =(<br>Entre em empregos novamente após envelhecer!");
+                }
             }
-            else if ((string)Session["ConseguiuEmprego"] == "N")
+            else if(Session["MensagemAcontecimento"] != null)
             {
-                Session["ConseguiuEmprego"] = "j";
-                return Json(false);
+                string msg = (string)Session["MensagemAcontecimento"];
+                Session["MensagemAcontecimento"] = null;
+                return Json(msg);
             }
+
             return Json(null);
         }
 
@@ -348,10 +358,10 @@ namespace YourLife.Controllers
 
                 Random random = new Random();
 
-                if (p.Idade == 90) //idade para dirigir
+                if (p.Idade == 16) //idade para dirigir
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-                    AcontecimentoFixo af = dao.BuscarPorId(1);
+                    AcontecimentoFixo af = dao.BuscarPorId(random.Next(1,2));
 
                     ViewBag.Acontecimento = Session["acontecimento"] = af;
 
@@ -365,10 +375,10 @@ namespace YourLife.Controllers
                     ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
                     ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
-                if (p.Idade == 90) //maioridade 
+                if (p.Idade == 18) //maioridade 
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-                    AcontecimentoFixo af = dao.BuscarPorId(2);
+                    AcontecimentoFixo af = dao.BuscarPorId(3);
 
                     ViewBag.Acontecimento = Session["acontecimento"] = af;
 
@@ -387,11 +397,11 @@ namespace YourLife.Controllers
                     int id = 0;
                     if (p.Idade <= 14)
                     {
-                        id = random.Next(1, 1); //(1, 20);
+                        id = random.Next(1, 3);
                     }
                     else if (p.Idade <= 30)
                     {
-                        id = random.Next(1, 1); //(21, 40);
+                        id = random.Next(21, 25);
                     }
                     else if (p.Idade <= 60)
                     {
@@ -422,7 +432,7 @@ namespace YourLife.Controllers
             return RedirectToAction("Base", "Jogo");
         }
 
-        public JsonResult HaMensagem()
+        public JsonResult HaAcontecimento()
         {
             if (Session["acontecimento"] == null)
                 return Json(false);
@@ -444,11 +454,51 @@ namespace YourLife.Controllers
                 c = (Consequencia)Session["consequencia2"];
             }
 
-            AjustarPontos(p, c);
-            p = (Personagem)Session["Personagem"];
+            if (c.assunto == "pontos")
+            {
+                AjustarPontos(ref p, c);
+            }
+            else if(c.assunto == "carteira")
+            {
+                if(c.PontosGanhos == 1)
+                {
+                    p.CarteiraMotorista = 'S';
+                }
+            }
+            else if(c.assunto == "namoro")
+            {
+                if(c.PontosGanhos == 1 && !(c.TipoDoPontoGanho.Equals("")))
+                {
+                    ParceiroDAO daoParceiro = new ParceiroDAO();
+                    Random random = new Random();
+                    if(c.TipoDoPontoGanho.Equals('M'))
+                    {
+                        Parceiro par = daoParceiro.BuscarPorId(random.Next(1, 30));
+                        Session["Parceiro"] = par;
+                        p.Parceiro = par.id;
+                    }
+                    else
+                    {
+                        Parceiro par = daoParceiro.BuscarPorId(random.Next(31, 60));
+                        Session["Parceiro"] = par;
+                        p.Parceiro = par.id;
+                    }
+                }
+                else if(c.PontosGanhos == 0 && c.TipoDoPontoGanho.Equals(""))
+                {
+                    p.Parceiro = 0;
+                    Session["Parceiro"] = 0;
+                }
+            }
+            else if(c.assunto == "carreira")
+            {
+                Session["MensagemAcontecimento"] = c.resultado;
+                RedirectToAction("Curso", "Jogo");
+            }
+
+            Session["MensagemAcontecimento"] = c.resultado;
 
             PersonagemDAO dao = new PersonagemDAO();
-
             dao.Alterar(p);
 
             Session["acontecimento"] = null;
@@ -456,7 +506,7 @@ namespace YourLife.Controllers
             return RedirectToAction("Base", "Jogo");
         }
 
-        public void AjustarPontos(Personagem p, Consequencia c)
+        public void AjustarPontos(ref Personagem p, Consequencia c)
         {
             switch (c.TipoDoPontoGanho)
             {
@@ -510,8 +560,6 @@ namespace YourLife.Controllers
                         p.PontosFelicidade = 0;
                     break;
             }
-
-            Session["Personagem"] = p;
         }
 
         public ActionResult Curso()
