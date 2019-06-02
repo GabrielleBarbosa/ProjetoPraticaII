@@ -456,7 +456,7 @@ namespace YourLife.Controllers
 
             if (c.assunto == "pontos")
             {
-                AjustarPontos(ref p, c);
+                p = AjustarPontos(p, c);
             }
             else if(c.assunto == "carteira")
             {
@@ -506,7 +506,7 @@ namespace YourLife.Controllers
             return RedirectToAction("Base", "Jogo");
         }
 
-        public void AjustarPontos(ref Personagem p, Consequencia c)
+        public Personagem AjustarPontos(Personagem p, Consequencia c)
         {
             switch (c.TipoDoPontoGanho)
             {
@@ -560,6 +560,7 @@ namespace YourLife.Controllers
                         p.PontosFelicidade = 0;
                     break;
             }
+            return p;
         }
 
         public ActionResult Curso()
@@ -607,6 +608,26 @@ namespace YourLife.Controllers
 
         public ActionResult Outros()
         {
+            Personagem p = new Personagem();
+            p.Dinheiro = 0;
+            p.Idade = 5;
+            p.Parceiro = 'N';
+            p.PontosSaude = 1000;
+            Random rm = new Random();
+            p.PontosInteligencia = rm.Next(0, 450);
+            p.PontosRelacionamento = 0;
+            p.PontosFelicidade = 500;
+            p.Sexo = 'I';
+            p.CodEmprego = 0;
+            p.Parceiro = 0;
+            p.CarteiraMotorista = 'N';
+
+            Emprego e = new Emprego();
+            e.id = 0;
+            e.salario = 0;
+            Session["Emprego"] = e;
+            Session["Personagem"] = p;
+
             ViewBag.Personagem = Session["Personagem"];
             return View();
         }
