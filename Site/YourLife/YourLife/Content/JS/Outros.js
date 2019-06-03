@@ -2,7 +2,7 @@
 
 window.onload = function () {
     $.ajaxSetup({ async: false });
-    $.when($.post('/Jogo/IdadePersonagem', {
+    $.when($.post('/Jogo/Idade', {
     },
         function (data) {
             idade = data;
