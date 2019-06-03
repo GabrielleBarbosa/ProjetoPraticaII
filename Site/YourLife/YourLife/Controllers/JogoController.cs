@@ -228,7 +228,7 @@ namespace YourLife.Controllers
             ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO daoJC = new CursoJogadorDAO();
-            IList<CursoJogador> cursosFeitos = daoJC.ListarCursos();
+            IList<CursoJogador> cursosFeitos = daoJC.ListarCursos(((Personagem)Session["Personagem"]).Id);
             ViewBag.CursosFeitos = cursosFeitos;
 
             CursoDAO daoC = new CursoDAO();
@@ -578,7 +578,7 @@ namespace YourLife.Controllers
             ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO usuDao = new CursoJogadorDAO();
-            IList<CursoJogador> cursosFeitos = usuDao.ListarCursos();
+            IList<CursoJogador> cursosFeitos = usuDao.ListarCursos(((Personagem)Session["Personagem"]).Id);
             ViewBag.CursosFeitos = cursosFeitos;
             return View();
         }
@@ -605,7 +605,7 @@ namespace YourLife.Controllers
 
         public ActionResult Obituario(string causaDeMorte)
         {
-            ViewBag.FormaDeMorte =
+            ViewBag.FormaDeMorte = causaDeMorte;
              ViewBag.Personagem = Session["Personagem"];
             return View("Obituario");
         }
@@ -619,6 +619,12 @@ namespace YourLife.Controllers
             ViewBag.Personagem = Session["Personagem"];
             return View();
         }
+
+        public JsonResult Idade()
+        {
+            return Json(((Personagem)Session["Personagem"]).Idade);
+        }
+
         public ActionResult Suicidio()
         {
             Personagem p = (Personagem)Session["Personagem"];
@@ -668,11 +674,24 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
+        [Route("IrAoCinema/{f}")]
+        public ActionResult IrAoCinema(int f)
+        {
+            AlterarFelicidade(f);
+            return View("Outros");
+        }
 
+        [Route("VisitarParentes/{f}/{d}")]
+        public ActionResult VisitarParentes(int f, decimal d)
+        {
+            AlterarFelicidade(f);
+            AlterarDinheiro(-d);
+            return View("Outros");
+        }
         [Route("VisitarParentes/{f}")]
         public ActionResult VisitarParentes(int f)
         {
-            AlterarFelicidade(-f);
+            AlterarFelicidade(f);
             return View("Outros");
         }
 

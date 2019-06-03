@@ -8,11 +8,11 @@ namespace YourLife.DAO
 {
     public class CursoJogadorDAO
     {
-        public IList<CursoJogador> ListarCursos()
+        public IList<CursoJogador> ListarCursos(int id)
         {
             using (var repo = new JogoContext())
             {
-                IList<CursoJogador> lista = repo.CursoJogador.ToList();
+                IList<CursoJogador> lista = repo.CursoJogador.Where(cj => cj.codJogador == id).ToList();
                 return lista;
             }
         }
