@@ -177,6 +177,7 @@
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\JS\Outros.js" />
     <Content Include="Global.asax" />
+    <Content Include="Imagens\BackArmario.png" />
     <Content Include="Imagens\cupido.jpg" />
     <Content Include="Imagens\cupido.png" />
     <Content Include="Imagens\homem_adulto.png" />
@@ -193,6 +194,7 @@
     <Content Include="Imagens\sala_de_casa.jpg" />
     <Content Include="Imagens\sala_de_crianca.jpg" />
     <Content Include="Imagens\sala_de_escola.jpg" />
+    <Content Include="Imagens\texturaYourLife.png" />
     <Content Include="Imagens\velha.png" />
     <Content Include="Imagens\velhinhos.png" />
     <Content Include="Imagens\velho.png" />
@@ -213,6 +215,7 @@
     <Content Include="Views\Jogo\Imagens\sala_de_casa.jpg" />
     <Content Include="Views\Jogo\Imagens\sala_de_crianca.jpg" />
     <Content Include="Views\Jogo\Imagens\sala_de_escola.jpg" />
+    <Content Include="Views\Jogo\Imagens\texturaYourLife.png" />
     <Content Include="Views\Jogo\Imagens\velha.png" />
     <Content Include="Views\Jogo\Imagens\velhinhos.png" />
     <Content Include="Views\Jogo\Imagens\velho.png" />

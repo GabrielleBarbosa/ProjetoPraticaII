@@ -1,10 +1,6 @@
-﻿#composicao{
-    background-color:red;
+﻿body {
+    overflow: hidden;
 }
-
-
-
-
 
 #pbSaude {
     position: absolute;
@@ -76,9 +72,10 @@
 }
 
 #composicao {
-    background-color: #fffde7;
+    background-color: white;
     height: 100%;
     width: 100%;
+    margin-top:3em;
 }
 
 #pbSaude[value]::-webkit-progress-value {

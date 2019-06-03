@@ -10,56 +10,56 @@
 <link rel="stylesheet" href="~/Content/CSS/Base.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <br />
-<div id="composicao">
+<div id="composicao" style="background:url(/Imagens/BackArmario.png)no-repeat;background-size:100%;"  >
     <center>
         @{
-            <img src="@ViewBag.Imagem" id="personagem" height="500" width="350" /> <br />
+            <img src="@ViewBag.Imagem" id="personagem" height="500" width="350"  style="z-index:100;"/> <br />
         }
         <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Personagem" id="btnPersonagem">Personagem</a>
         <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Envelhecer" id="btnEnvelhecer">Envelhecer!<i class="material-icons right">access_time</i></a>
     </center>
+
+    @{
+        int pbSaude = ViewBag.Personagem.PontosSaude / 10;
+        int pbInteligencia = ViewBag.Personagem.PontosInteligencia / 10;
+        int pbRelacionamento = ViewBag.Personagem.PontosRelacionamento / 10;
+        int pbFelicidade = ViewBag.Personagem.PontosFelicidade / 10;
+    }
+    <progress max="100" value=@pbSaude id="pbSaude" class="tooltipped" data-position="bottom" data-tooltip="Saúde: @ViewBag.Personagem.PontosSaude"></progress>
+    <progress max="100" value=@pbInteligencia id="pbInteligencia" class="tooltipped" data-position="bottom" data-tooltip="Inteligência: @ViewBag.Personagem.PontosInteligencia"></progress>
+    <progress max="100" value=@pbRelacionamento id="pbRelacionamento" class="tooltipped" data-position="bottom" data-tooltip="Relacionamento: @ViewBag.Personagem.PontosRelacionamento"></progress>
+    <progress max="100" value=@pbFelicidade id="pbFelicidade" class="tooltipped" data-position="bottom" data-tooltip="Felicidade: @ViewBag.Personagem.PontosFelicidade"></progress>
+
+    @{
+        string desabilitado = "";
+
+        if (Session["ConseguiuEmprego"] != null)
+        {
+            desabilitado = "disabled";
+        }
+    }
+    <a class="waves-effect waves-light btn white botoes z-depth-5" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5s" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5" id="outros" href="~/Jogo/Outros">Outros</a>
+
+    @{
+        string acontecimento = "";
+        string opcao1 = "";
+        string opcao2 = "";
+        int idConsequencia1 = 0;
+        int idConsequencia2 = 0;
+        if (ViewBag.Acontecimento != null)
+        {
+            acontecimento = ViewBag.Acontecimento.Acontecimento;
+            opcao1 = ViewBag.Escolha.Opcao1;
+            opcao2 = ViewBag.Escolha.Opcao2;
+            idConsequencia1 = @ViewBag.Consequencia1.Id;
+            idConsequencia2 = @ViewBag.Consequencia2.Id;
+        }
+    }
+
 </div>
-
-@{
-    int pbSaude = ViewBag.Personagem.PontosSaude / 10;
-    int pbInteligencia = ViewBag.Personagem.PontosInteligencia / 10;
-    int pbRelacionamento = ViewBag.Personagem.PontosRelacionamento / 10;
-    int pbFelicidade = ViewBag.Personagem.PontosFelicidade / 10;
-}
-<progress max="100" value=@pbSaude id="pbSaude" class="tooltipped" data-position="bottom" data-tooltip="Saúde: @ViewBag.Personagem.PontosSaude"></progress>
-<progress max="100" value=@pbInteligencia id="pbInteligencia" class="tooltipped" data-position="bottom" data-tooltip="Inteligência: @ViewBag.Personagem.PontosInteligencia"></progress>
-<progress max="100" value=@pbRelacionamento id="pbRelacionamento" class="tooltipped" data-position="bottom" data-tooltip="Relacionamento: @ViewBag.Personagem.PontosRelacionamento"></progress>
-<progress max="100" value=@pbFelicidade id="pbFelicidade" class="tooltipped" data-position="bottom" data-tooltip="Felicidade: @ViewBag.Personagem.PontosFelicidade"></progress>
-
-@{
-    string desabilitado = "";
-
-    if (Session["ConseguiuEmprego"] != null)
-    {
-        desabilitado = "disabled";
-    }
-}
-<a class="waves-effect waves-light btn white botoes z-depth-5" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
-<a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
-<a class="waves-effect waves-light btn white botoes z-depth-5s" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
-<a class="waves-effect waves-light btn white botoes z-depth-5" id="outros" href="~/Jogo/Outros">Outros</a>
-
-@{
-    string acontecimento = "";
-    string opcao1 = "";
-    string opcao2 = "";
-    int idConsequencia1 = 0;
-    int idConsequencia2 = 0;
-    if (ViewBag.Acontecimento != null)
-    {
-        acontecimento = ViewBag.Acontecimento.Acontecimento;
-        opcao1 = ViewBag.Escolha.Opcao1;
-        opcao2 = ViewBag.Escolha.Opcao2;
-        idConsequencia1 = @ViewBag.Consequencia1.Id;
-        idConsequencia2 = @ViewBag.Consequencia2.Id;
-    }
-}
-
 
 <div class="modal modal-fixed-footer" id="modal">
     <div class="modal-content">
@@ -136,4 +136,10 @@
     $(document).ready(function () {
         $('.tooltipped').tooltip();
     })
+
+
+    function setTopo() {
+        $(window).scrollTop(0);
+    }
+    $(window).bind('scroll', setTopo);
 </script>
