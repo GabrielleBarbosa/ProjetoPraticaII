@@ -40,6 +40,7 @@ function visitarParentes() {
 
     $('#txt1').show("Você decidiu ir visitar seus familiares ainda vivos");
     $('.lbl1').hide();
+    $('.lbl1').html("");
     $('#cabecalho').html("Visitar Família");
     $('#resposta1').attr('href', '/VisitarParentes/20');
     $('.modal').modal();
