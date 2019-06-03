@@ -15,8 +15,8 @@
         @{
             <img src="@ViewBag.Imagem" id="personagem" height="500" width="350" /> <br />
         }
-        <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Personagem">Personagem</a>
-        <a class="waves-effect waves-light btn green darken-4 botoes" href="~/Jogo/Envelhecer">Envelhecer!<i class="material-icons right">access_time</i></a>
+        <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Personagem" id="btnPersonagem">Personagem</a>
+        <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Envelhecer" id="btnEnvelhecer">Envelhecer!<i class="material-icons right">access_time</i></a>
     </center>
 </div>
 
@@ -39,10 +39,10 @@
         desabilitado = "disabled";
     }
 }
-<a class="waves-effect waves-light btn green darken-4 botoes" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
-<a class="waves-effect waves-light btn green darken-4 botoes @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
-<a class="waves-effect waves-light btn green darken-4 botoes" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
-<a class="waves-effect waves-light btn green darken-4 botoes" id="outros" href="~/Jogo/Outros">Outros</a>
+<a class="waves-effect waves-light btn white botoes z-depth-5" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
+<a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
+<a class="waves-effect waves-light btn white botoes z-depth-5s" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
+<a class="waves-effect waves-light btn white botoes z-depth-5" id="outros" href="~/Jogo/Outros">Outros</a>
 
 @{
     string acontecimento = "";
