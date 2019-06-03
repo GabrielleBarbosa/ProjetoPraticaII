@@ -43,14 +43,10 @@ function academia() {
 }
 
 function visitarParentes() {
-
-<<<<<<< HEAD
+    
     $('#txt1').html("Você decidiu ir visitar seus familiares");
-=======
-    $('#txt1').show("Você decidiu ir visitar seus familiares ainda vivos");
-    $('.lbl1').hide();
->>>>>>> bd2fb8fd2d7d6b8eb539cfc498da4a79757af938
-    $('.lbl1').html("");
+
+    $('#lbl1').html("");
     $('#cabecalho').html("Visitar Família");
     
     if (idade > 18)
@@ -82,5 +78,9 @@ function viajar() {
     $('#cabecalho').html("Viajar te custará $10000,00");
     $('#resposta1').attr('href', '/Viajar/10000/84/47/25/67');
     
+    $('.modal').modal();
+}
+
+$(document).ready = function () {
     $('.modal').modal();
 }
