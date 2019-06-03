@@ -25,5 +25,15 @@ namespace YourLife.DAO
                 return parceiro;
             }
         }
+
+        public Parceiro SelecionarParceiro(int id)
+        {
+            Parceiro parceiro = null;
+            using (var contexto = new JogoContext())
+            {
+                parceiro = (Parceiro)contexto.Parceiro.Where(parc => parc.id == id);
+            }
+            return parceiro;
+        }
     }
 }

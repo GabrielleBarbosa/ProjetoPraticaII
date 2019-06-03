@@ -15,8 +15,8 @@ select * from Emprego
 --quantos anos trabalhando que o jogador precisa ter pra ter acesso a esse emprego?
 
 insert into emprego values (0, 'Sem Emprego', 0, 0)
-insert into Emprego values (1,'Atendente de Mercado',10143.50,0)
-insert into Emprego values (2,'Vendedor de Loja',10870.89,0)
+insert into Emprego values (1,'Atendente de Mercado',12143.50,0)
+insert into Emprego values (2,'Vendedor de Loja',12870.89,0)
 insert into Emprego values (3,'Lixeiro',9098.50,0)
 insert into Emprego values (4,'Pedreiro',10000,0)
 insert into Emprego values (5,'Garçom',20200.56,0)
@@ -42,11 +42,12 @@ insert into Emprego values (21,'Enfermeiro',35000.50,7)
 insert into Emprego values (22,'Mecânico',30000.50,4)
 insert into Emprego values (23,'Fotógrafo',22980.50,13)
 insert into Emprego values (24,'Chefe de culinária',30000.50,18)
-insert into Emprego values (25,'Cozinheiro',9980.50,17)
-insert into Emprego values (26,'Matemático',9980.50,21)
+insert into Emprego values (25,'Cozinheiro',10080.50,17)
+insert into Emprego values (26,'Matemático',16980.50,21)
 insert into Emprego values (27,'Editor',23098.50,20)
-insert into Emprego values (28,'Eletricista',9980.50,2)
+insert into Emprego values (28,'Eletricista',12080.50,2)
 insert into Emprego values (29,'Engenheiro de Alimentos',32000.50,24)
 
 
 select * from Emprego
+delete from Emprego where id > 0

@@ -596,7 +596,9 @@ namespace YourLife.Controllers
 
         public ActionResult Personagem()
         {
+            ParceiroDAO daoP = new ParceiroDAO();
             ViewBag.Personagem = Session["Personagem"];
+            ViewBag.Parceiro = daoP.SelecionarParceiro(ViewBag.Personagem.parceiro);
             return View();
         }
 
