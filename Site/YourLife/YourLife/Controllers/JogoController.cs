@@ -503,6 +503,12 @@ namespace YourLife.Controllers
 
             Session["acontecimento"] = null;
 
+            if (p.PontosFelicidade == 0)
+            {
+                Suicidio();
+                return View("Suicidio");
+            }
+
             return RedirectToAction("Base", "Jogo");
         }
 
