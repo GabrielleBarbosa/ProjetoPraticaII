@@ -83,24 +83,3 @@ function viajar() {
     
     $('.modal').modal();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//-----------------------------------------------------
-
-
-$(document).ready(function () {
-    $('.modal').modal();
-});
