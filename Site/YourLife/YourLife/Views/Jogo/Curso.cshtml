@@ -41,12 +41,12 @@
 
                         foreach (var cur in ViewBag.CursosFeitos)
                         {
-                            if (ViewBag.Cursos[i].CodCursoNecessario == cur.id)
+                            if (ViewBag.Cursos[i].CodCursoNecessario == cur.codCurso)
                             {
                                 fezCursoNecessario = true;
                                 break;
                             }
-                            if (ViewBag.Cursos[i].id == cur.id)
+                            if (ViewBag.Cursos[i].id == cur.codCurso)
                             {
                                 fezCurso = true;
                                 break;

@@ -14,8 +14,8 @@
 </head>
 
 <body style="font-family:'Calisto MT'">
-
     @{
+        ViewBag.Personagem = Session["Personagem"];
         string disabledPorIdade = "", disabledPorDinheiro = "", disabledSuicidio = "", disabledRel = "", disabledEmprego = "", disabledViajar = "";
         if (ViewBag.Personagem.Idade < 18)
         {

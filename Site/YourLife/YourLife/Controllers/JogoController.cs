@@ -228,7 +228,7 @@ namespace YourLife.Controllers
             ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO daoJC = new CursoJogadorDAO();
-            IList<CursoJogador> cursosFeitos = daoJC.ListarCursos();
+            IList<CursoJogador> cursosFeitos = daoJC.ListarCursos(((Personagem)Session["Personagem"]).Id);
             ViewBag.CursosFeitos = cursosFeitos;
 
             CursoDAO daoC = new CursoDAO();
@@ -578,7 +578,7 @@ namespace YourLife.Controllers
             ViewBag.Pagina = Session["PaginaAtual"];
 
             CursoJogadorDAO usuDao = new CursoJogadorDAO();
-            IList<CursoJogador> cursosFeitos = usuDao.ListarCursos();
+            IList<CursoJogador> cursosFeitos = usuDao.ListarCursos(((Personagem)Session["Personagem"]).Id);
             ViewBag.CursosFeitos = cursosFeitos;
             return View();
         }
@@ -603,7 +603,7 @@ namespace YourLife.Controllers
 
         public ActionResult Obituario(string causaDeMorte)
         {
-            ViewBag.FormaDeMorte =
+            ViewBag.FormaDeMorte = causaDeMorte;
              ViewBag.Personagem = Session["Personagem"];
             return View("Obituario");
         }
@@ -614,29 +614,15 @@ namespace YourLife.Controllers
 
         public ActionResult Outros()
         {
-            Personagem p = new Personagem();
-            p.Dinheiro = 0;
-            p.Idade = 5;
-            p.Parceiro = 'N';
-            p.PontosSaude = 1000;
-            Random rm = new Random();
-            p.PontosInteligencia = rm.Next(0, 450);
-            p.PontosRelacionamento = 0;
-            p.PontosFelicidade = 500;
-            p.Sexo = 'I';
-            p.CodEmprego = 0;
-            p.Parceiro = 0;
-            p.CarteiraMotorista = 'N';
-
-            Emprego e = new Emprego();
-            e.id = 0;
-            e.salario = 0;
-            Session["Emprego"] = e;
-            Session["Personagem"] = p;
-
             ViewBag.Personagem = Session["Personagem"];
             return View();
         }
+
+        public JsonResult Idade()
+        {
+            return Json(((Personagem)Session["Personagem"]).Idade);
+        }
+
         public ActionResult Suicidio()
         {
             Personagem p = (Personagem)Session["Personagem"];
@@ -686,11 +672,24 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
+        [Route("IrAoCinema/{f}")]
+        public ActionResult IrAoCinema(int f)
+        {
+            AlterarFelicidade(f);
+            return View("Outros");
+        }
 
+        [Route("VisitarParentes/{f}/{d}")]
+        public ActionResult VisitarParentes(int f, decimal d)
+        {
+            AlterarFelicidade(f);
+            AlterarDinheiro(-d);
+            return View("Outros");
+        }
         [Route("VisitarParentes/{f}")]
         public ActionResult VisitarParentes(int f)
         {
-            AlterarFelicidade(-f);
+            AlterarFelicidade(f);
             return View("Outros");
         }
 
