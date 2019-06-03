@@ -12,6 +12,7 @@
 <div class="container">
     @{
         var a = 2019 + ViewBag.Personagem.Idade;
+        var idade = ViewBag.Personagem.Idade + 3;
     }
     <p style="font-family: 'Sofia',cursive;font-size:8vh;" class="blue-text text-darken-2">Sobre o Personagem</p><br />
     <p>
@@ -30,9 +31,7 @@
     </div>
     <p style="font-size:4vh">Relacionamento</p>
     <hr style="height:1px; background-color:black;" />
-    <p>Nome do Parceiro</p>
-    <p>Idade do parceiro</p>
+    <p><strong>Nome do Parceiro:</strong> @ViewBag.Parceiro.nome</p>
+    <p><strong>Idade do parceiro:@idade</strong></p>
     <p><strong>Relacionamento:</strong> @ViewBag.Personagem.PontosRelacionamento</p>
-
-    <p style="font-size:4vh">Dados do Parceiro:</p>
 </div>

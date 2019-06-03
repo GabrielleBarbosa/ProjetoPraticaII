@@ -6,15 +6,6 @@ codCursoNecessario int,
 constraint fkCurso foreign key(codCursoNecessario) references Curso(id)
 )
 
-select * from curso
-select * from Personagem
-select * from usuario
-delete from Usuario 
-delete from Curso where id=5 or id=6
-delete from Emprego
-delete from CursoJogador
-delete from emprego
-delete from Personagem
 
 insert into curso values (0,'-','',0)
 insert into curso values (1, 'Informática', 'Desenvolvimento de aplicativos computacionais, técnicas avançadas de desenvolvimento de sistemas de alta complexidade e atenção constante à qualidade, ampla possibilidade de trabalho.', 0)
@@ -25,22 +16,19 @@ insert into curso values (5, 'Meio Ambiente', 'Atuação focada no desenvolvimento
 insert into curso values (6, 'Medicina', 'Profissionais com conhecimentos, habilidades e atitudes para o exercício da medicina numa postura ética, numa visão humanística, com senso de responsabilidade social e compromisso com a cidadania; aptos à orientação para a proteção, promoção da saúde e prevenção das doenças.', 0)
 insert into curso values (7, 'Enfermagem', 'Aprendizado em funcionamento de unidades de saúde, conceitos de administração hospitalar, psicologia, saneamento, saúde pública, farmacologia; atua em estabelecimentos de saúde, hospitais, consultórios médicos, clínicas médicas, laboratórios, etc..', 0)
 insert into curso values (8, 'Biologia', 'Dedicação ao estudo de diferente formas de vida, com objetivo de estudar a origem, evolução, estrutura e funcionamento dos seres vivos e analisar sua relação com o meio ambiente; atua em desde zoológicos e reservas naturais até industria de alimentos.', 0)
-insert into curso values (9, 'Engenharia Química', 'curso legau', 0)
-insert into curso values (10, 'Engenharia Elétrica', 'curso legau', 0)
+insert into curso values (9, 'Engenharia Química', 'Engenharia química é a área/profissão que dedica-se à concepção, desenvolvimento, dimensionamento, melhoramento e aplicação dos Processos e dos seus Produtos. Neste âmbito inclui-se a análise econômica, dimensionamento, construção, operação, controle e gestão das Unidades Industriais que concretizam esses Processos, assim como a investigação e formação nesses domínios', 0)
+insert into curso values (10, 'Engenharia Elétrica', 'O engenheiro elétrico é responsável por planejar, construir e manter sistemas capazes de gerar, transmitir e distribuir energia elétrica. Seu objetivo é levar energia elétrica a toda a população de forma segura e com qualidade.', 0)
 insert into curso values (11, 'Engenharia da Computação', 'curso legau', 0)
 insert into curso values (12, 'Direito', 'curso legau', 0)
 insert into curso values (13, 'Fotografia', 'curso legau', 0)
-insert into curso values (14, 'Cinema', 'curso legau', 0)
-insert into curso values (15, 'Teatro', 'curso legau', 0)
-insert into curso values (16, 'Administração', 'curso legau', 0)
-insert into curso values (17, 'Culinária', 'curso legau', 0)
-insert into curso values (18, 'Chefe de culinária', 'curso legau', 0)
-insert into curso values (19, 'Pedagogia', 'curso legau', 0)
-insert into curso values (20, 'Edição', 'curso legau', 0)
-insert into curso values (21, 'Matemática', 'curso legau', 0)
-insert into curso values (22, 'Qualidade', 'curso legau', 0)
-insert into curso values (23, 'Artes', 'curso legau', 0)
-insert into curso values (24, 'Engenharia de Alimentos', 'curso legau', 0)
+insert into curso values (14, 'Artes Cênicas', 'curso legau', 0)
+insert into curso values (15, 'Administração', 'curso legau', 0)
+insert into curso values (16, 'Culinária', 'curso legau', 0)
+insert into curso values (17, 'Chefe de culinária', 'curso legau', 0)
+insert into curso values (18, 'Pedagogia', 'curso legau', 0)
+insert into curso values (19, 'Edição', 'curso legau', 0)
+insert into curso values (20, 'Matemática', 'curso legau', 0)
+insert into curso values (21, 'Qualidade', 'curso legau', 0)
 
 
 create table CursoJogador(
@@ -55,3 +43,14 @@ drop table CursoJogador
 
 select * from CursoJogador
 select * from Usuario
+
+
+select * from curso
+select * from Personagem
+select * from usuario
+delete from Usuario 
+delete from Curso where id=5 or id=6
+delete from Emprego
+delete from CursoJogador
+delete from emprego
+delete from Personagem

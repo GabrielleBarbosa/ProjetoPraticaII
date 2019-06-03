@@ -49,3 +49,4 @@ insert into Parceiro values(41,'Renly Baratheon',0,'M')
 
 insert into parceiro values (0, 'Nenhum', 0, 'I')
 select * from Parceiro
+delete from Parceiro
