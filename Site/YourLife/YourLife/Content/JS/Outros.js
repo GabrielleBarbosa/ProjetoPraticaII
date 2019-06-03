@@ -12,26 +12,22 @@ window.onload = function () {
 function suicidio() {
 
     $('#resposta1').attr('href', 'Suicidio');
-    $('#txt1').hide();
-    $('.lbl1').html("");
+    $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
     $('.modal').modal();
 }
 
 function terminarRel() {
-
-    $('#txt1').hide();
-    $('.lbl1').hide();
-    $('.lbl1').html("");
+    
+    $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja terminar o relacionamento?");
     $('.modal').modal();
 }
 
 function demissao() {
 
-    $('#txt1').show("Pedindo demissão você não receberá nenhuma compensação");
-    $('.lbl1').hide();
-    $('.lbl1').html("");
+    $('#txt1').html("Pedindo demissão você não receberá nenhuma compensação");
+    $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja pedir demissão?");
     $('#resposta1').attr('href', '/Jogo/Demissao');
     $('.modal').modal();
@@ -39,8 +35,8 @@ function demissao() {
 
 function academia() {
     
-    $('#txt1').hide();
-    $('.lbl1').hide();
+    $('#txt1').html("");
+    $('#lbl1').html("");
     $('#cabecalho').html("Irá te custar $100,00");
     $('#resposta1').attr('href', '/AlterarAcademia/100/20');
     $('.modal').modal();
@@ -48,8 +44,8 @@ function academia() {
 
 function visitarParentes() {
 
-    $('#txt1').show("Você decidiu ir visitar seus familiares");
-    $('.lbl1').hide();
+    $('#txt1').html("Você decidiu ir visitar seus familiares");
+    $('.lbl1').html("");
     $('#cabecalho').html("Visitar Família");
     
     if (idade > 18)
@@ -62,8 +58,8 @@ function visitarParentes() {
 
 function cinema() {
 
-    $('#txt1').hide();
-    $('.lbl1').hide();
+    $('#txt1').html("");
+    $('.lbl1').html("");
     $('#cabecalho').html("Ir ao cinema custará $100,00");
     
     if (idade > 18)
@@ -76,8 +72,8 @@ function cinema() {
 
 function viajar() {
 
-    $('#txt1').hide();
-    $('.lbl1').hide();
+    $('#txt1').html("");
+    $('.lbl1').html("");
     $('#cabecalho').html("Viajar te custará $10000,00");
     $('#resposta1').attr('href', '/Viajar/10000/84/47/25/67');
     
