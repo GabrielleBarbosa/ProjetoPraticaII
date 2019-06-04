@@ -3,7 +3,8 @@
     background-color: #e3f2fd !important;
 }
 
-h1 {
+p {
+    font-size: 8vh;
     color: #f06292;
     text-align: center;
 }
