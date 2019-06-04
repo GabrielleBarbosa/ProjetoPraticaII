@@ -716,8 +716,12 @@ namespace YourLife.Controllers
         [Route("IrAoCinema/{d}/{s}")]
         public ActionResult IrAoCinema(decimal d, int s)
         {
-            AlterarDinheiro(-d);
-            AlterarFelicidade(s);
+            Personagem p = (Personagem)Session["Personagem"];
+            if (p.Dinheiro > 100)
+            {
+                AlterarDinheiro(-d);
+                AlterarFelicidade(s);
+            }
             return View("Outros");
         }
 
@@ -830,7 +834,7 @@ namespace YourLife.Controllers
             UsuarioDAO usuDAO = new UsuarioDAO();
             PersonagemDAO pg = new PersonagemDAO();
             Personagem personagem = (Personagem)Session["Personagem"];
-            pg.Morrer(personagem);
+            pg.ExcluirPersonagem(personagem);
             Usuario usuario = (Usuario)Session["Usuario"];
             usuDAO.Excluir(usuario);
             return View("PaginaInicial");
