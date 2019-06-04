@@ -347,6 +347,16 @@ namespace YourLife.Controllers
 
             Session["Personagem"] = p;
 
+            //---------------------------------------------------------chances de morrer
+            int longevidade = 110 - p.Idade;
+            Random rm = new Random();
+            int chanceAtual = rm.Next(0, longevidade);
+            if (longevidade == chanceAtual)
+            {
+                PersonagemDAO daoPG = new PersonagemDAO();
+                return RedirectToAction("Obituario",new { causaDaMorte = "seu personagem ficou doente e veio a falecer" });
+            }
+            //--------------------------------------------------------chances de morrer
             return RedirectToAction("Acontecimento", "Jogo");
         }
 
@@ -619,9 +629,9 @@ namespace YourLife.Controllers
         }
 
 
-        public ActionResult Obituario(string causaDeMorte)
+        public ActionResult Obituario(string causaDaMorte)
         {
-            ViewBag.FormaDeMorte = causaDeMorte;
+            ViewBag.FormaDeMorte = causaDaMorte;
              ViewBag.Personagem = Session["Personagem"];
             return View("Obituario");
         }
@@ -724,6 +734,17 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
+       [Route("Passear`/{f}/{s}/{i}")]
+        public ActionResult Passear(int f, int s, int i)
+        {
+            Personagem p = (Personagem)Session["Personagem"];
+            AlterarFelicidade(f);
+            AlterarSaude(s);
+            AlterarInteligencia(-i);
+            return View("Outros");
+
+        }
+
 
         //--------------------------------------------------------------------------------------------------------------------
         //ALTERAÇÕES
@@ -793,5 +814,7 @@ namespace YourLife.Controllers
             usuDAO.Excluir(usuario);
             return View("PaginaInicial");
         }
+
+
     }
 }
