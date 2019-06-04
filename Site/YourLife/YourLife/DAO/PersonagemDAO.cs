@@ -73,7 +73,6 @@ namespace YourLife.DAO
                 contexto.Personagem.Remove(p);
                 contexto.SaveChanges();
             }
-
         }
 
         public void ExcluirPersonagem(Personagem p)
