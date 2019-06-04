@@ -23,5 +23,13 @@ namespace YourLife.DAO
                 return contexto.Mercado.ToList();
             }
         }
+
+        internal Mercado BuscarPorId(int id)
+        {
+            using (var contexto = new JogoContext())
+            {
+                return (Mercado)contexto.Mercado.Where(m => m.Id == id);
+            }
+        }
     }
 }

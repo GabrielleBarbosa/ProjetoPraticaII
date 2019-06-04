@@ -615,15 +615,27 @@ namespace YourLife.Controllers
             ViewBag.Parceiro = daoP.SelecionarParceiro(p.Parceiro);
 
             MercadoJogadorDAO daoMJ = new MercadoJogadorDAO();
-            ViewBag.Bens = daoMJ.ListarMercado(p.Id);
+            IList<MercadoJogador> bens = daoMJ.ListarMercado(p.Id);
+            List<Mercado> listaMercado = new List<Mercado>();
+
+            MercadoDAO daoM = new MercadoDAO();
+            foreach(var bem in bens)
+            {
+                listaMercado.Add(daoM.BuscarPorId(bem.Id));
+            }
+            ViewBag.Bens = listaMercado;
 
             CursoJogadorDAO daoCJ = new CursoJogadorDAO();
             IList<CursoJogador> cursosFeitos = daoCJ.ListarCursos(p.Id);
+            List<Curso> listaCursos = new List<Curso>();
 
-            foreach (var bem in cursosFeitos)
+            CursoDAO daoC = new CursoDAO();
+            foreach (var cur in cursosFeitos)
             {
-
+                listaCursos.Add(daoC.BuscarPorId(cur.id));
             }
+
+            ViewBag.CursosFeitos = listaCursos;
 
             return View();
         }
