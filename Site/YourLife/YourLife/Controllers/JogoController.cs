@@ -129,7 +129,7 @@ namespace YourLife.Controllers
                 if (Session["Personagem"] != null)
                 {
                     Personagem pExcluir = (Personagem)Session["Personagem"];
-                    dao.Morrer(pExcluir);
+                    dao.ExcluirPersonagem(pExcluir);
                 }
                 Usuario usu = (Usuario)Session["Usuario"];
                 p.Dinheiro = 0;

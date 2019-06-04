@@ -76,6 +76,21 @@ namespace YourLife.DAO
 
         }
 
+        public void ExcluirPersonagem(Personagem p)
+        {
+            using (var contexto = new JogoContext())
+            {
+                IList<CursoJogador> cj = contexto.CursoJogador.Where(c => c.codJogador == p.Id).ToList();
+                IList<MercadoJogador> mj = contexto.MercadoJogador.Where(m => m.CodJogador == p.Id).ToList();
+                foreach (CursoJogador cj1 in cj)
+                    contexto.CursoJogador.Remove(cj1);
+                foreach (MercadoJogador mj1 in mj)
+                    contexto.MercadoJogador.Remove(mj1);
+                contexto.Personagem.Remove(p);
+                contexto.SaveChanges();
+            }
+        }
+
         public bool TerminarRelacionamento(Personagem p)     //método que termina relacionamento
         {
             if (p.Parceiro > 0)                             // verificando com antecedência se a pessoa está em um relacionamento
