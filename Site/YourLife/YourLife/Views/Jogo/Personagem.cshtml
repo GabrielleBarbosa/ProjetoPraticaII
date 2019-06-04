@@ -35,7 +35,7 @@
         {
             <p style="font-size:4vh">Relacionamento</p>
             <hr style="height:1px; background-color:black;" />
-
+            
             <p><strong>Nome do Parceiro:</strong> @ViewBag.Parceiro.nome</p>
             <p><strong>Idade do parceiro:@idade</strong></p>
             <p><strong>Relacionamento:</strong> @ViewBag.Personagem.PontosRelacionamento</p>
@@ -46,28 +46,36 @@
             <p style="font-size:4vh">Bens</p>
             <hr style="height:1px; background-color:black;" />
 
-            <th>Bem</th>
-            <th>Descrição</th>
-            <th>Valor</th>
-            foreach (var bem in ViewBag.Bens)
-            {
-                <td>@bem.Produto</td>
-                <td>@bem.Descricao</td>
-                <td>@String.Format("{0:0.00}", bem.Preco)</td>
-            }
+            <table>
+                <th>Bem</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                @foreach (var bem in ViewBag.Bens)
+                {
+                <tr>
+                    <td>@bem.Produto</td>
+                    <td>@bem.Descricao</td>
+                    <td>@String.Format("{0:0.00}", bem.Preco)</td>
+                </tr>
+                }
+            </table>
         }
 
         if (ViewBag.CursosFeitos.Count != 0)
         {
             <p style="font-size:4vh">Cursos Feitos</p>
             <hr style="height:1px; background-color:black;" />
-            <th>Curso</th>
-            <th>Descrição</th>
-            foreach (var cur in ViewBag.CursosFeitos)
-            {
-                <td>@cur.Nome</td>
-                <td>@cur.Descricao</td>
-            }
+            <table>
+                <th>Curso</th>
+                <th>Descrição</th>
+                @foreach (var cur in ViewBag.CursosFeitos)
+                {
+                <tr>
+                    <td>@cur.Nome</td>
+                    <td>@cur.Descricao</td>
+                </tr>
+                }
+            </table>
         }
     }
 </div>

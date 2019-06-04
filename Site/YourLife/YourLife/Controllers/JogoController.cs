@@ -486,7 +486,7 @@ namespace YourLife.Controllers
             }
             else if(c.assunto == "namoro")
             {
-                if(c.PontosGanhos == 1 && !(c.TipoDoPontoGanho.Equals("")))
+                if(c.PontosGanhos == 1 && !(c.TipoDoPontoGanho.ToString().Equals("")))
                 {
                     ParceiroDAO daoParceiro = new ParceiroDAO();
                     Random random = new Random();
@@ -503,7 +503,7 @@ namespace YourLife.Controllers
                         p.Parceiro = par.id;
                     }
                 }
-                else if(c.PontosGanhos == 0 && c.TipoDoPontoGanho.Equals(""))
+                else if(c.PontosGanhos == 0 && c.TipoDoPontoGanho.ToString().Equals(""))
                 {
                     p.Parceiro = 0;
                     Session["Parceiro"] = 0;
