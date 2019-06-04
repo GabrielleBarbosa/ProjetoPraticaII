@@ -81,38 +81,41 @@ namespace YourLife.Controllers
 
             Session["Personagem"] = p;
 
-            EmpregoDAO daoE = new EmpregoDAO();
-            Emprego e = daoE.BuscarPorId(p.CodEmprego);
-            Session["Emprego"] = e;
+            UsuarioDAO daoU = new UsuarioDAO();
+            Session["Usuario"] = daoU.BuscaPorNick(usu.nickname);
 
-            if (p.Sexo == 'M')
+            if (Session["Personagem"] != null)
             {
-                if (p.Idade < 14)
-                    Session["imagem"] = "/Imagens/menino.png";
-                else if (p.Idade >= 14 && p.Idade <= 20)
-                    Session["imagem"] = "/Imagens/menino_adolescente.png";
-                else if (p.Idade >= 21 && p.Idade <= 40)
-                    Session["imagem"] = "/Imagens/homem_adulto.png";
-                else if (p.Idade >= 41)
-                    Session["imagem"] = "/Imagens/velho.png";
-            }
-            else
-            {
-                if (p.Idade < 14)
-                    Session["imagem"] = "/Imagens/menina.png";
-                else if (p.Idade >= 14 && p.Idade <= 20)
-                    Session["imagem"] = "/Imagens/menina_adolescente.png";
-                else if (p.Idade >= 21 && p.Idade <= 40)
-                    Session["imagem"] = "/Imagens/mulher_adulta.png";
-                else if (p.Idade >= 41)
-                    Session["imagem"] = "/Imagens/velha.png";
-            }
+                EmpregoDAO daoE = new EmpregoDAO();
+                Emprego e = daoE.BuscarPorId(p.CodEmprego);
+                Session["Emprego"] = e;
 
-
-            return RedirectToAction("Base", "Jogo");
+                if (p.Sexo == 'M')
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "/Imagens/menino.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "/Imagens/menino_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "/Imagens/homem_adulto.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "/Imagens/velho.png";
+                }
+                else
+                {
+                    if (p.Idade < 14)
+                        Session["imagem"] = "/Imagens/menina.png";
+                    else if (p.Idade >= 14 && p.Idade <= 20)
+                        Session["imagem"] = "/Imagens/menina_adolescente.png";
+                    else if (p.Idade >= 21 && p.Idade <= 40)
+                        Session["imagem"] = "/Imagens/mulher_adulta.png";
+                    else if (p.Idade >= 41)
+                        Session["imagem"] = "/Imagens/velha.png";
+                }
+            }
+            return RedirectToAction("Inicio", "Jogo");
         }
-
-
+        
         public ActionResult Inicio()
         {
             return View();
@@ -122,8 +125,13 @@ namespace YourLife.Controllers
         {
             if (ModelState.IsValid)
             {
-                Usuario usu = (Usuario)Session["Usuario"];
                 PersonagemDAO dao = new PersonagemDAO();
+                if (Session["Personagem"] != null)
+                {
+                    Personagem pExcluir = (Personagem)Session["Personagem"];
+                    dao.Morrer(pExcluir);
+                }
+                Usuario usu = (Usuario)Session["Usuario"];
                 p.Dinheiro = 0;
                 p.Idade = 5;
                 p.Parceiro = 'N';
@@ -473,13 +481,13 @@ namespace YourLife.Controllers
                     Random random = new Random();
                     if(c.TipoDoPontoGanho.Equals('M'))
                     {
-                        Parceiro par = daoParceiro.BuscarPorId(random.Next(1, 30));
+                        Parceiro par = daoParceiro.BuscarPorId(random.Next(31, 41));
                         Session["Parceiro"] = par;
                         p.Parceiro = par.id;
                     }
                     else
                     {
-                        Parceiro par = daoParceiro.BuscarPorId(random.Next(31, 60));
+                        Parceiro par = daoParceiro.BuscarPorId(random.Next(1, 14));
                         Session["Parceiro"] = par;
                         p.Parceiro = par.id;
                     }

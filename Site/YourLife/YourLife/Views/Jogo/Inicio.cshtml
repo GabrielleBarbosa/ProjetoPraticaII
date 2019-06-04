@@ -16,14 +16,26 @@
         <div class="caixa">
             <div class="container botoes">
                 <center>
-                    <a class="btn-large modal-trigger" href="#modal1">Jogar</a><br />
+
+                    @{
+                        if (Session["Personagem"] != null)
+                        {
+                            <a class="btn-large" href="/Jogo/Base">Retomar Jogo</a><br />
+                            <a class="btn-large modal-trigger" href="#modal1">Novo Jogo</a><br />
+                        }
+                        else
+                        {
+                            <a class="btn-large modal-trigger" href="#modal1">Jogar</a><br />
+                        }
+
+                     }
                     <a href="~/Jogo/Ranking" class="waves-effect waves-light btn-large">Ranking</a>
                 </center>
             </div>
         </div>
     </center>
 
-    <!-- Modal Structure -->
+    <!-- Modal para escolher seu nome -->
     <div id="modal1" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="modal-header">
@@ -56,4 +68,5 @@
     $(document).ready(function () {
         $('.modal').modal();
     });
+    
 </script>
