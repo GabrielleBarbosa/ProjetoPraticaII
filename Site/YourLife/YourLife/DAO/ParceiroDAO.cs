@@ -28,12 +28,13 @@ namespace YourLife.DAO
 
         public Parceiro SelecionarParceiro(int id)
         {
-            Parceiro parceiro = null;
+            IList<Parceiro> p = null;
             using (var contexto = new JogoContext())
             {
-                parceiro = (Parceiro)contexto.Parceiro.Where(parc => parc.id == id);
+                p = (contexto.Parceiro.Where(Parceiro => Parceiro.id == id).ToList());
             }
-            return parceiro;
+            return p.First() ;
+
         }
     }
 }

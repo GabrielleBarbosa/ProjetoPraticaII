@@ -70,6 +70,7 @@ namespace YourLife.DAO
                 contexto.Personagem.Remove(p);
                 contexto.SaveChanges();
             }
+
         }
 
         public bool TerminarRelacionamento(Personagem p)     //método que termina relacionamento

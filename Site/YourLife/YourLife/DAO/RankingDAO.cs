@@ -9,8 +9,11 @@ namespace YourLife.DAO
 {
     public class RankingDAO
     {
-        public void Adiciona(Ranking rk)
+        public void Adiciona(int pontos, string nickname)
         {
+            Ranking rk = new Ranking();
+            rk.Nickname = nickname;
+            rk.Pontos = pontos;
             using (var contexto = new JogoContext())
             {
                 contexto.Ranking.Add(rk);
