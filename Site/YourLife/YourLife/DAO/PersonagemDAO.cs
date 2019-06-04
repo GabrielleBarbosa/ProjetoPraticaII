@@ -61,6 +61,9 @@ namespace YourLife.DAO
         {
             using (var contexto =  new JogoContext())
             {
+                RankingDAO daoRK = new RankingDAO();
+                int pontos = p.PontosFelicidade + p.PontosInteligencia + p.PontosRelacionamento + p.PontosSaude + p.Idade + decimal.ToInt32(p.Dinheiro);
+                daoRK.Adiciona(pontos);
                 IList<CursoJogador> cj = contexto.CursoJogador.Where(c => c.codJogador == p.Id).ToList();
                 IList<MercadoJogador> mj = contexto.MercadoJogador.Where(m => m.CodJogador == p.Id).ToList();
                 foreach (CursoJogador cj1 in cj)
