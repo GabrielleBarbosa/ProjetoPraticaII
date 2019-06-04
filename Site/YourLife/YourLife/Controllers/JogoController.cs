@@ -362,6 +362,7 @@ namespace YourLife.Controllers
             if (longevidade == chanceAtual)
             {
                 PersonagemDAO daoPG = new PersonagemDAO();
+                daoPG.Morrer(p);
                 return RedirectToAction("Obituario",new { causaDaMorte = "seu personagem ficou doente e veio a falecer" });
             }
             //--------------------------------------------------------chances de morrer
