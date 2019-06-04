@@ -112,3 +112,15 @@
     position: relative;
     left:15%;
 }
+
+@media screen and (max-width:90em) and (min-width: 75em){
+    #imagemDiv {
+        left: 5%;
+    }
+}
+
+@media screen and (max-width: 75em) {
+    #imagemDiv{
+        left:0;
+    }
+}

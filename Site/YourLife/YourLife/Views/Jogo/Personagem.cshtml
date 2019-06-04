@@ -29,9 +29,26 @@
         <p><strong>Felicidade:</strong> @ViewBag.Personagem.PontosFelicidade</p>
         <p><strong>Dinheiro:</strong> @ViewBag.Personagem.Dinheiro $</p>
     </div>
-    <p style="font-size:4vh">Relacionamento</p>
-    <hr style="height:1px; background-color:black;" />
-    <p><strong>Nome do Parceiro:</strong> @ViewBag.Parceiro.nome</p>
-    <p><strong>Idade do parceiro:@idade</strong></p>
-    <p><strong>Relacionamento:</strong> @ViewBag.Personagem.PontosRelacionamento</p>
+
+       @{ 
+           if (ViewBag.Parceiro.Id != 0)
+           {
+                <p style="font-size:4vh">Relacionamento</p>
+                <hr style="height:1px; background-color:black;" />
+                <p><strong>Nome do Parceiro:</strong> @ViewBag.Parceiro.nome</p>
+                <p><strong>Idade do parceiro:@idade</strong></p>
+                <p><strong>Relacionamento:</strong> @ViewBag.Personagem.PontosRelacionamento</p>
+           }
+
+           if(ViewBag.Bens != null)
+           {
+               foreach(var bem in ViewBag.Bens)
+               {
+                    <td>@bem.TipoProduto</td>
+                    <td>@bem.Produto</td>
+                    <td>@bem.Descricao</td>
+                    <td>@String.Format("{0:0.00}", bem.Preco)</td>
+               }
+           }
+       }
 </div>

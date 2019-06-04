@@ -35,16 +35,22 @@
 
     @{
         string desabilitado = "";
+        string desabilitadoPorIdade = "";
 
         if (Session["ConseguiuEmprego"] != null)
         {
             desabilitado = "disabled";
         }
+
+        if(ViewBag.Personagem.Idade < 18)
+        {
+            desabilitadoPorIdade = "disabled";
+        }
     }
-    <a class="waves-effect waves-light btn white botoes z-depth-5" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
-    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
-    <a class="waves-effect waves-light btn white botoes z-depth-5" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
-    <a class="waves-effect waves-light btn white botoes z-depth-5" id="outros" href="~/Jogo/Outros">Outros</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitadoPorIdade" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado @desabilitadoPorIdade" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitadoPorIdade" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitadoPorIdade" id="outros" href="~/Jogo/Outros">Outros</a>
 
     @{
         string acontecimento = "";
@@ -84,7 +90,7 @@
 <div class="modal modal-fixed-footer" id="modal2">
     <div class="modal-content">
         <div class="modal-header">
-            <h3><i>Emprego</i></h3>
+            <h3><i id="header"></i></h3>
         </div>
         <div class="modal-body">
             <blockquote>

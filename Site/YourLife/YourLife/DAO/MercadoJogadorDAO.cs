@@ -20,11 +20,11 @@ namespace YourLife.DAO
             }
         }
 
-        public IList<MercadoJogador> ListarMercado()
+        public IList<MercadoJogador> ListarMercado(int idPersonagem)
         {
             using (var contexto = new JogoContext())
             {
-                return contexto.MercadoJogador.ToList();
+                return contexto.MercadoJogador.Where(p => p.CodJogador == idPersonagem).ToList();
             }
         }
     }

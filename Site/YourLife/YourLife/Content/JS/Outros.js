@@ -14,7 +14,6 @@ function suicidio() {
     $('#resposta1').attr('href', 'Suicidio');
     $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
-    //$('.modal').modal();
 }
 
 function passear() {
@@ -25,7 +24,6 @@ function terminarRel() {
     
     $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja terminar o relacionamento?");
-    //$('.modal').modal();
 }
 
 function demissao() {
@@ -34,7 +32,6 @@ function demissao() {
     $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja pedir demissão?");
     $('#resposta1').attr('href', '/Jogo/Demissao');
-    //$('.modal').modal();
 }
 
 function academia() {
@@ -43,7 +40,6 @@ function academia() {
     $('#lbl1').html("");
     $('#cabecalho').html("Irá te custar $100,00");
     $('#resposta1').attr('href', '/AlterarAcademia/100/20');
-    //$('.modal').modal();
 }
 
 function visitarParentes() {
@@ -57,8 +53,7 @@ function visitarParentes() {
         $('#resposta1').attr('href', '/VisitarParentes/20/100');
     else
         $('#resposta1').attr('href', '/VisitarParentes/20');
-
-    //$('.modal').modal();
+    
 }
 
 function cinema() {
@@ -71,8 +66,7 @@ function cinema() {
         $('#resposta1').attr('href', '/IrAoCinema/100/20');
     else
         $('#resposta1').attr('href', '/IrAoCinema/20');
-
-    //$('.modal').modal();
+    
 }
 
 function viajar() {
@@ -82,7 +76,6 @@ function viajar() {
     $('#cabecalho').html("Viajar te custará $10000,00");
     $('#resposta1').attr('href', '/Viajar/10000/84/47/25/67');
     
-    //$('.modal').modal();
 }
 
 $(document).ready(function(){

@@ -192,7 +192,7 @@ namespace YourLife.Controllers
             ViewBag.Mercado = mc;
 
             MercadoJogadorDAO daoMJ = new MercadoJogadorDAO();
-            IList<MercadoJogador> mj = daoMJ.ListarMercado();
+            IList<MercadoJogador> mj = daoMJ.ListarMercado(ViewBag.Personagem.Id);
             ViewBag.Bens = mj;
 
             return View();
@@ -584,15 +584,7 @@ namespace YourLife.Controllers
         }
 
 
-        public ActionResult ExcluirUsuario()
-        {
-            UsuarioDAO usuDAO = new UsuarioDAO();
-            PersonagemDAO pg = new PersonagemDAO();
-            Personagem personagem = (Personagem)Session["Personagem"];
-            pg.Morrer(personagem);
-            Usuario usuario = (Usuario)Session["Usuario"];
-            usuDAO.Excluir(usuario);
-        }
+        
 
         [Route("FazerCurso/{id}")]
         public ActionResult FazerCurso(int id)
@@ -607,9 +599,22 @@ namespace YourLife.Controllers
 
         public ActionResult Personagem()
         {
+            Personagem p = ViewBag.Personagem = Session["Personagem"];
+
             ParceiroDAO daoP = new ParceiroDAO();
-            ViewBag.Personagem = Session["Personagem"];
-            ViewBag.Parceiro = daoP.SelecionarParceiro(ViewBag.Personagem.parceiro);
+            ViewBag.Parceiro = daoP.SelecionarParceiro(p.Parceiro);
+
+            MercadoJogadorDAO daoMJ = new MercadoJogadorDAO();
+            ViewBag.Bens = daoMJ.ListarMercado(p.Id);
+
+            CursoJogadorDAO daoCJ = new CursoJogadorDAO();
+            IList<CursoJogador> cursosFeitos = daoCJ.ListarCursos(p.Id);
+
+            foreach (var bem in cursosFeitos)
+            {
+
+            }
+
             return View();
         }
 
@@ -778,5 +783,15 @@ namespace YourLife.Controllers
 
         //-------------------------------------------------------------------------USUARIO
 
+        public ActionResult ExcluirUsuario()
+        {
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            PersonagemDAO pg = new PersonagemDAO();
+            Personagem personagem = (Personagem)Session["Personagem"];
+            pg.Morrer(personagem);
+            Usuario usuario = (Usuario)Session["Usuario"];
+            usuDAO.Excluir(usuario);
+            return View("PaginaInicial");
+        }
     }
 }
