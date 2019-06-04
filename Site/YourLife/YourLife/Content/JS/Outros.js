@@ -17,7 +17,10 @@ function suicidio() {
 }
 
 function passear() {
-
+    $('#lbl1').html("");
+    $('#txt1').html("");
+    $('#cabecalho').html("Deseja sair para dar uma volta na vizinhança?");
+    $('#resposta1').attr('href', 'Jogo/Passear/15/10/10');
 }
 
 function terminarRel() {
