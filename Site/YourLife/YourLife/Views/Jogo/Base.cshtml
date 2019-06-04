@@ -10,11 +10,14 @@
 <link rel="stylesheet" href="~/Content/CSS/Base.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <br />
-<div id="composicao" style="background:url(/Imagens/BackArmario.png)no-repeat;background-size:100%;"  >
+<div id="composicao" style="background-size:100%;"  >
+    
     <center>
-        @{
-            <img src="@ViewBag.Imagem" id="personagem" height="500" width="350"  style="z-index:100;"/> <br />
-        }
+        <div id="imagemDiv">
+            @{
+                <img src="@ViewBag.Imagem" id="personagem" height="500" width="350" style="z-index:100; left:10%;" /> <br />
+            }
+        </div><br />
         <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Personagem" id="btnPersonagem">Personagem</a>
         <a class="waves-effect waves-light btn white botoes z-depth-5" href="~/Jogo/Envelhecer" id="btnEnvelhecer">Envelhecer!<i class="material-icons right">access_time</i></a>
     </center>
@@ -40,7 +43,7 @@
     }
     <a class="waves-effect waves-light btn white botoes z-depth-5" id="mercado" href="/MudarPagina/0/Mercado">Mercado</a>
     <a class="waves-effect waves-light btn white botoes z-depth-5 @desabilitado" id="empregos" href="/MudarPagina/0/Emprego">Empregos</a>
-    <a class="waves-effect waves-light btn white botoes z-depth-5s" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
+    <a class="waves-effect waves-light btn white botoes z-depth-5" id="cursos" href="/MudarPagina/0/Curso">Cursos</a>
     <a class="waves-effect waves-light btn white botoes z-depth-5" id="outros" href="~/Jogo/Outros">Outros</a>
 
     @{

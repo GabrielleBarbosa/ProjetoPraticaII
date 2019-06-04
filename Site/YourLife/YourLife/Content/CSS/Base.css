@@ -49,25 +49,25 @@
 
 #empregos{
     position: absolute;
-    left: 20%;
+    left: 10%;
     top: 30%;
 }
 
 #mercado {
     position: absolute;
-    left: 20%;
+    left: 10%;
     top: 40%;
 }
 
 #cursos {
     position: absolute;
-    right: 20%;
+    right: 10%;
     top: 30%;
 }
 
 #outros {
     position: absolute;
-    right: 20%;
+    right: 10%;
     top: 40%;
 }
 
@@ -105,4 +105,10 @@
 #btnEnvelhecer{
     position:relative;
     left:2%;
+}
+
+#imagemDiv {
+    background: url(/Imagens/BackArmario.png)no-repeat;
+    position: relative;
+    left:15%;
 }

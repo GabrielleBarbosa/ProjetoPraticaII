@@ -583,6 +583,17 @@ namespace YourLife.Controllers
             return View();
         }
 
+
+        public ActionResult ExcluirUsuario()
+        {
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            PersonagemDAO pg = new PersonagemDAO();
+            Personagem personagem = (Personagem)Session["Personagem"];
+            pg.Morrer(personagem);
+            Usuario usuario = (Usuario)Session["Usuario"];
+            usuDAO.Excluir(usuario);
+        }
+
         [Route("FazerCurso/{id}")]
         public ActionResult FazerCurso(int id)
         {
@@ -763,5 +774,9 @@ namespace YourLife.Controllers
             pDAO.Alterar(p);
             Session["Personagem"] = p;
         }
+
+
+        //-------------------------------------------------------------------------USUARIO
+
     }
 }

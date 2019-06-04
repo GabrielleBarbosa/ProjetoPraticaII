@@ -40,5 +40,15 @@ namespace YourLife.DAO
             }
             return jogadorExistente;
         }
+
+        public void Excluir(Usuario usu)
+        {
+            using (var contexto = new JogoContext())
+            {
+                Usuario usuASerExcluido = (Usuario)contexto.Usuario.Where(u => u == usu);
+                contexto.Usuario.Remove(usuASerExcluido);
+                contexto.SaveChanges();
+            }
+        }
     }
 }
