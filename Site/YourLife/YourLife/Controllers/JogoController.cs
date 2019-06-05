@@ -413,42 +413,59 @@ namespace YourLife.Controllers
                 }
                 else
                 {
-                    int id = 0;
-                    if (p.Idade <= 14)
+                    bool sorteou = SortearAcontecimento(p, random);
+                    while(!sorteou)
                     {
-                        id = random.Next(1, 3);
+                        sorteou = SortearAcontecimento(p, random);
                     }
-                    else if (p.Idade <= 30)
-                    {
-                        id = random.Next(21, 25);
-                    }
-                    else if (p.Idade <= 60)
-                    {
-                        id = random.Next(1, 1);      //(41, 60);
-                    }
-                    else
-                    {
-                        id = random.Next(1, 1);     //(61, 80);
-                    }
-
-                    AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
-                    AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
-
-                    ViewBag.Acontecimento = Session["acontecimento"] = aa;
-
-                    EscolhaDAO daoEsc = new EscolhaDAO();
-                    Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
-                    ViewBag.Escolha = Session["escolha"] = esc;
-
-                    ConsequenciaDAO daoConseq = new ConsequenciaDAO();
-                    Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
-                    Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
-                    ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
-                    ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
             }
 
             return RedirectToAction("Base", "Jogo");
+        }
+
+        public bool SortearAcontecimento(Personagem p, Random random)
+        {
+            bool valido = true;
+            int id = 0;
+            if (p.Idade <= 14)
+            {
+                id = random.Next(1, 3);
+            }
+            else if (p.Idade <= 30)
+            {
+                id = random.Next(21, 25);
+            }
+            else if (p.Idade <= 60)
+            {
+                id = random.Next(21, 25);      //(41, 60);
+            }
+            else
+            {
+                id = random.Next(1, 1);     //(61, 80);
+            }
+            
+            AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
+            AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
+            EscolhaDAO daoEsc = new EscolhaDAO();
+            Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
+            ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+            Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+            Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+
+            if (conseq1.assunto == "namoro" && conseq1.TipoDoPontoGanho.Equals(' ') && p.Parceiro == 0)
+                valido = false;
+            else if (conseq2.assunto == "namoro" && conseq2.TipoDoPontoGanho.Equals(' ') && p.Parceiro == 0)
+                valido = false;
+
+            if (valido)
+            {
+                ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+                ViewBag.Acontecimento = Session["acontecimento"] = aa;
+                ViewBag.Escolha = Session["escolha"] = esc;
+            }
+            return valido;
         }
 
         public JsonResult HaAcontecimento()
