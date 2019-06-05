@@ -80,9 +80,5 @@ insert into Consequencia values(19, 'pontos', 10, 'F', 'S', 50, 'Você encontrou 
 insert into Consequencia values(20, 'pontos', 10, 'F', 'S', 50, 'Infelizmente você deixou a bola pra trás, mas não se machucou.')
 insert into Consequencia values(21, 'pontos', 10, 'F', 'S', 50, 'Você se machucou ao tropeçar em uma raiz de árvore!')
 
-delete from Consequencia 
-delete from Escolha
-delete from AcontecimentoFixo
-delete from AcontecimentoAleatorio
-
+select * from AcontecimentoAleatorio
 
