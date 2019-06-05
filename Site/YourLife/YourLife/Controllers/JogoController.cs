@@ -340,6 +340,7 @@ namespace YourLife.Controllers
                 return RedirectToAction("Obituario", "Jogo");
             }
             //----------------------------------------------------------------------------//
+
             return RedirectToAction("Acontecimento", "Jogo");
         }
 
