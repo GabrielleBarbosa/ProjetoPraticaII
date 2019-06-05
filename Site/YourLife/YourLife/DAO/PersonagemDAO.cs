@@ -67,8 +67,17 @@ namespace YourLife.DAO
                 Usuario usu = daoUsu.BuscarPorId(p.CodUsuario);
 
                 Ranking rk = daoRK.BuscarPorNick(usu.nickname);
-
-                daoRK.Adiciona(pontos,usu.nickname);
+                
+                if(rk != null)
+                {
+                    if (rk.Pontos < pontos)
+                    {
+                        rk.Pontos = pontos;
+                        daoRK.Altera(rk);
+                    }
+                }
+                else
+                    daoRK.Adiciona(pontos,usu.nickname);
 
                 IList<CursoJogador> cj = contexto.CursoJogador.Where(c => c.codJogador == p.Id).ToList();
                 IList<MercadoJogador> mj = contexto.MercadoJogador.Where(m => m.CodJogador == p.Id).ToList();

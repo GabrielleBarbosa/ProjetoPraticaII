@@ -362,7 +362,8 @@ namespace YourLife.Controllers
             {
                 PersonagemDAO daoPG = new PersonagemDAO();
                 daoPG.Morrer(p);
-                return RedirectToAction("Obituario",new { causaDaMorte = "seu personagem ficou doente e veio a falecer" });
+                Session["CausaDaMorte"] = "Doença misteriosa";
+                return RedirectToAction("Obituario", "Jogo");
             }
             //--------------------------------------------------------chances de morrer
             return RedirectToAction("Acontecimento", "Jogo");
@@ -666,10 +667,10 @@ namespace YourLife.Controllers
         }
 
 
-        public ActionResult Obituario(string causaDaMorte)
+        public ActionResult Obituario()
         {
-            ViewBag.FormaDeMorte = causaDaMorte;
-             ViewBag.Personagem = Session["Personagem"];
+            ViewBag.FormaDeMorte = Session["CausaDaMorte"];
+            ViewBag.Personagem = Session["Personagem"];
             return View("Obituario");
         }
 
@@ -694,7 +695,8 @@ namespace YourLife.Controllers
             PersonagemDAO pg = new PersonagemDAO();
             ViewBag.Personagem = p;
             pg.Morrer(p);
-            return View("Obituario");
+            Session["CausaDaMorte"] = "Suicídio";
+            return RedirectToAction("Obituario", "Jogo");
         }
 
         public ActionResult TerminarRelacionamento()

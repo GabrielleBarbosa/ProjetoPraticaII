@@ -29,5 +29,21 @@ namespace YourLife.DAO
                 return vet.OrderByDescending(Ranking => Ranking.Pontos);
             }
         }
+
+        public Ranking BuscarPorNick(string nickname)
+        {
+            using (var contexto = new JogoContext())
+            {
+                return contexto.Ranking.Where(r => r.Nickname == nickname).FirstOrDefault();
+            }
+        }
+
+        internal void Altera(Ranking rk)
+        {
+            using (var contexto = new JogoContext())
+            {
+                contexto.Ranking.Update(rk);
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@
         <p><strong>Saúde:</strong> @ViewBag.Personagem.PontosSaude</p>
         <p><strong>Inteligência:</strong> @ViewBag.Personagem.PontosInteligencia</p>
         <p><strong>Felicidade:</strong> @ViewBag.Personagem.PontosFelicidade</p>
-        <p><strong>Dinheiro:</strong> @ViewBag.Personagem.Dinheiro $</p>
+        <p><strong>Dinheiro:</strong> @String.Format("{0:0.00}", ViewBag.Personagem.Dinheiro) $</p>
     </div>
 
     @{
