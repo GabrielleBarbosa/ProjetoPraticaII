@@ -50,5 +50,13 @@ namespace YourLife.DAO
                 contexto.SaveChanges();
             }
         }
+
+        public Usuario BuscarPorId(int id)
+        {
+            using (var contexto = new JogoContext())
+            {
+                return contexto.Usuario.Where(u => u.id == id).FirstOrDefault();
+            }
+        }
     }
 }

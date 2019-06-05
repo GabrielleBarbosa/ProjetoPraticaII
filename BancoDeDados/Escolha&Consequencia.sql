@@ -26,7 +26,6 @@ insert into Escolha values(22, 'Empurrar de volta', 'Ignorar e continuar brincan
 insert into Escolha values(23, 'Ir atrás', 'Desistir', 19, 20)
 
 
-
 -- de 15 a 30
 insert into Escolha values(41, 'Aceitar', 'Negar e manter a amizade', 10, 11)
 insert into Escolha values(42, 'Aceitar', 'Negar e manter a amizade', 12, 11)

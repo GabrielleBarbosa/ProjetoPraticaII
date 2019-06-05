@@ -31,8 +31,7 @@ function terminarRel() {
 
 function demissao() {
 
-    $('#txt1').html("Pedindo demissão você não receberá nenhuma compensação");
-    $('#lbl1').html("");
+    $('#lbl1').html("Pedindo demissão você não receberá nenhuma compensação");
     $('#cabecalho').html("Tem certeza que deseja pedir demissão?");
     $('#resposta1').attr('href', '/Jogo/Demissao');
 }

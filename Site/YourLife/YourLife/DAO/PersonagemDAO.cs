@@ -63,13 +63,21 @@ namespace YourLife.DAO
             {
                 RankingDAO daoRK = new RankingDAO();
                 int pontos = p.PontosFelicidade + p.PontosInteligencia + p.PontosRelacionamento + p.PontosSaude + p.Idade + decimal.ToInt32(p.Dinheiro);
-                daoRK.Adiciona(pontos,p.Nome);
+                UsuarioDAO daoUsu = new UsuarioDAO();
+                Usuario usu = daoUsu.BuscarPorId(p.CodUsuario);
+
+                Ranking rk = daoRK.BuscarPorNick(usu.nickname);
+
+                daoRK.Adiciona(pontos,usu.nickname);
+
                 IList<CursoJogador> cj = contexto.CursoJogador.Where(c => c.codJogador == p.Id).ToList();
                 IList<MercadoJogador> mj = contexto.MercadoJogador.Where(m => m.CodJogador == p.Id).ToList();
+
                 foreach (CursoJogador cj1 in cj)
-                contexto.CursoJogador.Remove(cj1);
+                    contexto.CursoJogador.Remove(cj1);
                 foreach(MercadoJogador mj1 in mj)
-                contexto.MercadoJogador.Remove(mj1);
+                    contexto.MercadoJogador.Remove(mj1);
+
                 contexto.Personagem.Remove(p);
                 contexto.SaveChanges();
             }

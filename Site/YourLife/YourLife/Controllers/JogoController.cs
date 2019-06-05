@@ -354,7 +354,6 @@ namespace YourLife.Controllers
             }
 
             Session["Personagem"] = p;
-
             //---------------------------------------------------------chances de morrer
             int longevidade = 110 - p.Idade;
             Random rm = new Random();
@@ -714,12 +713,16 @@ namespace YourLife.Controllers
         public ActionResult Demissao()
         {
             Personagem p = (Personagem)Session["Personagem"];
-            PersonagemDAO pg = new PersonagemDAO();
+            PersonagemDAO daoPG = new PersonagemDAO();
             p.CodEmprego = 0;
             p.PontosFelicidade -= 10;
-            pg.Alterar(p);
+            daoPG.Alterar(p);
             Session["Personagem"] = p;
-            return View();
+
+            EmpregoDAO daoE = new EmpregoDAO();
+            Session["Emprego"] = daoE.BuscarPorId(0);
+
+            return View("Outros");
         }
 
         [Route("AlterarAcademia/{d}/{s}")]
