@@ -24,6 +24,10 @@ insert into Escolha values(20, 'Ir à festa', 'Estudar', 1, 2)
 insert into Escolha values(21, 'Jogar video game', 'Estudar', 8, 9)
 insert into Escolha values(22, 'Empurrar de volta', 'Ignorar e continuar brincando', 17, 18)
 insert into Escolha values(23, 'Ir atrás', 'Desistir', 19, 20)
+insert into Escolha values(24,'Estudar','Ir dormir',22,23)
+insert into Escolha values(25,'Gritar de volta','Ir para o quarto',24,25)
+insert into Escolha values(26,'Fazer carinho','Passar reto',26,27)
+insert into Escolha values(27,'Fazer carinho','Passar reto',28,27)
 
 
 -- de 15 a 30
@@ -73,11 +77,19 @@ insert into Consequencia values(16, 'pontos', 50, 'S', 'F', 50, 'Sua saúde agrad
 insert into Consequencia values(17, 'pontos', 10, 'F', 'S', 50, 'Você escolheu o caminho da violência e acabou machucado... Entretanto até que te deixou um pouco feliz ter coragem de enfrentá-lo.')
 insert into Consequencia values(18, 'pontos', 10, 'F', 'S', 40, 'Não descer ao nível de seu amigo te fez se sentir superior, mas não o impediu de provocá-lo de novo')
 
+insert into Consequencia values(19, 'pontos', 14, 'F', 'S', 17, 'Você encontrou a bola!Mas se machucou um pouco')
+insert into Consequencia values(20, 'pontos',  0, 'S', 'F', 19, 'Infelizmente você deixou a bola pra trás, mas não se machucou.')
+insert into Consequencia values(21, 'pontos', -15, 'F', 'S', 34, 'Você se machucou ao tropeçar em uma raiz de árvore!Infelizmente teve que voltar sem a bola')
 
---mexer aqui
-insert into Consequencia values(19, 'pontos', 10, 'F', 'S', 50, 'Você encontrou a bola!')
-insert into Consequencia values(20, 'pontos', 10, 'F', 'S', 50, 'Infelizmente você deixou a bola pra trás, mas não se machucou.')
-insert into Consequencia values(21, 'pontos', 10, 'F', 'S', 50, 'Você se machucou ao tropeçar em uma raiz de árvore!')
+insert into Consequencia values(22,'pontos',23,'I','S',26,'Conseguiu garantir um resultado mediano. Mas que cansaço!')
+insert into Consequencia values(23,'pontos',23,'S','I',27,'Pelo menos você está bem descansado, mas não teve bons resultados...')
+
+insert into Consequencia values(24,'pontos',12,'F','S',20,'Você gritou com eles de volta, mas isso te deixou meio mal...')
+insert into Consequencia values(25,'pontos',-25,'F','S',3,'Não retrucou, apenas foi para o seu quarto')
+
+insert into Consequencia values(26,'pontos',20,'F','S',-4,'Ele gostou de você!')
+insert into Consequencia values(27,'pontos',0,'F','S',0,'Muito fofo, não?')
+insert into Consequencia values(28,'pontos',-25,'F','S',21,'O cachorro mordeu sua mão')
 
 select * from AcontecimentoAleatorio
 

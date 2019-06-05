@@ -29,12 +29,12 @@ drop table AcontecimentoAleatorio
 insert into AcontecimentoAleatorio values (1, 'Você tem uma festa no final de semana e uma prova segunda... Irá à festa ou estudará para a prova?', 20)
 insert into AcontecimentoAleatorio values (2, 'Jogar vídeo game ou estudar para a prova no dia seguinte?', 21)
 insert into AcontecimentoAleatorio values (3, 'Seu amigo te empurrou', 22)
-insert into AcontecimentoAleatorio values (4, 'Você estava jogando bola e perdeu ela no mato, vai procurá-la?Pode ser perigoso...'23) --não inserido
-insert into AcontecimentoAleatorio values (5,)	
-insert into AcontecimentoAleatorio values (6,)
-insert into AcontecimentoAleatorio values (7,)
-insert into AcontecimentoAleatorio values (8,)
-
+insert into AcontecimentoAleatorio values (4, 'Você estava jogando bola e perdeu ela no mato, vai procurá-la? Pode ser perigoso...',23) 
+insert into AcontecimentoAleatorio values (5,'Esqueceu de estudar para a prova de matemática! O que fazer?',24)	
+insert into AcontecimentoAleatorio values (6,'Seus pais estão brigando com você!',25)
+insert into AcontecimentoAleatorio values (7,'Um cachorrinho na rua!',26)
+insert into AcontecimentoAleatorio values (8,'Um cachorrinho na rua!',27)
+insert into AcontecimentoAleatorio values (9,)
 
 
 insert into AcontecimentoAleatorio values (21, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 41)

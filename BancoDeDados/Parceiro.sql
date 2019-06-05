@@ -46,6 +46,7 @@ insert into Parceiro values(38,'Robert Baratheon',0,'M')
 insert into Parceiro values(39,'Eduardo Bolsonaro',0,'M')
 insert into Parceiro values(40,'Jon Snow',0,'M')
 insert into Parceiro values(41,'Renly Baratheon',0,'M')
+insert into Parceiro values(42,'Chris Brown',16,'M')
 
 insert into parceiro values (0, 'Nenhum', 0, 'I')
 select * from Parceiro
