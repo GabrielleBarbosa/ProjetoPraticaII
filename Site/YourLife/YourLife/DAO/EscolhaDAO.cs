@@ -12,17 +12,7 @@ namespace YourLife.DAO
         {
             using (var repo = new JogoContext())
             {
-                Escolha escolha = null;
-                IList<Escolha> lista = repo.Escolha.ToList();
-                foreach(var esc in lista)
-                {
-                    if (esc.Id == id)
-                    {
-                        escolha = esc;
-                        break;
-                    }
-                }
-                return escolha;
+                return repo.Escolha.Where(e => e.Id == id).FirstOrDefault();
             }
         }
     }

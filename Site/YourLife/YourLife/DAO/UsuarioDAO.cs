@@ -26,19 +26,10 @@ namespace YourLife.DAO
 
         public Usuario BuscaPorNick(string nome)
         {
-            Usuario jogadorExistente = null;
             using (var contexto = new JogoContext())
             {
-                IList<Usuario> usu = contexto.Usuario.ToList();
-                foreach (var player in usu)
-                {
-                    if (nome == player.nickname)
-                    {
-                        return jogadorExistente = player;
-                    }
-                }
+                return contexto.Usuario.Where(u => u.nickname == nome).FirstOrDefault();
             }
-            return jogadorExistente;
         }
 
         public void Excluir(Usuario usu)

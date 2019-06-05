@@ -12,17 +12,7 @@ namespace YourLife.DAO
         {
             using (var repo = new JogoContext())
             {
-                AcontecimentoFixo acontfixo = null;
-                IList<AcontecimentoFixo> lista = repo.AcontecimentoFixo.ToList();
-                foreach (var a in lista)
-                {
-                    if (a.Id == id)
-                    {
-                        acontfixo = a;
-                        break;
-                    }
-                }
-                return acontfixo;
+                return repo.AcontecimentoFixo.Where(af => af.Id == id).FirstOrDefault();
             }
         }
     }

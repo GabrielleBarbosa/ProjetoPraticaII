@@ -36,16 +36,12 @@ namespace YourLife.DAO
 
         }
 
-        public Personagem BuscarPorIdUsuario(int id)
+        public Personagem BuscarPorIdUsuario(int codUsuario)
         {
             using (var contexto = new JogoContext())
             {
-                IList<Personagem> lista = contexto.Personagem.ToList();
-                foreach (var per in lista)
-                    if (per.CodUsuario == id)
-                        return per;
+                return contexto.Personagem.Where(p => p.CodUsuario == codUsuario).FirstOrDefault();
             }
-            return null;
         }
 
         public void Alterar(Personagem p)

@@ -30,12 +30,18 @@ insert into Escolha values(26,'Fazer carinho','Passar reto',26,27)
 insert into Escolha values(27,'Fazer carinho','Passar reto',28,27)
 
 
--- de 15 a 30
+-- de 16 a 30
 insert into Escolha values(41, 'Aceitar', 'Negar e manter a amizade', 10, 11)
 insert into Escolha values(42, 'Aceitar', 'Negar e manter a amizade', 12, 11)
 insert into Escolha values(43, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 13, 14)
 insert into Escolha values(44, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 14, 14)
 insert into Escolha values(45, 'Ir à festa mesmo assim', 'Ficar em casa descansando', 15, 16)
+
+-- de 31 a 60
+insert into Escolha values(61, 'Ficar em casa', 'Ir trabalhar', 29, 31)
+insert into Escolha values(62, 'Ficar em casa', 'Ir trabalhar', 29, 30)
+insert into Escolha values(63, 'Ficar em casa', 'Ir trabalhar', 32, 31)
+insert into Escolha values(63, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
 ------------------------------------------------------------------------------------------------------------------------
 
 create table Consequencia
@@ -90,6 +96,15 @@ insert into Consequencia values(25,'pontos',-25,'F','S',3,'Não retrucou, apenas 
 insert into Consequencia values(26,'pontos',20,'F','S',-4,'Ele gostou de você!')
 insert into Consequencia values(27,'pontos',0,'F','S',0,'Muito fofo, não?')
 insert into Consequencia values(28,'pontos',-25,'F','S',21,'O cachorro mordeu sua mão')
+
+insert into Consequencia values(29,'demissao', 0, '', '', 0, 'Seu chefe não quis nem ouvir suas desculpas, três dias seguidos em casa é no olho da rua!')
+insert into Consequencia values(30,'pontos', 25, 'I', 'S', 20, 'Você compareceu ao trabalho e melhorou mesmo assim... Até que não foi tão ruim')
+insert into Consequencia values(31,'pontos', 20, 'I', 'S', 50, 'Você compareceu ao trabalho e não melhorou por mais duas semanas! Descansar teria te feito muito melhor')
+insert into Consequencia values(32,'pontos', 25, 'S', 'I', 10, 'Você não compateceu ao trabalho, e tudo bem! Melhorou bastante')
+
+insert into Consequencia values(33,'pontos', 20, 'F', 'I', 0, 'Um tempo pra si mesmo(a) era tudo que você precisava!')
+insert into Consequencia values(34,'pontos', 0, 'I', 'F', 20, 'Acumular tudo dentro de si parece o melhor, mas os sentimentos ainda estão aí...')
+
 
 select * from AcontecimentoAleatorio
 

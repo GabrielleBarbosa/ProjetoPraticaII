@@ -28,12 +28,9 @@ namespace YourLife.DAO
         {
             using (var contexto = new JogoContext())
             {
-                IList<Emprego> empregos = contexto.Emprego.ToList();
-                foreach (var emp in empregos)
-                    if (emp.id == id)
-                        return emp;
+                return contexto.Emprego.Where(e => e.id == id).FirstOrDefault();
             }
-            return null;
+
         }
     }
 }

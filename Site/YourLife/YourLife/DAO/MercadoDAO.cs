@@ -28,9 +28,7 @@ namespace YourLife.DAO
         {
             using (var contexto = new JogoContext())
             {
-                IList<Mercado> lista = null;
-                lista = contexto.Mercado.Where(m => m.Id == id).ToList();
-                return lista.First();
+                return contexto.Mercado.Where(m => m.Id == id).FirstOrDefault();
             }
         }
     }

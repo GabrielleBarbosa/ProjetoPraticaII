@@ -20,12 +20,8 @@ namespace YourLife.DAO
         {
             using (var repo = new JogoContext())
             {
-                IList<Curso> cursos = repo.Curso.ToList();
-                foreach (var cur in cursos)
-                    if (cur.id == id)
-                        return cur;
+                return repo.Curso.Where(c => c.id == id).FirstOrDefault();
             }
-            return null;
         }
     }
 }

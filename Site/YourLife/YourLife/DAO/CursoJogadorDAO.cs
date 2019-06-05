@@ -12,8 +12,7 @@ namespace YourLife.DAO
         {
             using (var repo = new JogoContext())
             {
-                IList<CursoJogador> lista = repo.CursoJogador.Where(cj => cj.codJogador == id).ToList();
-                return lista;
+                return repo.CursoJogador.Where(cj => cj.codJogador == id).ToList();
             }
         }
 

@@ -12,17 +12,7 @@ namespace YourLife.DAO
         {
             using (var contexto = new JogoContext())
             {
-                Parceiro parceiro = null;
-                IList<Parceiro> lista = contexto.Parceiro.ToList();
-                foreach (var p in lista)
-                {
-                    if (p.id == id)
-                    {
-                        parceiro = p;
-                        break;
-                    }
-                }
-                return parceiro;
+                return contexto.Parceiro.Where(p => p.id == id).FirstOrDefault();
             }
         }
 

@@ -315,7 +315,7 @@ namespace YourLife.Controllers
             Personagem p = (Personagem)Session["Personagem"];
             p = AjustarPontosEnvelhecer(p);
 
-            AjustarAnosCursando();
+            p = AjustarAnosCursando(p);
             
             Session["ConseguiuEmprego"] = null;
 
@@ -376,7 +376,7 @@ namespace YourLife.Controllers
             return p;
         }
 
-        public void AjustarAnosCursando()
+        public Personagem AjustarAnosCursando(Personagem p)
         {
             if (Session["AnosCursando"] != null)
             {
@@ -391,6 +391,7 @@ namespace YourLife.Controllers
                     Session["Cursando"] = null;
                 }
             }
+            return p;
         }
 
         public void AjustarImagemPersonagem(Personagem p)
@@ -505,6 +506,10 @@ namespace YourLife.Controllers
                 valido = false;
             else if (conseq2.assunto == "namoro" && conseq2.TipoDoPontoGanho.Equals(' ') && p.Parceiro == 0)
                 valido = false;
+            else if (conseq1.assunto == "demissao" && p.CodEmprego == 0)
+                valido = false;
+            else if (conseq2.assunto == "demissao" && p.CodEmprego == 0)
+                valido = false;
 
             if (valido)
             {
@@ -513,6 +518,7 @@ namespace YourLife.Controllers
                 ViewBag.Acontecimento = Session["acontecimento"] = aa;
                 ViewBag.Escolha = Session["escolha"] = esc;
             }
+
             return valido;
         }
 
@@ -578,6 +584,12 @@ namespace YourLife.Controllers
             {
                 Session["MensagemAcontecimento"] = c.resultado;
                 RedirectToAction("Curso", "Jogo");
+            }
+            else if(c.assunto == "demissao")
+            {
+                EmpregoDAO daoEmp = new EmpregoDAO();
+                p.CodEmprego = 0;
+                Session["Emprego"] = daoEmp.BuscarPorId(0);
             }
 
             Session["MensagemAcontecimento"] = c.resultado;

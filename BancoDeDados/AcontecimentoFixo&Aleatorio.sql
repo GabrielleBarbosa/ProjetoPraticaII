@@ -47,9 +47,15 @@ insert into AcontecimentoAleatorio values (26, '', 11)
 
 
 -- entre 31 e 60 anos
+insert into AcontecimentoAleatorio values (41, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 61)
+insert into AcontecimentoAleatorio values (42, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 62)
+insert into AcontecimentoAleatorio values (43, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 63)
+insert into AcontecimentoAleatorio values (44, 'A idade está se mostrando no seu rosto, e isso te deixa inseguro(a) quanto à sua aparência', 64)
 
 
 
 
 -- a partir de 60 anos
+
+
 select * from AcontecimentoAleatorio
