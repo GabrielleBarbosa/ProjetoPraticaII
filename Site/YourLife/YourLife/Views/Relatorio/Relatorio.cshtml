@@ -7,70 +7,74 @@
 
 <html>
 <head>
-    <script>
-        window.onload = function () {
 
-            var chart = new CanvasJS.Chart("Pareto", {
-                title: {
-                    text: "Erros durante execução de teste"
-                },
-                axisY: {
-                    title: "Frequência",
-                    lineColor: "#4F81BC",
-                    tickColor: "#4F81BC",
-                    labelFontColor: "#4F81BC"
-                },
-                axisY2: {
-                    title: "Porcentagem",
-                    suffix: "%",
-                    lineColor: "#C0504E",
-                    tickColor: "#C0504E",
-                    labelFontColor: "#C0504E"
-                },
-                data: [{
-                    type: "column",
-                    dataPoints: [
-                        { label: "Conexão com o BD", y: 23 },  //erros ao programar a conexão entre o programa e o Banco de Dados
-                        { label: "Erros de lógica", y: 21 },  //erros de pensamento, ao organizar o que o programa deve fazer, a ordem dos acontecimentos, etc
-                        { label: "Html errors", y: 19 },     //erros da linguagem que está sendo trabalhada, por má utilização
-                        { label: "Erros de código", y: 15 },//erros de escrita mesmo ou má utilização, métodos mal escritos ou compreensão errada dos já existentes
-                        { label: "Erros de Design", y: 10 } //erros ao organizar o layout das páginas(coisas se sobrepondo, não aparecendo, mal organizadas, falta de combinação)
-                    ]
-                }]
-            });
-            chart.render();
-            createPareto();
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+        <script>
+            window.onload = function () {
 
-            function createPareto() {
-                var dps = [];
-                var yValue, yTotal = 0, yPercent = 0;
+                var chart = new CanvasJS.Chart("Pareto", {
+                    title: {
+                        text: "Erros durante execução de teste"
+                    },
+                    axisY: {
+                        title: "Frequência",
+                        lineColor: "#4F81BC",
+                        tickColor: "#4F81BC",
+                        labelFontColor: "#4F81BC"
+                    },
+                    axisY2: {
+                        title: "Porcentagem",
+                        suffix: "%",
+                        lineColor: "#C0504E",
+                        tickColor: "#C0504E",
+                        labelFontColor: "#C0504E"
+                    },
+                    data: [{
+                        type: "column",
+                        dataPoints: [
+                            { label: "Conexão com o BD", y: 23 },  //erros ao programar a conexão entre o programa e o Banco de Dados
+                            { label: "Erros de lógica", y: 21 },  //erros de pensamento, ao organizar o que o programa deve fazer, a ordem dos acontecimentos, etc
+                            { label: "Html errors", y: 19 },     //erros da linguagem que está sendo trabalhada, por má utilização
+                            { label: "Erros de código", y: 15 },//erros de escrita mesmo ou má utilização, métodos mal escritos ou compreensão errada dos já existentes
+                            { label: "Erros de Design", y: 10 } //erros ao organizar o layout das páginas(coisas se sobrepondo, não aparecendo, mal organizadas, falta de combinação)
+                        ]
+                    }]
+                });
+                chart.render();
+                createPareto();
 
-                for (var i = 0; i < chart.data[0].dataPoints.length; i++)
-                    yTotal += chart.data[0].dataPoints[i].y;
+                function createPareto() {
+                    var dps = [];
+                    var yValue, yTotal = 0, yPercent = 0;
 
-                for (var i = 0; i < chart.data[0].dataPoints.length; i++) {
-                    yValue = chart.data[0].dataPoints[i].y;
-                    yPercent += (yValue / yTotal * 100);
-                    dps.push({ label: chart.data[0].dataPoints[i].label, y: yPercent });
+                    for (var i = 0; i < chart.data[0].dataPoints.length; i++)
+                        yTotal += chart.data[0].dataPoints[i].y;
+
+                    for (var i = 0; i < chart.data[0].dataPoints.length; i++) {
+                        yValue = chart.data[0].dataPoints[i].y;
+                        yPercent += (yValue / yTotal * 100);
+                        dps.push({ label: chart.data[0].dataPoints[i].label, y: yPercent });
+                    }
+
+                    chart.addTo("data", { type: "line", yValueFormatString: "0.##\"%\"", dataPoints: dps });
+                    chart.data[1].set("axisYType", "secondary", false);
+                    chart.axisY[0].set("maximum", 40);
+                    chart.axisY2[0].set("maximum", 100);
                 }
 
-                chart.addTo("data", { type: "line", yValueFormatString: "0.##\"%\"", dataPoints: dps });
-                chart.data[1].set("axisYType", "secondary", false);
-                chart.axisY[0].set("maximum", 40);
-                chart.axisY2[0].set("maximum", 100);
             }
-
-        }
-    </script>
+        </script>
 </head>
 <body>
-    <div id="Pareto" style="height: 700px; width: 100%">
+    <br />
+    <div class="container">
+        <div id="Pareto" style="height: 700px; width: 100%">
+
+        </div>
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
+
+        </script>
 
     </div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js">
-
-    </script>
-
-    <h3>Como requisitado pelos professores, aqui está o nosso Gráfico de Pareto.</h3>
 </body>
 </html>
