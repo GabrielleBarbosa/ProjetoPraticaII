@@ -11,6 +11,7 @@ drop table AcontecimentoFixo
 insert into AcontecimentoFixo values (1, 'Você atingiu 16 anos! Está na hora de decidir se irá tirar sua carteira de motorista, é preciso muita responsabilidade e te custará $1500', 1)
 insert into AcontecimentoFixo values (2, 'Você atingiu 16 anos! Está na hora de decidir se irá tirar sua carteira de motorista, é preciso muita responsabilidade e te custará $1500', 2)
 insert into AcontecimentoFixo values (3, 'Você atingiu 18 anos! Agora você pode consumir bebidas alcoólicas, mas também ser preso, viva a maioridade!', 3) 
+insert into AcontecimentoFixo values (6, 'A idade chegou e você agora é idoso! Doenças ficam mais frequentes, mas é a hora de aproveitar a vida! Sua aposentadoria estará disponível a partir deste momento... Você pode receber um salário mínimo ou calcular o salário que receberá pelos anos contribuídos!');
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -36,7 +37,7 @@ insert into AcontecimentoAleatorio values (7,'Um cachorrinho na rua!',26)
 insert into AcontecimentoAleatorio values (8,'Um cachorrinho na rua!',27)
 insert into AcontecimentoAleatorio values (9,)
 
-
+-- entre 16 e 30 anos
 insert into AcontecimentoAleatorio values (21, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 41)
 insert into AcontecimentoAleatorio values (22, 'Sua melhor amiga tem sentimentos por você e te pediu em namoro', 42)
 insert into AcontecimentoAleatorio values (23, 'Seu namorado(a) terminou com você =(', 43)
@@ -44,4 +45,11 @@ insert into AcontecimentoAleatorio values (24, 'Seu namorado(a) terminou com voc
 insert into AcontecimentoAleatorio values (25, 'Você tem uma festa de aniversário e está muito doente, mas ainda assim deseja muito ir... O que fazer?', 45)
 insert into AcontecimentoAleatorio values (26, '', 11)
 
+
+-- entre 31 e 60 anos
+
+
+
+
+-- a partir de 60 anos
 select * from AcontecimentoAleatorio

@@ -399,18 +399,18 @@ namespace YourLife.Controllers
             {
                 if (p.Idade >= 14 && p.Idade <= 20)
                     Session["imagem"] = "/Imagens/menino_adolescente.png";
-                else if (p.Idade >= 21 && p.Idade <= 40)
+                else if (p.Idade >= 21 && p.Idade <= 60)
                     Session["imagem"] = "/Imagens/homem_adulto.png";
-                else if (p.Idade >= 41)
+                else if (p.Idade >= 61)
                     Session["imagem"] = "/Imagens/velho.png";
             }
             else
             {
                 if (p.Idade >= 14 && p.Idade <= 20)
                     Session["imagem"] = "/Imagens/menina_adolescente.png";
-                else if (p.Idade >= 21 && p.Idade <= 40)
+                else if (p.Idade >= 21 && p.Idade <= 60)
                     Session["imagem"] = "/Imagens/mulher_adulta.png";
-                else if (p.Idade >= 41)
+                else if (p.Idade >= 61)
                     Session["imagem"] = "/Imagens/velha.png";
             }
         }
@@ -476,7 +476,7 @@ namespace YourLife.Controllers
         {
             bool valido = true;
             int id = 0;
-            if (p.Idade <= 14)
+            if (p.Idade <= 15)
             {
                 id = random.Next(1, 3);
             }
