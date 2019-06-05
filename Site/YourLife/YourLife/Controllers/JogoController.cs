@@ -308,10 +308,75 @@ namespace YourLife.Controllers
             return RedirectToAction(lugar, "Jogo");
         }
 
+
+        /*********************************************  Envelhecer ****************************************************/
         public ActionResult Envelhecer()
         {
             Personagem p = (Personagem)Session["Personagem"];
+            p = AjustarPontosEnvelhecer(p);
 
+            AjustarAnosCursando();
+            
+            Session["ConseguiuEmprego"] = null;
+
+            p.Idade++;
+
+            if (p.CodEmprego != 0)
+                p.Dinheiro += ((Emprego)Session["Emprego"]).salario;
+
+            AjustarImagemPersonagem(p);
+
+            Session["Personagem"] = p;
+
+            //-----------------------chances de morrer------------------------------------//
+            int longevidade = 110 - p.Idade;
+            Random rm = new Random();
+            int chanceAtual = rm.Next(0, longevidade);
+            if (longevidade == chanceAtual)
+            {
+                PersonagemDAO daoPG = new PersonagemDAO();
+                daoPG.Morrer(p);
+                Session["CausaDaMorte"] = "Doença misteriosa";
+                return RedirectToAction("Obituario", "Jogo");
+            }
+            //----------------------------------------------------------------------------//
+            return RedirectToAction("Acontecimento", "Jogo");
+        }
+
+        public Personagem AjustarPontosEnvelhecer(Personagem p)
+        {
+            if(p.CodEmprego != 0 && Session["Cursando"] != null)
+            {
+                if (p.PontosFelicidade >= 20)
+                    p.PontosFelicidade -= 20;
+                else
+                    p.PontosFelicidade = 0;
+                if (p.PontosSaude >= 20)
+                    p.PontosSaude -= 20;
+                else
+                    p.PontosSaude = 0;
+            }
+            if(Session["Cursando"] != null)
+            {
+                if (p.PontosInteligencia + 25 <= 1000)
+                    p.PontosInteligencia += 25;
+                else
+                    p.PontosInteligencia = 1000;
+            }
+            if(p.Parceiro != 0)
+            {
+                Random random = new Random();
+                p.PontosRelacionamento += random.Next(-30, 30);
+                if (p.PontosRelacionamento < 0)
+                    p.PontosRelacionamento = 0;
+                else if (p.PontosRelacionamento > 1000)
+                    p.PontosRelacionamento = 1000;
+            }
+            return p;
+        }
+
+        public void AjustarAnosCursando()
+        {
             if (Session["AnosCursando"] != null)
             {
                 Session["AnosCursando"] = (int)Session["AnosCursando"] + 1;
@@ -325,15 +390,10 @@ namespace YourLife.Controllers
                     Session["Cursando"] = null;
                 }
             }
+        }
 
-            Session["ConseguiuEmprego"] = null;
-
-            p.Idade++;
-            decimal salario = 0;
-            if (p.CodEmprego != 0)
-                salario = ((Emprego)Session["Emprego"]).salario;
-            p.Dinheiro += salario;
-
+        public void AjustarImagemPersonagem(Personagem p)
+        {
             if (p.Sexo == 'M')
             {
                 if (p.Idade >= 14 && p.Idade <= 20)
@@ -352,22 +412,9 @@ namespace YourLife.Controllers
                 else if (p.Idade >= 41)
                     Session["imagem"] = "/Imagens/velha.png";
             }
-
-            Session["Personagem"] = p;
-            //---------------------------------------------------------chances de morrer
-            int longevidade = 110 - p.Idade;
-            Random rm = new Random();
-            int chanceAtual = rm.Next(0, longevidade);
-            if (longevidade == chanceAtual)
-            {
-                PersonagemDAO daoPG = new PersonagemDAO();
-                daoPG.Morrer(p);
-                Session["CausaDaMorte"] = "Doença misteriosa";
-                return RedirectToAction("Obituario", "Jogo");
-            }
-            //--------------------------------------------------------chances de morrer
-            return RedirectToAction("Acontecimento", "Jogo");
         }
+
+        /*************************************************************************************************/
 
         public ActionResult Acontecimento()
         {
