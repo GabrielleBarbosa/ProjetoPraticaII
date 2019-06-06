@@ -43,7 +43,7 @@ insert into AcontecimentoAleatorio values (13,'Você está extremamente atrasado p
 insert into AcontecimentoAleatorio values (14,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',33)
 
 
--- entre 16 e 30 anos
+-- entre 16 e 30 anos.
 insert into AcontecimentoAleatorio values (41, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 61)
 insert into AcontecimentoAleatorio values (42, 'Sua melhor amiga tem sentimentos por você e te pediu em namoro', 62)
 insert into AcontecimentoAleatorio values (43, 'Seu namorado(a) terminou com você =(', 63)

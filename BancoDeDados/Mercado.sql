@@ -54,7 +54,7 @@ insert into Mercado values (19,'Moradia', 'Casa grande, 3 suítes, 2 banheiros, 2
 
 insert into Mercado values (20,'Automovel', 'Carro para 4 pessoas, automático,24V 4x4, popular,',130980,'Subitsumishi Outlander')
 
-insert into Mercado values (21,'Moradia', 'Casa média, 3 suítes, 2 banheiros, 2 vagas, cozinha, 2 salas',500000,'Casa')
+insert into Mercado values (21,'Moradia', 'Casa média, 3 suítes, 2 banheiros, 2 vagas, cozinha, 1 sala',500000,'Casa')
 
 
 

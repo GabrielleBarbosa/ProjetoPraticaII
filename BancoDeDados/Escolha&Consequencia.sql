@@ -35,7 +35,7 @@ insert into Escolha values(31,'Atravessar correndo','Procurar uma faixa de pedes
 insert into Escolha values(32,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,39)
 insert into Escolha values(33,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',38,40)
 
-
+select * from AcontecimentoAleatorio
 
 -- de 16 a 30
 insert into Escolha values(61, 'Aceitar', 'Negar e manter a amizade', 10, 11)
@@ -121,8 +121,8 @@ insert into Consequencia values(37,'pontos',5, 'I', 'F',0,'Não deve ser nada, me
 
 insert into Consequencia values(38,'pontos',-50,'I','S',154,'Você tentou atravessar a rua correndo e um carro pegou em você de raspão, infelizmente quebrou um braço e foi parar no hospital. Pelo menos vão te dar provas substitutivas...')
 insert into Consequencia values(39,'pontos',50,'I','F',-5,'Você achou uma faixa de pedestres rapidamente e conseguiu chegar a tempo ')
-insert into Consequencia values(40,'pontos',-73,'F',57,'I','Você demorou pra achar uma faixa, acabou chegando atrasado e não te permitiram entrar')
-insert into Consequencia values(41,'pontos',60,'I',-49,'F','Você atravessou a rua correndo e chegou na escola. Nada de mau aconteceu, dessa vez...')
+insert into Consequencia values(40,'pontos',-73,'F','I',57,'Você demorou pra achar uma faixa, acabou chegando atrasado e não te permitiram entrar')
+insert into Consequencia values(41,'pontos',60,'I','F',-49,'Você atravessou a rua correndo e chegou na escola. Nada de mau aconteceu, dessa vez...')
 
 insert into Consequencia values(42,'pontos',23,'F','S',37,'Foi muito divertido, mas passou mal depois por conta da bebida e de estar doente')
 insert into Consequencia values(43,'pontos',15,'S','F',6,'Você preferiu ficar em casa e descansar para se recuperar')
