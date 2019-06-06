@@ -1,0 +1,22 @@
+﻿a {
+    margin-top: 13px;
+}
+
+.caixa {
+    top: 5vh;
+    background-color: #ffebee;
+    position: relative;
+    width: 90vh;
+    height: 80vh;
+    border-radius: 95px;
+    box-shadow: 1px 1px 15px 1px #888888;
+}
+
+.botoes {
+    position: relative;
+    top: 17vh;
+}
+
+.modal {
+    width: 45% !important;
+}
