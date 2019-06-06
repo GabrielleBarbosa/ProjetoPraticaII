@@ -5,26 +5,19 @@
 }
 
 <link rel="stylesheet" href="~/Content/CSS/Configuracoes.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
-
-@{
-    if (Session["Usuario"] == null)
-    {
-        
-    }
-}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 <center>
     <div class="container">
         <div class="caixa">
             <div class="container botoes">
                 <center>
-                    <p style="font-family: 'Sofia',cursive;font-size:6vh;" class="blue-text text-darken-2">Configurações do Usuário</p><br /><br />
-                    <a href="#modalLogin" class="waves-effect waves-light btn modal-trigger">Alterar Senha</a><br />
-                    <a href="#modalLogin" class="waves-effect waves-light btn modal-trigger">Deletar Usuário</a>
+                    <p style="font-family: 'Sofia',cursive;font-size:6vh;" class="blue-text text-darken-2">Configurações do Usuário</p><br />
+                    <a href="#modalAlterar" class="waves-effect waves-light btn modal-trigger">Alterar Senha</a><br />
+                    <a href="#modalDeletar" class="modal-trigger waves-effect waves-light btn">Deletar Usuário</a>
                 </center>
             </div>
         </div>
@@ -35,7 +28,7 @@
 <div class="modal modal-fixed-footer" id="modalAlterar">
     <div class="modal-content">
         <div class="modal-header">
-            <h3><i>Alterar senha</i></h3>
+            <p style="font-family: 'Sofia',cursive;font-size:6vh;" class="blue-text text-darken-2"><i>Alterar senha</i></p>
         </div>
         <div class="modal-body">
             <form id="form" action="/Usuario/Alterar">
@@ -50,7 +43,22 @@
         </div>
     </div>
     <div class="modal-footer">
-        <a class="modal-close waves-effect waves-green btn-flat" href="/Usuario/ConfiguracoesUsuario">Cancelar</a>
+        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+    </div>
+</div>
+
+<div class="modal modal-fixed-footer" id="modalDeletar">
+    <div class="modal-content">
+        <div class="modal-header">
+            <p style="font-family: 'Sofia',cursive;font-size:6vh;"><i>Deletar Usuário</i></p>
+        </div>
+        <div class="modal-body">
+            <p style="font-family: 'Sofia',cursive;font-size:4vh;">Tem certeza de que deseja deletar seu usuário de nossos arquivos?</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="waves-effect waves-green btn-flat" href="/Usuario/DeletarUsuario">Deletar</a>
+        <a class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
     </div>
 </div>
 
@@ -58,25 +66,4 @@
     $(document).ready(function () {
         $('.modal').modal();
     });
-
-    function validarLogin() {
-        $.ajaxSetup({ async: false });
-        $.when($.post('/Usuario/ValidarLogin', {
-            senha: $('#txtSenha').val(),
-            nick: $('#txtNickname').val()
-        },
-            function (data) {
-                if (!data) {
-                    abrirModal('modalAviso');
-                }
-                else {
-                    abrirModal('modalAlterar');
-                }
-            }));
-    }
-
-    function abrirModal(modal) {
-        document.getElementById(modal).style.display = "block";
-    }
-    
 </script>

@@ -58,5 +58,26 @@ namespace YourLife.DAO
                 contexto.SaveChanges();
             }
         }
+
+        internal void Deletar(Usuario usu)
+        {
+            PersonagemDAO daoP = new PersonagemDAO();
+            Personagem p = daoP.BuscarPorIdUsuario(usu.id);
+
+            if(p!=null)
+                daoP.ExcluirPersonagem(p);
+
+            RankingDAO daoR = new RankingDAO();
+            Ranking r = daoR.BuscarPorNick(usu.nickname);
+
+            using (var repo = new JogoContext())
+            {
+                if(r != null)
+                    repo.Ranking.Remove(r);
+
+                repo.Usuario.Remove(usu);
+                repo.SaveChanges();
+            }
+        }
     }
 }

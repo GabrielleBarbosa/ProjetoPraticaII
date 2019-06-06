@@ -5,11 +5,13 @@ using System.Web;
 using System.Web.Mvc;
 using YourLife.DAO;
 using YourLife.Models;
+using YourLife.Filtro;
 
 namespace YourLife.Controllers
 {
     public class UsuarioController : Controller
     {
+        [AutorizacaoFilterAttribute]
         public ActionResult ConfiguracoesUsuario()
         {
             ViewBag.Usuario = Session["Usuario"];
@@ -37,7 +39,24 @@ namespace YourLife.Controllers
             
             daoU.Alterar(usuAntes);
 
-            return View("ConfiguracoesUsuario");
+            Session["Usuario"] = usuAntes;
+
+            return RedirectToAction("PaginaInicial", "Jogo");
+        }
+
+        public ActionResult Deslogar()
+        {
+            Session["Usuario"] = null;
+            return RedirectToAction("PaginaInicial", "Jogo");
+        }
+
+        public ActionResult DeletarUsuario()
+        {
+            UsuarioDAO daoU = new UsuarioDAO();
+            daoU.Deletar((Usuario)Session["Usuario"]);
+
+            Session["Usuario"] = null;
+            return RedirectToAction("PaginaInicial", "Jogo");
         }
     }
 }
