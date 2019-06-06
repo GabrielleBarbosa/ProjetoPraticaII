@@ -182,6 +182,7 @@
     <Content Include="Imagens\cupido.png" />
     <Content Include="Imagens\homem_adulto.png" />
     <Content Include="Imagens\Jornada1.png" />
+    <Content Include="Imagens\LogoCompleto.png" />
     <Content Include="Imagens\LogoSemPlanoDeFundo.png" />
     <Content Include="Imagens\menina.png" />
     <Content Include="Imagens\menina_adolescente.png" />
@@ -203,6 +204,7 @@
     <Content Include="Views\Jogo\Imagens\cupido.png" />
     <Content Include="Views\Jogo\Imagens\homem_adulto.png" />
     <Content Include="Views\Jogo\Imagens\Jornada1.png" />
+    <Content Include="Views\Jogo\Imagens\LogoCompleto.png" />
     <Content Include="Views\Jogo\Imagens\LogoSemPlanoDeFundo.png" />
     <Content Include="Views\Jogo\Imagens\menina.png" />
     <Content Include="Views\Jogo\Imagens\menina_adolescente.png" />

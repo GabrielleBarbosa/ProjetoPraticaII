@@ -181,11 +181,26 @@ namespace YourLife.Controllers
 
         public ActionResult Base()
         {
+            Personagem p = new Personagem();
+            p.Dinheiro = 0;
+            p.Idade = 5;
+            p.Parceiro = 'N';
+            p.PontosSaude = 1000;
+            Random rm = new Random();
+            p.PontosInteligencia = rm.Next(0, 450);
+            p.PontosRelacionamento = 0;
+            p.PontosFelicidade = 500;
+            p.Sexo = 'I';
+            p.CodEmprego = 0;
+            p.CodUsuario = 0;
+            p.Parceiro = 0;
+            p.CarteiraMotorista = 'N';
+
             ViewBag.Acontecimento = Session["acontecimento"];
             ViewBag.Escolha = Session["escolha"];
             ViewBag.Consequencia1 = Session["consequencia1"];
             ViewBag.Consequencia2 = Session["consequencia2"];
-            ViewBag.Personagem = Session["Personagem"];
+            ViewBag.Personagem = Session["Personagem"]= p;
             ViewBag.Imagem = Session["imagem"];
             return View();
         }
