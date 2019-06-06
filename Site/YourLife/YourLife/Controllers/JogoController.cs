@@ -314,6 +314,7 @@ namespace YourLife.Controllers
         {
             Session["Cinema"] = null;
             Session["Parentes"] = null;
+            Session["Academia"] = null;
             Session["Passear"] = null;
 
             Personagem p = (Personagem)Session["Personagem"];
@@ -447,10 +448,27 @@ namespace YourLife.Controllers
                     ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
                     ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
                 }
-                if (p.Idade == 18) //maioridade 
+                else if (p.Idade == 18) //maioridade 
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
                     AcontecimentoFixo af = dao.BuscarPorId(3);
+
+                    ViewBag.Acontecimento = Session["acontecimento"] = af;
+
+                    EscolhaDAO daoEsc = new EscolhaDAO();
+                    Escolha esc = daoEsc.BuscarPorId(af.CodEscolha);
+                    ViewBag.Escolha = Session["escolha"] = esc;
+
+                    ConsequenciaDAO daoConseq = new ConsequenciaDAO();
+                    Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
+                    Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
+                    ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
+                    ViewBag.Consequencia2 = Session["consequencia2"] = conseq2;
+                }
+                else if (p.Idade == 60) //idoso
+                {
+                    AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
+                    AcontecimentoFixo af = dao.BuscarPorId(6);
 
                     ViewBag.Acontecimento = Session["acontecimento"] = af;
 
@@ -483,19 +501,19 @@ namespace YourLife.Controllers
             int id = 0;
             if (p.Idade <= 15)
             {
-                id = random.Next(1, 8);
+                id = random.Next(1, 14);      //(1, 40)
             }
             else if (p.Idade <= 30)
             {
-                id = random.Next(21, 25);
+                id = random.Next(41, 45);   //(41, 80)
             }
-            else if (p.Idade <=60)
+            else if (p.Idade <= 60)
             {
-                id = random.Next(21, 25);      //(41, 60);
+                id = random.Next(81, 84);  //(80, 120);
             }
             else
             {
-
+                id = random.Next(41, 45); //(120, 160);
             }
 
             AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
@@ -506,15 +524,37 @@ namespace YourLife.Controllers
             Consequencia conseq1 = daoConseq.BuscarPorId(esc.Consequencia1);
             Consequencia conseq2 = daoConseq.BuscarPorId(esc.Consequencia2);
 
-            if (conseq1.assunto == "namoro" && conseq1.TipoDoPontoGanho.Equals(' ') && p.Parceiro == 0)
-                valido = false;
-            else if (conseq2.assunto == "namoro" && conseq2.TipoDoPontoGanho.Equals(' ') && p.Parceiro == 0)
-                valido = false;
-            else if (conseq1.assunto == "demissao" && p.CodEmprego == 0)
-                valido = false;
-            else if (conseq2.assunto == "demissao" && p.CodEmprego == 0)
-                valido = false;
+            if (conseq1.assunto == "pontos" || conseq2.assunto == "pontos")
+            {
+                if (p.Parceiro == 0)
+                {
+                    if (conseq1.TipoDoPontoGanho == 'R' || conseq1.TipoDoPontoPerdido == 'R' || conseq2.TipoDoPontoGanho == 'R' || conseq2.TipoDoPontoPerdido == 'R')
+                    {
+                        valido = false;
+                    }
+                }
 
+            }
+
+            if(conseq1.assunto == "namoro" || conseq2.assunto == "namoro")
+            {
+                if(p.Parceiro == 0)
+                {
+                    if(conseq1.TipoDoPontoGanho.Equals(' ') || conseq2.TipoDoPontoGanho.Equals(' '))
+                    {
+                        valido = false;
+                    }
+                }
+            }
+
+            if(conseq1.assunto == "demissao" || conseq2.assunto == "demissao")
+            {
+                if(p.CodEmprego == 0)
+                {
+                    valido = false;
+                }
+            }
+            
             if (valido)
             {
                 ViewBag.Consequencia1 = Session["consequencia1"] = conseq1;
@@ -683,9 +723,6 @@ namespace YourLife.Controllers
             return View();
         }
 
-
-
-
         [Route("FazerCurso/{id}")]
         public ActionResult FazerCurso(int id)
         {
@@ -729,7 +766,6 @@ namespace YourLife.Controllers
 
             return View();
         }
-
 
         public ActionResult Obituario()
         {

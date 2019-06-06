@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using YourLife.DAO;
+using YourLife.Models;
 
 namespace YourLife.Controllers
 {
-    public class BastidoresController : Controller
+    public class UsuarioController : Controller
     {
-        // GET: Bastidores
-        public ActionResult Bastidores()
+        public ActionResult ConfiguracoesUsuario()
         {
+            ViewBag.Usuario = Session["Usuario"];
             return View();
         }
     }

@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = "ConfiguracoesUsuario";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>ConfiguracoesUsuario</h2>
+
+<a>Alterar Senha</a>
+<a>Alterar Nickname</a>
+<a>Deletar Usuário</a>
+
+<div class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <div class="modal-header">
+            @if (ViewBag.Usuario == null)
+            {
+                <p>Faça login para continuar</p>
+            }
+            else
+            {
+                <p>Confirme o usuário e a senha</p>
+            }
+        </div>
+        <div class="modal-body">
+            <form method="post" action="/Usuario/Logar">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="usu.nickname">Nickname</label>
+                        <input type="text" name="usu.nickname" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="usu.senha">Senha</label>
+                        <input type="password" name="usu.senha" />
+                    </div>
+                </div>
+                <button type="submit" onclick="validarLogin();">Confirmar</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a>Cancelar</a>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+
+    });
+</script>

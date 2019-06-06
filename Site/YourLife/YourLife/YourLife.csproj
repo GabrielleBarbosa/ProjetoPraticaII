@@ -226,9 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\BastidoresController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DAO\AcontecimentoAleatorioDAO.cs" />
     <Compile Include="DAO\AcontecimentoFixoDAO.cs" />
     <Compile Include="DAO\ConsequenciaDAO.cs" />
@@ -269,7 +269,6 @@
     <Content Include="Views\Shared\Layout.cshtml" />
     <Content Include="Views\Jogo\Mercado.cshtml" />
     <Content Include="Views\Relatorio\Relatorio.cshtml" />
-    <Content Include="Views\Bastidores\Bastidores.cshtml" />
     <Content Include="Views\Jogo\EscolhaPersonagem.cshtml" />
     <Content Include="Views\Jogo\Ranking.cshtml" />
     <Content Include="Views\Jogo\Emprego.cshtml" />
@@ -281,6 +280,7 @@
     <Content Include="Views\Jogo\Login.cshtml" />
     <Content Include="Views\Jogo\Outros.cshtml" />
     <Content Include="Views\Jogo\Obituario.cshtml" />
+    <Content Include="Views\Usuario\ConfiguracoesUsuario.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
