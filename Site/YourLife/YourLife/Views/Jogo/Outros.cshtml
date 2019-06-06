@@ -20,6 +20,15 @@
         if (ViewBag.Personagem.Idade < 18)
         {
             disabledPorIdade = "disabled";
+
+            if (Session["Cinema"] != null)
+            {
+                disabledCinema = "disabled";
+            }
+            if (Session["Parentes"] != null)
+            {
+                disabledParentes = "disabled";
+            }
         }
         else
         {
@@ -42,6 +51,19 @@
             else if (ViewBag.Personagem.Dinheiro < 10000)
             {
                 disabledViajar = "disabled";
+            }
+
+            if (Session["Cinema"] != null)
+            {
+                disabledCinema = "disabled";
+            }
+            if (Session["Parentes"] != null)
+            {
+                disabledParentes = "disabled";
+            }
+            if (Session["Academia"] != null)
+            {
+                disabledAcademia = "disabled";
             }
         }
     }
