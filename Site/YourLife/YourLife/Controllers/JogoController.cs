@@ -96,9 +96,9 @@ namespace YourLife.Controllers
                         Session["imagem"] = "/Imagens/menino.png";
                     else if (p.Idade >= 14 && p.Idade <= 20)
                         Session["imagem"] = "/Imagens/menino_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
+                    else if (p.Idade >= 21 && p.Idade <= 60)
                         Session["imagem"] = "/Imagens/homem_adulto.png";
-                    else if (p.Idade >= 41)
+                    else if (p.Idade >= 61)
                         Session["imagem"] = "/Imagens/velho.png";
                 }
                 else
@@ -107,9 +107,9 @@ namespace YourLife.Controllers
                         Session["imagem"] = "/Imagens/menina.png";
                     else if (p.Idade >= 14 && p.Idade <= 20)
                         Session["imagem"] = "/Imagens/menina_adolescente.png";
-                    else if (p.Idade >= 21 && p.Idade <= 40)
+                    else if (p.Idade >= 21 && p.Idade <= 60)
                         Session["imagem"] = "/Imagens/mulher_adulta.png";
-                    else if (p.Idade >= 41)
+                    else if (p.Idade >= 61)
                         Session["imagem"] = "/Imagens/velha.png";
                 }
             }
@@ -312,6 +312,10 @@ namespace YourLife.Controllers
         /*********************************************  Envelhecer ****************************************************/
         public ActionResult Envelhecer()
         {
+            Session["Cinema"] = null;
+            Session["Parentes"] = null;
+            Session["Passear"] = null;
+
             Personagem p = (Personagem)Session["Personagem"];
             p = AjustarPontosEnvelhecer(p);
 
@@ -790,6 +794,7 @@ namespace YourLife.Controllers
         [Route("AlterarAcademia/{d}/{s}")]
         public ActionResult AlterarAcademia(decimal d, int s)
         {
+            Session["Academia"] = "S";
             AlterarDinheiro(d);
             AlterarSaude(s);
             return View("Outros");
@@ -798,6 +803,7 @@ namespace YourLife.Controllers
         [Route("IrAoCinema/{d}/{s}")]
         public ActionResult IrAoCinema(decimal d, int s)
         {
+            Session["Cinema"] = "S";
             Personagem p = (Personagem)Session["Personagem"];
             if (p.Dinheiro > 100)
             {
@@ -810,6 +816,7 @@ namespace YourLife.Controllers
         [Route("IrAoCinema/{f}")]
         public ActionResult IrAoCinema(int f)
         {
+            Session["Cinema"] = "S";
             AlterarFelicidade(f);
             return View("Outros");
         }
@@ -817,6 +824,7 @@ namespace YourLife.Controllers
         [Route("VisitarParentes/{f}/{d}")]
         public ActionResult VisitarParentes(int f, decimal d)
         {
+            Session["Parentes"] = "S";
             AlterarFelicidade(f);
             AlterarDinheiro(-d);
             return View("Outros");
@@ -824,6 +832,7 @@ namespace YourLife.Controllers
         [Route("VisitarParentes/{f}")]
         public ActionResult VisitarParentes(int f)
         {
+            Session["Parentes"] = "S";
             AlterarFelicidade(f);
             return View("Outros");
         }
@@ -844,6 +853,7 @@ namespace YourLife.Controllers
        [Route("Passear`/{f}/{s}/{i}")]
         public ActionResult Passear(int f, int s, int i)
         {
+            Session["Passear"] = "S";
             Personagem p = (Personagem)Session["Personagem"];
             AlterarFelicidade(f);
             AlterarSaude(s);
