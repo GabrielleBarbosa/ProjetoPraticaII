@@ -51,7 +51,7 @@ function visitarParentes() {
     $('#lbl1').html("");
     $('#cabecalho').html("Visitar Família");
     
-    if (idade > 18)
+    if (idade >= 18)
         $('#resposta1').attr('href', '/VisitarParentes/20/100');
     else
         $('#resposta1').attr('href', '/VisitarParentes/20');
@@ -64,7 +64,7 @@ function cinema() {
     $('.lbl1').html("");
     $('#cabecalho').html("Ir ao cinema custará $100,00");
     
-    if (idade > 18)
+    if (idade >= 18)
         $('#resposta1').attr('href', '/IrAoCinema/100/20');
     else
         $('#resposta1').attr('href', '/IrAoCinema/20');

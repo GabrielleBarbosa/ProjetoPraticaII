@@ -16,9 +16,16 @@
 <body style="font-family:'Calisto MT'">
     @{
         ViewBag.Personagem = Session["Personagem"];
-        string disabledPorIdade = "", disabledPorDinheiro = "", disabledSuicidio = "", disabledRel = "", disabledEmprego = "", disabledViajar = "";
+        string disabledPorIdade = "", disabledSuicidio = "", disabledRel = "", disabledEmprego = "",
+             disabledViajar = "", disabledCinema = "", disabledParentes = "", disabledAcademia = "",
+             disabledCarteira = "";
         if (ViewBag.Personagem.Idade < 18)
         {
+            if (ViewBag.Personagem.Idade < 16)
+            {
+                disabledCarteira = "disabled";
+            }
+
             disabledPorIdade = "disabled";
 
             if (Session["Cinema"] != null)
@@ -44,26 +51,36 @@
             {
                 disabledEmprego = "disabled";
             }
+            if(ViewBag.Personagem.Carteira == 'N')
+            {
+                disabledCarteira = "disabled";
+            }
             if (ViewBag.Personagem.Dinheiro < 100)
             {
-                disabledPorDinheiro = "disabled";
-            }
-            else if (ViewBag.Personagem.Dinheiro < 10000)
-            {
+                disabledAcademia = "disabled";
+                disabledParentes = "disabled";
+                disabledCinema = "disabled";
                 disabledViajar = "disabled";
             }
+            else
+            {
+                if (ViewBag.Personagem.Dinheiro < 10000)
+                {
+                    disabledViajar = "disabled";
+                }
 
-            if (Session["Cinema"] != null)
-            {
-                disabledCinema = "disabled";
-            }
-            if (Session["Parentes"] != null)
-            {
-                disabledParentes = "disabled";
-            }
-            if (Session["Academia"] != null)
-            {
-                disabledAcademia = "disabled";
+                if (Session["Cinema"] != null)
+                {
+                    disabledCinema = "disabled";
+                }
+                if (Session["Parentes"] != null)
+                {
+                    disabledParentes = "disabled";
+                }
+                if (Session["Academia"] != null)
+                {
+                    disabledAcademia = "disabled";
+                }
             }
         }
     }
@@ -76,30 +93,31 @@
         </p>
         <hr style="height: 1px;" />
 
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio                   "    href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledRel                        "    href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledPorDinheiro                "    href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger                                                       "    href="#modalGeral" onclick="passear();">Passear</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledEmprego                    "    href="#modalGeral" onclick="demissao();"><i class="material-icons right">settings_power</i>Pedir demissão</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger                                                       "    href="#modalGeral" onclick="visitarParentes();"><i class="material-icons right">home</i>Visitar Parentes</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorDinheiro                                  "    href="#modalGeral" onclick="cinema();"><i class="material-icons right">tv</i>Ir ao cinema</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorDinheiro @disabledViajar @disabledPorIdade"    href="#modalGeral" onclick="viajar();"><i class="material-icons right">flight</i>Viajar</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio                   " href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledRel                        " href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledAcademia                   " href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger                                                       " href="#modalGeral" onclick="passear();">Passear</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledEmprego                    " href="#modalGeral" onclick="demissao();"><i class="material-icons right">settings_power</i>Pedir demissão</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledParentes                                     " href="#modalGeral" onclick="visitarParentes();"><i class="material-icons right">home</i>Visitar Parentes</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledCinema                                       " href="#modalGeral" onclick="cinema();"><i class="material-icons right">tv</i>Ir ao cinema</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledViajar @disabledPorIdade                     " href="#modalGeral" onclick="viajar();"><i class="material-icons right">flight</i>Viajar</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledCarteira                                     " href="#modalGeral" onclick="carteira();"><i class="material-icons right">flight</i>Tirar Carteira de Motorista</a><br /><br />
 
         <!-- Modal Geral -->
-        <div id="modalGeral" class="modal modal-fixed-footer">
+        <div id="modalGeral" class="modal modal-fixed-footer" style="height: 45%; overflow:hidden; width: 50%;">
 
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 style="font-family: 'Kodchasan', sans-serif;" class="blue-text text-darken-2" id="cabecalho">TITULO</h4>
                 </div>
                 <div class="modal-body">
-                        <div class="input-field col s12">
-                            <p id="lbl1"></p>
-                        </div>
-                        <center>
-                            <a class="waves-effect waves-light btn" id="resposta1" href="">Sim</a>
-                            <button class="modal-close waves-effect waves-light btn" id="resposta2">Não</button>
-                        </center>
+                    <div class="input-field col s12">
+                        <p id="lbl1"></p>
+                    </div>
+                    <center>
+                        <a class="waves-effect waves-light btn" id="resposta1" href="">Sim</a>
+                        <button class="modal-close waves-effect waves-light btn" id="resposta2">Não</button>
+                    </center>
                 </div>
             </div>
         </div>
@@ -127,6 +145,7 @@
                         <li>Academia</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você não pode ir à academia se tiver menos de 18 anos</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Além disso, você precisa ter dinheiro, pois custa $100</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você só pode ir à academia uma vez por rodada</li>
                     </ul>
                     <ul style="list-style-type: circle;">
                         <li>Passear</li>
@@ -140,12 +159,14 @@
                         <li>Visitar Parentes</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você pode visitar parentes quando quiser antes dos 18 anos, já que seus pais te levam</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">A partir dos 18 anos, passa a custar $100 visitar seus parentes</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você só pode visitar parentes uma vez por rodada</li>
                     </ul>
                     <ul style="list-style-type: circle;">
                         <li>Cinema</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você pode ir ao cinema quando quiser antes dos 18 anos, já que seus pais te levam</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">A partir dos 18 anos, passa a custar $100 ir ao cinema</li>
-                    </ul> 
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você só pode ir ao cinema uma vez por rodada</li>
+                    </ul>
                     <ul style="list-style-type: circle;">
                         <li>Viajar</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você pode viajar apenas a partir dos 18 anos!</li>

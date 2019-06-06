@@ -10,8 +10,8 @@
 <link rel="stylesheet" href="~/Content/CSS/Base.css" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <br />
-<div id="composicao" style="background-size:100%;"  >
-    
+<div id="composicao" style="background-size:100%;">
+
     <center>
         <div id="imagemDiv">
             @{
@@ -42,7 +42,7 @@
             desabilitado = "disabled";
         }
 
-        if(ViewBag.Personagem.Idade < 18)
+        if (ViewBag.Personagem.Idade < 18)
         {
             desabilitadoPorIdade = "disabled";
         }
@@ -83,7 +83,10 @@
     </div>
     <div class="modal-footer">
         <a class="modal-close waves-effect waves-green btn-flat" href="/Escolher/@idConsequencia1">@opcao1</a>
-        <a class="modal-close waves-effect waves-green btn-flat" href="/Escolher/@idConsequencia2">@opcao2</a>
+        @if (opcao2 != "")
+        {
+            <a class="modal-close waves-effect waves-green btn-flat" href="/Escolher/@idConsequencia2">@opcao2</a>
+        }
     </div>
 </div>
 
@@ -125,8 +128,7 @@
                 if (data) {
                     abrirModal();
                 }
-                else
-                {
+                else {
                     $.when($.post('/Jogo/HaMensagem', {},
                         function (data) {
                             if (data != null) {
@@ -142,8 +144,4 @@
         $('.tooltipped').tooltip();
     })
     
-    //function setTopo() {
-        //$(window).scrollTop(0);
-    //}
-    //$(window).bind('scroll', setTopo);
 </script>

@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "ConfiguracoesUsuario";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/CSS/Configuracoes.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
+
+<center>
+    <div class="container">
+        <div class="caixa">
+            <div class="container botoes">
+                <center>
+                    <p style="font-family: 'Sofia',cursive;font-size:6vh;" class="blue-text text-darken-2">Configurações do Usuário</p><br /><br />
+                    <a href="#modalLogin" class="waves-effect waves-light btn modal-trigger">Alterar Senha</a><br />
+                    <a href="#modalLogin" class="waves-effect waves-light btn modal-trigger">Deletar Usuário</a>
+                </center>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+<div class="modal modal-fixed-footer" id="modalAlterar">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i>Alterar senha</i></h3>
+        </div>
+        <div class="modal-body">
+            <form id="form" action="/Usuario/Alterar">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <label for="usu.senha">Nova senha</label>
+                        <input type="password" name="usu.senha" maxlength="15" required />
+                    </div>
+                </div>
+                <button type="submit" class="waves-effect waves-light btn" style="font-family: 'Open Sans', sans-serif;">Confirmar</button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a class="modal-close waves-effect waves-green btn-flat" href="/Usuario/ConfiguracoesUsuario">Cancelar</a>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+
+    function validarLogin() {
+        $.ajaxSetup({ async: false });
+        $.when($.post('/Usuario/ValidarLogin', {
+            senha: $('#txtSenha').val(),
+            nick: $('#txtNickname').val()
+        },
+            function (data) {
+                if (!data) {
+                    abrirModal('modalAviso');
+                }
+                else {
+                    abrirModal('modalAlterar');
+                }
+            }));
+    }
+
+    function abrirModal(modal) {
+        document.getElementById(modal).style.display = "block";
+    }
+    
+</script>
