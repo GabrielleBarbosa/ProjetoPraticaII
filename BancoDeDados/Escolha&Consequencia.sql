@@ -44,12 +44,14 @@ insert into Escolha values(63, 'Insistir para continuarem juntos', 'Aceitar sua 
 insert into Escolha values(64, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 14, 14)
 insert into Escolha values(65, 'Ir à festa mesmo assim', 'Ficar em casa descansando', 15, 16)
 insert into Escolha values(66, 'Ir beber', 'Não ir', 42, 43)
+insert into Escolha values(67, 'Ir ao cinema', 'Shopping', 44, 45)
 
 -- de 31 a 60
 insert into Escolha values(101, 'Ficar em casa', 'Ir trabalhar', 29, 31)
 insert into Escolha values(102, 'Ficar em casa', 'Ir trabalhar', 29, 30)
 insert into Escolha values(103, 'Ficar em casa', 'Ir trabalhar', 32, 31)
 insert into Escolha values(104, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
+insert into Escolha values(105, 'Comprar','Não comprar',46,47)
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
@@ -122,12 +124,13 @@ insert into Consequencia values(39,'pontos',50,'I','F',-5,'Você achou uma faixa 
 insert into Consequencia values(40,'pontos',-73,'F',57,'I','Você demorou pra achar uma faixa, acabou chegando atrasado e não te permitiram entrar')
 insert into Consequencia values(41,'pontos',60,'I',-49,'F','Você atravessou a rua correndo e chegou na escola. Nada de mau aconteceu, dessa vez...')
 
-insert into Consequencia values(42,'pontos',23,'F','S',27,'Foi muito divertido, mas passou mal depois por conta da bebida'
-insert into Consequencia values(43,'pontos',0,'F','S',0
+insert into Consequencia values(42,'pontos',23,'F','S',37,'Foi muito divertido, mas passou mal depois por conta da bebida e de estar doente')
+insert into Consequencia values(43,'pontos',15,'S','F',6,'Você preferiu ficar em casa e descansar para se recuperar')
 
 
+insert into Consequencia values(44,'pontos',29,'R','F',-20,'O filme foi muito divertido, na próxima talvez um jantar?')
+insert into Consequencia values(45,'pontos',33,'R','F',-21,'O restaurante era muito bom, talvez um filme na próxima vez?')
 
-delete from AcontecimentoAleatorio
-delete from AcontecimentoFixo
-delete from Escolha
-delete from Consequencia
+insert into Consequencia values(46,'dinheiro',-500,'','',0,'Sua pressão está voltando ao normal')
+insert into Consequencia values(47,'pontos',-15,'F','S',35,'Sua pressão está te fazendo passar mal')
+
