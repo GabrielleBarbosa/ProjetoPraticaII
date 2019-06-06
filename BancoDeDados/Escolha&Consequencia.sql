@@ -52,6 +52,11 @@ insert into Escolha values(102, 'Ficar em casa', 'Ir trabalhar', 29, 30)
 insert into Escolha values(103, 'Ficar em casa', 'Ir trabalhar', 32, 31)
 insert into Escolha values(104, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
 insert into Escolha values(105, 'Comprar','Não comprar',46,47)
+
+-- a partir de 60 anos
+insert into Escolha values(141, 'Ok', '', 48,48)
+insert into Escolha values(142, 'Brigar com a pessoa', 'Deixar quieto e entrar atrás dela', 49,50)
+insert into Escolha values(143, 'Brigar com a pessoa', 'Deixar quieto e entrar atrás dela', 51,50)
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
@@ -133,4 +138,11 @@ insert into Consequencia values(45,'pontos',33,'R','F',-21,'O restaurante era mu
 
 insert into Consequencia values(46,'dinheiro',-500,'','',0,'Sua pressão está voltando ao normal')
 insert into Consequencia values(47,'pontos',-15,'F','S',35,'Sua pressão está te fazendo passar mal')
+
+insert into Consequencia values(48,'pontos',0,'F','S',35,'')
+
+insert into Consequencia values(49, 'pontos',10,'F','S',0, 'A pessoa ficou muito envergonhada e lhe deu seu lugar na hora')
+insert into Consequencia values(50, 'pontos',10,'S','F',15, 'Só demorou cinco minutos, mas você ficou frustado(a) com a injustiça')
+insert into Consequencia values(51, 'pontos',0,'S','F',15, 'Brigar se transformou em uma discussão enorme, você ficou estressado(a) e nem conseguiu dormir direito depois')
+
 

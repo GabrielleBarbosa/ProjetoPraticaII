@@ -80,6 +80,15 @@ function viajar() {
     
 }
 
+function carteira() {
+
+    $('#txt1').html("");
+    $('.lbl1').html("");
+    $('#cabecalho').html("Tirar a carteira de motorista te custará $1500,00");
+    $('#resposta1').attr('href', '/Carteira/1500');
+
+}
+
 $(document).ready(function(){
     $('.modal').modal();
 });

@@ -602,6 +602,8 @@ namespace YourLife.Controllers
                 {
                     p.CarteiraMotorista = 'S';
                 }
+
+                p.Dinheiro -= 1500;
             }
             else if (c.assunto == "namoro")
             {
@@ -639,12 +641,16 @@ namespace YourLife.Controllers
                 p.CodEmprego = 0;
                 Session["Emprego"] = daoEmp.BuscarPorId(0);
             }
+            else if(c.assunto == "dinheiro")
+            {
+                p.Dinheiro += c.PontosGanhos;
+            }
 
             Session["MensagemAcontecimento"] = c.resultado;
 
             PersonagemDAO dao = new PersonagemDAO();
             dao.Alterar(p);
-
+            Session["Personagem"] = p;
             Session["acontecimento"] = null;
 
             if (p.PontosFelicidade == 0)
@@ -890,7 +896,7 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
-        [Route("Passear`/{f}/{s}/{i}")]
+        [Route("Passear/{f}/{s}/{i}")]
         public ActionResult Passear(int f, int s, int i)
         {
             Session["Passear"] = "S";
@@ -900,6 +906,23 @@ namespace YourLife.Controllers
             AlterarInteligencia(-i);
             return View("Outros");
 
+        }
+
+        [Route("Carteira/{d}")]
+        public ActionResult Carteira(decimal d)
+        {
+            AlterarDinheiro(-d);
+            Random random = new Random();
+            if(random.Next(0,1) == 1)
+            {
+                Session["MensagemAcontecimento"] = "A prova de direção foi um sucesso! Aproveite a carteira de motorista e dirija com cuidado";
+                ((Personagem)Session["Personagem"]).CarteiraMotorista = 'S';
+            }
+            else
+            {
+                Session["MensagemAcontecimento"] = "Infelismente não foi dessa vez. Você ficou muito nervoso ao fazer a prova...";
+            }
+            return RedirectToAction("Base", "Jogo");
         }
 
 

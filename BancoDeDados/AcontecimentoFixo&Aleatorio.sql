@@ -65,6 +65,8 @@ insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito al
 
 
 -- a partir de 60 anos
-
+insert into AcontecimentoAleatorio values (121, 'Você estava limpando a casa e acabou dando mau jeito na coluna', 141)
+insert into AcontecimentoAleatorio values (122, 'Você estava indo para a fila preferencial do mercado e uma pessoa que não tem o direito de ir entrou na sua frente', 142)
+insert into AcontecimentoAleatorio values (122, 'Você estava indo para a fila preferencial do mercado e uma pessoa que não tem o direito de ir entrou na sua frente', 143)
 
 select * from AcontecimentoAleatorio

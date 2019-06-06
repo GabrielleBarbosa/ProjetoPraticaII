@@ -51,7 +51,7 @@
             {
                 disabledEmprego = "disabled";
             }
-            if(ViewBag.Personagem.Carteira == 'N')
+            if(ViewBag.Personagem.Carteira != 'N' || ViewBag.Personagem.Dinheiro < 1500)
             {
                 disabledCarteira = "disabled";
             }
