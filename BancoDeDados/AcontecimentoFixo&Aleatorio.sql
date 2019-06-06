@@ -49,7 +49,9 @@ insert into AcontecimentoAleatorio values (42, 'Sua melhor amiga tem sentimentos
 insert into AcontecimentoAleatorio values (43, 'Seu namorado(a) terminou com você =(', 63)
 insert into AcontecimentoAleatorio values (44, 'Seu namorado(a) terminou com você =(', 64)
 insert into AcontecimentoAleatorio values (45, 'Você tem uma festa de aniversário e está muito doente, mas ainda assim deseja muito ir... O que fazer?', 65)
-insert into AcontecimentoAleatorio values (46, 'Alguns amigos vão sair pra beber, vai com eles?', 11)
+insert into AcontecimentoAleatorio values (46, 'Você está doente e alguns amigos vão sair pra beber, vai com eles?', 66)
+insert into AcontecimentoAleatorio values (47, 'Sua namorada deseja ir a um encontro',67)
+
 
 
 -- entre 31 e 60 anos
@@ -57,6 +59,7 @@ insert into AcontecimentoAleatorio values (81, 'Você pegou um resfriado severo e
 insert into AcontecimentoAleatorio values (82, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 102)
 insert into AcontecimentoAleatorio values (83, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 103)
 insert into AcontecimentoAleatorio values (84, 'A idade está se mostrando no seu rosto, e isso te deixa inseguro(a) quanto à sua aparência', 104)
+insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito alta, o remédio custa R$500')
 
 
 

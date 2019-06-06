@@ -650,7 +650,7 @@ namespace YourLife.Controllers
             if (p.PontosFelicidade == 0)
             {
                 Suicidio();
-                return View("Suicidio");
+                return View("Obituario");
             }
 
             return RedirectToAction("Base", "Jogo");
