@@ -115,7 +115,7 @@ namespace YourLife.Controllers
             }
             return RedirectToAction("Inicio", "Jogo");
         }
-        
+
         public ActionResult Inicio()
         {
             return View();
@@ -273,7 +273,7 @@ namespace YourLife.Controllers
         {
             if (Session["ConseguiuEmprego"] == null && Session["MensagemAcontecimento"] == null)
                 return Json(null);
-            else if(Session["ConseguiuEmprego"] != null)
+            else if (Session["ConseguiuEmprego"] != null)
             {
                 if ((string)Session["ConseguiuEmprego"] == "S")
                 {
@@ -286,7 +286,7 @@ namespace YourLife.Controllers
                     return Json("Sinto muito, você não passou na entrevista =(<br>Entre em empregos novamente após envelhecer!");
                 }
             }
-            else if(Session["MensagemAcontecimento"] != null)
+            else if (Session["MensagemAcontecimento"] != null)
             {
                 string msg = (string)Session["MensagemAcontecimento"];
                 Session["MensagemAcontecimento"] = null;
@@ -320,7 +320,7 @@ namespace YourLife.Controllers
             p = AjustarPontosEnvelhecer(p);
 
             p = AjustarAnosCursando(p);
-            
+
             Session["ConseguiuEmprego"] = null;
 
             p.Idade++;
@@ -350,7 +350,7 @@ namespace YourLife.Controllers
 
         public Personagem AjustarPontosEnvelhecer(Personagem p)
         {
-            if(p.CodEmprego != 0 && Session["Cursando"] != null)
+            if (p.CodEmprego != 0 && Session["Cursando"] != null)
             {
                 if (p.PontosFelicidade >= 20)
                     p.PontosFelicidade -= 20;
@@ -361,14 +361,14 @@ namespace YourLife.Controllers
                 else
                     p.PontosSaude = 0;
             }
-            if(Session["Cursando"] != null)
+            if (Session["Cursando"] != null)
             {
                 if (p.PontosInteligencia + 25 <= 1000)
                     p.PontosInteligencia += 25;
                 else
                     p.PontosInteligencia = 1000;
             }
-            if(p.Parceiro != 0)
+            if (p.Parceiro != 0)
             {
                 Random random = new Random();
                 p.PontosRelacionamento += random.Next(-30, 30);
@@ -433,7 +433,7 @@ namespace YourLife.Controllers
                 if (p.Idade == 16) //idade para dirigir
                 {
                     AcontecimentoFixoDAO dao = new AcontecimentoFixoDAO();
-                    AcontecimentoFixo af = dao.BuscarPorId(random.Next(1,2));
+                    AcontecimentoFixo af = dao.BuscarPorId(random.Next(1, 2));
 
                     ViewBag.Acontecimento = Session["acontecimento"] = af;
 
@@ -467,7 +467,7 @@ namespace YourLife.Controllers
                 else
                 {
                     bool sorteou = SortearAcontecimento(p, random);
-                    while(!sorteou)
+                    while (!sorteou)
                     {
                         sorteou = SortearAcontecimento(p, random);
                     }
@@ -483,21 +483,21 @@ namespace YourLife.Controllers
             int id = 0;
             if (p.Idade <= 15)
             {
-                id = random.Next(1, 3);
+                id = random.Next(1, 8);
             }
             else if (p.Idade <= 30)
             {
                 id = random.Next(21, 25);
             }
-            else if (p.Idade <= 60)
+            else if (p.Idade <=60)
             {
                 id = random.Next(21, 25);      //(41, 60);
             }
             else
             {
-                id = random.Next(1, 1);     //(61, 80);
+
             }
-            
+
             AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
             AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
             EscolhaDAO daoEsc = new EscolhaDAO();
@@ -552,20 +552,20 @@ namespace YourLife.Controllers
             {
                 p = AjustarPontos(p, c);
             }
-            else if(c.assunto == "carteira")
+            else if (c.assunto == "carteira")
             {
-                if(c.PontosGanhos == 1)
+                if (c.PontosGanhos == 1)
                 {
                     p.CarteiraMotorista = 'S';
                 }
             }
-            else if(c.assunto == "namoro")
+            else if (c.assunto == "namoro")
             {
-                if(c.PontosGanhos == 1 && !(c.TipoDoPontoGanho.Equals(' ')))
+                if (c.PontosGanhos == 1 && !(c.TipoDoPontoGanho.Equals(' ')))
                 {
                     ParceiroDAO daoParceiro = new ParceiroDAO();
                     Random random = new Random();
-                    if(c.TipoDoPontoGanho.Equals('M'))
+                    if (c.TipoDoPontoGanho.Equals('M'))
                     {
                         Parceiro par = daoParceiro.BuscarPorId(random.Next(31, 41));
                         Session["Parceiro"] = par;
@@ -578,18 +578,18 @@ namespace YourLife.Controllers
                         p.Parceiro = par.id;
                     }
                 }
-                else if(c.PontosGanhos == 0 && c.TipoDoPontoGanho == ' ')
+                else if (c.PontosGanhos == 0 && c.TipoDoPontoGanho == ' ')
                 {
                     p.Parceiro = 0;
                     Session["Parceiro"] = 0;
                 }
             }
-            else if(c.assunto == "carreira")
+            else if (c.assunto == "carreira")
             {
                 Session["MensagemAcontecimento"] = c.resultado;
                 RedirectToAction("Curso", "Jogo");
             }
-            else if(c.assunto == "demissao")
+            else if (c.assunto == "demissao")
             {
                 EmpregoDAO daoEmp = new EmpregoDAO();
                 p.CodEmprego = 0;
@@ -684,7 +684,7 @@ namespace YourLife.Controllers
         }
 
 
-        
+
 
         [Route("FazerCurso/{id}")]
         public ActionResult FazerCurso(int id)
@@ -709,7 +709,7 @@ namespace YourLife.Controllers
             List<Mercado> listaMercado = new List<Mercado>();
 
             MercadoDAO daoM = new MercadoDAO();
-            foreach(var bem in bens)
+            foreach (var bem in bens)
             {
                 listaMercado.Add(daoM.BuscarPorId(bem.Id));
             }
@@ -850,7 +850,7 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
-       [Route("Passear`/{f}/{s}/{i}")]
+        [Route("Passear`/{f}/{s}/{i}")]
         public ActionResult Passear(int f, int s, int i)
         {
             Session["Passear"] = "S";
@@ -930,6 +930,14 @@ namespace YourLife.Controllers
             Usuario usuario = (Usuario)Session["Usuario"];
             usuDAO.Excluir(usuario);
             return View("PaginaInicial");
+        }
+
+        public ActionResult AlterarNomeUsuario()
+        {
+            UsuarioDAO usuDAO = new UsuarioDAO();
+            Usuario usu = (Usuario)Session["Usuario"];
+            usuDAO.Alterar(usu);
+            return View();
         }
 
 
