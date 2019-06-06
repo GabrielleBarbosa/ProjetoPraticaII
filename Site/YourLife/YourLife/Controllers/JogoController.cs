@@ -479,7 +479,7 @@ namespace YourLife.Controllers
             int id = 0;
             if (p.Idade <= 15)
             {
-                id = random.Next(1, 3);
+                id = random.Next(1, 8);
             }
             else if (p.Idade <= 30)
             {
