@@ -288,9 +288,13 @@ namespace YourLife.Controllers
             }
             else if (Session["MensagemAcontecimento"] != null)
             {
-                string msg = (string)Session["MensagemAcontecimento"];
-                Session["MensagemAcontecimento"] = null;
-                return Json(msg);
+                if (Session["MensagemAcontecimento"].ToString() != "")
+                {
+                    string msg = (string)Session["MensagemAcontecimento"];
+                    Session["MensagemAcontecimento"] = null;
+                    return Json(msg);
+                }
+                return Json(null);
             }
 
             return Json(null);

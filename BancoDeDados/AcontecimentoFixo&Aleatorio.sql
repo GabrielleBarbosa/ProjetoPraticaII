@@ -35,22 +35,28 @@ insert into AcontecimentoAleatorio values (5,'Esqueceu de estudar para a prova d
 insert into AcontecimentoAleatorio values (6,'Seus pais estão brigando com você!',25)
 insert into AcontecimentoAleatorio values (7,'Um cachorrinho na rua!',26)
 insert into AcontecimentoAleatorio values (8,'Um cachorrinho na rua!',27)
-insert into AcontecimentoAleatorio values (9,)
+insert into AcontecimentoAleatorio values (9,'Seus pais vão viajar com você para a praia!',28)
+insert into AcontecimentoAleatorio values (10,'Barulhos estranhos durante a noite na cozinha...',29)
+insert into AcontecimentoAleatorio values (11,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',30)
+insert into AcontecimentoAleatorio values (12,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',31)
+insert into AcontecimentoAleatorio values (13,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',32)
+insert into AcontecimentoAleatorio values (14,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',33)
+
 
 -- entre 16 e 30 anos
-insert into AcontecimentoAleatorio values (21, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 41)
-insert into AcontecimentoAleatorio values (22, 'Sua melhor amiga tem sentimentos por você e te pediu em namoro', 42)
-insert into AcontecimentoAleatorio values (23, 'Seu namorado(a) terminou com você =(', 43)
-insert into AcontecimentoAleatorio values (24, 'Seu namorado(a) terminou com você =(', 44)
-insert into AcontecimentoAleatorio values (25, 'Você tem uma festa de aniversário e está muito doente, mas ainda assim deseja muito ir... O que fazer?', 45)
-insert into AcontecimentoAleatorio values (26, '', 11)
+insert into AcontecimentoAleatorio values (41, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 61)
+insert into AcontecimentoAleatorio values (42, 'Sua melhor amiga tem sentimentos por você e te pediu em namoro', 62)
+insert into AcontecimentoAleatorio values (43, 'Seu namorado(a) terminou com você =(', 63)
+insert into AcontecimentoAleatorio values (44, 'Seu namorado(a) terminou com você =(', 64)
+insert into AcontecimentoAleatorio values (45, 'Você tem uma festa de aniversário e está muito doente, mas ainda assim deseja muito ir... O que fazer?', 65)
+insert into AcontecimentoAleatorio values (46, 'Alguns amigos vão sair pra beber, vai com eles?', 11)
 
 
 -- entre 31 e 60 anos
-insert into AcontecimentoAleatorio values (41, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 61)
-insert into AcontecimentoAleatorio values (42, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 62)
-insert into AcontecimentoAleatorio values (43, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 63)
-insert into AcontecimentoAleatorio values (44, 'A idade está se mostrando no seu rosto, e isso te deixa inseguro(a) quanto à sua aparência', 64)
+insert into AcontecimentoAleatorio values (81, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 101)
+insert into AcontecimentoAleatorio values (82, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 102)
+insert into AcontecimentoAleatorio values (83, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 103)
+insert into AcontecimentoAleatorio values (84, 'A idade está se mostrando no seu rosto, e isso te deixa inseguro(a) quanto à sua aparência', 104)
 
 
 
