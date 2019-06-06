@@ -49,5 +49,14 @@ namespace YourLife.DAO
                 return contexto.Usuario.Where(u => u.id == id).FirstOrDefault();
             }
         }
+
+        public void Alterar(Usuario usu)
+        {
+            using (var contexto = new JogoContext())
+            {
+                contexto.Usuario.Update(usu);
+                contexto.SaveChanges();
+            }
+        }
     }
 }
