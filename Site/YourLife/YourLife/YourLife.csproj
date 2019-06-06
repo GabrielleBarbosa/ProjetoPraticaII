@@ -167,6 +167,7 @@
   <ItemGroup>
     <Content Include="Content\CSS\Acontecimento.css" />
     <Content Include="Content\CSS\Base.css" />
+    <Content Include="Content\CSS\Configuracoes.css" />
     <Content Include="Content\CSS\EscolhaPersonagem.css" />
     <Content Include="Content\CSS\Inicio.css" />
     <Content Include="Content\CSS\Layout.css" />
@@ -226,6 +227,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\DireitosAutoraisController.cs" />
     <Compile Include="Controllers\JogoController.cs" />
     <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -281,6 +283,7 @@
     <Content Include="Views\Jogo\Outros.cshtml" />
     <Content Include="Views\Jogo\Obituario.cshtml" />
     <Content Include="Views\Usuario\ConfiguracoesUsuario.cshtml" />
+    <Content Include="Views\DireitosAutorais\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
