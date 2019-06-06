@@ -61,10 +61,16 @@
                 disabledParentes = "disabled";
                 disabledCinema = "disabled";
                 disabledViajar = "disabled";
+                disabledCarteira = "disabled";
             }
             else
             {
-                if (ViewBag.Personagem.Dinheiro < 10000)
+                if (ViewBag.Personagem.Dinheiro < 1500)
+                {
+                    disabledCarteira = "disabled";
+                    disabledViajar = "disabled";
+                }
+                else if (ViewBag.Personagem.Dinheiro < 10000)
                 {
                     disabledViajar = "disabled";
                 }
