@@ -28,22 +28,29 @@ insert into Escolha values(24,'Estudar','Ir dormir',22,23)
 insert into Escolha values(25,'Gritar de volta','Ir para o quarto',24,25)
 insert into Escolha values(26,'Fazer carinho','Passar reto',26,27)
 insert into Escolha values(27,'Fazer carinho','Passar reto',28,27)
+insert into Escolha values(28,'Ok','',35,35)
+insert into Escolha values(29,'Verificar','Ignorar e ir dormir',36,37)
+insert into Escolha values(30,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',38,39)
+insert into Escolha values(31,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,40)
+insert into Escolha values(32,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,39)
+insert into Escolha values(33,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',38,40)
+
 
 
 -- de 16 a 30
-insert into Escolha values(41, 'Aceitar', 'Negar e manter a amizade', 10, 11)
-insert into Escolha values(42, 'Aceitar', 'Negar e manter a amizade', 12, 11)
-insert into Escolha values(43, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 13, 14)
-insert into Escolha values(44, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 14, 14)
-insert into Escolha values(45, 'Ir à festa mesmo assim', 'Ficar em casa descansando', 15, 16)
+insert into Escolha values(61, 'Aceitar', 'Negar e manter a amizade', 10, 11)
+insert into Escolha values(62, 'Aceitar', 'Negar e manter a amizade', 12, 11)
+insert into Escolha values(63, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 13, 14)
+insert into Escolha values(64, 'Insistir para continuarem juntos', 'Aceitar sua escolha', 14, 14)
+insert into Escolha values(65, 'Ir à festa mesmo assim', 'Ficar em casa descansando', 15, 16)
+insert into Escolha values(66, 'Ir beber', 'Não ir', 42, 43)
 
 -- de 31 a 60
-insert into Escolha values(61, 'Ficar em casa', 'Ir trabalhar', 29, 31)
-insert into Escolha values(62, 'Ficar em casa', 'Ir trabalhar', 29, 30)
-insert into Escolha values(63, 'Ficar em casa', 'Ir trabalhar', 32, 31)
-insert into Escolha values(63, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
+insert into Escolha values(101, 'Ficar em casa', 'Ir trabalhar', 29, 31)
+insert into Escolha values(102, 'Ficar em casa', 'Ir trabalhar', 29, 30)
+insert into Escolha values(103, 'Ficar em casa', 'Ir trabalhar', 32, 31)
+insert into Escolha values(104, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
 ------------------------------------------------------------------------------------------------------------------------
-
 create table Consequencia
 (
 id int primary key,
@@ -105,6 +112,22 @@ insert into Consequencia values(32,'pontos', 25, 'S', 'I', 10, 'Você não compate
 insert into Consequencia values(33,'pontos', 20, 'F', 'I', 0, 'Um tempo pra si mesmo(a) era tudo que você precisava!')
 insert into Consequencia values(34,'pontos', 0, 'I', 'F', 20, 'Acumular tudo dentro de si parece o melhor, mas os sentimentos ainda estão aí...')
 
+insert into Consequencia values(35,'pontos',30, 'F', 'I',1,'')
 
-select * from AcontecimentoAleatorio
+insert into Consequencia values(36,'pontos',5, 'F', 'S',1,'Indo para a cozinha você encontra seu pai comendo doce escondido da sua mãe,ela vai ficar muito brava.')
+insert into Consequencia values(37,'pontos',5, 'I', 'F',0,'Não deve ser nada, melhor ignorar e não estar cansado amanhã')
 
+insert into Consequencia values(38,'pontos',-50,'I','S',154,'Você tentou atravessar a rua correndo e um carro pegou em você de raspão, infelizmente quebrou um braço e foi parar no hospital. Pelo menos vão te dar provas substitutivas...')
+insert into Consequencia values(39,'pontos',50,'I','F',-5,'Você achou uma faixa de pedestres rapidamente e conseguiu chegar a tempo ')
+insert into Consequencia values(40,'pontos',-73,'F',57,'I','Você demorou pra achar uma faixa, acabou chegando atrasado e não te permitiram entrar')
+insert into Consequencia values(41,'pontos',60,'I',-49,'F','Você atravessou a rua correndo e chegou na escola. Nada de mau aconteceu, dessa vez...')
+
+insert into Consequencia values(42,'pontos',23,'F','S',27,'Foi muito divertido, mas passou mal depois por conta da bebida'
+insert into Consequencia values(43,'pontos',0,'F','S',0
+
+
+
+delete from AcontecimentoAleatorio
+delete from AcontecimentoFixo
+delete from Escolha
+delete from Consequencia
