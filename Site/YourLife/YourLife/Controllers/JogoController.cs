@@ -389,7 +389,11 @@ namespace YourLife.Controllers
         {
             if (Session["AnosCursando"] != null)
             {
+                PersonagemDAO daoPersonagem = new PersonagemDAO();
                 Session["AnosCursando"] = (int)Session["AnosCursando"] + 1;
+                p.AnosCursando = (int)Session["AnosCursando"];
+                p.CodCursando = (int)Session["CodCursando"];
+                daoPersonagem.Alterar(p);
                 if ((int)Session["AnosCursando"] == 5)
                 {
                     Curso cur = (Curso)Session["Cursando"];

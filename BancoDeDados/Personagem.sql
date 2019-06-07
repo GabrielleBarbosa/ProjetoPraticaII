@@ -17,14 +17,15 @@ create table Personagem
  constraint fkEmprego foreign key(codEmprego) references Emprego(id),
  carteiraMotorista char not null 
 )
+alter table Personagem add codCursando int
+alter table Personagem add constraint fkCursoFazendo foreign key(codCursando) references Curso(id)
+alter table Personagem add anosCursando int 
 
 
 select * from Personagem
 select * from Usuario
-drop table Personagem
 
-insert into Personagem values('123','Vinchers',0,'M',0,0,0,0,0,'S',0)
-insert into Personagem values('Gabs123',0,'F',0,0,0,0,0,'S',1)
-insert into Personagem values('Janies',0,'F',0,0,0,0,0,'S',1)
 
+
+select * from Personagem
 

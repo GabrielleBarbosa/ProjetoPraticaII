@@ -22,5 +22,7 @@ namespace YourLife.Models
         public int Parceiro { get; set; }
         public int CodEmprego { get; set; }
         public char CarteiraMotorista { get; set; }
+        public int CodCursando { get; set; }
+        public int AnosCursando { get; set; }
     }
 }
