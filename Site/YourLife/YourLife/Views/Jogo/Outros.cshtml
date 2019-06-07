@@ -22,7 +22,7 @@
              disabledCarteira = "", disabledNamoro = "", disabledEstudar = "";
         if (ViewBag.Personagem.Idade < 18)
         {
-            if (ViewBag.Personagem.Idade < 16)
+            if (ViewBag.Personagem.Idade < 16 || ViewBag.Personagem.CarteiraMotorista != 'N')
             {
                 disabledCarteira = "disabled";
             }
@@ -56,7 +56,7 @@
             {
                 disabledEmprego = "disabled";
             }
-            if(ViewBag.Personagem.Carteira != 'N' || ViewBag.Personagem.Dinheiro < 1500)
+            if(ViewBag.Personagem.CarteiraMotorista != 'N' || ViewBag.Personagem.Dinheiro < 1500)
             {
                 disabledCarteira = "disabled";
             }
@@ -93,10 +93,11 @@
                     disabledAcademia = "disabled";
                 }
             }
-            if(Session["Estudou"] != null)
-            {
-                disabledEstudar = "disabled";
-            }
+        }
+
+        if (Session["Estudou"] != null)
+        {
+            disabledEstudar = "disabled";
         }
     }
     <a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
@@ -112,12 +113,12 @@
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledRel                        " href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledNamoro                     " href="#modalGeral" onclick="namoro();"><i class="material-icons right">favorite</i>Fazer surpresa ao namorado(a)</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledAcademia                   " href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledEstudar                                      " href="#modalGeral" onclick="estudar();">Estudar</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledEstudar                                      " href="#modalGeral" onclick="estudar();"><i class="material-icons right">local_library</i>Estudar</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledEmprego                    " href="#modalGeral" onclick="demissao();"><i class="material-icons right">settings_power</i>Pedir demissão</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledParentes                                     " href="#modalGeral" onclick="visitarParentes();"><i class="material-icons right">home</i>Visitar Parentes</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledCinema                                       " href="#modalGeral" onclick="cinema();"><i class="material-icons right">tv</i>Ir ao cinema</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledViajar @disabledPorIdade                     " href="#modalGeral" onclick="viajar();"><i class="material-icons right">flight</i>Viajar</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger @disabledCarteira                                     " href="#modalGeral" onclick="carteira();"><i class="material-icons right">flight</i>Tirar Carteira de Motorista</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledCarteira                                     " href="#modalGeral" onclick="carteira();"><i class="material-icons right">directions_car</i>Tirar Carteira de Motorista</a><br /><br />
 
         <!-- Modal Geral -->
         <div id="modalGeral" class="modal modal-fixed-footer" style="height: 45%; overflow:hidden; width: 50%;">
@@ -128,7 +129,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="input-field col s12">
-                        <p id="lbl1"></p>
+                        <p id="lbl1" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;"></p>
                     </div>
                     <center>
                         <a class="waves-effect waves-light btn" id="resposta1" href="">Sim</a>

@@ -1,0 +1,20 @@
+﻿@media screen and (max-height: 900px) {
+    body {
+        height: 135%;
+    }
+}
+
+table {
+    border: 1px solid #e0e0e0;
+    position: relative;
+}
+
+p {
+    color: deepskyblue;
+    font-family: 'Sofia', cursive;
+    font-size: 4vh;
+}
+
+#header {
+    font-size: 10vh;
+}

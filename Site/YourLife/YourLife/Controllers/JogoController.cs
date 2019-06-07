@@ -86,6 +86,14 @@ namespace YourLife.Controllers
 
             if (Session["Personagem"] != null)
             {
+                if (p.CodCursando != 0)
+                {
+                    CursoDAO daoC = new CursoDAO();
+                    Curso cur = daoC.BuscarPorId(p.CodCursando);
+                    Session["Cursando"] = cur;
+                    Session["AnosCursando"] = p.AnosCursando;
+                }
+
                 EmpregoDAO daoE = new EmpregoDAO();
                 Emprego e = daoE.BuscarPorId(p.CodEmprego);
                 Session["Emprego"] = e;
@@ -135,9 +143,9 @@ namespace YourLife.Controllers
                 p.Dinheiro = 0;
                 p.Idade = 5;
                 p.Parceiro = 'N';
-                p.PontosSaude = 1000;
+                p.PontosSaude = 800;
                 Random rm = new Random();
-                p.PontosInteligencia = rm.Next(0, 450);
+                p.PontosInteligencia = rm.Next(100, 450);
                 p.PontosRelacionamento = 0;
                 p.PontosFelicidade = 500;
                 p.Sexo = 'I';
@@ -150,6 +158,14 @@ namespace YourLife.Controllers
                 EmpregoDAO daoE = new EmpregoDAO();
                 Session["Emprego"] = daoE.BuscarPorId(0);
                 Session["Personagem"] = dao.BuscarPorIdUsuario(usu.id);
+
+                if(p.CodCursando != 0)
+                {
+                    CursoDAO daoC = new CursoDAO();
+                    Curso cur = daoC.BuscarPorId(p.CodCursando);
+                    Session["Cursando"] = cur;
+                    Session["AnosCursando"] = p.AnosCursando;
+                }
 
                 return RedirectToAction("EscolhaPersonagem", "Jogo");
             }
@@ -319,7 +335,8 @@ namespace YourLife.Controllers
             Session["Cinema"] = null;
             Session["Parentes"] = null;
             Session["Academia"] = null;
-            Session["Passear"] = null;
+            Session["Estudou"] = null;
+            Session["Namoro"] = null;
 
             Personagem p = (Personagem)Session["Personagem"];
             p = AjustarPontosEnvelhecer(p);
@@ -752,6 +769,11 @@ namespace YourLife.Controllers
             if (Session["Cursando"] == null)
                 Session["Cursando"] = dao.BuscarPorId(id);
 
+            Personagem p = (Personagem)Session["Personagem"];
+            p.CodCursando = id;
+            PersonagemDAO daoP = new PersonagemDAO();
+            daoP.Alterar(p);
+
             return RedirectToAction("Curso", "Jogo");
         }
 
@@ -830,7 +852,7 @@ namespace YourLife.Controllers
             pg.Alterar(p);
 
             Session["Personagem"] = p;
-            return View();
+            return RedirectToAction("Outros");
         }
 
         public ActionResult Demissao()
@@ -845,7 +867,7 @@ namespace YourLife.Controllers
             EmpregoDAO daoE = new EmpregoDAO();
             Session["Emprego"] = daoE.BuscarPorId(0);
 
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("AlterarAcademia/{d}/{s}")]
@@ -854,7 +876,7 @@ namespace YourLife.Controllers
             Session["Academia"] = "S";
             AlterarDinheiro(d);
             AlterarSaude(s);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("IrAoCinema/{d}/{s}")]
@@ -867,7 +889,7 @@ namespace YourLife.Controllers
                 AlterarDinheiro(-d);
                 AlterarFelicidade(s);
             }
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("IrAoCinema/{f}")]
@@ -875,7 +897,7 @@ namespace YourLife.Controllers
         {
             Session["Cinema"] = "S";
             AlterarFelicidade(f);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("VisitarParentes/{f}/{d}")]
@@ -884,14 +906,14 @@ namespace YourLife.Controllers
             Session["Parentes"] = "S";
             AlterarFelicidade(f);
             AlterarDinheiro(-d);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
         [Route("VisitarParentes/{f}")]
         public ActionResult VisitarParentes(int f)
         {
             Session["Parentes"] = "S";
             AlterarFelicidade(f);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("Viajar/{d}/{f}/{s}/{i}/{r}")]
@@ -904,16 +926,15 @@ namespace YourLife.Controllers
             AlterarSaude(s);
             if (p.Parceiro != 0)
                 AlterarRelacionamento(r);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("Estudar/{i}")]
         public ActionResult Estudar(int i)
         {
             Session["Estudou"] = "S";
-            Personagem p = (Personagem)Session["Personagem"];
             AlterarInteligencia(i);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
         [Route("Carteira/{d}")]
@@ -937,10 +958,9 @@ namespace YourLife.Controllers
         public ActionResult Namoro(int d, int r)
         {
             Session["Namoro"] = "S";
-            Personagem p = (Personagem)Session["Personagem"];
             AlterarRelacionamento(r);
             AlterarDinheiro(-d);
-            return View("Outros");
+            return RedirectToAction("Outros");
         }
 
 

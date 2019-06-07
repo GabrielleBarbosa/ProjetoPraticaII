@@ -6,8 +6,8 @@ window.onload = function () {
     },
         function (data) {
             idade = data;
-        }))
-}
+        }));
+};
 
 function suicidio() {
 
@@ -16,11 +16,11 @@ function suicidio() {
     $('#cabecalho').html("Tem certeza que deseja cometer suicídio?");
 }
 
-function passear() {
+function viajar() {
+
     $('#lbl1').html("");
-    $('#txt1').html("");
-    $('#cabecalho').html("Deseja sair para dar uma volta na vizinhança?");
-    $('#resposta1').attr('href', 'Jogo/Passear/15/10/10');
+    $('#cabecalho').html("Viajar te custará $10000,00");
+    $('#resposta1').attr('href', '/Viajar/10000/70/40/30/15');
 }
 
 function terminarRel() {
@@ -38,17 +38,15 @@ function demissao() {
 
 function academia() {
     
-    $('#txt1').html("");
     $('#lbl1').html("");
     $('#cabecalho').html("Irá te custar $100,00");
     $('#resposta1').attr('href', '/AlterarAcademia/100/20');
 }
 
 function visitarParentes() {
-    
-    $('#lbl1').html("Você decidiu ir visitar seus familiares");
-    
-    $('#cabecalho').html("Visitar Família");
+
+    $('#lbl1').html("");
+    $('#cabecalho').html("Visitar Família?");
     
     if (idade >= 18)
         $('#resposta1').attr('href', '/VisitarParentes/20/100');
@@ -58,40 +56,39 @@ function visitarParentes() {
 }
 
 function cinema() {
-
-    $('#txt1').html("");
-    $('.lbl1').html("");
-    $('#cabecalho').html("Ir ao cinema custará $100,00");
     
-    if (idade >= 18)
+    $('#lbl1').html("");
+    
+    if (idade >= 18) {
+        $('#cabecalho').html("Ir ao cinema custará $100,00, irá mesmo assim?");
         $('#resposta1').attr('href', '/IrAoCinema/100/20');
-    else
+    }
+    else {
+        $('#cabecalho').html("Ir ao cinema?");
         $('#resposta1').attr('href', '/IrAoCinema/20');
+    }
     
 }
 
 function estudar() {
-
-    $('#txt1').html("");
-    $('.lbl1').html("");
+    
+    $('#lbl1').html("");
     $('#cabecalho').html("Estudar faz bem, não é?");
     $('#resposta1').attr('href', '/Estudar/10');
     
 }
 
 function carteira() {
-
-    $('#txt1').html("");
-    $('.lbl1').html("");
+    
+    $('#lbl1').html("");
     $('#cabecalho').html("Tirar a carteira de motorista te custará $1500,00");
     $('#resposta1').attr('href', '/Carteira/1500');
 
 }
 
 function namoro() {
-
-    $('#txt1').html("");
-    $('.lbl1').html("");
+    
+    $('#lbl1').html("");
     $('#cabecalho').html("Fazer uma surpresa para seu namorado(a) te custará $100, mas vale a pena, certo?");
     $('#resposta1').attr('href', '/Namoro/100/50');
 

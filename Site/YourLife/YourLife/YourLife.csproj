@@ -168,6 +168,7 @@
     <Content Include="Content\CSS\Acontecimento.css" />
     <Content Include="Content\CSS\Base.css" />
     <Content Include="Content\CSS\Configuracoes.css" />
+    <Content Include="Content\CSS\Cursos.css" />
     <Content Include="Content\CSS\EscolhaPersonagem.css" />
     <Content Include="Content\CSS\Inicio.css" />
     <Content Include="Content\CSS\Layout.css" />
