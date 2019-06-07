@@ -190,6 +190,6 @@ insert into Consequencia values(51, 'pontos',0,'S','F',15, 'Brigar se transformo
 
 select * from Consequencia
 
- select * from MercadoJogador
+ select * from Mercado
  select * from Personagem
  select * from Consequencia
