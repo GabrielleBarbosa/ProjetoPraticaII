@@ -69,6 +69,7 @@ insert into AcontecimentoAleatorio values (84, 'A idade está se mostrando no seu
 insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito alta, o remédio custa R$500',105)
 insert into AcontecimentoAleatorio values (86, 'Um de seus parentes faleceu. Deseja comparecer ao enterro?',106)
 insert into AcontecimentoAleatorio values (87, 'Você estava fazendo um beco de garçom num restaurante e te pediram para ficar até de madrugada? para ajudar nos eventos',107)
+insert into AcontecimentoAleatorio values (88, 'Está precisando repor o estoque de remédios',108)
 
 select * from AcontecimentoAleatorio
 

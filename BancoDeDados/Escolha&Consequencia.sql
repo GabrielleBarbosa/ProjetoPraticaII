@@ -35,7 +35,7 @@ insert into Escolha values(31,'Atravessar correndo','Procurar uma faixa de pedes
 insert into Escolha values(32,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,39)
 insert into Escolha values(33,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',38,40)
 insert into Escolha values(34,'Ir na casa dele','Não ir',59,60)
-insert into Escolha values(73, 'Ir na festa','Não participar',65,66)
+insert into Escolha values(35, 'Ir na festa','Não participar',65,66)
 
 select * from AcontecimentoAleatorio
 
@@ -62,6 +62,7 @@ insert into Escolha values(104, 'Trabalhar a autoestima!', 'Ignorar seus sentime
 insert into Escolha values(105, 'Comprar','Não comprar',46,47)
 insert into Escolha values(106, 'Ir ao enterro','Não ir',55,56)
 insert into Escolha values(107, 'Ficar','Não ficar',57,58)
+insert into Escolha values(108, 'Comprar mais','Não comprar',67,68)
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
@@ -169,15 +170,14 @@ insert into Consequencia values(62,'pontos',20,'S','F',15,'Sem muita disposição 
 insert into Consequencia values(63,'pontos',25,'F','R',-25,'Pessoas importantes sempre em primeiro lugar')
 insert into Consequencia values(64,'pontos',25,'I','R',35,'Não posso correr riscos com o meu trabalho')
 
-insert into Consequencia values(65,'pontos',25,'F','S',10,'Fesa nunia sempre é um evento muito legal, adoro participar!')
+insert into Consequencia values(65,'pontos',25,'F','S',10,'Festa junina sempre é um evento muito legal, adoro participar!')
 insert into Consequencia values(66,'pontos',10,'F','S',-5,'Ficar em casa pode ser melhor, menos cansativo')
 
+insert into Consequencia values(67,'dinheiro',25,'','',0,'Sempre bom se cuidar!')
+insert into Consequencia values(68,'pontos',-10,'F','S',40,'melhor guardar dinheiro')
 
 
-
-
-
-
+select * from Consequencia
 
  select * from MercadoJogador
  select * from Personagem

@@ -541,11 +541,11 @@ namespace YourLife.Controllers
             }
             else if (p.Idade <= 60)
             {
-                id = random.Next(41, 87);  //(80, 120);
+                id = random.Next(41, 88);  //(80, 120);
             }
             else
             {
-                id = random.Next(41, 87); //(120, 160);
+                id = random.Next(41, 88); //(120, 160);
             }
 
             AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
