@@ -179,6 +179,6 @@ insert into Consequencia values(68,'pontos',-10,'F','S',40,'melhor guardar dinhe
 
 select * from Consequencia
 
- select * from MercadoJogador
+ select * from Mercado
  select * from Personagem
  select * from Consequencia
