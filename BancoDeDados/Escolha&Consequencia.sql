@@ -56,6 +56,8 @@ insert into Escolha values(102, 'Ficar em casa', 'Ir trabalhar', 29, 30)
 insert into Escolha values(103, 'Ficar em casa', 'Ir trabalhar', 32, 31)
 insert into Escolha values(104, 'Trabalhar a autoestima!', 'Ignorar seus sentimentos', 33, 34)
 insert into Escolha values(105, 'Comprar','Não comprar',46,47)
+insert into Escolha values(106, 'Ir ao enterro','Não ir',55,56)
+insert into Escolha values(107, 'Ficar','Não ficar',57,58)
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
@@ -148,4 +150,12 @@ insert into Consequencia values(52,'pontos',60,'F','S',7,'Você se meteu em uma b
 insert into Consequencia values(53,'pontos',41,'F','S',49,'Foi extremamente satisfatório, mas isso não fez bem para sua saúde')
 insert into Consequencia values(54,'pontos',5,'F','I',10,'Sempre diga não às drogas')
 
- 
+insert into Consequencia values(55,'pontos',5,'S','F',20,'O enterro foi muito tranquilo, você encontrou alguns parentes que não via há muito tempo e pode se despedir de outro')
+insert into Consequencia values(56,'pontos',0,'S','F',5,'Enterros podem ser tristes, de vez em quando é melhor não participar')
+
+insert into Consequencia values(57,'pontos',31,'I','S',20,'Você ficou pra dar uma mãozinha. Experiência nunca é demais')
+insert into Consequencia values(58,'pontos',20,'S','I',15,'Melhor descansar por hoje...')
+
+ select * from MercadoJogador
+ select * from Personagem
+ select * from Consequencia

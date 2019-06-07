@@ -424,7 +424,7 @@ namespace YourLife.Controllers
                 else
                 {
                     p.AnosCursando = (int)Session["AnosCursando"];
-                    p.CodCursando = ((Curso)Session["CodCursando"]).id;
+                    p.CodCursando = ((Curso)Session["Cursando"]).id;
                     daoPersonagem.Alterar(p);
                 }
             }
@@ -531,17 +531,17 @@ namespace YourLife.Controllers
         {
             bool valido = true;
             int id = 0;
-            if (p.Idade <= 15)
+            if (p.Idade <= 18)
             {
                 id = random.Next(1, 14);      //(1, 40)
             }
             else if (p.Idade <= 30)
             {
-                id = random.Next(41, 45);   //(41, 80)
+                id = random.Next(41, 51);   //(41, 80)
             }
             else if (p.Idade <= 60)
             {
-                id = random.Next(81, 84);  //(80, 120);
+                id = random.Next(41, 85);  //(80, 120);
             }
             else
             {
@@ -586,6 +586,7 @@ namespace YourLife.Controllers
                     valido = false;
                 }
             }
+            
             
             if (valido)
             {
@@ -671,7 +672,7 @@ namespace YourLife.Controllers
             }
             else if(c.assunto == "dinheiro")
             {
-                p.Dinheiro += c.PontosGanhos;
+                p.Dinheiro = p.Dinheiro+ c.PontosGanhos;
             }
 
             Session["MensagemAcontecimento"] = c.resultado;
