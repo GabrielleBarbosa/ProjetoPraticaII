@@ -1,8 +1,15 @@
 ﻿@media screen and (max-height: 900px) {
     body {
-        height: 135%;
+        height: 140%;
     }
 }
+
+@media screen and (max-height: 700px) {
+    body {
+        height: 155%;
+    }
+}
+
 
 table {
     border: 1px solid #e0e0e0;

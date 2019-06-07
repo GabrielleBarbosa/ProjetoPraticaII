@@ -424,7 +424,7 @@ namespace YourLife.Controllers
                 else
                 {
                     p.AnosCursando = (int)Session["AnosCursando"];
-                    p.CodCursando = ((Curso)Session["CodCursando"]).id;
+                    p.CodCursando = ((Curso)Session["Cursando"]).id;
                     daoPersonagem.Alterar(p);
                 }
             }
@@ -766,11 +766,11 @@ namespace YourLife.Controllers
         {
             Session["anosCursando"] = 0;
             CursoDAO dao = new CursoDAO();
-            if (Session["Cursando"] == null)
-                Session["Cursando"] = dao.BuscarPorId(id);
+            Session["Cursando"] = dao.BuscarPorId(id);
 
             Personagem p = (Personagem)Session["Personagem"];
             p.CodCursando = id;
+            p.AnosCursando = 0;
             PersonagemDAO daoP = new PersonagemDAO();
             daoP.Alterar(p);
             Session["Personagem"] = p;
@@ -792,7 +792,7 @@ namespace YourLife.Controllers
             MercadoDAO daoM = new MercadoDAO();
             foreach (var bem in bens)
             {
-                listaMercado.Add(daoM.BuscarPorId(bem.Id));
+                listaMercado.Add(daoM.BuscarPorId(bem.CodMercado));
             }
             ViewBag.Bens = listaMercado;
 

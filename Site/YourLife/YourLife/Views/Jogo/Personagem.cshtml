@@ -5,6 +5,7 @@
 }
 
 <link href="https://fonts.googleapis.com/css?family=Open+Sans|Sofia" rel="stylesheet">
+<link href="~/Content/CSS/Personagem.css" rel="stylesheet">
 
 
 <a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
@@ -35,7 +36,7 @@
         {
             <p style="font-size:4vh">Relacionamento</p>
             <hr style="height:1px; background-color:black;" />
-            
+
             <p><strong>Nome do Parceiro:</strong> @ViewBag.Parceiro.nome</p>
             <p><strong>Idade do parceiro:@idade</strong></p>
             <p><strong>Relacionamento:</strong> @ViewBag.Personagem.PontosRelacionamento</p>
@@ -52,11 +53,11 @@
                 <th>Valor</th>
                 @foreach (var bem in ViewBag.Bens)
                 {
-                <tr>
-                    <td>@bem.Produto</td>
-                    <td>@bem.Descricao</td>
-                    <td>@String.Format("{0:0.00}", bem.Preco)</td>
-                </tr>
+                    <tr>
+                        <td>@bem.Produto</td>
+                        <td>@bem.Descricao</td>
+                        <td>@String.Format("{0:0.00}", bem.Preco)</td>
+                    </tr>
                 }
             </table>
         }
@@ -70,10 +71,10 @@
                 <th>Descrição</th>
                 @foreach (var cur in ViewBag.CursosFeitos)
                 {
-                <tr>
-                    <td>@cur.Nome</td>
-                    <td>@cur.Descricao</td>
-                </tr>
+                    <tr>
+                        <td>@cur.Nome</td>
+                        <td>@cur.Descricao</td>
+                    </tr>
                 }
             </table>
         }

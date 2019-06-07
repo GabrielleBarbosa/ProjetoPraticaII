@@ -14,6 +14,7 @@
     @if (ViewBag.Cursando != null)
     {
         <p class="flow-text">Cursando: @ViewBag.Cursando.Nome</p>
+        <p class="flow-text">Anos cursados até agora: @Session["anosCursando"]</p>
     }
     else
     {
