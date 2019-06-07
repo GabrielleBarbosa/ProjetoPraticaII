@@ -11,3 +11,9 @@
     top: 5vh;
     position: relative;
 }
+
+@media screen and (max-width: 2000px){
+    .caixa{
+        width: 110vh !important;
+    }
+}

@@ -896,16 +896,13 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
-        [Route("Passear/{f}/{s}/{i}")]
-        public ActionResult Passear(int f, int s, int i)
+        [Route("Passear/{i}")]
+        public ActionResult Estudar(int i)
         {
-            Session["Passear"] = "S";
+            Session["Estudou"] = "S";
             Personagem p = (Personagem)Session["Personagem"];
-            AlterarFelicidade(f);
-            AlterarSaude(s);
-            AlterarInteligencia(-i);
+            AlterarInteligencia(i);
             return View("Outros");
-
         }
 
         [Route("Carteira/{d}")]
@@ -923,6 +920,16 @@ namespace YourLife.Controllers
                 Session["MensagemAcontecimento"] = "Infelismente não foi dessa vez. Você ficou muito nervoso ao fazer a prova...";
             }
             return RedirectToAction("Base", "Jogo");
+        }
+
+        [Route("Namoro/{d}/{r}")]
+        public ActionResult Namoro(int d, int r)
+        {
+            Session["Namoro"] = "S";
+            Personagem p = (Personagem)Session["Personagem"];
+            AlterarRelacionamento(r);
+            AlterarDinheiro(-d);
+            return View("Outros");
         }
 
 

@@ -46,9 +46,8 @@ function academia() {
 
 function visitarParentes() {
     
-    $('#txt1').html("Você decidiu ir visitar seus familiares");
-
-    $('#lbl1').html("");
+    $('#lbl1').html("Você decidiu ir visitar seus familiares");
+    
     $('#cabecalho').html("Visitar Família");
     
     if (idade >= 18)
@@ -71,12 +70,12 @@ function cinema() {
     
 }
 
-function viajar() {
+function estudar() {
 
     $('#txt1').html("");
     $('.lbl1').html("");
-    $('#cabecalho').html("Viajar te custará $10000,00");
-    $('#resposta1').attr('href', '/Viajar/10000/84/47/25/67');
+    $('#cabecalho').html("Estudar faz bem, não é?");
+    $('#resposta1').attr('href', '/Estudar/10');
     
 }
 
@@ -86,6 +85,15 @@ function carteira() {
     $('.lbl1').html("");
     $('#cabecalho').html("Tirar a carteira de motorista te custará $1500,00");
     $('#resposta1').attr('href', '/Carteira/1500');
+
+}
+
+function namoro() {
+
+    $('#txt1').html("");
+    $('.lbl1').html("");
+    $('#cabecalho').html("Fazer uma surpresa para seu namorado(a) te custará $100, mas vale a pena, certo?");
+    $('#resposta1').attr('href', '/Namoro/100/50');
 
 }
 
