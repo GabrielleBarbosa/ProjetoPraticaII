@@ -5,6 +5,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="~/Content/CSS/Outros.css">
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -18,7 +19,7 @@
         ViewBag.Personagem = Session["Personagem"];
         string disabledPorIdade = "", disabledSuicidio = "", disabledRel = "", disabledEmprego = "",
              disabledViajar = "", disabledCinema = "", disabledParentes = "", disabledAcademia = "",
-             disabledCarteira = "";
+             disabledCarteira = "", disabledNamoro = "", disabledEstudar = "";
         if (ViewBag.Personagem.Idade < 18)
         {
             if (ViewBag.Personagem.Idade < 16)
@@ -39,6 +40,10 @@
         }
         else
         {
+            if(ViewBag.Personagem.Parceiro == 0 || Session["Namoro"] != null)
+            {
+                disabledNamoro = "disabled";
+            }
             if (ViewBag.Personagem.PontosFelicidade > 200)
             {
                 disabledSuicidio = "disabled";
@@ -88,6 +93,10 @@
                     disabledAcademia = "disabled";
                 }
             }
+            if(Session["Estudou"] != null)
+            {
+                disabledEstudar = "disabled";
+            }
         }
     }
     <a href="/Jogo/Base" class="waves-effect waves-light btn" style="position:relative;left:0;top:0;">Voltar</a>
@@ -101,8 +110,9 @@
 
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledSuicidio                   " href="#modalGeral" onclick="suicidio();"><i class="material-icons right">sentiment_very_dissatisfied</i>Suicídio</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledRel                        " href="#modalGeral" onclick="terminarRel();"><i class="material-icons right">favorite</i>Terminar Relacionamento</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledNamoro                     " href="#modalGeral" onclick="namoro();"><i class="material-icons right">favorite</i>Fazer surpresa ao namorado(a)</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledAcademia                   " href="#modalGeral" onclick="academia();"><i class="material-icons right">fitness_center</i>Academia</a><br /><br />
-        <a class="btn white red-text z-depth-5 modal-trigger                                                       " href="#modalGeral" onclick="passear();">Passear</a><br /><br />
+        <a class="btn white red-text z-depth-5 modal-trigger @disabledEstudar                                      " href="#modalGeral" onclick="estudar();">Estudar</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledPorIdade @disabledEmprego                    " href="#modalGeral" onclick="demissao();"><i class="material-icons right">settings_power</i>Pedir demissão</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledParentes                                     " href="#modalGeral" onclick="visitarParentes();"><i class="material-icons right">home</i>Visitar Parentes</a><br /><br />
         <a class="btn white red-text z-depth-5 modal-trigger @disabledCinema                                       " href="#modalGeral" onclick="cinema();"><i class="material-icons right">tv</i>Ir ao cinema</a><br /><br />
@@ -146,6 +156,8 @@
                     <ul style="list-style-type: circle;">
                         <li>Relacionamento</li>
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você não pode terminar um relacionamento sem estar em um!</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Surpreenda seu namorado(a) sempre que possível, um relacionamento feliz é um relacionamento saudável</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Surpreender seu namorado(a) custa apenas $100 e só pode ser feito uma vez por rodada</li>
                     </ul>
                     <ul style="list-style-type: circle;">
                         <li>Academia</li>
@@ -154,8 +166,9 @@
                         <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você só pode ir à academia uma vez por rodada</li>
                     </ul>
                     <ul style="list-style-type: circle;">
-                        <li>Passear</li>
-                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Não há nenhuma restrição quanto a passear</li>
+                        <li>Estudar</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você pode estudar sempre... Conhecimento nunca é demais</li>
+                        <li style="font-family: 'Kodchasan', sans-serif; font-size: 2vh;">Você só pode estudar uma vez por rodada</li>
                     </ul>
                     <ul style="list-style-type: circle;">
                         <li>Demissão</li>

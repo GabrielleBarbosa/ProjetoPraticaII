@@ -47,6 +47,7 @@ namespace YourLife.Controllers
         public ActionResult Deslogar()
         {
             Session["Usuario"] = null;
+            Session["Personagem"] = null;
             return RedirectToAction("PaginaInicial", "Jogo");
         }
 
@@ -56,6 +57,7 @@ namespace YourLife.Controllers
             daoU.Deletar((Usuario)Session["Usuario"]);
 
             Session["Usuario"] = null;
+            Session["Personagem"] = null;
             return RedirectToAction("PaginaInicial", "Jogo");
         }
     }

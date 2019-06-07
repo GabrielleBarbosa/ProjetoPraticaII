@@ -6,6 +6,8 @@ codEscolha int,
 constraint fkEscolha foreign key(codEscolha) references Escolha(id)
 )
 select * from AcontecimentoFixo
+
+select * from Usuario
 drop table AcontecimentoFixo
 
 insert into AcontecimentoFixo values (1, 'Você atingiu 16 anos! Está na hora de decidir se irá tirar sua carteira de motorista, é preciso muita responsabilidade e te custará $1500', 1)
@@ -51,7 +53,10 @@ insert into AcontecimentoAleatorio values (44, 'Seu namorado(a) terminou com voc
 insert into AcontecimentoAleatorio values (45, 'Você tem uma festa de aniversário e está muito doente, mas ainda assim deseja muito ir... O que fazer?', 65)
 insert into AcontecimentoAleatorio values (46, 'Você está doente e alguns amigos vão sair pra beber, vai com eles?', 66)
 insert into AcontecimentoAleatorio values (47, 'Sua namorada deseja ir a um encontro',67)
-
+insert into AcontecimentoAleatorio values (48, 'Sua namorada deseja sair com você^, mas faz tempo que seus pais querem te ver',68)
+insert into AcontecimentoAleatorio values (49, 'Um homem apareceu de um beco e está tentando te assaltar, ele não parece estar armado..',69)
+insert into AcontecimentoAleatorio values (50, 'Um homem apareceu de um beco e está tentando te assaltar, ele não  estar armado..',70)
+insert into AcontecimentoAleatorio values (51, 'Ofereçeram-te maconha. Aceitas?',71)
 
 
 -- entre 31 e 60 anos
@@ -65,8 +70,6 @@ insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito al
 
 
 -- a partir de 60 anos
-insert into AcontecimentoAleatorio values (121, 'Você estava limpando a casa e acabou dando mau jeito na coluna', 141)
-insert into AcontecimentoAleatorio values (122, 'Você estava indo para a fila preferencial do mercado e uma pessoa que não tem o direito de ir entrou na sua frente', 142)
-insert into AcontecimentoAleatorio values (122, 'Você estava indo para a fila preferencial do mercado e uma pessoa que não tem o direito de ir entrou na sua frente', 143)
+
 
 select * from AcontecimentoAleatorio
