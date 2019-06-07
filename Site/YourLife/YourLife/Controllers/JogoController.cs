@@ -907,7 +907,7 @@ namespace YourLife.Controllers
             return View("Outros");
         }
 
-        [Route("Passear/{i}")]
+        [Route("Estudar/{i}")]
         public ActionResult Estudar(int i)
         {
             Session["Estudou"] = "S";

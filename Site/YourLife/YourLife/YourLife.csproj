@@ -173,8 +173,10 @@
     <Content Include="Content\CSS\Layout.css" />
     <Content Include="Content\CSS\Login.css" />
     <Content Include="Content\CSS\Obituario.css" />
+    <Content Include="Content\CSS\Outros.css" />
     <Content Include="Content\CSS\PaginaInicial.css" />
     <Content Include="Content\CSS\Ranking.css" />
+    <Content Include="Content\CSS\Relatorio.css" />
     <Content Include="Content\CSS\Site.css" />
     <Content Include="Content\JS\Outros.js" />
     <Content Include="Global.asax" />
