@@ -773,6 +773,7 @@ namespace YourLife.Controllers
             p.CodCursando = id;
             PersonagemDAO daoP = new PersonagemDAO();
             daoP.Alterar(p);
+            Session["Personagem"] = p;
 
             return RedirectToAction("Curso", "Jogo");
         }
