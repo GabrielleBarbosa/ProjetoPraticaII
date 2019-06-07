@@ -34,6 +34,8 @@ insert into Escolha values(30,'Atravessar correndo','Procurar uma faixa de pedes
 insert into Escolha values(31,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,40)
 insert into Escolha values(32,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',41,39)
 insert into Escolha values(33,'Atravessar correndo','Procurar uma faixa de pedestres e ir andando',38,40)
+insert into Escolha values(34,'Ir na casa dele','Não ir',59,60)
+insert into Escolha values(73, 'Ir na festa','Não participar',65,66)
 
 select * from AcontecimentoAleatorio
 
@@ -49,6 +51,8 @@ insert into Escolha values(68, 'Namorada', 'Pais', 48, 49)
 insert into Escolha values(69, 'Agredi-lo','Render-se',50,51)
 insert into Escolha values(70, 'Agredi-lo','Render-se',52,51)
 insert into Escolha values(71, 'Sim','Não',53,54)
+insert into Escolha values(72, 'Sim','Não',61,62)
+insert into Escolha values(73, 'Sair mais cedo do trabalho','Trabalhar',63,64)
 
 -- de 31 a 60
 insert into Escolha values(101, 'Ficar em casa', 'Ir trabalhar', 29, 31)
@@ -155,6 +159,25 @@ insert into Consequencia values(56,'pontos',0,'S','F',5,'Enterros podem ser tris
 
 insert into Consequencia values(57,'pontos',31,'I','S',20,'Você ficou pra dar uma mãozinha. Experiência nunca é demais')
 insert into Consequencia values(58,'pontos',20,'S','I',15,'Melhor descansar por hoje...')
+
+insert into Consequencia values(59,'pontos',32,'F','S',20,'Passar o fim de semana com um amigo foi muito divertido, até voltou para casa um pouco cansado')
+insert into Consequencia values(60,'pontos',25,'I','F',29,'Melhor se comprometer com a escola')
+
+insert into Consequencia values(61,'pontos',25,'F','S',25,'Se divertir um pouco sempre é válido')
+insert into Consequencia values(62,'pontos',20,'S','F',15,'Sem muita disposição por hoje')
+
+insert into Consequencia values(63,'pontos',25,'F','R',-25,'Pessoas importantes sempre em primeiro lugar')
+insert into Consequencia values(64,'pontos',25,'I','R',35,'Não posso correr riscos com o meu trabalho')
+
+insert into Consequencia values(65,'pontos',25,'F','S',10,'Fesa nunia sempre é um evento muito legal, adoro participar!')
+insert into Consequencia values(66,'pontos',10,'F','S',-5,'Ficar em casa pode ser melhor, menos cansativo')
+
+
+
+
+
+
+
 
  select * from MercadoJogador
  select * from Personagem

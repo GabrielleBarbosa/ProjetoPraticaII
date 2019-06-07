@@ -533,19 +533,19 @@ namespace YourLife.Controllers
             int id = 0;
             if (p.Idade <= 18)
             {
-                id = random.Next(1, 14);      //(1, 40)
+                id = random.Next(1, 16);      //(1, 40)
             }
             else if (p.Idade <= 30)
             {
-                id = random.Next(41, 51);   //(41, 80)
+                id = random.Next(41, 53);   //(41, 80)
             }
             else if (p.Idade <= 60)
             {
-                id = random.Next(41, 85);  //(80, 120);
+                id = random.Next(41, 87);  //(80, 120);
             }
             else
             {
-                id = random.Next(41, 45); //(120, 160);
+                id = random.Next(41, 87); //(120, 160);
             }
 
             AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
