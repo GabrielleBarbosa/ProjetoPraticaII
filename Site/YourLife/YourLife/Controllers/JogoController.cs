@@ -399,10 +399,17 @@ namespace YourLife.Controllers
 
                     Session["AnosCursando"] = null;
                     Session["Cursando"] = null;
+
+                    p.AnosCursando = 0;
+                    p.CodCursando = 0;
+                    daoPersonagem.Alterar(p);
                 }
-                p.AnosCursando = (int)Session["AnosCursando"];
-                p.CodCursando = (Curso)Session["CodCursando"];
-                daoPersonagem.Alterar(p);
+                else
+                {
+                    p.AnosCursando = (int)Session["AnosCursando"];
+                    p.CodCursando = ((Curso)Session["CodCursando"]).id;
+                    daoPersonagem.Alterar(p);
+                }
             }
             return p;
         }
