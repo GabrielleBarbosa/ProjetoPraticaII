@@ -43,7 +43,8 @@ insert into AcontecimentoAleatorio values (11,'Você está extremamente atrasado p
 insert into AcontecimentoAleatorio values (12,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',31)
 insert into AcontecimentoAleatorio values (13,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',32)
 insert into AcontecimentoAleatorio values (14,'Você está extremamente atrasado para os exames finais e se não chegar logo pode não conseguir fazer a prova. Está bem perto da escola mas ainda tem que atravessar uma estrada comprida.',33)
-
+insert into AcontecimentoAleatorio values (15,'Um amigo te chamou pra ir passar o fim de semana na casa dele, você vai?',34)
+insert into AcontecimentoAleatorio values (16,'Festa junina na escola',35)
 
 -- entre 16 e 30 anos.
 insert into AcontecimentoAleatorio values (41, 'Seu melhor amigo tem sentimentos por você e te pediu em namoro', 61)
@@ -57,16 +58,20 @@ insert into AcontecimentoAleatorio values (48, 'Sua namorada deseja sair com voc
 insert into AcontecimentoAleatorio values (49, 'Um homem apareceu de um beco e está tentando te assaltar, ele não parece estar armado..',69)
 insert into AcontecimentoAleatorio values (50, 'Um homem apareceu de um beco e está tentando te assaltar, ele não  estar armado..',70)
 insert into AcontecimentoAleatorio values (51, 'Ofereçeram-te maconha. Aceitas?',71)
-
+insert into AcontecimentoAleatorio values (52, 'Ofereçeram vodka para você beber',72)
+insert into AcontecimentoAleatorio values (53, 'Sua namorada disse estar um pouco mal e quer companhia, mas você precisa trabalhar.',73)
 
 -- entre 31 e 60 anos
 insert into AcontecimentoAleatorio values (81, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 101)
 insert into AcontecimentoAleatorio values (82, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 102)
 insert into AcontecimentoAleatorio values (83, 'Você pegou um resfriado severo e ficou de cama por dois dias. Seu trabalho está esperando, vai descansar mais um dia?', 103)
 insert into AcontecimentoAleatorio values (84, 'A idade está se mostrando no seu rosto, e isso te deixa inseguro(a) quanto à sua aparência', 104)
-insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito alta, o remédio custa R$500')
+insert into AcontecimentoAleatorio values (85, 'Você está com a pressão muito alta, o remédio custa R$500',105)
+insert into AcontecimentoAleatorio values (86, 'Um de seus parentes faleceu. Deseja comparecer ao enterro?',106)
+insert into AcontecimentoAleatorio values (87, 'Você estava fazendo um beco de garçom num restaurante e te pediram para ficar até de madrugada? para ajudar nos eventos',107)
+insert into AcontecimentoAleatorio values (88, 'Está precisando repor o estoque de remédios',108)
 
-
+select * from AcontecimentoAleatorio
 
 
 -- a partir de 60 anos

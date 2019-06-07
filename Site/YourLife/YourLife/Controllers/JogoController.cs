@@ -531,21 +531,21 @@ namespace YourLife.Controllers
         {
             bool valido = true;
             int id = 0;
-            if (p.Idade <= 15)
+            if (p.Idade <= 18)
             {
-                id = random.Next(1, 14);      //(1, 40)
+                id = random.Next(1, 16);      //(1, 40)
             }
             else if (p.Idade <= 30)
             {
-                id = random.Next(41, 45);   //(41, 80)
+                id = random.Next(41, 53);   //(41, 80)
             }
             else if (p.Idade <= 60)
             {
-                id = random.Next(81, 84);  //(80, 120);
+                id = random.Next(41, 88);  //(80, 120);
             }
             else
             {
-                id = random.Next(41, 45); //(120, 160);
+                id = random.Next(41, 88); //(120, 160);
             }
 
             AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
@@ -586,6 +586,7 @@ namespace YourLife.Controllers
                     valido = false;
                 }
             }
+            
             
             if (valido)
             {
@@ -671,7 +672,7 @@ namespace YourLife.Controllers
             }
             else if(c.assunto == "dinheiro")
             {
-                p.Dinheiro += c.PontosGanhos;
+                p.Dinheiro = p.Dinheiro+ c.PontosGanhos;
             }
 
             Session["MensagemAcontecimento"] = c.resultado;
