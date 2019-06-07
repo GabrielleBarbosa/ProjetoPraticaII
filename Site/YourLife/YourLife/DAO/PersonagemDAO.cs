@@ -57,8 +57,9 @@ namespace YourLife.DAO
         {
             using (var contexto =  new JogoContext())
             {
+                MercadoJogadorDAO daoMG = new MercadoJogadorDAO();
                 RankingDAO daoRK = new RankingDAO();
-                int pontos = p.PontosFelicidade + p.PontosInteligencia + p.PontosRelacionamento + p.PontosSaude + p.Idade + decimal.ToInt32(p.Dinheiro);
+                int pontos = p.PontosFelicidade + p.PontosInteligencia + p.PontosRelacionamento + p.PontosSaude + p.Idade + decimal.ToInt32(p.Dinheiro) + daoMG.PontosBens(p);
                 UsuarioDAO daoUsu = new UsuarioDAO();
                 Usuario usu = daoUsu.BuscarPorId(p.CodUsuario);
 
