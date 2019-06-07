@@ -29,6 +29,14 @@
         <p><strong>Inteligência:</strong> @ViewBag.Personagem.PontosInteligencia</p>
         <p><strong>Felicidade:</strong> @ViewBag.Personagem.PontosFelicidade</p>
         <p><strong>Dinheiro:</strong> @String.Format("{0:0.00}", ViewBag.Personagem.Dinheiro) $</p>
+        @if(ViewBag.Personagem.CarteiraMotorista != 'N')
+        {
+            <p><strong>Carteira de motorista:</strong> Possui! </p>
+        }
+        else
+        {
+            <p><strong>Carteira de motorista:</strong> Não possui </p>
+        }
     </div>
 
     @{
@@ -47,18 +55,24 @@
             <p style="font-size:4vh">Bens</p>
             <hr style="height:1px; background-color:black;" />
 
-            <table>
-                <th>Bem</th>
-                <th>Descrição</th>
-                <th>Valor</th>
-                @foreach (var bem in ViewBag.Bens)
-                {
-                    <tr>
-                        <td>@bem.Produto</td>
-                        <td>@bem.Descricao</td>
-                        <td>@String.Format("{0:0.00}", bem.Preco)</td>
-                    </tr>
-                }
+            <table class="highlight centered">
+                <thead>
+                     <tr>
+                        <th>Bem</th>
+                        <th>Descrição</th>
+                        <th>Valor</th>
+                     </tr>
+               </thead>
+                <tbody>
+                    @foreach (var bem in ViewBag.Bens)
+                    {
+                        <tr>
+                            <td>@bem.Produto</td>
+                            <td>@bem.Descricao</td>
+                            <td>@String.Format("{0:0.00}", bem.Preco)</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         }
 
@@ -66,16 +80,22 @@
         {
             <p style="font-size:4vh">Cursos Feitos</p>
             <hr style="height:1px; background-color:black;" />
-            <table>
-                <th>Curso</th>
-                <th>Descrição</th>
-                @foreach (var cur in ViewBag.CursosFeitos)
-                {
-                    <tr>
-                        <td>@cur.Nome</td>
-                        <td>@cur.Descricao</td>
-                    </tr>
-                }
+            <table class="highlight centered">
+                 <thead>
+                     <tr>
+                         <th>Curso</th>
+                         <th>Descrição</th>
+                     </tr>
+                </thead>
+                <tbody>
+                    @foreach (var cur in ViewBag.CursosFeitos)
+                    {
+                        <tr>
+                            <td>@cur.Nome</td>
+                            <td>@cur.Descricao</td>
+                        </tr>
+                    }
+                </tbody>
             </table>
         }
     }

@@ -18,7 +18,7 @@
     @if (ViewBag.EmpregoAtual.id != 0)
     {
         <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Emprego atual: @ViewBag.EmpregoAtual.trabalho</p>
-        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Salário: @String.Format("{0:0.00}",ViewBag.EmpregoAtual.salario) </p>
+        <p class="flow-text" style="color:deepskyblue; font-family: 'Sofia', cursive; font-size:4vh;">Salário anual: @String.Format("{0:0.00}",ViewBag.EmpregoAtual.salario) </p>
     }
     else
     {
@@ -29,7 +29,7 @@
         <thead>
             <tr>
                 <th>Emprego</th>
-                <th>Salário</th>
+                <th>Salário Anual</th>
                 <th>Experiência Necessária</th>
                 <th></th>
             </tr>

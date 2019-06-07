@@ -529,26 +529,31 @@ namespace YourLife.Controllers
 
         public bool SortearAcontecimento(Personagem p, Random random)
         {
+            AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
+            int qtosAcontecimentos;
             bool valido = true;
             int id = 0;
             if (p.Idade <= 18)
             {
-                id = random.Next(1, 16);      //(1, 40)
+                qtosAcontecimentos = daoAcont.ContarAcontecimentos(1, 40);
+                id = random.Next(1, qtosAcontecimentos);      
             }
             else if (p.Idade <= 30)
             {
-                id = random.Next(41, 53);   //(41, 80)
+                qtosAcontecimentos = daoAcont.ContarAcontecimentos(41, 80);
+                id = random.Next(41, qtosAcontecimentos + 41);
             }
             else if (p.Idade <= 60)
             {
-                id = random.Next(41, 88);  //(80, 120);
+                qtosAcontecimentos = daoAcont.ContarAcontecimentos(81, 120);
+                id = random.Next(81, qtosAcontecimentos + 81); 
             }
             else
             {
-                id = random.Next(41, 88); //(120, 160);
+                qtosAcontecimentos = daoAcont.ContarAcontecimentos(121, 140);
+                id = random.Next(121, qtosAcontecimentos + 121);
             }
 
-            AcontecimentoAleatorioDAO daoAcont = new AcontecimentoAleatorioDAO();
             AcontecimentoAleatorio aa = daoAcont.BuscarPorId(id);
             EscolhaDAO daoEsc = new EscolhaDAO();
             Escolha esc = daoEsc.BuscarPorId(aa.CodEscolha);
@@ -804,7 +809,7 @@ namespace YourLife.Controllers
             CursoDAO daoC = new CursoDAO();
             foreach (var cur in cursosFeitos)
             {
-                listaCursos.Add(daoC.BuscarPorId(cur.id));
+                listaCursos.Add(daoC.BuscarPorId(cur.codCurso));
             }
 
             ViewBag.CursosFeitos = listaCursos;
@@ -850,6 +855,21 @@ namespace YourLife.Controllers
             p.Parceiro = 0;
             p.PontosSaude -= 30;
             p.PontosFelicidade -= 50;
+            p.PontosRelacionamento -= 50;
+
+            if(p.PontosRelacionamento < 0)
+            {
+                p.PontosRelacionamento = 0;
+            }
+            if(p.PontosFelicidade < 0)
+            {
+                p.PontosFelicidade = 0;
+            }
+            if(p.PontosSaude < 0)
+            {
+                p.PontosSaude = 0;
+            }
+
             PersonagemDAO pg = new PersonagemDAO();
             pg.Alterar(p);
 

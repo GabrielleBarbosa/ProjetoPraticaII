@@ -63,6 +63,11 @@ insert into Escolha values(105, 'Comprar','Não comprar',46,47)
 insert into Escolha values(106, 'Ir ao enterro','Não ir',55,56)
 insert into Escolha values(107, 'Ficar','Não ficar',57,58)
 insert into Escolha values(108, 'Comprar mais','Não comprar',67,68)
+
+-- a partir de 60 anos
++insert into Escolha values(141, 'Ok', '', 48,48)
+insert into Escolha values(142, 'Brigar com a pessoa', 'Deixar quieto e entrar atrás dela', 49,50)
+insert into Escolha values(143, 'Brigar com a pessoa', 'Deixar quieto e entrar atrás dela', 51,50)
 ------------------------------------------------------------------------------------------------------------------------
 create table Consequencia
 (
@@ -175,6 +180,12 @@ insert into Consequencia values(66,'pontos',10,'F','S',-5,'Ficar em casa pode se
 
 insert into Consequencia values(67,'dinheiro',25,'','',0,'Sempre bom se cuidar!')
 insert into Consequencia values(68,'pontos',-10,'F','S',40,'melhor guardar dinheiro')
+
+insert into Consequencia values(48,'pontos',0,'F','S',35,'')
+
+insert into Consequencia values(49, 'pontos',10,'F','S',0, 'A pessoa ficou muito envergonhada e lhe deu seu lugar na hora')
+insert into Consequencia values(50, 'pontos',10,'S','F',15, 'Só demorou cinco minutos, mas você ficou frustado(a) com a injustiça')
+insert into Consequencia values(51, 'pontos',0,'S','F',15, 'Brigar se transformou em uma discussão enorme, você ficou estressado(a) e nem conseguiu dormir direito depois')
 
 
 select * from Consequencia

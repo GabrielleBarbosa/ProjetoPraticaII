@@ -30,7 +30,14 @@
 
     <nav class="red darken-2" id="menu">
         <div class="nav-wrapper">
-            <a href="~/Jogo/PaginaInicial"><img src="~/Imagens/LogoSemPlanoDeFundo.png" width="70" height="65" /></a>
+            @if(Session["Usuario"] != null)
+            {
+                <a href="~/Jogo/Inicio"><img src="~/Imagens/LogoSemPlanoDeFundo.png" width="70" height="65" /></a>
+            }
+            else
+            {
+                <a href="~/Jogo/PaginaInicial"><img src="~/Imagens/LogoSemPlanoDeFundo.png" width="70" height="65" /></a>
+            }
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="~/Relatorio/Relatorio" class="btn waves-effect waves-light red lighten-4">Relatórios</a></li>
             </ul>

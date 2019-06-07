@@ -16,5 +16,14 @@ namespace YourLife.DAO
             }
         }
 
+        public int ContarAcontecimentos(int idInicial, int idFinal)
+        {
+            using (var contexto = new JogoContext())
+            {
+                int quantos = contexto.AcontecimentoAleatorio.Where(a => a.Id <= idFinal && a.Id >= idInicial).Count();
+                return quantos;
+            }
+        }
+
     }
 }

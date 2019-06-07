@@ -46,6 +46,13 @@
                             }
                         }
                     }
+                    if (enabled != "")
+                    {
+                        if (ViewBag.Personagem.CarteiraMotorista == 'N' && ViewBag.Mercado[i].TipoProduto == "Automovel")
+                        {
+                            enabled = "disabled";
+                        }
+                    }
                     <tr>
                         <td>@mc.TipoProduto</td>
                         <td>@mc.Produto</td>

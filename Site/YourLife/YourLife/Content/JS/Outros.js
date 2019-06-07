@@ -27,6 +27,7 @@ function terminarRel() {
     
     $('#lbl1').html("");
     $('#cabecalho').html("Tem certeza que deseja terminar o relacionamento?");
+    $('#resposta1').attr('href', '/Jogo/TerminarRelacionamento');
 }
 
 function demissao() {
@@ -40,7 +41,7 @@ function academia() {
     
     $('#lbl1').html("");
     $('#cabecalho').html("Irá te custar $100,00");
-    $('#resposta1').attr('href', '/AlterarAcademia/100/20');
+    $('#resposta1').attr('href', '/AlterarAcademia/100/30');
 }
 
 function visitarParentes() {
@@ -74,7 +75,7 @@ function estudar() {
     
     $('#lbl1').html("");
     $('#cabecalho').html("Estudar faz bem, não é?");
-    $('#resposta1').attr('href', '/Estudar/10');
+    $('#resposta1').attr('href', '/Estudar/30');
     
 }
 
