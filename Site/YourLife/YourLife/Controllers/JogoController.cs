@@ -141,7 +141,7 @@ namespace YourLife.Controllers
                 }
                 Usuario usu = (Usuario)Session["Usuario"];
                 p.Dinheiro = 0;
-                p.Idade = 5;
+                p.Idade = 7;
                 p.Parceiro = 'N';
                 p.PontosSaude = 800;
                 Random rm = new Random();

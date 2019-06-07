@@ -30,6 +30,15 @@
         <p style="font-size:3vh;font-family:Papyrus"><b>Idade:</b>@p.Idade</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Sexo:</b> @p.Sexo</p>
         <p style="font-size:3vh;font-family:Papyrus"><b>Herança:</b>@p.Dinheiro $</p>
+        @if (ViewBag.Personagem.CarteiraMotorista != 'N')
+        {
+            <p style="font-size:3vh;font-family:Papyrus"><b>Carteira de motorista:</b> Possuia</p>
+        }
+        else
+        {
+            <p style="font-size:3vh;font-family:Papyrus"><b>Carteira de motorista:</b> Não possuia</p>
+        }
+        <p style="font-size:3vh;font-family:Papyrus"><b>Causa da morte: </b>@Session["CausaDaMorte"]</p>
     </div>
     <div id="pontuacao" style="position:relative;">
         <br /><hr style="background-color:black" />
