@@ -38,8 +38,8 @@ namespace YourLife.DAO
                 {
                     foreach (var m in mg) //para cada item do jogador, procuramos correspondente em Mercado e adicionamos no int retornável "pontos"
                     {
-                        Mercado item = (Mercado)contexto.Mercado.Select(Mercado => Mercado.Id == m.CodMercado);
-                        pontos = decimal.ToInt32(item.Preco)/100;  //divisão por 100 para os valores não ficarem extensos
+                        Mercado item = (Mercado)(contexto.Mercado.Where(Mercado => Mercado.Id == m.CodMercado).FirstOrDefault());
+                        pontos += decimal.ToInt32(item.Preco)/100;  //divisão por 100 para os valores não ficarem extensos
 
                     }
                 }
